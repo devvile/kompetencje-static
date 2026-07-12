@@ -1,0 +1,12 @@
+node_modules/
+.next/
+*.tsbuildinfo
+
+# duże artefakty z Figmy — trzymane lokalnie
+design-refs/*.png
+design-refs/mobile/
+design-refs/crops/
+design-refs/tools/
+
+# logi dev-serwera
+*.log
