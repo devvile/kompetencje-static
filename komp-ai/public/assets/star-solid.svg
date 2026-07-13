@@ -1,0 +1,28 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="Menu">
+<g id="Clip path group">
+<mask id="mask0_0_1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+<g id="762810efff">
+<path id="Vector" d="M0 0H24.9844V24.9896H0V0Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1)">
+<g id="Group">
+<g id="Clip path group_2">
+<mask id="mask1_0_1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="26" height="26">
+<g id="5816ba06db">
+<path id="Vector_2" d="M0 12.7083C0 19.7292 5.6875 25.4219 12.7083 25.4219C19.7292 25.4219 25.4167 19.7292 25.4167 12.7083C25.4167 5.69271 19.7292 0 12.7083 0C5.6875 0 0 5.69271 0 12.7083Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask1_0_1)">
+<g id="Group_2">
+<path id="Vector_3" d="M12.7031 0C11.4635 10.4635 10.4635 11.4688 0 12.7031C0.0208333 12.7083 0.0416667 12.7083 0.0625 12.7135C10.4635 13.9479 11.4688 14.9688 12.7031 25.4115C13.9427 14.9479 14.9427 13.9427 25.4062 12.7031C14.9427 11.4688 13.9427 10.4635 12.7031 0Z" fill="#131DFF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

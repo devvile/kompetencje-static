@@ -1,0 +1,29 @@
+<svg width="341" height="323" viewBox="0 0 341 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="Strona g&#197;&#130;&#195;&#179;wna">
+
+<g id="Clip path group">
+<mask id="mask0_0_1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="341" height="323">
+<g id="724992df3d">
+<path id="Vector" d="M0 0H340.163V322.844H0V0Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1)">
+<g id="Group">
+<g id="Clip path group_2">
+<mask id="mask1_0_1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="341" height="323">
+<g id="fd3864b0c8">
+<path id="Vector_2" d="M0 84.9583V237.693C0 284.615 40.1025 322.651 89.5662 322.651H250.575C300.038 322.651 340.135 284.615 340.135 237.693V84.9583C340.135 38.0365 300.038 0 250.575 0H89.5662C40.1025 0 0 38.0365 0 84.9583Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask1_0_1)">
+<g id="Group_2">
+<path id="Vector_3" d="M170.062 0C153.486 132.854 140.051 145.599 0 161.323C0.296487 161.354 0.581992 161.385 0.872987 161.417V161.422L0.878477 161.417C140.101 177.099 153.525 190.068 170.062 322.641C186.638 189.786 200.073 177.042 340.119 161.323C200.073 145.599 186.638 132.854 170.062 0Z" fill="#D6FF3F"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

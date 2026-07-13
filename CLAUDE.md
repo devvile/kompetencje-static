@@ -72,8 +72,9 @@ per podstrona.
 
 ## Środowisko
 
-- Windows 11, PowerShell 5.1 (brak `&&`) + Git Bash. Zombie dev-server na :3000 → najpierw ubić
-  stary proces, potem debugować.
+- Windows 11, PowerShell 5.1 (brak `&&`) + Git Bash. Porty typu :3000 bywają zajęte przez
+  zombie-procesy node. **Przed każdą walidacją/screenshotem: pozabijać wszystkie stare procesy
+  node/dev-servery, potem wystartować świeży dev server** — dopiero wtedy porównywać.
 - Playwright MCP + Chromium w `AppData\Local\ms-playwright`.
 
 ## Git
