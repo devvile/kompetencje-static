@@ -59,6 +59,27 @@ per podstrona.
   async getterów (`getHomePage()`); podpięcie Sanity później = podmiana ciał getterów na GROQ.
 - Fonty: rola per zmienna CSS (`font-display`, `font-body`, `font-nav`, ...) w layout.tsx.
 
+## Lekcje z budowy hero (2026-07-13) — WAŻNE dla kolejnych sekcji
+
+- **Render z get_screenshot ma kanał ALPHA (RGBA)** — każdy skrypt pomiarowy MUSI czytać
+  przez `sharp(...).removeAlpha()` i stride `info.channels`, inaczej kanały się „obracają"
+  co piksel i pomiary to śmieci (raz zdiagnozowano to błędnie jako dithering + skalowanie warstw).
+- **Metadane/design-context Figmy są WIARYGODNE** dla pozycji/fontów (poza rotowanymi node'ami)
+  — po naprawie stride design zgadzał się z metadanymi ~1:1.
+- **Eksporty PNG/SVG node'ów wypiekają tło strony** (#EFEFEF) — obiekty z przezroczystością
+  (robot-cutout) brać z **rawImages** (źródłowy PNG z alphą), nie z eksportu node'a.
+- **Tekstury blend-mode (multiply, białe) spłaszczają się przy eksporcie do mlecznych nakładek**
+  — grupy z teksturami (np. logo .AI) filtrować po kolorach (zostawić niebieski/limonkę/białe
+  litery w niebieskim sąsiedztwie): wzór w commit „home hero mobile".
+- **Kolejność w XML z get_metadata ≠ z-order** — o tym, co jest nad czym, decyduje render
+  (desktop: gwiazda ZA robotem; mobile: gwiazda i kicker NAD robotem).
+- **Rotowane node'y**: bbox z metadanych kłamie — pozycję mierzyć diff-centroidami
+  (`design-refs/tools/hero-align.js`) i iterować: shot → pomiar → korekta (zbiega w 2-3 iteracje).
+- Workflow walidacji: `node scripts/shot.js` → `node ../design-refs/tools/hero-align.js` →
+  poprawki w obiekcie G/GM komponentu (wartości w px designu, helper c()/cm() → cqw).
+- Osiągnięte progi diff: hero desktop 1.73%, hero mobile ~4.5% (szum resamplingu zdjęcia robota
+  + AA tekstu; realne elementy spasowane do 1-3px).
+
 ## Pułapki designera (obowiązują też w nowym pliku)
 
 - Tekst bywa outline'owany do krzywych → renderować prawdziwym fontem (zidentyfikować krój).

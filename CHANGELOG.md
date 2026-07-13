@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-07-13 — hero home: desktop + mobile pixel-perfect
+
+- **Hero desktop (1440×833)**: diff 1.73% vs render Figmy (tylko AA tekstu i szum zdjęcia).
+  Nav (logo, linki HK Modular, linia z kropkami, gwiazdki), H1 Montserrat Black 55/56,
+  kicker, tagline HK 25, button lime, robot (źródłowy PNG z alphą — gwiazda prześwituje),
+  gwiazdy/swoosh/logo .AI spasowane do 1px (hero-align.js).
+- **Hero mobile (402×875)**: analogicznie; blob tła, top bar (logo+burger), gwiazdy,
+  badge .AI na brodzie robota (filtrowany z tekstur), Big Button.
+- hscroll czysty na 375/768/1440/1920/2560.
+- Naprawiono krytyczny bug pomiarów (stride RGBA) — patrz CLAUDE.md „Lekcje z budowy hero".
+- Poprawiono literówkę designera w nav: KONTACT → KONTAKT.
+- Otwarte: review Patryka; burger-menu overlay (design ma tylko stan zamknięty);
+  responsywność między breakpointami do przetestowania na 768/tablet; sekcja 2 (manifest).
+
 ## 2026-07-12 — start projektu (nowy design)
 
 - Zweryfikowano dostęp Figma MCP (Full seat, team Pro). Patryk zduplikował nowy design do

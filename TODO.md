@@ -49,8 +49,8 @@ UWAGA: kursy (3 karty) nie widać w mobile metadata między human-machine a prow
 - [x] Duplikat Figmy w teamie Pro (fileKey `XsorNfllBh0GzGUQraAmtS`)
 - [x] get_metadata home desktop + mobile; pełne rendery w `design-refs/`
 - [x] Scaffold Next.js 16 w `komp-ai/` + skrypty walidacyjne
-- [ ] Zidentyfikować fonty nowego designu (get_design_context na tekstach hero/nav) i POTWIERDZIĆ mapowanie z Patrykiem
-- [ ] Sekcja 1+2 desktop+mobile: nav + hero (100svh) → walidacja → review Patryka
+- [x] Fonty designu: Montserrat Black/Regular (nagłówki), HK Modular Bold (nav/przyciski/techno), Manrope (body) — do potwierdzenia przez Patryka przy review
+- [x] Nav + hero desktop (diff 1.73%) i mobile (~4.5%, szum foto) — CZEKA NA REVIEW Patryka
 - [ ] Kolejne sekcje wg tabel powyżej, jedna po drugiej
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"

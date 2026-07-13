@@ -223,6 +223,149 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   );
 }
 
+/* ---------- MOBILE (canvas 402×875, 1cqw = 4.02px) ---------- */
+
+const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
+
+const GM = {
+  blob: { left: 0, top: 0, w: 402, h: 1143.5 }, // limonkowy kształt tła, clipowany przez hero
+  logo: { left: 15, top: 44, w: 60.74, h: 70 },
+  burger: { left: 342, top: 59, w: 40, h: 40 },
+  h1a: { top: 141, fontPx: 30, leading: 1.16 }, // Montserrat Black, center
+  h1b: { top: 181, fontPx: 28, leading: 1.16 }, // HK Modular, center
+  kicker: { right: 402 - 341, top: 235, w: 181, fontPx: 14 }, // 2 linie, right
+  starOutline: { left: 119.7, top: 213.2, w: 143, h: 140.5 }, // ZA robotem
+  starSm: { left: 195.3, top: 91.5, w: 32.5, h: 30.5 },
+  robot: { left: -122, top: 219, w: 525, h: 656 },
+  miniGroup: { left: 180, top: 442, w: 138.5, h: 123 },
+  button: { left: 51, top: 776, w: 300, h: 55, radiusPx: 40, borderPx: 3, fontPx: 13, trackPx: 0.52 },
+};
+
+function HeroMobile({ hero }: { hero: HomeHero }) {
+  return (
+    <section className="relative flex h-svh items-center justify-center md:hidden">
+      <div
+        className="@container mx-auto w-full"
+        style={{ width: "min(100%, calc(100svh * (402 / 875)))" }}
+      >
+        <div className="relative aspect-[402/875] overflow-hidden bg-page">
+          {/* limonkowy blob tła */}
+          <img
+            src="/assets/m-bg-blob-2x.png"
+            alt=""
+            className="absolute"
+            style={{ left: cm(GM.blob.left), top: cm(GM.blob.top), width: cm(GM.blob.w), height: cm(GM.blob.h) }}
+            data-node-id="375:1754"
+          />
+          {/* top bar: logo + burger */}
+          <header className="absolute inset-x-0 top-0" data-node-id="375:1739">
+            <Link
+              href="/"
+              className="absolute"
+              style={{ left: cm(GM.logo.left), top: cm(GM.logo.top), width: cm(GM.logo.w), height: cm(GM.logo.h) }}
+            >
+              <img src="/assets/m-logo-2x.png" alt="Kompetencje.ai" className="h-full w-full" />
+            </Link>
+            <button
+              type="button"
+              aria-label="Otwórz menu"
+              className="absolute"
+              style={{ left: cm(GM.burger.left), top: cm(GM.burger.top), width: cm(GM.burger.w), height: cm(GM.burger.h) }}
+              data-node-id="375:1749"
+            >
+              <img src="/assets/m-burger-2x.png" alt="" className="h-full w-full" />
+            </button>
+          </header>
+          {/* mała gwiazdka nad headline */}
+          <img
+            src="/assets/m-star-sm-2x.png"
+            alt=""
+            className="absolute"
+            style={{ left: cm(GM.starSm.left), top: cm(GM.starSm.top), width: cm(GM.starSm.w), height: cm(GM.starSm.h) }}
+            data-node-id="432:1659"
+          />
+          {/* H1 */}
+          <h1 className="absolute inset-0 text-brand-blue" data-node-id="397:1837">
+            <span
+              className="absolute block w-full text-center font-display font-black"
+              style={{ top: cm(GM.h1a.top), fontSize: cm(GM.h1a.fontPx), lineHeight: GM.h1a.leading }}
+            >
+              {hero.headlineLine1}
+            </span>
+            <span
+              className="absolute block w-full text-center font-modular"
+              style={{ top: cm(GM.h1b.top), fontSize: cm(GM.h1b.fontPx), lineHeight: GM.h1b.leading }}
+              data-node-id="375:1764"
+            >
+              {hero.headlineLine2}
+            </span>
+          </h1>
+          {/* robot */}
+          <Image
+            src="/assets/robot-hero-m-2x.png"
+            alt="Robot AI — kompetencje przyszłości"
+            width={1050}
+            height={1312}
+            priority
+            className="absolute max-w-none"
+            style={{ left: cm(GM.robot.left), top: cm(GM.robot.top), width: cm(GM.robot.w), height: cm(GM.robot.h) }}
+            data-node-id="375:1763"
+          />
+          {/* gwiazda outline NAD robotem (mobile) */}
+          <img
+            src="/assets/m-star-outline-2x.png"
+            alt=""
+            className="absolute"
+            style={{ left: cm(GM.starOutline.left), top: cm(GM.starOutline.top), width: cm(GM.starOutline.w), height: cm(GM.starOutline.h) }}
+            data-node-id="432:1664"
+          />
+          {/* kicker (2 linie, do prawej) */}
+          <p
+            className="absolute font-display font-normal text-brand-blue"
+            style={{
+              right: cm(GM.kicker.right),
+              top: cm(GM.kicker.top),
+              width: cm(GM.kicker.w),
+              fontSize: cm(GM.kicker.fontPx),
+              lineHeight: cm(17),
+              textAlign: "right" as const,
+            }}
+            data-node-id="375:1765"
+          >
+            {hero.kicker}
+          </p>
+          {/* mini grupa .AI na robocie */}
+          <img
+            src="/assets/m-mini-group-filtered.png"
+            alt=""
+            className="absolute"
+            style={{ left: cm(GM.miniGroup.left), top: cm(GM.miniGroup.top), width: cm(GM.miniGroup.w), height: cm(GM.miniGroup.h) }}
+            data-node-id="375:1767"
+          />
+          {/* CTA */}
+          <Link
+            href={hero.ctaHref}
+            className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
+            style={{
+              left: cm(GM.button.left),
+              top: cm(GM.button.top),
+              width: cm(GM.button.w),
+              height: cm(GM.button.h),
+              borderRadius: cm(GM.button.radiusPx),
+              borderWidth: cm(GM.button.borderPx),
+              fontSize: cm(GM.button.fontPx),
+              letterSpacing: cm(GM.button.trackPx),
+            }}
+            data-node-id="401:1838"
+          >
+            {hero.ctaLabel}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HeroSection({
   hero,
   nav,
@@ -230,5 +373,12 @@ export default function HeroSection({
   hero: HomeHero;
   nav: NavLink[];
 }) {
-  return <HeroDesktop hero={hero} nav={nav} />;
+  return (
+    <>
+      <div className="hidden md:block">
+        <HeroDesktop hero={hero} nav={nav} />
+      </div>
+      <HeroMobile hero={hero} />
+    </>
+  );
 }
