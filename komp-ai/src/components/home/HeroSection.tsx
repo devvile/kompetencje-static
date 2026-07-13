@@ -100,7 +100,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         <div className="relative aspect-[1440/833] overflow-hidden bg-page">
           {/* gwiazda outline ZA robotem — tło zdjęcia robota ją przykrywa */}
           <img
-            src="/assets/star-outline-trim.png"
+            src="/assets/star-outline-f.png"
             alt=""
             className="absolute"
             style={{ left: c(G.starRobot.left), top: c(G.starRobot.top), width: c(G.starRobot.w), height: c(G.starRobot.h) }}
@@ -119,7 +119,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           />
           {/* limonkowa gwiazda przy prawej krawędzi */}
           <img
-            src="/assets/lime-star-trim.png"
+            src="/assets/lime-star-f.png"
             alt=""
             className="absolute"
             style={{ left: c(G.limeStarTR.left), top: c(G.limeStarTR.top), width: c(G.limeStarTR.w), height: c(G.limeStarTR.h) }}
@@ -127,7 +127,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           />
           {/* mała gwiazda outline w prawym górnym rogu */}
           <img
-            src="/assets/star-outline-sm-trim.png"
+            src="/assets/star-outline-sm-f.png"
             alt=""
             className="absolute"
             style={{ left: c(G.starTRsmall.left), top: c(G.starTRsmall.top), width: c(G.starTRsmall.w), height: c(G.starTRsmall.h) }}
@@ -135,7 +135,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           />
           {/* limonkowy swoosh (STAR_ARROW) */}
           <img
-            src="/assets/star-arrow-trim.png"
+            src="/assets/star-arrow-f.png"
             alt=""
             className="absolute"
             style={{ left: c(G.swoosh.left), top: c(G.swoosh.top), width: c(G.swoosh.w), height: c(G.swoosh.h) }}
@@ -251,7 +251,7 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
         <div className="relative aspect-[402/875] overflow-hidden bg-page">
           {/* limonkowy blob tła */}
           <img
-            src="/assets/m-bg-blob-2x.png"
+            src="/assets/m-bg-blob-f.png"
             alt=""
             className="absolute"
             style={{ left: cm(GM.blob.left), top: cm(GM.blob.top), width: cm(GM.blob.w), height: cm(GM.blob.h) }}
@@ -264,7 +264,7 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
               className="absolute"
               style={{ left: cm(GM.logo.left), top: cm(GM.logo.top), width: cm(GM.logo.w), height: cm(GM.logo.h) }}
             >
-              <img src="/assets/m-logo-2x.png" alt="Kompetencje.ai" className="h-full w-full" />
+              <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
             </Link>
             <button
               type="button"
@@ -273,12 +273,12 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
               style={{ left: cm(GM.burger.left), top: cm(GM.burger.top), width: cm(GM.burger.w), height: cm(GM.burger.h) }}
               data-node-id="375:1749"
             >
-              <img src="/assets/m-burger-2x.png" alt="" className="h-full w-full" />
+              <img src="/assets/m-burger-f.png" alt="" className="h-full w-full" />
             </button>
           </header>
           {/* mała gwiazdka nad headline */}
           <img
-            src="/assets/m-star-sm-2x.png"
+            src="/assets/m-star-sm-filtered.png"
             alt=""
             className="absolute"
             style={{ left: cm(GM.starSm.left), top: cm(GM.starSm.top), width: cm(GM.starSm.w), height: cm(GM.starSm.h) }}
@@ -313,7 +313,7 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
           />
           {/* gwiazda outline NAD robotem (mobile) */}
           <img
-            src="/assets/m-star-outline-2x.png"
+            src="/assets/m-star-outline-filtered.png"
             alt=""
             className="absolute"
             style={{ left: cm(GM.starOutline.left), top: cm(GM.starOutline.top), width: cm(GM.starOutline.w), height: cm(GM.starOutline.h) }}
