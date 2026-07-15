@@ -69,4 +69,13 @@ export const homePage: HomePage = {
     ctaLabel: "ZOBACZ SZCZEGÓŁY", // w designie "SZCZEGOŁY" (literówka)
     ctaHref: "/kursy/agent-ai-w-twoim-biznesie",
   })),
+  // 3 identyczne kafle w designie (placeholder) — treść do podmiany
+  kursTiles: [1, 2, 3].map(() => ({
+    _type: "kursTile" as const,
+    tag: "AI W BIZNESIE",
+    title: ["BEZPIECZEŃSTWO", "APLIKACJI"] as [string, string],
+    price: "1500 PLN netto",
+    ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
+    ctaHref: "/kursy/bezpieczenstwo-aplikacji",
+  })),
 };

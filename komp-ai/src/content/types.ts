@@ -53,11 +53,21 @@ export interface DnaCard {
   ctaHref: string;
 }
 
+export interface KursTile {
+  _type: "kursTile";
+  tag: string;
+  title: [string, string];
+  price: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
 export interface HomePage {
   _type: "homePage";
   hero: HomeHero;
   manifest: HomeManifest;
   dnaCards: DnaCard[];
+  kursTiles: KursTile[];
 }
 
 export interface SiteSettings {

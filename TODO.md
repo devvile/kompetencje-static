@@ -42,7 +42,7 @@
 | 11 | Stopka | 9003–9811 | `423:3275` (402×808) |
 
 UWAGA: mobile frame ma 11040 wys., stopka kończy się ~9811 — sprawdzić co jest w 9811–11040 (crop z renderu).
-UWAGA: kursy (3 karty) nie widać w mobile metadata między human-machine a prowadzącymi — zweryfikować na renderze (może w TLO 375:1793 / Rectangle 4024).
+ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 4600–5800 pokazuje DNA → HUMAN/MACHINE → POZNAJMY SIĘ. Sekcja kursy = `hidden md:block`.
 
 ## Otwarte zadania
 
@@ -53,7 +53,8 @@ UWAGA: kursy (3 karty) nie widać w mobile metadata między human-machine a prow
 - [x] Nav + hero desktop (diff 1.73%) i mobile (~4.5%, szum foto) — CZEKA NA REVIEW Patryka
 - [x] Sekcja 2 manifest + pasek TY DECYDUJESZ, desktop (4.54%) + mobile (8.4%, foto) — marquee animowane CSS
 - [x] Sekcja 3: bloki DNA — desktop 7.7% / mobile 13.3% (sub-px resampling foto); karta = komponent, treść x2 z content layer
-- [ ] Sekcja 4: kursy (3 karty, desktop y3663–4469) — NASTĘPNA
+- [x] Sekcja 4: kursy (3 karty, desktop y3663–4469) — diff 1.68% (AA nagłówka); mobile NIE MA tej sekcji w designie (zweryfikowano na renderze: DNA → human/machine → prowadzący)
+- [ ] Sekcja 5: Human and machine (desktop y4537–5347, frame `245:9699`) — NASTĘPNA
 - [ ] Kolejne sekcje wg tabel powyżej, jedna po drugiej
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"

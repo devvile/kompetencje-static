@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 2026-07-16 — sekcja kursy (3 karty, desktop)
+
+- Sekcja 4 kursy desktop (1440×874, strona y3663–4537): **diff 1.68%** (poniżej progu hero
+  1.73%); resztka = AA nagłówka biały-na-niebieskim + miękkość cieni.
+- Karta 315.7×451 zmierzona scanlinami (kurs-runs.js/kurs-ink.js — karty w designie to 100%
+  krzywe): lime podkład + biały panel pełnej wysokości (radius tylko z prawej), foto na całą
+  szerokość panelu 273×211, tag HK 10.4, tytuł Montserrat Black 19.5/18 track -0.5,
+  divider, cena 12 + „netto" 8 (HK Modular bez lowercase — flag), button 212.6×45.5
+  z twardym jasnym cieniem (+17,+28, blur, klip do panelu), sidebar -90°
+  („PROWADZĄCY:" 8 + nazwisko 15 track 1, koniec 62px od góry karty).
+- Rozstaw kart = 362px (nie ⅓ interwału z bboxów node'ów!): x 210/572/934 — 1px pitch
+  robił 6% diffu na foto.
+- Foto = crop 1:1 z renderu designu (eksport node'a z Figmy miał inny kadr — rawImage
+  bez crop-transformu filla); 1x — przy retinie do podmiany na 2x z Figmy.
+- Nagłówek: pitch linii 46 (nie 40), tracking per linia (2.2/1.0) + word-spacing 3.
+- Mobile: sekcji kursów NIE MA w designie mobile (zweryfikowano na renderze) — `hidden md:block`.
+- Treść 3 kafli identyczna (placeholder designera „BEZPIECZEŃSTWO APLIKACJI"/PIOTR MAŁYSZ
+  ×3) — FLAG dla Patryka; content layer `kursTiles` gotowy na realne dane.
+- shot.js: nowy opcjonalny tryb fullPage (`node shot.js url out w h dpr full`) —
+  viewport 833 steruje 100svh hero, fullPage łapie całą stronę 1:1 z designem.
+- hscroll czysty na 375/768/1440/1920/2560.
+
 ## 2026-07-15 (2) — sekcja DNA (2 karty kursu)
 
 - Karta kursu jako komponent (desktop 904×554 / mobile 362×715): lime sidebar -90°,
