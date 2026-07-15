@@ -6,6 +6,7 @@ const { chromium } = require("playwright");
   const [url, out, sel, padBelow = "220", w = "1440"] = process.argv.slice(2);
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: +w, height: 9200 }, deviceScaleFactor: 1 });
+  await p.emulateMedia({ reducedMotion: 'reduce' });
   await p.goto(url, { waitUntil: "networkidle" });
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(200);

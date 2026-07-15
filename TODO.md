@@ -51,6 +51,8 @@ UWAGA: kursy (3 karty) nie widać w mobile metadata między human-machine a prow
 - [x] Scaffold Next.js 16 w `komp-ai/` + skrypty walidacyjne
 - [x] Fonty designu: Montserrat Black/Regular (nagłówki), HK Modular Bold (nav/przyciski/techno), Manrope (body) — do potwierdzenia przez Patryka przy review
 - [x] Nav + hero desktop (diff 1.73%) i mobile (~4.5%, szum foto) — CZEKA NA REVIEW Patryka
+- [x] Sekcja 2 manifest + pasek TY DECYDUJESZ, desktop (4.54%) + mobile (8.4%, foto) — marquee animowane CSS
+- [ ] Sekcja 3: bloki DNA (desktop 2258–3491, mobile 3313–4883) — NASTĘPNA
 - [ ] Kolejne sekcje wg tabel powyżej, jedna po drugiej
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-07-15 — sekcja manifest mobile + marquee karuzela
+
+- Manifest mobile (402×2435, strona 875–3310): diff 8.4% (dominuje foto globu i AA);
+  wszystkie teksty/pasek/strzałki spasowane ±2px pomiarami.
+- Glob mobile z WŁASNEGO eksportu node'a (inny kadr zdjęcia niż desktop!) + flood-fill
+  wypieczonego tła (dziury w hełmie przy exact-cut — highlight = #EFEFEF).
+- Lime gwiazdy pozycjonowane przez dopasowanie kształtów ramion + iteracje centroidów.
+- Pill: stała interlinia 22px (większe wstawki nie rozpychają linii w Figmie).
+- Marquee „sprawdź listę kursów" animowane jak karuzela (CSS keyframes, 22s,
+  prefers-reduced-motion → stop w fazie designu; skrypty shot emulują reduced-motion).
+- Literówka designera: mobile „branżę.." → „branżę." (normalizacja).
+
 ## 2026-07-13 — hero home: desktop + mobile pixel-perfect
 
 - **Hero desktop (1440×833)**: diff 1.73% vs render Figmy (tylko AA tekstu i szum zdjęcia).
