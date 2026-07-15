@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["300", "400", "500", "700", "800"],
 });
 
 const hkModular = localFont({

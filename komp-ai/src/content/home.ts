@@ -51,4 +51,22 @@ export const homePage: HomePage = {
     mobileTagline: "i wyrusz z nami ku przyszłości !",
     mobileCtaLabel: "POZNAJ NASZE KURSY",
   },
+  // UWAGA: designer zostawił obie karty z identyczną treścią (placeholder) —
+  // treść drugiej karty do podmiany, gdy klient dostarczy.
+  dnaCards: [1, 2].map(() => ({
+    _type: "dnaCard" as const,
+    price: "1500 PLN netto",
+    leadLabel: "PROWADZĄCY",
+    leadName: "PIOTR MAŁYSZ",
+    titleLines: ["AGENT AI", "W TWOIM", "BIZNESIE"] as [string, string, string],
+    body: [
+      { text: "Dowiedz się, jak wykorzystać sztuczną inteligencję do automatyzacji procesów, zwiększania efektywności i " },
+      { text: "skalowania działań bez zwiększania zespołu. ", strong: true, break: true },
+      { text: "", break: true },
+      // literówki designera poprawione: "rozwók"→"rozwój", "aż do  operacje"→"aż po operacje"
+      { text: "Ten kurs pokaże Ci jak krok po kroku, wdrożyć AI do codziennej pracy - od obsługi klientów, przez marketing, aż po operacje - tak, aby realnie wspierało rozwój Twojego biznesu." },
+    ],
+    ctaLabel: "ZOBACZ SZCZEGÓŁY", // w designie "SZCZEGOŁY" (literówka)
+    ctaHref: "/kursy/agent-ai-w-twoim-biznesie",
+  })),
 };

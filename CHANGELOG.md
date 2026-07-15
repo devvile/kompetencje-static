@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-07-15 (2) — sekcja DNA (2 karty kursu)
+
+- Karta kursu jako komponent (desktop 904×554 / mobile 362×715): lime sidebar -90°,
+  nagłówek Montserrat Black z lime akcentem, body Manrope Light 300 (DOLOŻONY do layoutu
+  — brak wagi 300 dawał syntetyczny fallback i inne łamanie!), Big Button, foto wagi.
+- Obie karty mają w designie identyczną treść (placeholder designera) — FLAG dla Patryka.
+- Literówki poprawione: SZCZEGOŁY→SZCZEGÓŁY, rozwók→rozwój, „aż do  operacje"→„aż po operacje".
+- Mobile foto karty = wyrenderowany crop z Figmy (inny kadr niż desktop).
+- Fix 1px wysokości canvasu manifestu (przesuwał całą sekcję DNA — na chromowanym foto
+  1-2px = wielki diff).
+- Diff: desktop 7.69%, mobile 13.32% (dominuje sub-px resampling zdjęć przy cqw + AA).
+
 ## 2026-07-15 — sekcja manifest mobile + marquee karuzela
 
 - Manifest mobile (402×2435, strona 875–3310): diff 8.4% (dominuje foto globu i AA);

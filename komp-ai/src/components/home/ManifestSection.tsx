@@ -250,7 +250,7 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
   return (
     <section className="relative w-full md:hidden">
       <div className="@container mx-auto w-full">
-        <div className="relative aspect-[402/2435] overflow-hidden bg-page">
+        <div className="relative aspect-[402/2309] overflow-hidden bg-page">
           {/* niebieskie tło TLO */}
           <div className="absolute inset-x-0 top-0 bg-brand-blue" style={{ height: cm(GM.blueBg.h) }} data-node-id="375:1793" />
           {/* strzałka na górze */}
@@ -322,12 +322,6 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
           </div>
           {/* cienki niebieski pas */}
           <div className="absolute inset-x-0 bg-brand-blue" style={{ top: cm(GM.blueStrip.top), height: `max(1px, ${cm(GM.blueStrip.h)})` }} />
-          {/* JAK BARDZO ZMIENI TWOJĄ PRACĘ (na szarym tle) */}
-          <p className="absolute font-modular text-black" style={{ right: cm(GM.jakBardzo.right), top: cm(GM.jakBardzo.top), width: cm(GM.jakBardzo.w), fontSize: cm(GM.jakBardzo.fontPx), lineHeight: GM.jakBardzo.leading, textAlign: "right" as const }} data-node-id="375:1864">
-            {m.bar.right.toUpperCase()}
-          </p>
-          {/* gwiazdka przy barze */}
-          <img src="/assets/m-arrow-bar-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowBar.left), top: cm(GM.arrowBar.top), width: cm(GM.arrowBar.w), height: cm(GM.arrowBar.h) }} data-node-id="423:3574" />
         </div>
       </div>
     </section>

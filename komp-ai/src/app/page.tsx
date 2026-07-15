@@ -1,5 +1,6 @@
 import HeroSection from "../components/home/HeroSection";
 import ManifestSection from "../components/home/ManifestSection";
+import DnaSection from "../components/home/DnaSection";
 import { getHomePage, getSiteSettings } from "../content";
 
 export default async function Home() {
@@ -12,6 +13,7 @@ export default async function Home() {
     <main className="w-full">
       <HeroSection hero={page.hero} nav={settings.nav} />
       <ManifestSection m={page.manifest} />
+      <DnaSection cards={page.dnaCards} m={page.manifest} />
     </main>
   );
 }

@@ -41,10 +41,23 @@ export interface HomeManifest {
   mobileCtaLabel: string; // "POZNAJ NASZE KURSY"
 }
 
+export interface DnaCard {
+  _type: "dnaCard";
+  price: string;
+  leadLabel: string;
+  leadName: string;
+  /** 3 linie nagłówka; ostatnia w kolorze lime */
+  titleLines: [string, string, string];
+  body: RichSeg[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
 export interface HomePage {
   _type: "homePage";
   hero: HomeHero;
   manifest: HomeManifest;
+  dnaCards: DnaCard[];
 }
 
 export interface SiteSettings {
