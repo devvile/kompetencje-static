@@ -22,4 +22,33 @@ export const homePage: HomePage = {
     ctaLabel: "WYBIERZ KURS DLA SIEBIE",
     ctaHref: "/kursy",
   },
+  manifest: {
+    _type: "homeManifest",
+    lineA: "NIE CHODZI O TO,",
+    lineB: "CZY AI ZMIENI TWOJĄ BRANŻĘ.",
+    lineC: ["CHODZI O TO,", "CZY JESTEŚ NA TO GOTOWY."],
+    paragraph: [
+      { text: "Nowe narzędzia pojawiają się każdego dnia,", strong: true, break: true },
+      { text: "", break: true },
+      { text: "a Ty zastanawiasz się, od czego zacząć i jak realnie je wykorzystać w pracy lub biznesie. " },
+      { text: "Bez odpowiedniego kierunku łatwo utknąć w chaosie", strong: true },
+      { text: " informacji i stracić czas na rzeczy, które nie przynoszą efektów." },
+    ],
+    pill: [
+      { text: "Mamy dla Ciebie kurs, który odpowie na " },
+      { text: "Twoje potrzeby", strong: true, fontPx: 22 },
+      { text: " i zapewni Ci " },
+      { text: "kompetencje przyszłości", strong: true, fontPx: 23 },
+      { text: " – bez zbędnej teorii zacznij używać AI świadomie, efektywnie i " },
+      { text: "na własnych zasadach.", strong: true, fontPx: 23 },
+    ],
+    bar: {
+      left: "ai to narzędzie.",
+      center: "TY DECYDUJESZ",
+      right: "jak bardzo zmieni twoją pracę",
+    },
+    marqueeText: "sprawdź liste obecnych hot kursów dzisiaj",
+    mobileTagline: "i wyrusz z nami ku przyszłości !",
+    mobileCtaLabel: "POZNAJ NASZE KURSY",
+  },
 };
