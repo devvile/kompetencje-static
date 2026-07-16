@@ -9,6 +9,31 @@ export const siteSettings: SiteSettings = {
     // W designie "KONTACT" — literówka designera, poprawiona świadomie.
     { _type: "navLink", label: "KONTAKT", href: "/kontakt" },
   ],
+  footer: {
+    _type: "footer",
+    // 3 segmenty: desktop łamie po segmencie 2 (2 linie), mobile po każdym (3 linie)
+    descriptionLines: [
+      "Edukacja AI na najwyższym poziomie.",
+      "Łączymy ludzką kreatywność",
+      "z możliwościami maszyn.",
+    ],
+    copyrightLime: "2026 KOMPETENCJE.AI ",
+    copyrightWhite: "all rights reserved",
+    navLinks: [
+      { _type: "footerLink", label: "KURSY", href: "/kursy" },
+      { _type: "footerLink", label: "O NAS", href: "/o-nas" },
+      { _type: "footerLink", label: "SZKOLENIA", href: "/szkolenia" },
+    ],
+    legalLinks: [
+      { _type: "footerLink", label: "REGULAMIN", href: "/regulamin" },
+      // w designie "POlityka prywatnośco" — literówka designera, poprawiona
+      { _type: "footerLink", label: "POLITYKA PRYWATNOŚCI", href: "/polityka-prywatnosci" },
+    ],
+    contactHeading: "KONTAKT",
+    email: "kontakt@kompetencje.ai",
+    // placeholder z designu — do podmiany na prawdziwy numer przez Patryka
+    phone: "000 000 000",
+  },
 };
 
 export const homePage: HomePage = {
@@ -115,5 +140,20 @@ export const homePage: HomePage = {
         cropM: { w: "100%", h: "99.4%", left: "0%", top: "0.6%" },
       },
     ],
+  },
+  kontakt: {
+    _type: "kontakt",
+    headingLines: ["NAPISZ DO NAS", "POMOŻEMY DOBRAĆ KURS", "DO TWOICH POTRZEB"],
+    fields: [
+      { _type: "formField", id: "imie", label: "IMIĘ", placeholder: "Wpisz imię", kind: "text" },
+      { _type: "formField", id: "nazwisko", label: "NAZWISKO", placeholder: "Wpisz nazwisko", kind: "text" },
+      { _type: "formField", id: "email", label: "ADRES EMAIL", placeholder: "Wpisz swój adres email", kind: "email" },
+      // placeholder telefonu z designu ("000 000 000") zostawiony celowo
+      { _type: "formField", id: "telefon", label: "NUMER TELEFONU", placeholder: "000 000 000", kind: "tel" },
+      { _type: "formField", id: "wiadomosc", label: "NAPISZ WIADOMOŚĆ", placeholder: "Wpisz swoją wiadomość do nas...", kind: "textarea" },
+    ],
+    // w designie "Akceptuje regulamin i politykę rodo blablabla" (placeholder designera)
+    consentLabel: "Akceptuję regulamin i politykę prywatności",
+    submitLabel: "WYŚLIJ",
   },
 };

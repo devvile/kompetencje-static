@@ -78,8 +78,22 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
       WAŻNE: desktop shoty MUSZĄ być viewport 833 (nie 840) — hero=100svh; przy 840
       wszystko poniżej hero było +7px (hero 0.67%, hm 1.25% przy 833).
       hm-mobile: dodany pas niebieskiego tła (design blue od y5355) → diff 1.12%.
-- [ ] Kolejne sekcje wg tabel: następna = Kontakt + formularz (desktop y6249–7755,
-      mobile y7720–8820), potem stopka.
+- [x] Sekcja 7: Kontakt + formularz — desktop 0.55% + mobile 2.28% (2026-07-16).
+      Semantyczny <form> (label/input/textarea/checkbox/button); struktura z design
+      contextu (pitch pól 100 desktop / 97 mobile — label lh 20!); wielkie białe
+      STAR_OUTLINE (18% alpha) wypieczone; mobile: fonty formy mniejsze niż desktop
+      (label 11, input 11.5, button 14.4). Poprawione placeholdery designera:
+      consent „rodo blablabla" → „Akceptuję regulamin i politykę prywatności";
+      telefon „000 000 000" ZOSTAJE do podmiany przez Patryka.
+- [x] Stopka — desktop 0.82% + mobile 1.50% (2026-07-16). Bg #000ae6 (ciemniejszy
+      niż brand blue), logo .AI = crop z renderu, ikony mail/telefon = lucide-react
+      (Mail + Smartphone, decyzja Patryka: gotowa biblioteka zamiast SVG z Figmy),
+      linki semantyczne (nav/a), literówka „POlityka prywatnośco" poprawiona.
+      Mobile: copyright większy lime (10.9) + mniejszy white (7.1), wyśrodkowany.
+- [x] **CAŁY HOME zbudowany: 11/11 sekcji desktop + mobile.** Zweryfikowano:
+      poniżej stopki mobile (y9811..11040) w designie jest tylko puste szare tło.
+- [ ] Review Patryka całości home (desktop + mobile) → poprawki.
+- [ ] Formularz: podpiąć wysyłkę (action/endpoint) — na razie action="#".
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

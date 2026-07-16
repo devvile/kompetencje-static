@@ -6,7 +6,8 @@ import "./globals.css";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  // 300 = opis w stopce (Montserrat Light)
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 // Poppins tylko do napisów outline (text-stroke) — kontury Montserrat mają

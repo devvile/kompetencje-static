@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## 2026-07-16 (5) — kontakt + stopka (desktop i mobile) = CAŁY HOME zbudowany
+
+- **Kontakt desktop (1440×1506, y6249–7755): 0.55%.** Semantyczny `<form>` z prawdziwymi
+  polami (label/input/textarea/checkbox/submit). Struktura z get_design_context
+  245:9653; kluczowa kalibracja: pitch pól = 100px (label row 32 = pady 6 + lh 20 —
+  nie 16.8 z lh1.2!), checkbox label ma py-10. Nagłówek lime = 3 linie pozycjonowane
+  absolutnie (design centruje z trailing spacją), f25.2 + scaleX(1.1). Wielkie
+  STAR_OUTLINE = biel ~18% alpha na blue (piksel 66,74,255) → wypieczone przez
+  ekstrakcję z kanału R; chowają się za formularzem.
+- **Stopka desktop (1440×291, y7755–8046): 0.82%.** Bg #000ae6 (ciemniejszy niż brand
+  blue!). Logo .AI crop z renderu (maski/tekstury wypieczone, bg identyczny z kanwą).
+  Ikony kontaktu: **lucide-react** (Mail + Smartphone; decyzja Patryka — gotowa
+  biblioteka; wyekstrahowane z Figmy SVG miały rozszerzenie .png → nie renderowały
+  się w ogóle). Montserrat Light 300 dodany do layout.tsx.
+- **Kontakt mobile (402×1343, y7660–9003): 2.28%** (w tym celowo zmieniony tekst
+  consent). Forma 353×864: padX 28, pitch 97 (gap 15); fonty MNIEJSZE niż w desktop
+  instancji (label 11/input 11.5/checkbox 10.5/button 14.4 — pomiar ink).
+  PUŁAPKA: pierwsze okna bake gwiazd STAR_ARROW łapały LIME TEKST nagłówka
+  (tekst i gwiazdy to ten sam kolor) → duchy liter w assetach; przebite na okna
+  y≥7852 (gwiazdy realnie 70×65 przy krawędziach).
+- **Stopka mobile (402×808, y9003–9811): 1.50%.** Copyright wyśrodkowany, lime
+  WIĘKSZY niż desktop (10.9 vs 9), white mniejszy (7.1). Fałszywy trop: pomiar
+  szerokości opisu (277 vs 248) zrobiony na starej strukturze treści → opis jednak
+  f15 jak desktop. Zweryfikowano: y9811..11040 w designie = puste szare tło.
+- Poprawki treści designera (oflagowane): consent „Akceptuje regulamin i politykę
+  rodo blablabla" → „Akceptuję regulamin i politykę prywatności"; „POlityka
+  prywatnośco" → „Polityka prywatności"; telefon „000 000 000" zostaje (brak
+  prawdziwego numeru — do podmiany).
+- Content: Kontakt/FormField + Footer w SiteSettings; opis stopki = 3 segmenty
+  (desktop łamie po 2., mobile po każdym).
+- **HOME KOMPLETNY: 11/11 sekcji, desktop + mobile, hscroll czysty 375–2560.**
+  Diffy per sekcja (desktop/mobile): hero 0.67/4.5, manifest 4.54/8.4, DNA 7.7/13.3,
+  kursy 1.68/—, human-machine 1.25/1.12, prowadzący 0.91/1.27, kontakt 0.55/2.28,
+  stopka 0.82/1.50.
+- Nowe narzędzia: kontakt-diff/kontakt-rows/stopka-ink (desktop),
+  kontakt-m-diff/kontakt-m-rows/kontakt-m-ink (mobile).
+
 ## 2026-07-16 (4) — sekcja Nasi prowadzący / „poznajmy się !": desktop 0.91% + mobile 1.27%
 
 - **Desktop (1440×902, y5347–6249): diff 0.91%** — najlepszy wynik dotąd (pas headera

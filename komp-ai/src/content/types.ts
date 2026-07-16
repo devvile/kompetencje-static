@@ -96,6 +96,40 @@ export interface Prowadzacy {
   people: Lecturer[];
 }
 
+export interface FormField {
+  _type: "formField";
+  id: string;
+  label: string;
+  placeholder: string;
+  kind: "text" | "email" | "tel" | "textarea";
+}
+
+export interface Kontakt {
+  _type: "kontakt";
+  headingLines: string[];
+  fields: FormField[];
+  consentLabel: string;
+  submitLabel: string;
+}
+
+export interface FooterLink {
+  _type: "footerLink";
+  label: string;
+  href: string;
+}
+
+export interface Footer {
+  _type: "footer";
+  descriptionLines: string[];
+  copyrightLime: string;
+  copyrightWhite: string;
+  navLinks: FooterLink[];
+  legalLinks: FooterLink[];
+  contactHeading: string;
+  email: string;
+  phone: string;
+}
+
 export interface HomePage {
   _type: "homePage";
   hero: HomeHero;
@@ -104,9 +138,11 @@ export interface HomePage {
   kursTiles: KursTile[];
   humanMachine: HumanMachine;
   prowadzacy: Prowadzacy;
+  kontakt: Kontakt;
 }
 
 export interface SiteSettings {
   _type: "siteSettings";
   nav: NavLink[];
+  footer: Footer;
 }
