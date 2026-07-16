@@ -4,6 +4,8 @@
   --font-display: var(--font-montserrat);
   --font-body: var(--font-manrope);
   --font-modular: var(--font-hk-modular);
+  /* rola: napisy outline (text-stroke) — Poppins ma czyste kontury glifów */
+  --font-outline: var(--font-poppins);
 }
 
 @theme {

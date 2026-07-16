@@ -62,12 +62,20 @@ export interface KursTile {
   ctaHref: string;
 }
 
+export interface HumanMachine {
+  _type: "humanMachine";
+  titleTop: string;
+  titleBottom: string;
+  caption: string;
+}
+
 export interface HomePage {
   _type: "homePage";
   hero: HomeHero;
   manifest: HomeManifest;
   dnaCards: DnaCard[];
   kursTiles: KursTile[];
+  humanMachine: HumanMachine;
 }
 
 export interface SiteSettings {

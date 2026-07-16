@@ -78,4 +78,10 @@ export const homePage: HomePage = {
     ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
     ctaHref: "/kursy/bezpieczenstwo-aplikacji",
   })),
+  humanMachine: {
+    _type: "humanMachine",
+    titleTop: "HUMAN",
+    titleBottom: "MACHINE",
+    caption: "THE FUTURE OF COLLABORATION",
+  },
 };

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Manrope } from "next/font/google";
+import { Montserrat, Manrope, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -7,6 +7,14 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+// Poppins tylko do napisów outline (text-stroke) — kontury Montserrat mają
+// samoprzecinające się ścieżki i outline pokazuje wewnętrzne szwy glifów
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin", "latin-ext"],
+  weight: ["800", "900"],
 });
 
 const manrope = Manrope({
@@ -54,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="pl"
-      className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page">{children}</body>
     </html>
