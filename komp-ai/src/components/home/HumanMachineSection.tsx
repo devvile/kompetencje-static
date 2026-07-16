@@ -22,9 +22,9 @@ const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 const G = {
   // top = CSS top (empirycznie: ink-offset Montserrat Black ≈ 0.156em przy lh 1)
   human: { left: -9, top: 69.8, fontPx: 155, trackPx: 7 },
-  machine: { left: 635, top: 173, fontPx: 150, strokePx: 3.5, trackPx: 13 },
-  // "&" w przerwie między N (koniec x653, dół y205) a górą M (y190) — poza designem
-  amp: { left: 668, top: 118, fontPx: 60 },
+  // zmiana designera: N i M mają się tylko stykać rogami (bez nachodzenia) —
+  // ink M zaczyna się na x654 = koniec N, top inku M = 4742 = dół N
+  machine: { left: 647, top: 185.5, fontPx: 150, strokePx: 3.5, trackPx: 13 },
   hands: { top: 265, w: 1440, h: 424 },
   lineY: 750.4, lineH: 3.83,
   lineL: { x: 37, w: 444.7 },
@@ -69,16 +69,6 @@ export default function HumanMachineSection({ hm }: { hm: HumanMachineContent })
               }}
             >
               {hm.titleBottom}
-            </span>
-            {/* "&" między słowami — życzenie Patryka (brak w oryginalnym designie) */}
-            <span
-              className="absolute z-[2] font-display font-black text-brand-blue"
-              style={{
-                left: c(G.amp.left - G.human.left), top: c(G.amp.top - G.human.top),
-                fontSize: c(G.amp.fontPx), lineHeight: 1,
-              }}
-            >
-              &amp;
             </span>
           </h2>
           {/* podpis z liniami */}
