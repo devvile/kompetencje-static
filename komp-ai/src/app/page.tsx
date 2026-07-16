@@ -3,6 +3,7 @@ import ManifestSection from "../components/home/ManifestSection";
 import DnaSection from "../components/home/DnaSection";
 import KursySection from "../components/home/KursySection";
 import HumanMachineSection from "../components/home/HumanMachineSection";
+import ProwadzacySection from "../components/home/ProwadzacySection";
 import { getHomePage, getSiteSettings } from "../content";
 
 export default async function Home() {
@@ -18,6 +19,7 @@ export default async function Home() {
       <DnaSection cards={page.dnaCards} m={page.manifest} />
       <KursySection cards={page.kursTiles} />
       <HumanMachineSection hm={page.humanMachine} />
+      <ProwadzacySection p={page.prowadzacy} />
     </main>
   );
 }

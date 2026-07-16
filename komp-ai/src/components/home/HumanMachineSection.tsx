@@ -65,7 +65,13 @@ function HumanMachineMobile({ hm }: { hm: HumanMachineContent }) {
   return (
     <section className="relative z-10 w-full md:hidden">
       <div className="@container mx-auto w-full max-w-(--workspace)">
-        <div className="relative bg-page" style={{ aspectRatio: `402/${GM.h}` }} data-node-id="423:3066">
+        {/* overflow-x-clip: box MACHINE wystaje trailing-letter-spacingiem poza
+            402px (h-scroll); pionowo visible — bleedy gwiazd (17px góra, 4px dół) */}
+        <div
+          className="relative overflow-x-clip overflow-y-visible bg-page"
+          style={{ aspectRatio: `402/${GM.h}` }}
+          data-node-id="423:3066"
+        >
           {/* duża gwiazda lime — za tekstami; bleeduje 17px nad sekcję (jak w designie) */}
           <img
             src="/assets/hm-star-m-f2.png" alt="" aria-hidden className="absolute"

@@ -84,4 +84,29 @@ export const homePage: HomePage = {
     titleBottom: "MACHINE",
     caption: "THE FUTURE OF COLLABORATION",
   },
+  prowadzacy: {
+    _type: "prowadzacy",
+    heading: "NASI PROWADZĄCY",
+    people: [
+      {
+        // w Figmie "patryk czemierowski" lowercase — HK Modular ma tylko wersaliki
+        _type: "lecturer",
+        name: "PATRYK CZEMIEROWSKI",
+        photo: "/assets/prow-patryk-2x.jpg",
+        crop: { w: "114.39%", h: "121.72%", left: "-12.52%", top: "-7.75%" },
+      },
+      {
+        _type: "lecturer",
+        name: "PIOTR MAŁYSZ",
+        photo: "/assets/prow-piotr-2x.jpg",
+        crop: { w: "107.11%", h: "113.98%", left: "-3.55%", top: "0%" },
+      },
+      {
+        _type: "lecturer",
+        name: "WIKTORIA SŁAWIŃSKA",
+        photo: "/assets/prow-wiktoria-2x.jpg",
+        crop: { w: "114.67%", h: "116.75%", left: "-7.37%", top: "-3.2%" },
+      },
+    ],
+  },
 };

@@ -69,6 +69,20 @@ export interface HumanMachine {
   caption: string;
 }
 
+export interface Lecturer {
+  _type: "lecturer";
+  name: string;
+  photo: string;
+  /** kadr zdjęcia z Figmy: wymiary/offset img w % ramki karty (Sanity później: hotspot/crop) */
+  crop: { w: string; h: string; left: string; top: string };
+}
+
+export interface Prowadzacy {
+  _type: "prowadzacy";
+  heading: string;
+  people: Lecturer[];
+}
+
 export interface HomePage {
   _type: "homePage";
   hero: HomeHero;
@@ -76,6 +90,7 @@ export interface HomePage {
   dnaCards: DnaCard[];
   kursTiles: KursTile[];
   humanMachine: HumanMachine;
+  prowadzacy: Prowadzacy;
 }
 
 export interface SiteSettings {
