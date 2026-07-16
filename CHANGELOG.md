@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 2026-07-16 (2) — human and machine: desktop gotowy, mobile w trakcie
+
+- **Desktop (1440×810, y4537–5347): diff 1.04%** (commit `1f9335a` + `0b2a858`).
+  HUMAN solid Montserrat Black 155 (tracking 7); MACHINE outline **Poppins 800**
+  (feedback Patryka: Montserrat w text-stroke pokazuje szwy samoprzecinających się
+  konturów; Tailwindowa klasa `font-outline` z @theme się NIE wygenerowała — font
+  ustawiony inline `var(--font-poppins)`); caption HK 16 z mono-advance (track 1.57,
+  word -0.8). Dłonie+iskra = jeden PNG z renderu (z-order wypieczony), kreski MACHINE
+  na ramieniu usunięte inpaintingiem 2D (interpolacja wzdłuż krótszej osi przebiegu).
+- **Zmiana designera wdrożona z opisu** (bez Figmy): N (HUMAN) i M (MACHINE) stykają
+  się TYLKO rogami, bez nachodzenia (ink M od x654=koniec N, top M y4742=dół N).
+  Epizod „&" między słowami: dodany na prośbę → designer zrezygnował → usunięty.
+  Lokalny render ma stary układ → diff desktop przestał być miarodajny dla MACHINE.
+- **Mobile (402×491, y4883–5374): W TRAKCIE, diff 4.65%.** Komponent + assety są
+  (gwiazdy chroma-key lime→alpha z dziurami pod tekst; dłonie opaque — MACHINE nie
+  dotyka pasa dłoni na mobile). Naprawiony globalny offset mobile: canvas DNA był
+  7px za wysoki (1706→1699; koniec DNA w designie = y4883) — przesuwał wszystko niżej.
+  Zostało: kalibracja liter/caption/linii/małej gwiazdy (skrypty hm-m-ink/hm-m-diff gotowe).
+- Figma MCP: serwer „✔ Connected" w `claude mcp list`, ale narzędzia niezarejestrowane
+  w tej sesji (ToolSearch ich nie widzi) → przy potrzebie świeżych renderów zrestartować
+  sesję. Renders lokalne są z 12–13.07 (przed zmianą designera!).
+- Nowe narzędzia: `hm-measure/hm-letters/hm-cut/hm-diff` (desktop),
+  `hm-m-measure/hm-m-ink/hm-m-cut/hm-m-diff/hm-m-drift` (mobile),
+  `scripts/sections-m.js` (granice sekcji w DOM), `scripts/check-font.js`.
+
 ## 2026-07-16 — sekcja kursy (3 karty, desktop)
 
 - Sekcja 4 kursy desktop (1440×874, strona y3663–4537): **diff 1.68%** (poniżej progu hero

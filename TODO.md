@@ -54,8 +54,21 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
 - [x] Sekcja 2 manifest + pasek TY DECYDUJESZ, desktop (4.54%) + mobile (8.4%, foto) — marquee animowane CSS
 - [x] Sekcja 3: bloki DNA — desktop 7.7% / mobile 13.3% (sub-px resampling foto); karta = komponent, treść x2 z content layer
 - [x] Sekcja 4: kursy (3 karty, desktop y3663–4469) — diff 1.68% (AA nagłówka); mobile NIE MA tej sekcji w designie (zweryfikowano na renderze: DNA → human/machine → prowadzący)
-- [ ] Sekcja 5: Human and machine (desktop y4537–5347, frame `245:9699`) — NASTĘPNA
-- [ ] Kolejne sekcje wg tabel powyżej, jedna po drugiej
+- [x] Sekcja 5: Human and machine DESKTOP — diff 1.04% + zmiana designera wdrożona z opisu
+      Patryka (N i M stykają się rogami bez nachodzenia; „&" dodany i WYCOFANY — designer
+      zrezygnował). MACHINE = Poppins 800 outline (Montserrat w text-stroke pokazuje szwy).
+      UWAGA: lokalny render Figmy ma STARY układ liter — diff nie jest miarodajny dla MACHINE.
+- [ ] Sekcja 5 MOBILE — W TRAKCIE (diff 4.65%, offset naprawiony fixem canvasu DNA 1706→1699):
+      komponent + assety są (hm-star-m-f, hm-hands-m, hm-star-sm-m-f); zostało:
+      kalibracja liter HUMAN/MACHINE/caption + linia dolna + mała gwiazda (pozycje z
+      `node design-refs/tools/hm-m-ink.js` design vs impl — skrypt gotowy);
+      walidacja: shot 402×875 fullPage → `hm-m-diff.js` (sekcja = strona y4883..5374)
+- [ ] ODŚWIEŻYĆ RENDERY Z FIGMY: designer zmienił układ human-machine (litery stykają się
+      rogami). Figma MCP: serwer podłączony, ale narzędzia NIE zarejestrowane w sesji —
+      pomaga restart sesji Claude Code (sprawdzić ToolSearch po restarcie).
+- [ ] Mała gwiazda outline na granicy human-machine/prowadzący (mobile, y5327..5378,
+      tip wchodzi 4px w niebieskie tło) — obecnie w human-machine, clipowana na 5374.
+- [ ] Kolejne sekcje wg tabel powyżej: następna = Nasi prowadzący (desktop y5450–6249)
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

@@ -181,7 +181,9 @@ function DnaMobile({ cards, m }: { cards: DnaCard[]; m: HomeManifest }) {
   return (
     <section className="relative w-full md:hidden">
       <div className="@container mx-auto w-full">
-        <div className="relative aspect-[402/1706] overflow-hidden bg-page">
+        {/* 1699, nie 1706: koniec DNA w designie = y4883 strony; +7px psuło offset
+            wszystkich kolejnych sekcji mobile */}
+        <div className="relative aspect-[402/1699] overflow-hidden bg-page">
           <img src="/assets/m-dna2-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GMD.dna2.left), top: cm(GMD.dna2.top), width: cm(GMD.dna2.w), height: cm(GMD.dna2.h) }} data-node-id="423:3060" />
           <div className="absolute inset-x-0 bg-brand-blue" style={{ top: cm(GMD.blueStrip.top), height: `max(1px, ${cm(GMD.blueStrip.h)})` }} />
           <p className="absolute font-modular text-black" style={{ right: cm(GMD.jakBardzo.right), top: cm(GMD.jakBardzo.top), width: cm(GMD.jakBardzo.w), fontSize: cm(GMD.jakBardzo.fontPx), lineHeight: 1.483, textAlign: "right" as const }} data-node-id="375:1864">

@@ -14,6 +14,8 @@ export interface HumanMachineContent {
 }
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
+/* mobile: canvas 402 szer. (1cqw = 4.02px) */
+const m = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
 
 /* pomiary z renderu (px designu, origin = góra sekcji y4537):
  * HUMAN ink x0..653, cap y94..205 (h111); MACHINE ink M x642, cap y193..303;
@@ -32,8 +34,83 @@ const G = {
   caption: { left: 522, top: 742, fontPx: 16, trackPx: 1.57, wordPx: -0.8 },
 };
 
+/* MOBILE — pomiary z renderu (px designu 402, origin = y4883 strony):
+ * HUMAN ink x0..255 cap y98..141 (h44); MACHINE ink x124..402 cap y162..201;
+ * gwiazda duża 185..402 × 0..213; dłonie y213..380 (402×167); iskra wypieczona;
+ * caption ink x15..178 y394..404, linia prawa x188..402 y~396, linia dolna
+ * x0..143 y~444, gwiazda mała x123..180 × 437..497 (tip wchodzi w next sekcję). */
+const GM = {
+  h: 491, // 4883..5374 (pełny niebieski next sekcji)
+  starBig: { left: 185, top: -3, w: 217, h: 216 },
+  human: { left: -1, top: 88.4, fontPx: 61.5, trackPx: 2.8 },
+  machine: { left: 121.4, top: 154.8, fontPx: 55, strokePx: 1.5, trackPx: 4.8 },
+  hands: { top: 213, w: 402, h: 167 },
+  caption: { left: 14, top: 392, fontPx: 11, trackPx: 0.6, wordPx: -0.3 },
+  lineR: { x: 188, top: 395.5, w: 214, h: 2.5 },
+  lineB: { x: 0, top: 443.5, w: 143.5, h: 2.5 },
+  starSm: { left: 123, top: 437, w: 57, h: 60 },
+};
+
+function HumanMachineMobile({ hm }: { hm: HumanMachineContent }) {
+  return (
+    <section className="relative w-full md:hidden">
+      <div className="@container mx-auto w-full max-w-(--workspace)">
+        <div className="relative overflow-hidden bg-page" style={{ aspectRatio: `402/${GM.h}` }} data-node-id="423:3066">
+          {/* duża gwiazda lime (solid + outline) — za tekstami */}
+          <img
+            src="/assets/hm-star-m-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: m(GM.starBig.left), top: m(GM.starBig.top), width: m(GM.starBig.w), height: m(GM.starBig.h) }}
+          />
+          <h2
+            className="absolute whitespace-nowrap font-display font-black text-brand-blue"
+            style={{ left: m(GM.human.left), top: m(GM.human.top), fontSize: m(GM.human.fontPx), lineHeight: 1, letterSpacing: m(GM.human.trackPx) }}
+          >
+            <span className="relative z-[2]">{hm.titleTop}</span>
+            <span
+              className="absolute z-[1] whitespace-nowrap font-extrabold text-transparent"
+              style={{
+                left: m(GM.machine.left - GM.human.left), top: m(GM.machine.top - GM.human.top),
+                fontFamily: "var(--font-poppins)",
+                fontSize: m(GM.machine.fontPx), lineHeight: 1, letterSpacing: m(GM.machine.trackPx),
+                WebkitTextStroke: `${m(GM.machine.strokePx)} var(--color-brand-blue)`,
+              }}
+            >
+              {hm.titleBottom}
+            </span>
+          </h2>
+          {/* dłonie (iskra i ramię gwiazdy wypieczone w cropie) */}
+          <img
+            src="/assets/hm-hands-m.png"
+            alt="Dłoń robota i dłoń człowieka stykające się palcami"
+            className="absolute left-0"
+            style={{ top: m(GM.hands.top), width: m(GM.hands.w), height: m(GM.hands.h) }}
+          />
+          <p
+            className="absolute whitespace-nowrap font-modular text-brand-blue"
+            style={{
+              left: m(GM.caption.left), top: m(GM.caption.top), fontSize: m(GM.caption.fontPx),
+              letterSpacing: m(GM.caption.trackPx), wordSpacing: m(GM.caption.wordPx), lineHeight: 1,
+            }}
+          >
+            {hm.caption}
+          </p>
+          <div className="absolute bg-brand-blue" style={{ left: m(GM.lineR.x), top: m(GM.lineR.top), width: m(GM.lineR.w), height: m(GM.lineR.h) }} />
+          <div className="absolute bg-brand-blue" style={{ left: m(GM.lineB.x), top: m(GM.lineB.top), width: m(GM.lineB.w), height: m(GM.lineB.h) }} />
+          {/* mała gwiazda outline na dolnej linii */}
+          <img
+            src="/assets/hm-star-sm-m-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: m(GM.starSm.left), top: m(GM.starSm.top), width: m(GM.starSm.w), height: m(GM.starSm.h) }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HumanMachineSection({ hm }: { hm: HumanMachineContent }) {
   return (
+    <>
+    <HumanMachineMobile hm={hm} />
     <section className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative aspect-[1440/810] overflow-hidden bg-page" data-node-id="245:9699">
@@ -87,5 +164,6 @@ export default function HumanMachineSection({ hm }: { hm: HumanMachineContent })
         </div>
       </div>
     </section>
+    </>
   );
 }
