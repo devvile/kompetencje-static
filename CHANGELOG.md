@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 2026-07-16 (4) — sekcja Nasi prowadzący / „poznajmy się !": desktop 0.91% + mobile 1.27%
+
+- **Desktop (1440×902, y5347–6249): diff 0.91%** — najlepszy wynik dotąd (pas headera
+  0.01%). Karty 295×455 z metadanych 253:1407 (x200/582/964, border 3 OUTSIDE),
+  niespójności designera zachowane: radius karty 1 = 49 vs 40, foto Wiktorii 398 vs 405.
+  Zdjęcia z download_assets (2731×4096 / 1414×2000) → resize 700px jpeg q88, kadry
+  = procenty z design contextu. Header HK 18.5/track 0.55 po runach liter. Gwiazdy
+  lime = rotowane instancje → wypieczone z renderu; lewa przechodzi ZA kartą 1
+  (przez transparentny pas labelki), dziury po wypieczonym separatorze/tekście
+  zasklepione closingiem r3; photoH +1.5 żeby separator lądował w wierszach designu.
+- **KRYTYCZNE odkrycie: desktop shoty muszą mieć viewport 833, nie 840** — hero+nav
+  = 100svh, a hero designu ma 833; przy 840 WSZYSTKO poniżej hero było +7px.
+  Przy 833: hero 0.67%, human-machine 1.25% (lepiej niż zapisane 1.73%/1.04%).
+- **Mobile (402×2286, y5374–7660): diff 1.27%.** Pill „POZNAJMY SIĘ !" (border 4
+  white, tekst blue HK 22.8 advance 21), „NASI PROWADZĄCY" = ta sama kalibracja co
+  desktop header (ink 240×18 identyczny), linia 0.5px z Figmy → 1.2px eff. Nazwiska:
+  designer rozciągnął HK ~1.1× w poziomie (glify to kwadraty 20×20 / 24×24, naturalne
+  HK ma proporcję 0.91) → fontPx z cap-height + transform scaleX(1.1); Wiktoria ma
+  WIĘKSZY font (28.8 vs 24, advance 28.2 vs 22/23). Karty foto: rogi TYLKO bl+tr
+  100px, border 2px (Piotr rgba 0.7 — tak w Figmie), kadry z design contextu
+  (Wiktoria = pełne źródło). 6 małych gwiazdek = identyczny blob 26×26 → jeden asset;
+  outline star + 2 pół-gwiazdy przy lewej krawędzi wypieczone.
+- **hm-mobile: pas niebieskiego tła od y5355** (design: tło next sekcji zaczyna się
+  19px przed końcem canvasu hm) → diff hm-m 3.26% → **1.12%**.
+- Fix h-scroll 375: box MACHINE wystawał trailing letter-spacingiem →
+  overflow-x-clip + overflow-y-visible (jedyna legalna para mieszana) na canvasie.
+- Content layer: Prowadzacy/Lecturer (heading, kicker, people z crop/cropM per foto).
+- Nowe narzędzia: prow-measure/prow-diff/prow-header-runs/prow-label-runs (desktop),
+  prow-m-measure/prow-m-diff (mobile, z connected-components lime blobs).
+
 ## 2026-07-16 (3) — human and machine MOBILE gotowy (diff 3.26%, akceptacja Patryka)
 
 - **Mobile (402×491, y4883–5374): diff 4.65% → 3.26%**, wszystkie mierzalne elementy

@@ -69,17 +69,30 @@ export interface HumanMachine {
   caption: string;
 }
 
+export interface LecturerCrop {
+  w: string;
+  h: string;
+  left: string;
+  top: string;
+}
+
 export interface Lecturer {
   _type: "lecturer";
   name: string;
+  /** nazwisko łamane na linie na mobile (desktop: jedna linia w labelce) */
+  nameLines: string[];
   photo: string;
   /** kadr zdjęcia z Figmy: wymiary/offset img w % ramki karty (Sanity później: hotspot/crop) */
-  crop: { w: string; h: string; left: string; top: string };
+  crop: LecturerCrop;
+  /** kadr wariantu mobile (inne proporcje przycięcia w designie) */
+  cropM: LecturerCrop;
 }
 
 export interface Prowadzacy {
   _type: "prowadzacy";
   heading: string;
+  /** pill „poznajmy się !" nad nagłówkiem (tylko mobile) */
+  kicker: string;
   people: Lecturer[];
 }
 

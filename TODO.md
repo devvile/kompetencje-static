@@ -69,8 +69,17 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
       pod sekcją — sekcja bez overflow-hidden, z-10). Linie mobile cienkie 1.2px.
 - [x] Mała gwiazda outline na granicy human-machine/prowadzący — wypieczona razem
       z zakrętem linii (hm-line-star-m-f), tip bleeduje pod sekcję.
-- [ ] Kolejne sekcje wg tabel powyżej: następna = Nasi prowadzący / „poznajmy się !"
-      (desktop y5450–6249, mobile y5652–7592) — START 2026-07-16
+- [x] Sekcja 6: Nasi prowadzący / „poznajmy się !" — desktop 0.91% + mobile 1.27%
+      (2026-07-16). Desktop: karty 1:1 z metadanych (radius 49/40/40 i foto 405/405/398
+      — niespójności designera zachowane), zdjęcia z rawImages + kadry %, gwiazdy
+      wypieczone (lewa ZA kartą, dziury zasklepione closingiem). Mobile: pill
+      „POZNAJMY SIĘ !", teksty HK rozciągnięte scaleX(1.1) (glify-kwadraty w designie),
+      6 małych gwiazdek = 1 asset, foto rogi TYLKO bl+tr 100px, border Piotra 70% alpha.
+      WAŻNE: desktop shoty MUSZĄ być viewport 833 (nie 840) — hero=100svh; przy 840
+      wszystko poniżej hero było +7px (hero 0.67%, hm 1.25% przy 833).
+      hm-mobile: dodany pas niebieskiego tła (design blue od y5355) → diff 1.12%.
+- [ ] Kolejne sekcje wg tabel: następna = Kontakt + formularz (desktop y6249–7755,
+      mobile y7720–8820), potem stopka.
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

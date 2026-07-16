@@ -87,25 +87,32 @@ export const homePage: HomePage = {
   prowadzacy: {
     _type: "prowadzacy",
     heading: "NASI PROWADZĄCY",
+    kicker: "POZNAJMY SIĘ !",
     people: [
       {
         // w Figmie "patryk czemierowski" lowercase — HK Modular ma tylko wersaliki
         _type: "lecturer",
         name: "PATRYK CZEMIEROWSKI",
+        nameLines: ["PATRYK", "CZEMIEROWSKI"],
         photo: "/assets/prow-patryk-2x.jpg",
         crop: { w: "114.39%", h: "121.72%", left: "-12.52%", top: "-7.75%" },
+        cropM: { w: "114.39%", h: "121.72%", left: "-12.52%", top: "-7.75%" },
       },
       {
         _type: "lecturer",
         name: "PIOTR MAŁYSZ",
+        nameLines: ["PIOTR MAŁYSZ"],
         photo: "/assets/prow-piotr-2x.jpg",
         crop: { w: "107.11%", h: "113.98%", left: "-3.55%", top: "0%" },
+        cropM: { w: "106%", h: "106%", left: "-4.26%", top: "-0.21%" },
       },
       {
         _type: "lecturer",
         name: "WIKTORIA SŁAWIŃSKA",
+        nameLines: ["WIKTORIA", "SŁAWIŃSKA"],
         photo: "/assets/prow-wiktoria-2x.jpg",
         crop: { w: "114.67%", h: "116.75%", left: "-7.37%", top: "-3.2%" },
+        cropM: { w: "100%", h: "99.4%", left: "0%", top: "0.6%" },
       },
     ],
   },

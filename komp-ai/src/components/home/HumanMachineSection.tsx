@@ -72,6 +72,9 @@ function HumanMachineMobile({ hm }: { hm: HumanMachineContent }) {
           style={{ aspectRatio: `402/${GM.h}` }}
           data-node-id="423:3066"
         >
+          {/* niebieskie tło next sekcji zaczyna się w designie już na y5355 (canvas 472) —
+              pas na dole POD gwiazdą małą i zakrętem linii */}
+          <div className="absolute inset-x-0 bottom-0 bg-brand-blue" style={{ top: m(472) }} />
           {/* duża gwiazda lime — za tekstami; bleeduje 17px nad sekcję (jak w designie) */}
           <img
             src="/assets/hm-star-m-f2.png" alt="" aria-hidden className="absolute"
