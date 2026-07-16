@@ -146,3 +146,15 @@ export interface SiteSettings {
   nav: NavLink[];
   footer: Footer;
 }
+
+export interface ONasHero {
+  kickerLines: string[];
+  titleSolid: string;
+  titleOutlineLeft: string;
+  titleOutlineRight: string;
+}
+
+export interface ONasPage {
+  _type: "oNasPage";
+  hero: ONasHero;
+}

@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-07-17 — start widoku O NAS: route, nav shared, hero desktop WIP (2.92%)
+
+- Nowy widok `/o-nas` (nody: desktop 229:1094 1440×7568, mobile 326:1050 402×20918;
+  mapy sekcji w TODO.md). Rendery pełne przez **get_screenshot z maxDimension**
+  (download_assets capuje eksport do 4096px!).
+- **SiteNav** wyekstrahowany z HeroSection do `components/shared/` — wspólny dla
+  home i podstron; logo AI = link do strony głównej (wytyczna Patryka).
+- **Hero O NAS desktop (1440×840): 2.92% WIP.** KOMPE = jeden string Montserrat
+  Black f241/t-1 (Figma ma litery rozciągane osobno — decyzja Patryka: jeden
+  string, „ma tak wyglądać"); ink 218..1136 = design co do 2px. TENCJE = Poppins
+  800 outline, rozsunięte TEN | CJE wokół robota (designer rozsunął N|C o 261px).
+  Robot: rawImages bez alphy (czarne tło), maski z design contextu to gołe recty
+  → cutout przez keying flood-fillem od krawędzi (bez dołu — robot ucięty dołem)
+  + feather 3×3. Logo .AI = raw14 keyed, zmapowane afinicznie po pasku „I"
+  (444.4px @ 964.9,495.8). Z-order: TENCJE → robot → KOMPE → logo.
+- Content layer: ONasPage/ONasHero + getONasPage(); SEO metadata dla /o-nas.
+- ZOSTAŁO: kalibracja TENCJE, sekcje 2-7 desktop + cały mobile (stopka reuse już wpięta).
+
 ## 2026-07-16 (5) — kontakt + stopka (desktop i mobile) = CAŁY HOME zbudowany
 
 - **Kontakt desktop (1440×1506, y6249–7755): 0.55%.** Semantyczny `<form>` z prawdziwymi

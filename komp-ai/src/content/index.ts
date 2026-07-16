@@ -1,5 +1,6 @@
 import { homePage, siteSettings } from "./home";
-import type { HomePage, SiteSettings } from "./types";
+import { oNasPage } from "./onas";
+import type { HomePage, ONasPage, SiteSettings } from "./types";
 
 export async function getHomePage(): Promise<HomePage> {
   return homePage;
@@ -7,4 +8,8 @@ export async function getHomePage(): Promise<HomePage> {
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   return siteSettings;
+}
+
+export async function getONasPage(): Promise<ONasPage> {
+  return oNasPage;
 }

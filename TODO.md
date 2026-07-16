@@ -44,6 +44,39 @@
 UWAGA: mobile frame ma 11040 wys., stopka kończy się ~9811 — sprawdzić co jest w 9811–11040 (crop z renderu).
 ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 4600–5800 pokazuje DNA → HUMAN/MACHINE → POZNAJMY SIĘ. Sekcja kursy = `hidden md:block`.
 
+## Mapa sekcji — O NAS DESKTOP (node 229:1094, 1440×7568) — START 2026-07-16
+
+| # | Sekcja | y-zakres | Kluczowe node'y |
+|---|--------|----------|-----------------|
+| 1 | Nav + hero KOMPETENCJE | 0–840 | Menu `401:2237` (reuse), kicker dots (81,135), KOMPE grupy `401:2408-2424` (y243–415), TENCJE `401:2238` (133,425 1080×308), robot `401:2280` (435,185 421×655), logo .AI `401:2428` (966,492), badge pion prawa krawędź, STAR_OUTLINE `407:2847` |
+| 2 | Q&A 4 bloki | 800–1996 | pigułki `229:1867/1869/1871/1873`, recty `229:1839-1842`, teksty `229:1857-1860`, 3× STAR_ARROW `229:1906-1908` |
+| 3 | Lime „szkolenia które działają" | 1931–3140 | Rectangle 9, header `229:1861` (2167), linie `229:1930-1935` (grid 2120/2237/2717/2909 + pion x695), teksty `229:1862-1866`, strzałki `229:1936/1945` |
+| 4 | Prowadzący ×3 | 3140–5904 | TEKSTURA tła `229:1102` (4428px!), pill poznajmy `229:1875` (409,3066), PATRYK y3331 / PIOTR y4199 / WIKTORIA y5059, foto recty `229:2150-2152` (336×464-469), tagi + ikony, STAR_OUTLINE'y, bloby lewe `229:2108/2129` |
+| 5 | CTA POZNAJ NASZE KURSY | 5846–5963 | pill `245:3883`, linia Rectangle 14 (0,5904) |
+| 6 | Kontakt | 6080–7277 | header `229:2294` (centr.), form `234:2367` (384,6277) — REUSE stylów z home |
+| 7 | Stopka | 7277–7568 | `245:3972` — REUSE komponentu |
+
+**UWAGA hero (wytyczna Patryka 2026-07-16):** „TENCJE" = outline Poppins (jak MACHINE);
+„KOMPE" w Figmie jest po literze (scaleX per litera) — implementować jako JEDEN string,
+ma po prostu tak wyglądać.
+
+## Mapa sekcji — O NAS MOBILE (node 326:1050, 402×20918; treść do ~12325, niżej pusto)
+
+| # | Sekcja | y-zakres | Kluczowe node'y |
+|---|--------|----------|-----------------|
+| 1 | Top bar + hero | 0–975 | logo+burger `326:1301`, kicker `375:1753` (29,143), KOMPETENCJE `432:1658` (117,238), robot `432:1646`, logo `432:1610`, STAR_ARROW `330:1601` (189,787) |
+| 2 | „wyrusz z nami ku przyszłości !" | 975–1411 | `329:1325`, Group 9 `329:1421` |
+| 3 | Q&A 4 bloki | 1402–2948 | `329:1479/1492/1504` + `330:1544`, STAR_ARROWs, tło Rectangle 5 (0,873,402×2194) |
+| 4 | Lime | 3053–5310 | Rectangle 5 (0,3053,402×2257), header `330:1620`, linie `337:1624/1626/1643`, Group 10/11 (strzałki+linie), Group 12/13 |
+| 5 | Prowadzący | 5128–10161 | Rectangle 6 (0,5167,402×7158), pill `337:1639` (31,5128), PATRYK 5257 / PIOTR 6910 / WIKTORIA 8553 |
+| 6 | CTA + kontakt | 10161–11517 | `341:1860`, header `341:1862`, form `341:1863` (27,10516), STAR_ARROWs |
+| 7 | Stopka | 11517–12325 | `341:2111+` — REUSE |
+
+Rendery: `design-refs/onas-desktop-full.png` (1440×7568), `onas-mobile-full.png` (402×20918)
+— przez get_screenshot z maxDimension (download_assets capuje do 4096!). Surowe obrazy
+w `design-refs/onas-raw/` (zdjęcia prowadzących te same co home; robot 354×500;
+tekstury 2624×1630; maski logo).
+
 ## Otwarte zadania
 
 - [x] Duplikat Figmy w teamie Pro (fileKey `XsorNfllBh0GzGUQraAmtS`)
@@ -94,6 +127,14 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
       poniżej stopki mobile (y9811..11040) w designie jest tylko puste szare tło.
 - [ ] Review Patryka całości home (desktop + mobile) → poprawki.
 - [ ] Formularz: podpiąć wysyłkę (action/endpoint) — na razie action="#".
+- [ ] **O NAS (w budowie od 2026-07-16)**: route /o-nas + SEO metadata + SiteNav
+      wyekstrahowany do shared (logo → link do home, wytyczna Patryka).
+      Hero desktop WIP 2.92%: KOMPE spasowane (jeden string f241/t-1, ink 218..1136
+      = design 1:1), robot cutout (keying czarnego tła flood-fillem, maski Figmy
+      to gołe recty), logo .AI z raw14 (keyed, mapowane po pasku „I"), gwiazdy
+      wypieczone. ZOSTAŁO: kalibracja TENCJE (stroke/pozycje CJE), potem sekcje
+      2-7 desktop (Q&A, lime, prowadzący z TEKSTURĄ 4428px, CTA, kontakt reuse,
+      stopka reuse ✓) i cały mobile (mapa w tabelach wyżej).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
