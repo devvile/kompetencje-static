@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## 2026-07-16 (3) — human and machine MOBILE gotowy (diff 3.26%, akceptacja Patryka)
+
+- **Mobile (402×491, y4883–5374): diff 4.65% → 3.26%**, wszystkie mierzalne elementy
+  ≤1px vs metadane Figmy (get_metadata 423:3066 — pozycje liter wiarygodne, jak w hero).
+- **MACHINE**: dwie decyzje Patryka w sesji — najpierw „M pod M" (wdrożone), potem
+  wycofane → finalnie jak w Figmie: M od x124.3, E kończy się NA krawędzi 402px,
+  ale NIE ucięte (fontPx 54, tracking 3.4 — Poppins ma inne szerokości glifów niż
+  krzywe designu, spasowane po sumie advance'ów).
+- **Naprawione baked assety** (diagnoza: „białe śmieci" w hm-star-m-f to były
+  przezroczyste DZIURY po odfiltrowanym tekście/gwieździe — bg prześwitywał):
+  flood-fill dziur wewnętrznych + morfologiczne domknięcie wcięć na krawędzi
+  sylwetki (closing r4 w pasie liter, r2 globalnie) → hm-star-m-f2.png,
+  rozszerzony o 14px w górę (lime sliver od y4866 bleeduje nad sekcję jak w designie).
+- **Niebieska gwiazda outline** (STAR_OUTLINE 423:3583) — brakowała w impl; node
+  zrotowany (bbox kłamie: 100×95 poza kanwą), stroke tak cienki, że strict-blue
+  łapie 23 px → wycięta z renderu jako alpha z kanału R (hm-star-blue-m-f.png);
+  po wstawieniu ink identyczny z designem (23 px, x316..384 y4908..4972).
+- **Linia dolna zakręca wokół małej gwiazdy** w dół do tła next sekcji — zakręt +
+  gwiazda wypieczone razem (hm-line-star-m-f.png); tip gwiazdy wychodzi 4px pod
+  sekcję → overflow-hidden zdjęty (nic nie wystaje w poziomie), sekcja `z-10`.
+- **Linie mobile są cienkie ~1.2px** (nie 2.5 jak wcześniej przyjęto; desktop 3.8).
+- **Caption**: pułapka pomiarowa — okno pomiaru zawierało linię, przez co szerokość
+  „zgadzała się" przy każdym trackingu; realnie advance był 2px/znak za duży
+  (kolumnowe runy y5274..5278: design end x208, impl x260) → fontPx 8.5, track 0.2;
+  po fixie runy 1:1 z designem.
+- Znaleziona odchyłka DNA mobile (wnętrze karty #2 ~6px niżej: button y4790 vs 4784)
+  — zapisana w TODO, poza zakresem tej sekcji.
+- Nowe narzędzia: hm-m-star.js (gwiazda blue + profil lime prawej krawędzi),
+  hm-m-cap.js (kolumnowe runy caption), hm-m-assets.js/hm-m-holes.js (przebudowa
+  assetów), hm-m-extra.js. Usunięte nieużywane: hm-star-m-f.png, hm-star-sm-m-f.png.
+- Następna sekcja: Nasi prowadzący / „poznajmy się !" (desktop 5450–6249, mobile 5652–7592).
+
 ## 2026-07-16 (2) — human and machine: desktop gotowy, mobile w trakcie
 
 - **Desktop (1440×810, y4537–5347): diff 1.04%** (commit `1f9335a` + `0b2a858`).

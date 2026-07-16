@@ -58,17 +58,19 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
       Patryka (N i M stykają się rogami bez nachodzenia; „&" dodany i WYCOFANY — designer
       zrezygnował). MACHINE = Poppins 800 outline (Montserrat w text-stroke pokazuje szwy).
       UWAGA: lokalny render Figmy ma STARY układ liter — diff nie jest miarodajny dla MACHINE.
-- [ ] Sekcja 5 MOBILE — W TRAKCIE (diff 4.65%, offset naprawiony fixem canvasu DNA 1706→1699):
-      komponent + assety są (hm-star-m-f, hm-hands-m, hm-star-sm-m-f); zostało:
-      kalibracja liter HUMAN/MACHINE/caption + linia dolna + mała gwiazda (pozycje z
-      `node design-refs/tools/hm-m-ink.js` design vs impl — skrypt gotowy);
-      walidacja: shot 402×875 fullPage → `hm-m-diff.js` (sekcja = strona y4883..5374)
-- [ ] ODŚWIEŻYĆ RENDERY Z FIGMY: designer zmienił układ human-machine (litery stykają się
-      rogami). Figma MCP: serwer podłączony, ale narzędzia NIE zarejestrowane w sesji —
-      pomaga restart sesji Claude Code (sprawdzić ToolSearch po restarcie).
-- [ ] Mała gwiazda outline na granicy human-machine/prowadzący (mobile, y5327..5378,
-      tip wchodzi 4px w niebieskie tło) — obecnie w human-machine, clipowana na 5374.
-- [ ] Kolejne sekcje wg tabel powyżej: następna = Nasi prowadzący (desktop y5450–6249)
+- [x] Sekcja 5 MOBILE — GOTOWA, diff 3.26%, ZAAKCEPTOWANA przez Patryka („jest ok").
+      Litery HUMAN/MACHINE/caption spasowane ≤1px z metadanych Figmy (423:3066);
+      MACHINE: tracking zawężony tak, by E kończyło się NA krawędzi 402px bez ucięcia
+      (decyzja Patryka; próba „M pod M" wdrożona i WYCOFANA na jego prośbę).
+      Nowe assety: hm-star-m-f2 (lime + bleed 17px nad sekcję, dziury/wcięcia po
+      starym tekście zasklepione), hm-star-blue-m-f (niebieska gwiazda outline —
+      STAR_OUTLINE 423:3583 zrotowana, wycięta z renderu alpha z kanału R),
+      hm-line-star-m-f (zakręt linii dolnej wokół małej gwiazdy + gwiazda, tip 4px
+      pod sekcją — sekcja bez overflow-hidden, z-10). Linie mobile cienkie 1.2px.
+- [x] Mała gwiazda outline na granicy human-machine/prowadzący — wypieczona razem
+      z zakrętem linii (hm-line-star-m-f), tip bleeduje pod sekcję.
+- [ ] Kolejne sekcje wg tabel powyżej: następna = Nasi prowadzący / „poznajmy się !"
+      (desktop y5450–6249, mobile y5652–7592) — START 2026-07-16
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
@@ -79,3 +81,9 @@ ZWERYFIKOWANO (2026-07-16): mobile NIE MA sekcji kursów (3 kart) — render 460
 ## Znalezione problemy w designie (do zgłoszenia)
 
 - Stopka mobile: „POlityka prywatnośco" (literówka), telefon „000 000 000" (placeholder) — poprawiam w kodzie.
+
+## Znane drobne odchyłki impl (nie blokują)
+
+- DNA mobile, karta #2: wnętrze karty ~6px niżej niż w designie (button ZOBACZ
+  SZCZEGÓŁY: impl y4790 vs design y4784) — do domknięcia przy następnym przejściu
+  po sekcji DNA.
