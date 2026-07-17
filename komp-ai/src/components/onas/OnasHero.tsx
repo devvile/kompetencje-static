@@ -18,15 +18,20 @@ const G = {
   starKicker: { left: 140, top: 176, w: 140, h: 139 },
   starTR: { left: 1240, top: 180, w: 160, h: 150 },
   kompe: { left: 204, top: 208, fontPx: 241, trackPx: -1 }, // ink cel 218..1138 × 243..418
-  tencje: { fontPx: 247, strokePx: 5.5, trackPx: 12, top: 458.6, leftL: 132, leftR: 728 }, // cap cel y487..672
+  tencje: { fontPx: 247, strokePx: 3.5, trackPx: 23, top: 458.6, leftL: 132, leftR: 706 }, // cap cel y487..672, stroke designu 3px
   robot: { left: 434.7, top: 184.7, w: 420.8, h: 655.2 },
   aiLogo: { left: 964.9, top: 495.8, w: 444.4, h: 444.4 },
 };
 
 export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   return (
-    <section className="relative hidden w-full md:block">
-      <div className="@container mx-auto w-full max-w-(--workspace)">
+    /* hero + nav = dokładnie 100svh (wytyczna Patryka — jak na home): poster
+       contained, przy niskich viewportach canvas się zmniejsza i centruje */
+    <section className="relative hidden h-svh w-full md:flex md:items-center md:justify-center">
+      <div
+        className="@container mx-auto w-full"
+        style={{ width: `min(100%, var(--workspace), calc(100svh * (1440 / ${G.h})))` }}
+      >
         <div className="relative bg-page" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="229:1094">
           <SiteNav nav={nav} />
           {/* gwiazdka lime za kickerem */}

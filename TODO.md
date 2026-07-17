@@ -129,12 +129,15 @@ tekstury 2624×1630; maski logo).
 - [ ] Formularz: podpiąć wysyłkę (action/endpoint) — na razie action="#".
 - [ ] **O NAS (w budowie od 2026-07-16)**: route /o-nas + SEO metadata + SiteNav
       wyekstrahowany do shared (logo → link do home, wytyczna Patryka).
-      Hero desktop WIP 2.92%: KOMPE spasowane (jeden string f241/t-1, ink 218..1136
-      = design 1:1), robot cutout (keying czarnego tła flood-fillem, maski Figmy
-      to gołe recty), logo .AI z raw14 (keyed, mapowane po pasku „I"), gwiazdy
-      wypieczone. ZOSTAŁO: kalibracja TENCJE (stroke/pozycje CJE), potem sekcje
-      2-7 desktop (Q&A, lime, prowadzący z TEKSTURĄ 4428px, CTA, kontakt reuse,
-      stopka reuse ✓) i cały mobile (mapa w tabelach wyżej).
+      Hero desktop 2.68% (hero+nav = 100svh, wytyczna Patryka; KOMPE 1:1, TENCJE
+      stroke 3.5 track 23). Q&A desktop 1.12% (recty z sondą naroży r60, piguły
+      border 4 white HK 18, teksty Montserrat Medium 18, lh per blok 22/24;
+      origin canvasu = y840 = koniec hero, pill 1 bleeduje 39px w górę).
+      Lime desktop 1.72% (grid linii 1px -1px vs metadane, pion x695 przez całą
+      sekcję + bleed 190px; body = 2 akapity Regular+SemiBold f18 justify z
+      odstępami; nagłówek HK 15/18 akcent; NOWOCZESNE HK 16 lh35).
+      ZOSTAŁO desktop: prowadzący (TEKSTURA 4428px!), CTA, kontakt reuse; potem
+      cały mobile (mapa w tabelach wyżej).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

@@ -154,7 +154,27 @@ export interface ONasHero {
   titleOutlineRight: string;
 }
 
+export interface ONasQaItem {
+  pill: string;
+  text: string;
+}
+
+export interface ONasLime {
+  /** nagłówek HK z akcentem: [normal, akcent(większy), normal] */
+  headerSegs: [string, string, string];
+  col1Title: string;
+  /** akapit 1 (Regular) i 2 (SemiBold), rozdzielone odstępem */
+  col1BodyP1: string;
+  col1BodyP2: string;
+  col2Title: string;
+  col2BodyP1: string;
+  col2BodyP2: string;
+  footNote: [string, string];
+}
+
 export interface ONasPage {
   _type: "oNasPage";
   hero: ONasHero;
+  qa: ONasQaItem[];
+  lime: ONasLime;
 }

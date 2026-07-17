@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import OnasHero from "../../components/onas/OnasHero";
+import OnasQa from "../../components/onas/OnasQa";
+import OnasLime from "../../components/onas/OnasLime";
 import StopkaSection from "../../components/home/StopkaSection";
 import { getONasPage, getSiteSettings } from "../../content";
 
@@ -21,7 +23,9 @@ export default async function ONasPage() {
   return (
     <main className="w-full">
       <OnasHero hero={page.hero} nav={settings.nav} />
-      {/* kolejne sekcje: Q&A, lime, prowadzący, CTA, kontakt — w budowie */}
+      <OnasQa items={page.qa} />
+      <OnasLime lime={page.lime} />
+      {/* kolejne sekcje: prowadzący, CTA, kontakt — w budowie */}
       <StopkaSection f={settings.footer} />
     </main>
   );
