@@ -23,10 +23,94 @@ const G = {
   aiLogo: { left: 964.9, top: 495.8, w: 444.4, h: 444.4 },
 };
 
+/* mobile: canvas 402 szer. (1cqw = 4.02px) */
+const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
+
+/* MOBILE — canvas 402×873 (node 326:1050, y0..873 = start niebieskiego tła
+ * sekcji 2), hero+topbar = 100svh. KOMPETENCJE = 4 linie SOLID blue (tak ma
+ * Figma mobile — bez outline), wyrównane do prawej x373, NAD robotem. Robot
+ * bleeduje z lewej (-175). Logo .AI mobile = wariant z paskiem-ramką (bake
+ * blue-only z renderu, duchy robota wyczyszczone). */
+const GMOB = {
+  h: 873,
+  topBar: { logo: { x: 15, y: 43, w: 60.74, h: 70 }, burger: { x: 342, y: 58, w: 40, h: 40 } },
+  kicker: { left: 29, top: 146, fontPx: 14, trackPx: 0.3, lhPx: 24 }, // ink 30..194 × 150..208
+  stars: { x: 203, y: 93, w: 125, h: 142 },
+  // robot WYPIECZONY z renderu (achromatyczna ekstrakcja) — sylwetka 1:1 z Figmą
+  // (szeroka głowa, podbródek przy wierzchołku A logo; transform Figmy nieodtwarzalny)
+  robot: { x: 0, y: 113, w: 320, h: 760 },
+  blobL: { x: 0, y: 123, w: 86, h: 166 },
+  title: { right: 29, top: 244, fontPx: 89, lhPx: 81, trackPx: 0 }, // linie cap 248/330/410/488, right x373
+  logo: { x: 55, y: 650, w: 347, h: 222 },
+};
+
+function OnasHeroMobile({ hero }: { hero: ONasHero }) {
+  const lines = ["KOMPE", "TEN", "CJ", "E"];
+  return (
+    <section className="relative flex h-svh w-full items-center justify-center md:hidden">
+      <div
+        className="@container mx-auto w-full"
+        style={{ width: `min(100%, calc(100svh * (402 / ${GMOB.h})))` }}
+      >
+        <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
+          {/* top bar: logo + burger (assety home mobile) */}
+          <a href="/" className="absolute" style={{ left: cm(GMOB.topBar.logo.x), top: cm(GMOB.topBar.logo.y), width: cm(GMOB.topBar.logo.w), height: cm(GMOB.topBar.logo.h) }}>
+            <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
+          </a>
+          <button type="button" aria-label="Menu" className="absolute" style={{ left: cm(GMOB.topBar.burger.x), top: cm(GMOB.topBar.burger.y), width: cm(GMOB.topBar.burger.w), height: cm(GMOB.topBar.burger.h) }}>
+            <img src="/assets/m-burger-f.png" alt="" className="h-full w-full" />
+          </button>
+          {/* KOMPETENCJE — 4 linie solid, ZA robotem (głowa nachodzi na litery) */}
+          <h1
+            className="absolute text-right font-display font-black text-brand-blue"
+            style={{
+              right: cm(GMOB.title.right), top: cm(GMOB.title.top), fontSize: cm(GMOB.title.fontPx),
+              lineHeight: `${(GMOB.title.lhPx / 4.02).toFixed(4)}cqw`, letterSpacing: cm(GMOB.title.trackPx),
+            }}
+          >
+            {lines.map((l) => (
+              <span key={l} className="block">{l}</span>
+            ))}
+          </h1>
+          {/* robot — NAD literami (z-order designu) */}
+          <img
+            src="/assets/onas-robot-m-f.png"
+            alt="Chromowana głowa robota — sztuczna inteligencja"
+            className="absolute"
+            style={{ left: cm(GMOB.robot.x), top: cm(GMOB.robot.y), width: cm(GMOB.robot.w), height: cm(GMOB.robot.h) }}
+          />
+          {/* lime kształt przy lewej krawędzi */}
+          <img src="/assets/onas-m-blob-l-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: cm(GMOB.blobL.x), top: cm(GMOB.blobL.y), width: cm(GMOB.blobL.w), height: cm(GMOB.blobL.h) }} />
+          {/* gwiazdki przy kickerze */}
+          <img src="/assets/onas-m-stars-kicker-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: cm(GMOB.stars.x), top: cm(GMOB.stars.y), width: cm(GMOB.stars.w), height: cm(GMOB.stars.h) }} />
+          {/* kicker */}
+          <p
+            className="absolute font-modular text-brand-blue"
+            style={{
+              left: cm(GMOB.kicker.left), top: cm(GMOB.kicker.top), fontSize: cm(GMOB.kicker.fontPx),
+              letterSpacing: cm(GMOB.kicker.trackPx), lineHeight: `${(GMOB.kicker.lhPx / 4.02).toFixed(4)}cqw`,
+            }}
+          >
+            {hero.kickerLines.map((l) => (
+              <span key={l} className="block">{l}</span>
+            ))}
+          </p>
+          {/* logo .AI mobile */}
+          <img src="/assets/onas-m-logo-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: cm(GMOB.logo.x), top: cm(GMOB.logo.y), width: cm(GMOB.logo.w), height: cm(GMOB.logo.h) }} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   return (
-    /* hero + nav = dokładnie 100svh (wytyczna Patryka — jak na home): poster
-       contained, przy niskich viewportach canvas się zmniejsza i centruje */
+    <>
+    <OnasHeroMobile hero={hero} />
+    {/* hero + nav = dokładnie 100svh (wytyczna Patryka — jak na home) */}
     <section className="relative hidden h-svh w-full md:flex md:items-center md:justify-center">
       <div
         className="@container mx-auto w-full"
@@ -97,5 +181,6 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
         </div>
       </div>
     </section>
+    </>
   );
 }

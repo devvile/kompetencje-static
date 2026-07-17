@@ -39,10 +39,11 @@ const G = {
     { x: 781, y: 959, w: 417, align: "left" as const, lhPx: 23.8 },
   ],
   textFontPx: 18,
+  // gwiazdy-strzałki mają niebieski border (uwaga Patryka) — bake z pełnymi kolorami
   stars: [
-    { src: "/assets/onas-qa-star1-f.png", x: 836, y: 92, w: 88, h: 78 },
-    { src: "/assets/onas-qa-star2-f.png", x: 551, y: 328, w: 82, h: 78 },
-    { src: "/assets/onas-qa-star3-f.png", x: 881, y: 682, w: 128, h: 129 },
+    { src: "/assets/onas-qa-star1-f.png", x: 834, y: 90, w: 92, h: 82 },
+    { src: "/assets/onas-qa-star2-f.png", x: 549, y: 326, w: 86, h: 82 },
+    { src: "/assets/onas-qa-star3-f.png", x: 879, y: 680, w: 132, h: 133 },
   ],
 };
 

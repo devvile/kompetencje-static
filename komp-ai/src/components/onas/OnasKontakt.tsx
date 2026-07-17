@@ -24,7 +24,8 @@ const G = {
 
 export default function OnasKontakt({ k, ctaLabel }: { k: Kontakt; ctaLabel: string }) {
   return (
-    <section id="kontakt" className="relative hidden w-full overflow-x-clip md:block">
+    // z-20: pill CTA bleeduje nad sekcję prowadzących (która ma z-10)
+    <section id="kontakt" className="relative z-20 hidden w-full overflow-x-clip md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative bg-brand-blue" style={{ aspectRatio: `1440/${G.h}` }}>
           {/* lime linia pod CTA */}
