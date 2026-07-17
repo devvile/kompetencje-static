@@ -172,9 +172,25 @@ export interface ONasLime {
   footNote: [string, string];
 }
 
+export interface ONasBio {
+  intro: string;
+  mainP1: string;
+  mainP2: string;
+  extra: string;
+}
+
+export interface ONasProwadzacy {
+  pill: string;
+  /** tagi per osoba: [rząd górny×2, dolny×1] */
+  tags: [string, string, string][];
+  /** bio w Figmie identyczne dla 3 osób (placeholder designera) — jedno wspólne */
+  bio: ONasBio;
+}
+
 export interface ONasPage {
   _type: "oNasPage";
   hero: ONasHero;
   qa: ONasQaItem[];
   lime: ONasLime;
+  prowadzacy: ONasProwadzacy;
 }

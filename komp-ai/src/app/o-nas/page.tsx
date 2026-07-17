@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import OnasHero from "../../components/onas/OnasHero";
 import OnasQa from "../../components/onas/OnasQa";
 import OnasLime from "../../components/onas/OnasLime";
+import OnasProwadzacySec from "../../components/onas/OnasProwadzacy";
+import OnasKontakt from "../../components/onas/OnasKontakt";
 import StopkaSection from "../../components/home/StopkaSection";
-import { getONasPage, getSiteSettings } from "../../content";
+import { getHomePage, getONasPage, getSiteSettings } from "../../content";
 
 export const metadata: Metadata = {
   title: "O nas — kim jesteśmy i jak uczymy kompetencji AI",
@@ -18,14 +20,19 @@ export const metadata: Metadata = {
 };
 
 export default async function ONasPage() {
-  const [page, settings] = await Promise.all([getONasPage(), getSiteSettings()]);
+  const [page, settings, home] = await Promise.all([
+    getONasPage(),
+    getSiteSettings(),
+    getHomePage(),
+  ]);
 
   return (
     <main className="w-full">
       <OnasHero hero={page.hero} nav={settings.nav} />
       <OnasQa items={page.qa} />
       <OnasLime lime={page.lime} />
-      {/* kolejne sekcje: prowadzący, CTA, kontakt — w budowie */}
+      <OnasProwadzacySec p={page.prowadzacy} people={home.prowadzacy.people} />
+      <OnasKontakt k={home.kontakt} ctaLabel="POZNAJ NASZE KURSY" />
       <StopkaSection f={settings.footer} />
     </main>
   );

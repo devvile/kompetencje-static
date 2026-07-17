@@ -43,4 +43,24 @@ export const oNasPage: ONasPage = {
       "Dlatego stawiamy na realne scenariusze oparte o prawdziwe procesy biznesowe, naukę przez praktykę.",
     footNote: ["Nowoczesne podejście dostosowane ", "do potrzeb polskiego rynku. "],
   },
+  prowadzacy: {
+    pill: "POZNAJMY SIĘ !",
+    tags: [
+      ["PROGRAMOWANIE", "AGENCI AI", "AUTOMATYZACJE AI"],
+      ["DANE", "AGENCI AI", "ZARZĄDZANIE PROCESAMI"],
+      // w Figmie desktop "PROJECT MANAGMENT" (literówka; mobile ma poprawnie) — poprawione
+      ["DESIGN", "MARKETING", "PROJECT MANAGEMENT"],
+    ],
+    // bio identyczne dla 3 osób w Figmie (placeholder designera) — do podmiany per osoba
+    bio: {
+      intro:
+        "Współzałożyciel firmy specjalizującej się we wdrażaniu i praktycznym wykorzystaniu sztucznej inteligencji w biznesie. Łączy doświadczenie z obszaru fintechu, analityki danych, nowych technologii oraz prawa, wspierając organizacje w efektywnym, bezpiecznym i skalowalnym wdrażaniu rozwiązań AI.",
+      mainP1:
+        "Przez blisko 6 lat pracował w środowisku fintech i analityki kryptowalutowej, realizując projekty oparte na dużych zbiorach danych, wrażliwych informacjach oraz złożonych procesach technologicznych. Doświadczenie zdobywał w organizacji, która przeszła drogę od startupu do przejęcia przez dużą amerykańską firmę, co pozwoliło rozwinąć kompetencje w zakresie pracy w międzynarodowym środowisku oraz zarządzania złożonymi systemami i procesami",
+      mainP2:
+        "Absolwent prawa Uniwersytetu Warszawskiego. Karierę rozpoczynał w obszarze ochrony danych osobowych w kancelarii prawnej, co uzupełniło jego profil o perspektywę regulacyjną i odpowiedzialne podejście do technologii.",
+      extra:
+        "Wykorzystuje sztuczną inteligencję jako kluczowe narzędzie pracy — do automatyzacji procesów, analizy danych oraz optymalizacji działań biznesowych. Specjalizuje się w przekładaniu zaawansowanych technologii na praktyczne zastosowania, koncentrując się na realnych rezultatach i mierzalnej wartości biznesowej.",
+    },
+  },
 };
