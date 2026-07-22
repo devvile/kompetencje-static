@@ -153,11 +153,46 @@ tekstury 2624×1630; maski logo).
       134805px nietknięta). 4) Desktop onas-star-kicker-f.png też przebakowany
       (miał wypieczony fragment litery K i kickera). Hero mobile po poprawkach
       3.96% (wzrost z 3.37% = celowo przesunięta gwiazdka).
-- [ ] **KURSY (szczegóły kursu) — WIP, NIECOMMITOWANE** (sesja 2026-07-22, bez wpisu
-      w changelogu): route `/kursy/[slug]` + KursHero/KursZyskasz/KursProgram,
-      content `src/content/kurs.ts`, assety `kurs-*-f.png`, rendery w
-      `design-refs/kurs-raw/`. Stan walidacji nieudokumentowany — w toku review
-      Patryka (uwaga: słowo „PROGRAM" źle wykonane vs Figma).
+- [ ] **KURSY (szczegóły kursu) — WIP, NIECOMMITOWANE** (sesje 2026-07-22): route
+      `/kursy/[slug]` + KursHero/KursZyskasz/KursProgram (desktop), content
+      `src/content/kurs.ts`, assety `kurs-*-f.png`, render `design-refs/
+      kurs-desktop-full.png` (1440×7241; treść do y6194, niżej pusto) +
+      `kurs-mobile-full.png`. PROGRAM naprawiony po uwadze Patryka (wszystkie
+      litery solid blue + biały stroke zewn. 2.75px, paint-order: stroke —
+      wcześniejsze „O i R2 outline" było błędnym odczytem renderu).
+      **BRAKUJE (desktop, POMIARY GOTOWE z renderu — patrz niżej):**
+      - [ ] Sekcja DLA KOGO: lime karta x136..1304 (1168×552) y3697..4249,
+            radius ~68, bleed 168px NA blue box modułów (box kończy się y3864,
+            szary pas 3865..4088, full-width blue 4089..4335). Nagłówek
+            DLA/KOGO/JEST/KURS Montserrat Black blue f≈78 lh≈94.6, ink left
+            x318, ink topy 3809/3903/3998/4093. Gwiazdki solid blue 4-ramienne
+            ~43×40 x742, y-per-row 3811/3905/4000/4094 — BAKE z renderu (blue
+            na lime, czysta ekstrakcja). Itemy Montserrat ~f22 medium,
+            tracking ~3.5px, x839, centrowane do wierszy.
+      - [ ] Marquee „KURS STARTUJE JUŻ 20 LIPCA": pas blue 4337..4505 między
+            białymi liniami 4336/4506; tekst biały HK ink y4406..4437 (cap 31
+            → f≈44); lime sparkle 55 szer. przy x407 i x1378 (pitch ~971);
+            animacja CSS jak marquee home (ManifestSection).
+      - [ ] Kontakt: canvas 4507..5904 (h 1397). Nagłówek 3 linie lime HK
+            f25.2 scaleX(1.1) jak home, ink (left,top): (573,4617)(480,4661)
+            (523,4705) → rel top 110/154/198, pitch 44 (home miał 49!).
+            Form = REUSE shared/ContactFormDesktop left=380 top=321 (rel).
+            2 gwiazdy outline (biel ~18% na blue) — BAKE z renderu:
+            L x46..391 y4755..5679, R x1040..1364 y4839..5738.
+      - [ ] Stopka na końcu: design y5905..6194 — reuse StopkaSection
+            (już w page.tsx).
+      - [ ] Walidacja diff całej strony vs render + hscroll.
+      - [ ] MOBILE widoku kursu — w ogóle niezbudowany (wszystkie komponenty
+            kurs `hidden md:block`); render kurs-mobile-full.png jest.
+- [x] **Podstrony PRAWNE zbudowane** (2026-07-22, freeform — brak designu
+      w Figmie, estetyka 1:1 z sekcji PROGRAM): `/polityka-prywatnosci` +
+      `/regulamin`. Wspólny `components/legal/LegalArticle.tsx` (responsywny,
+      NIE poster-canvas: hero bg-page z kickerem HK + spark + wielki napis
+      z białym strokiem bleedujący na blue box rounded-tr, sekcje numerowane
+      lime HK, body Manrope white, CTA pill, stopka reuse), content
+      `src/content/legal.ts` (getLegalPage), metadata SEO per strona.
+      FLAG dla Patryka: [NAZWA FIRMY]/[ADRES]/[NIP] + kontakt@kompetencje.ai
+      w treściach = PLACEHOLDERY; całość do weryfikacji prawnej.
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

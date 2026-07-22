@@ -256,3 +256,37 @@ export interface KursPage {
   marqueeText: string; // "KURS STARTUJE JUŻ 20 lipca"
   kontaktHeadingLines: string[];
 }
+
+/* ============ STRONY PRAWNE (polityka prywatności / regulamin) ============ */
+
+/** Blok treści sekcji prawnej: akapit LUB lista punktowana */
+export interface LegalBlock {
+  text?: string;
+  items?: string[];
+}
+
+export interface LegalSection {
+  _type: "legalSection";
+  num: string; // "01"
+  title: string;
+  blocks: LegalBlock[];
+}
+
+export interface LegalPage {
+  _type: "legalPage";
+  slug: string;
+  /** kicker HK nad nagłówkiem (linie) */
+  kickerLines: string[];
+  /** pełny tytuł strony do h1/SEO, np. "Polityka prywatności" */
+  pageTitle: string;
+  /** wielki napis display bleedujący na blue box, np. "REGULAMIN" */
+  heading: string;
+  /** "Ostatnia aktualizacja: ..." */
+  updated: string;
+  sections: LegalSection[];
+  outro: string;
+  ctaLabel: string;
+  ctaHref: string;
+  metaTitle: string;
+  metaDescription: string;
+}

@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 2026-07-22 (2) — commit o-nas + fix PROGRAM + podstrony prawne + pomiary kursu
+
+- **Commit `690797e`**: cała zaakceptowana praca o-nas mobile + poprawki po
+  review (38 plików) — zatwierdzone przez Patryka.
+- **Fix PROGRAM (uwaga Patryka „źle wykonane")**: w designie WSZYSTKIE litery
+  są solid blue z BIAŁYM strokiem zewnętrznym 2-3px (zmierzone scanlinami;
+  biel zaczyna się x35, blue ink x38 — stroke na zewnątrz inku, pozycje liter
+  bez zmian). Wcześniejsza impl robiła O i drugie R jako transparent outline —
+  błędny odczyt renderu. Nowa impl: `WebkitTextStroke` biały (5.5px centrowany)
+  + `paint-order: stroke fill` → widoczna zewnętrzna połowa ~2.75px.
+  Zwalidowane sbs + zoom 2× vs render — zgodne.
+- **Podstrony `/polityka-prywatnosci` + `/regulamin`** (życzenie Patryka:
+  „bazując na estetyce sekcji program"). Brak designu w Figmie → freeform 1:1
+  ze stylistyką PROGRAM: szary hero (SiteNav desktop / logo+burger mobile,
+  kicker HK 2 linie, spark lime = asset kurs-prog-spark), wielki napis
+  PRYWATNOŚĆ/REGULAMIN Montserrat Black f165 (11.5cqw) z białym strokiem
+  (paint-order) bleedujący na blue box rounded-tr-265, sekcje numerowane
+  („01" HK lime 60 + tytuł lime + body Manrope white 16, listy z lime
+  markerami), outro HK + lime pill CTA (styl ZAPISZ SIĘ), stopka reuse.
+  Komponent RESPONSYWNY (nie poster-canvas — treść prawna ma płynną
+  wysokość): md+ w cqw, mobile w px. Content layer: `content/legal.ts`
+  + `getLegalPage(slug)` + typy LegalPage/LegalSection/LegalBlock; metadata
+  SEO per strona. Zweryfikowane screenshotami 1440 + 375 (desktop i mobile OK).
+  FLAG: dane firmy w treściach = placeholdery [NAZWA FIRMY]/[ADRES]/[NIP];
+  treści do weryfikacji prawnej.
+- **Pomiary brakujących sekcji kursu** (DLA KOGO / marquee / kontakt) —
+  komplet liczb z renderu zapisany w TODO.md; budowa w następnej sesji.
+  Kurs mobile w ogóle niezbudowany (odkryte przy przeglądzie WIP).
+- Porządek: TODO.md udokumentował wcześniej nieopisany WIP kursu z sesji
+  porannej (route + hero/zyskasz/program bez wpisu w changelogu).
+
 ## 2026-07-22 — O NAS poprawki po review Patryka — ZAAKCEPTOWANE („ready")
 
 - **Pas niebieskiego nad „WYRUSZ Z NAMI KU PRZYSZŁOŚCI !" (mobile).** Q&A wraca
