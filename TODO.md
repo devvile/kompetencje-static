@@ -127,17 +127,37 @@ tekstury 2624×1630; maski logo).
       poniżej stopki mobile (y9811..11040) w designie jest tylko puste szare tło.
 - [ ] Review Patryka całości home (desktop + mobile) → poprawki.
 - [ ] Formularz: podpiąć wysyłkę (action/endpoint) — na razie action="#".
-- [ ] **O NAS (w budowie od 2026-07-16)**: route /o-nas + SEO metadata + SiteNav
-      wyekstrahowany do shared (logo → link do home, wytyczna Patryka).
-      Hero desktop 2.68% (hero+nav = 100svh, wytyczna Patryka; KOMPE 1:1, TENCJE
-      stroke 3.5 track 23). Q&A desktop 1.12% (recty z sondą naroży r60, piguły
-      border 4 white HK 18, teksty Montserrat Medium 18, lh per blok 22/24;
-      origin canvasu = y840 = koniec hero, pill 1 bleeduje 39px w górę).
-      Lime desktop 1.72% (grid linii 1px -1px vs metadane, pion x695 przez całą
-      sekcję + bleed 190px; body = 2 akapity Regular+SemiBold f18 justify z
-      odstępami; nagłówek HK 15/18 akcent; NOWOCZESNE HK 16 lh35).
-      ZOSTAŁO desktop: prowadzący (TEKSTURA 4428px!), CTA, kontakt reuse; potem
-      cały mobile (mapa w tabelach wyżej).
+- [x] **O NAS DESKTOP kompletny** (2026-07-17): hero 2.68%, Q&A 1.12%, lime 1.72%,
+      prowadzący 3.27%, CTA/kontakt 1.31%, stopka reuse.
+- [x] **O NAS MOBILE kompletny** (2026-07-18): hero 4.59% (commit wcześniejszy),
+      Q&A 2.46%, lime 4.00% (col1 body DO PRAWEJ ragged, col2
+      tytuł DO PRAWEJ 5 linii f40/lh49, pitch body 22, akcent nagłówka f24.5,
+      pGapy 42/22, tracking -0.55 na boldzie col2), prowadzący 3.9–4.3%
+      (nazwiska HK f26/26/33 BEZ scaleX track -0.9, kadry foto = grid-search
+      match do renderu, bio1 szary TL-ostry, bio2 flush-right, bio3 wąska
+      kolumna tekstu 235/216/235, dekoracje strips opaque), kontakt 2.85%
+      (pasek CTA biała-linia/lime/biała-linia f22.7, nagłówek+gwiazdy jak home,
+      forma = NOWY shared/ContactFormMobile — home bez regresji 2.28%),
+      stopka 1.50%. Cała strona pod hero: 3.44%. hscroll czysty 375–2560
+      (home i o-nas). Diffy zdominowane szumem resamplingu foto (4.8–6.8%).
+- [x] **O NAS poprawki po review Patryka** (2026-07-22, ZAAKCEPTOWANE „ready"):
+      1) Q&A mobile: pełny canvas 2194 (blue od y873 designu) = pas niebieskiego
+      nad „WYRUSZ Z NAMI…" niezależnie od svh; strona 12427 = design+102
+      (świadoma decyzja UX Patryka); gwiazdka graniczna PRZENIESIONA w dół,
+      w całości na blue (nowy asset onas-m-arrow0-alpha.png, czysta alfa lime);
+      diff Q&A z offsetem +102: 2.54%. 2) Kicker mobile „CHANGING YOUR IDEA…"
+      dublował się na limonkowym blobie — onas-m-blob-l-f.png miał WYPIECZONE
+      glify tekstu; przebake: czysta alfa lime + closing r=6 w paśmie tekstu.
+      3) Cętki na KOMPE: robot onas-robot-m-f.png miał 667 śmieciowych
+      mikro-komponentów alfy (pozostałość ekstrakcji) — usunięte (sylwetka
+      134805px nietknięta). 4) Desktop onas-star-kicker-f.png też przebakowany
+      (miał wypieczony fragment litery K i kickera). Hero mobile po poprawkach
+      3.96% (wzrost z 3.37% = celowo przesunięta gwiazdka).
+- [ ] **KURSY (szczegóły kursu) — WIP, NIECOMMITOWANE** (sesja 2026-07-22, bez wpisu
+      w changelogu): route `/kursy/[slug]` + KursHero/KursZyskasz/KursProgram,
+      content `src/content/kurs.ts`, assety `kurs-*-f.png`, rendery w
+      `design-refs/kurs-raw/`. Stan walidacji nieudokumentowany — w toku review
+      Patryka (uwaga: słowo „PROGRAM" źle wykonane vs Figma).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

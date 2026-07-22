@@ -1,5 +1,78 @@
 # CHANGELOG
 
+## 2026-07-22 — O NAS poprawki po review Patryka — ZAAKCEPTOWANE („ready")
+
+- **Pas niebieskiego nad „WYRUSZ Z NAMI KU PRZYSZŁOŚCI !" (mobile).** Q&A wraca
+  do pełnego canvasu 2194 (blue Rectangle 5 od y873 designu) zamiast marginTop
+  -102: 102px lead-in blue jest teraz WEWNĄTRZ canvasu, a hero domyka ekran
+  niebieskim fillerem (flex-1) — więcej niebieskiego nad taglinem na każdym svh,
+  robot/logo nigdy nie ucięte. Strona = 12427 = design+102 (świadoma decyzja UX).
+  Diff Q&A z offsetem +102: 2.54% (było 2.46).
+- **Gwiazdka graniczna hero/Q&A przeniesiona W DÓŁ** (życzenie Patryka) — w
+  całości na niebieskim polu (design: styk 854..926). Nowy asset
+  `onas-m-arrow0-alpha.png` (czysta alfa lime 82×72); stary dwustrefowy bake
+  (szare piksele nad y873) nie nadawał się do repozycjonowania na blue.
+- **Kicker mobile dublował się na blobie** („brzydko pogubiony, jakby nałożony
+  dwa razy") — `onas-m-blob-l-f.png` miał WYPIECZONE glify „CHANG/IDEA/CAN D"
+  z renderu; HTML-owy tekst renderował się obok z ~1px offsetem. Przebake:
+  czysta alfa lime + morphological closing r=6 w paśmie tekstu (wiersze 20..95)
+  zasklepił dziury i duchy AA po glifach.
+- **Cętki na literach KOMPE (mobile):** `onas-robot-m-f.png` miał 667 śmieciowych
+  mikro-komponentów alfy (pozostałość achromatycznej ekstrakcji tam, gdzie za
+  robotem były litery) — usunięte de-specklingiem (komponenty <400px; sylwetka
+  134805px nietknięta). Hero mobile po wszystkich poprawkach: 3.96% (wzrost
+  z 3.37% = wyłącznie celowo przesunięta gwiazdka).
+- **Desktop: `onas-star-kicker-f.png` też przebakowany** — miał wypieczony róg
+  litery K tytułu i fragment kickera (ten sam wzorzec błędu); czysta alfa lime,
+  0 dziur do zalania (tekst nie przecinał limonki na desktopie).
+- Wzorzec na przyszłość: assety wypiekane z renderu SPRAWDZAĆ na obecność
+  wypieczonych glifów tekstu/sąsiednich elementów (Read na PNG wystarcza);
+  duchy = alfa-ekstrakcja + closing w paśmie tekstu; cętki = filtr małych
+  komponentów spójnych.
+
+## 2026-07-18 — O NAS MOBILE kompletny: Q&A + lime + prowadzący + CTA/kontakt
+
+- **Q&A mobile 24.78% → 2.46%.** Klucz: blue Rectangle 5 startuje w designie y873 —
+  102px POD dolną krawędzią hero-viewportu (975); canvas sekcji podciągnięty
+  `marginTop: -102px` (cqw), sekcja z-10, strzałka graniczna bleeduje nad hero.
+- **Lime mobile 13.37% → 4.00%** (kalibracja ink-bands, nie na oko): nagłówek
+  wyśrodkowany z akcentem „DZIAŁAJĄ" f24.5 (cap 22 ≈ 2× bazy); col1 body
+  DO PRAWEJ ragged (nie justify!) f17; col2 tytuł DO PRAWEJ 5 linii f40/lh49;
+  col2 body justify f19; pitch OBU body = 22 (nie 26/23); odstępy akapitów
+  42/22 (nie pełne lh); bold col2 tracking -0.55 (inaczej „oparte" spada
+  z linii 2); stopka-notka centrowana pitch 32. Łamania linii 1:1 z designem.
+- **Prowadzący mobile (canvas 402×4994, y5167..10161): 3.9–4.3% per osoba**
+  (foto wewnętrznie 4.8–6.8% szumu resamplingu — realne elementy ≤2%).
+  Układ per osoba zmierzony klasyfikatorem kolorów (lime/white/gray/box20)
+  z renderu — Figma MCP niedostępne w tej sesji. Nazwiska HK white f26/26/33
+  BEZ scaleX (track -0.9) — inaczej niż home/desktop (1.1)! Kadry zdjęć =
+  **grid-search match** (nowy wzorzec: przeszukanie skala×offset vs render —
+  P1 wyszedł ~desktopowy kadr; iteracja „na oko" z pomniejszonych podglądów
+  MYLI, bo skala wyświetlania zakłamuje pozycje). Bio-boxy: bio1 szary
+  #EFEFEF flush-left z OSTRYM TL; bio2 białe-20% flush-right (r35 widoczny
+  arc przy krawędzi); bio3 r35 z WĄSKĄ kolumną tekstu (235/216/235 — białe
+  bandy „tekstu" łapały border boxu!). Tagi 1+2 w rzędach, kolejność
+  designera niespójna (P1: [0,1], P2/W: [1,0]). Pill „POZNAJMY SIĘ !"
+  341×73 f23 bleed -39px; limonkowa falka za pigułą wypieczona.
+  Assety: onas-m-pr-* (wave, sparkle ×6 z 1 pliku, krzywe lewe, gwiazdy
+  outline prawe, bloby) — opaque strips na płaskim blue (19,29,255).
+- **CTA + kontakt mobile (402×1356, y10161..11517): 2.85%.** Pasek CTA pełna
+  szerokość: biała linia 6 / lime 59 / biała linia 6, HK f22.7 nowrap (f27
+  łamał na 2 linie). Nagłówek 3 linie + gwiazdy STAR_ARROW = reuse pozycji
+  i ASSETÓW home (te same pliki). **Refaktor: forma mobile → shared/
+  ContactFormMobile** (jak ContactFormDesktop; props left/top/idPrefix);
+  home kontakt mobile bez regresji (2.28% jak przed). Pola formy o-nas
+  spasowane 1–2px bez żadnych zmian (identyczna instancja, tylko pozycja).
+- **Stopka mobile reuse: 1.50%. Cała strona pod hero: 3.44%. Wysokość
+  impl = 12325 = design co do piksela.** hscroll czysty 375–2560 (obie strony).
+- Desktop o-nas nietknięty (git diff: zero zmian w częściach desktop).
+- PUŁAPKA sesji: PowerShell `-replace` + `Set-Content` zepsuł UTF-8 w
+  OnasProwadzacy.tsx (podwójne kodowanie polskich znaków) — plik odtworzony
+  Write toolem. Edycje plików TYLKO narzędziami Claude, nie PS 5.1.
+- ZOSTAŁO o-nas: review Patryka; hero mobile ma niecommitowane poprawki
+  z uwag Patryka (scaleX tytułu 0.81, mniejszy asset gwiazdki kickera) —
+  weszły w walidację tej sesji.
+
 ## 2026-07-17 — start widoku O NAS: route, nav shared, hero desktop WIP (2.92%)
 
 - Nowy widok `/o-nas` (nody: desktop 229:1094 1440×7568, mobile 326:1050 402×20918;

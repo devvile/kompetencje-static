@@ -29,6 +29,47 @@ export const oNasPage: ONasPage = {
       text: "Nowoczesne podejście przykładające uwagę na realne zastosowanie nauczanych scenariuszy opartych o prawdziwe procesy biznesowe, a także duży nacisk na naukę poprzez praktykę.",
     },
   ],
+  qaM: {
+    tagline: ["WYRUSZ Z NAMI", "KU PRZYSZŁOŚCI !"],
+    items: [
+      {
+        pill: "KIM JESTEŚMY ?",
+        align: "left",
+        segs: [
+          { text: "Jesteśmy nowoczesną firmą szkoleniową " },
+          { text: "specjalizującą się w rozwijaniu kompetencji AI", strong: true },
+          { text: " wśród pracowników i organizacji w Polsce." },
+        ],
+      },
+      {
+        pill: "CO ROBIMY ?",
+        align: "right",
+        segs: [
+          { text: "Prowadzimy " },
+          { text: "szkolenia z zakresu korzystania ze sztucznej inteligencji", strong: true },
+          { text: ", pomagamy zdobywać kompetencje w stosowaniu AI." },
+        ],
+      },
+      {
+        pill: "CO JEST DLA NAS WAŻNE ?",
+        align: "left",
+        segs: [
+          { text: "Ważne jest dla nas " },
+          { text: "przygotowanie polskiego biznesu", strong: true },
+          { text: " i pracowników na wyzwania i szanse, jakie stwarza rozwój sztucznej inteligencji." },
+        ],
+      },
+      {
+        pill: "CO NAS WYRÓŻNIA ?",
+        align: "center",
+        segs: [
+          { text: "Nowoczesne podejście przykładające uwagę na realne zastosowanie nauczanych " },
+          { text: "scenariuszy opartych o prawdziwe procesy biznesowe,", strong: true },
+          { text: " a także duży nacisk na naukę poprzez praktykę." },
+        ],
+      },
+    ],
+  },
   lime: {
     headerSegs: ["Prowadzimy szkolenia, które naprawdę ", "działają", ". "],
     col1Title: "Nie uczymy teorii",

@@ -32,6 +32,91 @@ const G = {
   arrows: { x: 556, y: 925, w: 392, h: 152 },
 };
 
+/* mobile: canvas 402 szer. (1cqw = 4.02px) */
+const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
+
+/* MOBILE — canvas 402×2100 (lime widoczne y3067..5167; Rectangle 5 zaczyna 3053
+ * pod blue Q&A). Treści = te same co desktop (reuse ONasLime); łamania z szerokości.
+ * Linie poziome x75..402; grupy strzałka+linia wypieczone w całości. */
+const GMOB = {
+  h: 2100, // 3067..5167
+  lines: [{ y: 186 }, { y: 866 }, { y: 1719 }], // y3253/3933/4786, x75..402
+  lineX: 75,
+  header: { left: 33, top: 65, w: 345, fontPx: 15, accentPx: 24.5, lhPx: 26 }, // ink y3138; akcent „DZIAŁAJĄ" cap 22
+  col1Title: { left: 57, top: 222, w: 241, fontPx: 50, lhPx: 61 }, // ink 58 y3296
+  col1Body: { left: 79, top: 533, w: 270, fontPx: 17, lhPx: 22, pGap: 42 }, // centra linii pitch 22 (pomiar), ragged DO PRAWEJ
+  col2Title: { left: 25, top: 925, w: 340, fontPx: 40, lhPx: 49 }, // ink ..360 y3999, DO PRAWEJ, 5 linii
+  col2Body: { left: 48, top: 1316, w: 243, fontPx: 19, lhPx: 22, pGap: 22 }, // centra pitch 22, justify 8 linii (łamanie po „firmy")
+  foot: { left: 63, top: 1752, w: 285, fontPx: 16, lhPx: 32 }, // ink 65..337 y4829 pitch 32, wyśrodkowany
+  groups: [
+    { src: "/assets/onas-m-lg10-f.png", x: 0, y: 428, w: 255, h: 85 },
+    { src: "/assets/onas-m-lg11-f.png", x: 140, y: 1201, w: 262, h: 85 },
+    { src: "/assets/onas-m-lg12-f.png", x: 0, y: 1903, w: 260, h: 120 },
+    { src: "/assets/onas-m-lg13-f.png", x: 142, y: 1916, w: 260, h: 108 },
+  ],
+};
+
+export function OnasLimeMobile({ lime }: { lime: ONasLime }) {
+  return (
+    <section className="relative w-full overflow-x-clip md:hidden">
+      <div className="@container mx-auto w-full max-w-(--workspace)">
+        <div className="relative bg-brand-lime" style={{ aspectRatio: `402/${GMOB.h}` }}>
+          {GMOB.lines.map((l) => (
+            <div key={l.y} className="absolute bg-brand-blue"
+              style={{ left: cm(GMOB.lineX), top: cm(l.y), right: 0, height: cm(1.2) }} />
+          ))}
+          <h2
+            className="absolute text-center font-modular text-brand-blue"
+            style={{ left: cm(GMOB.header.left), top: cm(GMOB.header.top), width: cm(GMOB.header.w), fontSize: cm(GMOB.header.fontPx), lineHeight: `${(GMOB.header.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            {lime.headerSegs[0]}
+            <span style={{ fontSize: cm(GMOB.header.accentPx) }}>{lime.headerSegs[1]}</span>
+            {lime.headerSegs[2]}
+          </h2>
+          <h3
+            className="absolute font-display font-extrabold text-brand-blue"
+            style={{ left: cm(GMOB.col1Title.left), top: cm(GMOB.col1Title.top), width: cm(GMOB.col1Title.w), fontSize: cm(GMOB.col1Title.fontPx), lineHeight: `${(GMOB.col1Title.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            {lime.col1Title}
+          </h3>
+          <div
+            className="absolute text-right font-display text-brand-blue"
+            style={{ left: cm(GMOB.col1Body.left), top: cm(GMOB.col1Body.top), width: cm(GMOB.col1Body.w), fontSize: cm(GMOB.col1Body.fontPx), lineHeight: `${(GMOB.col1Body.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            <p className="font-normal">{lime.col1BodyP1}</p>
+            <p className="font-semibold" style={{ marginTop: cm(GMOB.col1Body.pGap) }}>{lime.col1BodyP2}</p>
+          </div>
+          <h3
+            className="absolute text-right font-display font-extrabold text-brand-blue"
+            style={{ left: cm(GMOB.col2Title.left), top: cm(GMOB.col2Title.top), width: cm(GMOB.col2Title.w), fontSize: cm(GMOB.col2Title.fontPx), lineHeight: `${(GMOB.col2Title.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            {["Zależy nam na","czymś więcej","niż","przekazanie","wiedzy"].map((l)=>(<span key={l} className="block">{l}</span>))}
+          </h3>
+          <div
+            className="absolute text-justify font-display text-brand-blue"
+            style={{ left: cm(GMOB.col2Body.left), top: cm(GMOB.col2Body.top), width: cm(GMOB.col2Body.w), fontSize: cm(GMOB.col2Body.fontPx), lineHeight: `${(GMOB.col2Body.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            <p className="font-normal">{lime.col2BodyP1}</p>
+            {/* tracking -0.55: semibold w impl odrobinę szerszy niż w designie —
+              * bez tego „oparte" spada z linii 2 */}
+            <p className="font-semibold" style={{ marginTop: cm(GMOB.col2Body.pGap), letterSpacing: cm(-0.55) }}>{lime.col2BodyP2}</p>
+          </div>
+          <p
+            className="absolute text-center font-modular text-brand-blue"
+            style={{ left: cm(GMOB.foot.left), top: cm(GMOB.foot.top), width: cm(GMOB.foot.w), fontSize: cm(GMOB.foot.fontPx), lineHeight: `${(GMOB.foot.lhPx / 4.02).toFixed(4)}cqw` }}
+          >
+            {["Nowoczesne podejście","dostosowane","do potrzeb polskiego","rynku."].map((l)=>(<span key={l} className="block">{l}</span>))}
+          </p>
+          {GMOB.groups.map((g) => (
+            <img key={g.src} src={g.src} alt="" aria-hidden className="absolute"
+              style={{ left: cm(g.x), top: cm(g.y), width: cm(g.w), height: cm(g.h) }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function OnasLime({ lime }: { lime: ONasLime }) {
   return (
     <section className="relative hidden w-full overflow-x-clip md:block">

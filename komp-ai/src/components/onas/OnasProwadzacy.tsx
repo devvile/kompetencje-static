@@ -78,6 +78,178 @@ const G = {
   photoR: 100,
 };
 
+/* mobile: canvas 402 szer. (1cqw = 4.02px) */
+const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
+
+/* MOBILE — canvas 402×4994 (y5167..10161, blue Rectangle 6). Pill bleeduje 39px
+ * W GÓRĘ nad lime; limonkowa falka za pigułą (prawy róg) wypieczona. Układ per
+ * osoba: nazwisko HK white → foto (rogi bl+tr 100) z 2 lime sparkle na rogach →
+ * tag szeroki + rząd 2 tagów → bio1 szary (flush left, TL ostry) → bio2 (białe
+ * 20%, flush right) → bio3 (r35); dekoracje (krzywe lewe, gwiazdy outline
+ * prawe, bloby lime) wypieczone opaque na płaskim blue. Pozycje = pomiar
+ * ink-bands z renderu (Figma MCP niedostępne w tej sesji); kadry foto =
+ * grid-search match do renderu. */
+const GM = {
+  h: 4994,
+  pill: { x: 31, y: -39, w: 341, h: 73, borderPx: 5, fontPx: 23 },
+  wave: { x: 336, y: 0, w: 66, h: 48 },
+  bioFontPx: 12.5, bio3FontPx: 12.5, bioLhPx: 15, bioR: 35, tagFontPx: 12, tagBorderPx: 1.5,
+  starW: 32, starH: 23,
+  people: [
+    {
+      name: { x: 68, y: 91, fontPx: 26, lhPx: 35, trackPx: -0.9 }, // cap 19, 2 linie
+      photo: { x: 63, y: 186, w: 273, h: 370 },
+      crop: { w: "114.3%", h: "124.3%", left: "-11.7%", top: "-8.6%" }, // grid-search match
+      stars: [{ x: 302, y: 181 }, { x: 65, y: 541 }],
+      tagRow1: { x: 67, y: 592, w: 265, h: 35, idx: 2 },
+      tagRow2: [{ x: 67, y: 644, w: 157, h: 34, idx: 0 }, { x: 237, y: 644, w: 94, h: 34, idx: 1 }],
+      bio1: { box: { x: 0, y: 715, w: 343, h: 175 }, text: { x: 29, y: 744, w: 284 } },
+      bio2: { box: { x: 78, y: 938, w: 324, h: 359 }, text: { x: 108, y: 968, w: 266 } },
+      bio3: { box: { x: 27, y: 1359, w: 297, h: 207 }, text: { x: 37, y: 1388, w: 235 } },
+      decos: [
+        { src: "/assets/onas-m-pr-l1-f.png", x: 0, y: 933, w: 25, h: 655 },
+        { src: "/assets/onas-m-pr-r1-f.png", x: 330, y: 1353, w: 72, h: 220 },
+        { src: "/assets/onas-m-pr-blob1-f.png", x: 0, y: 1623, w: 105, h: 65 },
+      ],
+    },
+    {
+      name: { x: 68, y: 1744, fontPx: 26, lhPx: 35, trackPx: -0.9 }, // 1 linia
+      photo: { x: 66, y: 1804, w: 273, h: 374 },
+      crop: { w: "103.7%", h: "104.8%", left: "-4.4%", top: "0%" }, // grid-search match
+      stars: [{ x: 305, y: 1800 }, { x: 68, y: 2163 }],
+      tagRow1: { x: 66, y: 2210, w: 268, h: 35, idx: 2 },
+      tagRow2: [{ x: 66, y: 2262, w: 149, h: 34, idx: 1 }, { x: 234, y: 2262, w: 100, h: 34, idx: 0 }],
+      bio1: { box: { x: 0, y: 2333, w: 337, h: 175 }, text: { x: 23, y: 2362, w: 284 } },
+      bio2: { box: { x: 90, y: 2556, w: 312, h: 357 }, text: { x: 119, y: 2585, w: 255 } },
+      bio3: { box: { x: 28, y: 2986, w: 274, h: 207 }, text: { x: 33, y: 3015, w: 216 } },
+      decos: [
+        { src: "/assets/onas-m-pr-l2a-f.png", x: 0, y: 2918, w: 96, h: 67 },
+        { src: "/assets/onas-m-pr-l2b-f.png", x: 0, y: 2985, w: 25, h: 214 },
+        { src: "/assets/onas-m-pr-r2-f.png", x: 306, y: 2983, w: 96, h: 200 },
+        { src: "/assets/onas-m-pr-blob2-f.png", x: 0, y: 3269, w: 105, h: 66 },
+      ],
+    },
+    {
+      name: { x: 69, y: 3386, fontPx: 33, lhPx: 41, trackPx: -0.9 }, // cap 24, 2 linie
+      photo: { x: 63, y: 3500, w: 273, h: 372 },
+      crop: { w: "100.7%", h: "100.5%", left: "0%", top: "-1.1%" }, // grid-search match
+      stars: [{ x: 302, y: 3495 }, { x: 65, y: 3857 }],
+      tagRow1: { x: 67, y: 3908, w: 265, h: 34, idx: 2 },
+      tagRow2: [{ x: 67, y: 3960, w: 149, h: 34, idx: 1 }, { x: 233, y: 3960, w: 98, h: 34, idx: 0 }],
+      bio1: { box: { x: 0, y: 4026, w: 343, h: 175 }, text: { x: 29, y: 4055, w: 284 } },
+      bio2: { box: { x: 78, y: 4254, w: 324, h: 359 }, text: { x: 108, y: 4284, w: 266 } },
+      bio3: { box: { x: 28, y: 4675, w: 292, h: 207 }, text: { x: 32, y: 4704, w: 235 } },
+      decos: [
+        { src: "/assets/onas-m-pr-l3-f.png", x: 0, y: 4678, w: 25, h: 210 },
+        { src: "/assets/onas-m-pr-r3-f.png", x: 323, y: 4678, w: 79, h: 215 },
+      ],
+    },
+  ],
+};
+
+export function OnasProwadzacyMobile({ p, people }: { p: ONasProwadzacy; people: Lecturer[] }) {
+  const bioLh = `${(GM.bioLhPx / 4.02).toFixed(4)}cqw`;
+  return (
+    <section className="relative z-10 w-full overflow-x-clip md:hidden">
+      <div className="@container mx-auto w-full max-w-(--workspace)">
+        <div className="relative bg-brand-blue" style={{ aspectRatio: `402/${GM.h}` }} data-node-id="326:1050-prowadzacy">
+          <img src="/assets/onas-m-pr-wave-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: cm(GM.wave.x), top: cm(GM.wave.y), width: cm(GM.wave.w), height: cm(GM.wave.h) }} />
+          <div
+            className="absolute flex items-center justify-center rounded-full border-solid border-white bg-brand-lime font-modular text-brand-blue"
+            style={{
+              left: cm(GM.pill.x), top: cm(GM.pill.y), width: cm(GM.pill.w), height: cm(GM.pill.h),
+              borderWidth: cm(GM.pill.borderPx), fontSize: cm(GM.pill.fontPx), lineHeight: 1,
+            }}
+            data-node-id="337:1639"
+          >
+            {p.pill}
+          </div>
+          {GM.people.map((gp, i) => {
+            const person = people[i];
+            const nameLines = person.name.split(" ");
+            return (
+              <div key={person.name}>
+                <h3
+                  className="absolute origin-top-left whitespace-nowrap font-modular text-white"
+                  style={{
+                    left: cm(gp.name.x), top: cm(gp.name.y), fontSize: cm(gp.name.fontPx),
+                    letterSpacing: cm(gp.name.trackPx),
+                    lineHeight: `${(gp.name.lhPx / 4.02).toFixed(4)}cqw`,
+                  }}
+                >
+                  {i === 1 ? person.name : nameLines.map((l) => <span key={l} className="block">{l}</span>)}
+                </h3>
+                <div
+                  className="absolute overflow-hidden"
+                  style={{
+                    left: cm(gp.photo.x), top: cm(gp.photo.y), width: cm(gp.photo.w), height: cm(gp.photo.h),
+                    borderBottomLeftRadius: cm(100), borderTopRightRadius: cm(100),
+                  }}
+                >
+                  <img src={person.photo} alt={person.name} className="absolute max-w-none"
+                    style={{ width: gp.crop.w, height: gp.crop.h, left: gp.crop.left, top: gp.crop.top }} />
+                </div>
+                {gp.stars.map((st, j) => (
+                  <img key={j} src="/assets/onas-m-pr-star-f.png" alt="" aria-hidden className="absolute"
+                    style={{ left: cm(st.x), top: cm(st.y), width: cm(GM.starW), height: cm(GM.starH) }} />
+                ))}
+                {[gp.tagRow1, ...gp.tagRow2].map((tg) => (
+                  <span
+                    key={tg.idx}
+                    className="absolute flex items-center justify-center whitespace-nowrap rounded-full border-solid border-white font-display font-normal text-white"
+                    style={{
+                      left: cm(tg.x), top: cm(tg.y), width: cm(tg.w), height: cm(tg.h),
+                      borderWidth: cm(GM.tagBorderPx), fontSize: cm(GM.tagFontPx), lineHeight: 1,
+                    }}
+                  >
+                    {p.tags[i][tg.idx]}
+                  </span>
+                ))}
+                {/* bio1: szary box flush left (TL ostry, reszta zaokrąglona), tekst blue */}
+                <div className="absolute bg-page"
+                  style={{
+                    left: cm(gp.bio1.box.x), top: cm(gp.bio1.box.y), width: cm(gp.bio1.box.w), height: cm(gp.bio1.box.h),
+                    borderRadius: `0 ${cm(GM.bioR)} ${cm(GM.bioR)} ${cm(GM.bioR)}`,
+                  }} />
+                <p className="absolute text-justify font-display font-medium text-brand-blue"
+                  style={{ left: cm(gp.bio1.text.x), top: cm(gp.bio1.text.y), width: cm(gp.bio1.text.w), fontSize: cm(GM.bioFontPx), lineHeight: bioLh }}>
+                  {p.bio.intro}
+                </p>
+                {/* bio2: białe 20%, flush right (bleed do krawędzi), r35 */}
+                <div className="absolute border border-solid border-white"
+                  style={{
+                    left: cm(gp.bio2.box.x), top: cm(gp.bio2.box.y), width: cm(gp.bio2.box.w), height: cm(gp.bio2.box.h),
+                    borderRadius: cm(GM.bioR), backgroundColor: "rgba(255,255,255,0.2)",
+                  }} />
+                <div className="absolute text-justify font-display font-medium text-white"
+                  style={{ left: cm(gp.bio2.text.x), top: cm(gp.bio2.text.y), width: cm(gp.bio2.text.w), fontSize: cm(GM.bioFontPx), lineHeight: bioLh }}>
+                  <p>{p.bio.mainP1}</p>
+                  <p style={{ marginTop: cm(13.5) }}>{p.bio.mainP2}</p>
+                </div>
+                {/* bio3: białe 20%, r35 */}
+                <div className="absolute border border-solid border-white"
+                  style={{
+                    left: cm(gp.bio3.box.x), top: cm(gp.bio3.box.y), width: cm(gp.bio3.box.w), height: cm(gp.bio3.box.h),
+                    borderRadius: cm(GM.bioR), backgroundColor: "rgba(255,255,255,0.2)",
+                  }} />
+                <p className="absolute text-justify font-display font-medium text-white"
+                  style={{ left: cm(gp.bio3.text.x), top: cm(gp.bio3.text.y), width: cm(gp.bio3.text.w), fontSize: cm(GM.bio3FontPx), lineHeight: bioLh }}>
+                  {p.bio.extra}
+                </p>
+                {gp.decos.map((d) => (
+                  <img key={d.src} src={d.src} alt="" aria-hidden className="absolute"
+                    style={{ left: cm(d.x), top: cm(d.y), width: cm(d.w), height: cm(d.h) }} />
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function OnasProwadzacySec({ p, people }: { p: ONasProwadzacy; people: Lecturer[] }) {
   return (
     <section className="relative z-10 hidden w-full overflow-x-clip md:block">

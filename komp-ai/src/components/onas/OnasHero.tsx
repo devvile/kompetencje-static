@@ -40,14 +40,21 @@ const GMOB = {
   // (szeroka głowa, podbródek przy wierzchołku A logo; transform Figmy nieodtwarzalny)
   robot: { x: 0, y: 113, w: 320, h: 760 },
   blobL: { x: 0, y: 123, w: 86, h: 166 },
-  title: { right: 29, top: 244, fontPx: 89, lhPx: 81, trackPx: 0 }, // linie cap 248/330/410/488, right x373
+  // litery designu ściśnięte poziomo ~0.73 (origin top-right: prawa krawędź x373
+  // zostaje, lewy margines rośnie — uwaga Patryka o marginesie z lewej)
+  // f80/scaleX0.81: cap designu ~57 przy lh81 — mniejszy font + łagodniejszy
+  // ścisk (uwaga Patryka: 0.73 był „too tight")
+  title: { right: 25, top: 244, fontPx: 80, lhPx: 81, trackPx: 0, scaleX: 0.81 },
   logo: { x: 55, y: 650, w: 347, h: 222 },
 };
 
 function OnasHeroMobile({ hero }: { hero: ONasHero }) {
   const lines = ["KOMPE", "TEN", "CJ", "E"];
   return (
-    <section className="relative flex h-svh w-full items-center justify-center md:hidden">
+    // poster kotwiczony do GÓRY (nie centrowany!) — resztę 100svh wypełnia
+    // niebieski filler = start tła sekcji 2 (design: blue od y873, robot/logo
+    // kończą się dokładnie na 873; centrowanie wpychało blue na robota)
+    <section className="relative flex h-svh w-full flex-col md:hidden">
       <div
         className="@container mx-auto w-full"
         style={{ width: `min(100%, calc(100svh * (402 / ${GMOB.h})))` }}
@@ -62,10 +69,11 @@ function OnasHeroMobile({ hero }: { hero: ONasHero }) {
           </button>
           {/* KOMPETENCJE — 4 linie solid, ZA robotem (głowa nachodzi na litery) */}
           <h1
-            className="absolute text-right font-display font-black text-brand-blue"
+            className="absolute origin-top-right text-right font-display font-black text-brand-blue"
             style={{
               right: cm(GMOB.title.right), top: cm(GMOB.title.top), fontSize: cm(GMOB.title.fontPx),
               lineHeight: `${(GMOB.title.lhPx / 4.02).toFixed(4)}cqw`, letterSpacing: cm(GMOB.title.trackPx),
+              transform: `scaleX(${GMOB.title.scaleX})`,
             }}
           >
             {lines.map((l) => (
@@ -102,6 +110,8 @@ function OnasHeroMobile({ hero }: { hero: ONasHero }) {
             style={{ left: cm(GMOB.logo.x), top: cm(GMOB.logo.y), width: cm(GMOB.logo.w), height: cm(GMOB.logo.h) }} />
         </div>
       </div>
+      {/* niebieski pas dopełniający pierwszy ekran (design: blue 873..975) */}
+      <div className="w-full flex-1 bg-brand-blue" />
     </section>
   );
 }

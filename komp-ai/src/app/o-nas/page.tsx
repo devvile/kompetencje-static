@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import OnasHero from "../../components/onas/OnasHero";
-import OnasQa from "../../components/onas/OnasQa";
-import OnasLime from "../../components/onas/OnasLime";
-import OnasProwadzacySec from "../../components/onas/OnasProwadzacy";
-import OnasKontakt from "../../components/onas/OnasKontakt";
+import OnasQa, { OnasQaMobile } from "../../components/onas/OnasQa";
+import OnasLime, { OnasLimeMobile } from "../../components/onas/OnasLime";
+import OnasProwadzacySec, { OnasProwadzacyMobile } from "../../components/onas/OnasProwadzacy";
+import OnasKontakt, { OnasKontaktMobile } from "../../components/onas/OnasKontakt";
 import StopkaSection from "../../components/home/StopkaSection";
 import { getHomePage, getONasPage, getSiteSettings } from "../../content";
 
@@ -30,9 +30,13 @@ export default async function ONasPage() {
     <main className="w-full">
       <OnasHero hero={page.hero} nav={settings.nav} />
       <OnasQa items={page.qa} />
+      <OnasQaMobile qaM={page.qaM} />
       <OnasLime lime={page.lime} />
+      <OnasLimeMobile lime={page.lime} />
       <OnasProwadzacySec p={page.prowadzacy} people={home.prowadzacy.people} />
+      <OnasProwadzacyMobile p={page.prowadzacy} people={home.prowadzacy.people} />
       <OnasKontakt k={home.kontakt} ctaLabel="POZNAJ NASZE KURSY" />
+      <OnasKontaktMobile k={home.kontakt} ctaLabel="POZNAJ NASZE KURSY" />
       <StopkaSection f={settings.footer} />
     </main>
   );
