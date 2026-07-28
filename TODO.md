@@ -204,6 +204,14 @@ tekstury 2624×1630; maski logo).
       różnione kursy, przed resztą kafli); scroll-behavior smooth; podmienione
       też footer KURSY, hero CTA i CTA w ManifestSection/OnasKontakt (stary
       `/kursy` nie istniał jako route → 404).
+- [x] **Nawigacja — docelowe cele linków** (2026-07-28): KURSY → `/` (landing),
+      O NAS → `/o-nas`, MANIFEST → `/manifest` (NOWA podstrona-placeholder
+      w estetyce stron prawnych — do podmiany gdy będzie design), KONTAKT →
+      `/#kontakt` (kotwica na formularzu landing, smooth scroll). Kotwica
+      `#kursy` na DnaSection zostaje (używana wcześniej), ale nav już z niej
+      nie korzysta.
+- [ ] MANIFEST: docelowy design podstrony (obecnie placeholder) — czeka na
+      widok z Figmy.
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
