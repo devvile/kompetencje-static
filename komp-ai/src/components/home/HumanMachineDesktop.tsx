@@ -45,9 +45,25 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let extra = 0;
-    // PIN: wrapper wyższy o "extra" — sticky trzyma sekcję w miejscu, a scroll
-    // przez extra napędza WYŁĄCZNIE choreografię (strona nie jedzie po Y).
-    // Odpięcie następuje dopiero po całej sekwencji.
+    // Sekwencja (uwaga Patryka: seek scrollem klatkował na 2 komputerach):
+    // 1) napisy = scroll-scrubbing (0..70% pinu), wideo stoi na 1. klatce;
+    // 2) po domknięciu napisów: ZWYKŁE odtwarzanie wideo (płynne), ekran
+    //    ZAMROŻONY (scroll przypięty do lockY);
+    // 3) po końcu wideo: fade-in captionu i odblokowanie scrolla.
+    let phase: "idle" | "playing" | "done" = "idle";
+    let lockY = 0;
+    caption.style.opacity = "0";
+    caption.style.transform = "translateY(18px)";
+    caption.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    const finishCaption = () => {
+      caption.style.opacity = "1";
+      caption.style.transform = "translateY(0)";
+    };
+    const jumpToEnd = () => {
+      phase = "done";
+      if (video.duration) video.currentTime = video.duration * 0.999;
+      finishCaption();
+    };
     const setSizes = () => {
       const vh = window.innerHeight;
       if (reduce) {
@@ -56,45 +72,67 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
         sticky.style.top = "0px";
         return;
       }
-      extra = Math.round(vh * 1.4);
+      extra = Math.round(vh * 1.0);
       wrap.style.height = `${sticky.offsetHeight + extra}px`;
       // sekcja wyższa niż viewport → pin dołem (caption musi być widoczny)
       sticky.style.top = `${Math.min(0, vh - sticky.offsetHeight)}px`;
     };
     const apply = () => {
       raf = 0;
-      // raw 0..1 = ile "extra" scrolla skonsumowane podczas pinu.
-      // Choreografia: napisy 0..30% → ręce POWOLI 25..85% (easing ^1.3,
-      // klip ma większość ruchu na początku) → caption 85..100%; dopiero
-      // po 100% sekcja się odpina i strona scrolluje dalej.
-      const raw = reduce || extra === 0
-        ? 1
-        : Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / extra));
-      const textP = Math.min(1, raw / 0.3);
-      const videoP = Math.pow(Math.min(1, Math.max(0, (raw - 0.25) / 0.6)), 1.3);
-      const capP = Math.min(1, Math.max(0, (raw - 0.85) / 0.15));
+      if (reduce || extra === 0) {
+        human.style.transform = "translateX(0)";
+        machine.style.transform = "translateX(0)";
+        jumpToEnd();
+        return;
+      }
+      const raw = Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / extra));
+      const textP = Math.min(1, raw / 0.7);
       human.style.transform = `translateX(${(-(1 - textP) * 115).toFixed(2)}%)`;
       machine.style.transform = `translateX(${((1 - textP) * 115).toFixed(2)}%)`;
-      if (video.duration) video.currentTime = videoP * video.duration * 0.999;
-      caption.style.opacity = capP.toFixed(3);
-      caption.style.transform = `translateY(${((1 - capP) * 18).toFixed(2)}px)`;
+      if (phase === "idle") {
+        if (raw >= 0.97) {
+          // wskok głęboko (np. kotwica) — bez sekwencji, od razu finał
+          jumpToEnd();
+        } else if (raw >= 0.7) {
+          phase = "playing";
+          lockY = window.scrollY;
+          video.play().catch(() => jumpToEnd());
+        }
+      }
+    };
+    const onEnded = () => {
+      finishCaption();
+      // chwila na fade-in captionu, potem odblokowanie scrolla
+      setTimeout(() => {
+        phase = "done";
+      }, 650);
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
+    };
+    const onScroll = () => {
+      if (phase === "playing") {
+        // zamrożony ekran na czas odtwarzania
+        window.scrollTo(0, lockY);
+        return;
+      }
+      schedule();
     };
     const onResize = () => {
       setSizes();
       schedule();
     };
     setSizes();
+    video.addEventListener("ended", onEnded);
     video.addEventListener("loadedmetadata", schedule);
-    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     schedule();
     return () => {
       if (raf) cancelAnimationFrame(raf);
+      video.removeEventListener("ended", onEnded);
       video.removeEventListener("loadedmetadata", schedule);
-      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
   }, []);
