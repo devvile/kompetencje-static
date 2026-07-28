@@ -297,12 +297,12 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         </div>
       </div>
       {/* CTA — POZA posterem, przypięty w PIERWSZYM ekranie (100svh z nawigacją):
-          44px nad foldem (design: 875-831), naturalna skala px, centrowany */}
+          20px nad foldem (Patryk: niżej niż designowe 44px), naturalna skala px */}
       <Link
         href={hero.ctaHref}
         className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center justify-center border-solid border-white bg-brand-lime text-center font-modular text-brand-blue"
         style={{
-          top: "calc(100svh - 99px)",
+          top: "calc(100svh - 75px)",
           width: "min(300px, calc(100vw - 40px))",
           height: 55,
           borderRadius: 40,
