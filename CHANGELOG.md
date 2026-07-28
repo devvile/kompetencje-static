@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-07-28 (4) — hero mobile: kotwica do góry + shift, hamburger I button widoczne
+
+- Poprzednia wersja (cover, `items-center`) ucinała hamburger na krótszym
+  viewportcie. Pomiar referencji (mobile-preview-landing-hero1.jpeg): button
+  lime na x21–85%, robot z lewym gutterem ~11% → referencja to `contain`
+  z bocznymi marginesami (odrzucone przez użytkownika, chce pełną szerokość).
+- Pełnej szerokości posteru (402/875, wyższy niż ekran) nie da się pokazać
+  w całości bez gutterów. Kompromis: sekcja `h-svh overflow-hidden`, poster
+  pełnej szerokości kotwiczony do GÓRY + `marginTop: cm(-44)` (ścina martwy
+  szary pas nad top barem). Efekt: logo/hamburger u góry z małym marginesem,
+  button „WYBIERZ KURS…" podjeżdża w widoczny obszar (design y776, po shifcie
+  ~732), overflow-hidden przycina tylko dolny fragment robota pod buttonem.
+  Zweryfikowane 402×800 (button z zapasem) i 402×762 (button na krawędzi).
+  Ten sam zabieg na o-nas (dół = logo .AI). Desktop bez zmian (md:hidden).
+
 ## 2026-07-28 (3) — hero mobile: cover-crop zamiast kotwiczenia do góry
 
 - **Hero mobile home + o-nas**: po fixie szerokości poster (402/875) był
