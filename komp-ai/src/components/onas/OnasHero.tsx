@@ -73,26 +73,30 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
               transform: `scaleX(${GMOB.title.scaleX})`,
             }}
           >
-            {lines.map((l) => (
-              <span key={l} className="block">{l}</span>
+            {/* animacja na liniach, nie na h1 — h1 ma inline scaleX(0.81),
+                keyframes transform by go nadpisały */}
+            {lines.map((l, i) => (
+              <span key={l} className={`hero-text hero-text-d${i + 1} block`}>{l}</span>
             ))}
           </h1>
-          {/* robot — NAD literami (z-order designu) */}
+          {/* robot — NAD literami (z-order designu); minimalnie węższa głowa
+              (scaleX 0.92 od lewej, decyzja Patryka) — litery dalej chowają
+              się za nią, wysokość i lewa krawędź bez zmian */}
           <img
             src="/assets/onas-robot-m-f.png"
             alt="Chromowana głowa robota — sztuczna inteligencja"
-            className="absolute"
-            style={{ left: cm(GMOB.robot.x), top: cm(GMOB.robot.y), width: cm(GMOB.robot.w), height: cm(GMOB.robot.h) }}
+            className="absolute origin-left"
+            style={{ left: cm(GMOB.robot.x), top: cm(GMOB.robot.y), width: cm(GMOB.robot.w), height: cm(GMOB.robot.h), transform: "scaleX(0.92)" }}
           />
           {/* lime kształt przy lewej krawędzi */}
           <img src="/assets/onas-m-blob-l-f.png" alt="" aria-hidden className="absolute"
             style={{ left: cm(GMOB.blobL.x), top: cm(GMOB.blobL.y), width: cm(GMOB.blobL.w), height: cm(GMOB.blobL.h) }} />
           {/* gwiazdki przy kickerze */}
-          <img src="/assets/onas-m-stars-kicker-f.png" alt="" aria-hidden className="absolute"
+          <img src="/assets/onas-m-stars-kicker-f.png" alt="" aria-hidden className="hero-star-big-b absolute"
             style={{ left: cm(GMOB.stars.x), top: cm(GMOB.stars.y), width: cm(GMOB.stars.w), height: cm(GMOB.stars.h) }} />
           {/* kicker */}
           <p
-            className="absolute font-modular text-brand-blue"
+            className="hero-text hero-text-d1 absolute font-modular text-brand-blue"
             style={{
               left: cm(GMOB.kicker.left), top: cm(GMOB.kicker.top), fontSize: cm(GMOB.kicker.fontPx),
               letterSpacing: cm(GMOB.kicker.trackPx), lineHeight: `${(GMOB.kicker.lhPx / 4.02).toFixed(4)}cqw`,
@@ -103,7 +107,7 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
             ))}
           </p>
           {/* logo .AI mobile */}
-          <img src="/assets/onas-m-logo-f.png" alt="" aria-hidden className="absolute"
+          <img src="/assets/onas-m-logo-f.png" alt="" aria-hidden className="hero-text hero-text-d5 absolute"
             style={{ left: cm(GMOB.logo.x), top: cm(GMOB.logo.y), width: cm(GMOB.logo.w), height: cm(GMOB.logo.h) }} />
         </div>
         </div>
@@ -125,11 +129,11 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
         <div className="relative bg-page" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="229:1094">
           <SiteNav nav={nav} />
           {/* gwiazdka lime za kickerem */}
-          <img src="/assets/onas-star-kicker-f.png" alt="" aria-hidden className="absolute"
+          <img src="/assets/onas-star-kicker-f.png" alt="" aria-hidden className="hero-star-a absolute"
             style={{ left: c(G.starKicker.left), top: c(G.starKicker.top), width: c(G.starKicker.w), height: c(G.starKicker.h) }} />
           {/* kicker */}
           <p
-            className="absolute font-modular text-brand-blue"
+            className="hero-text hero-text-d1 absolute font-modular text-brand-blue"
             style={{
               left: c(G.kicker.left), top: c(G.kicker.top), fontSize: c(G.kicker.fontPx),
               letterSpacing: c(G.kicker.trackPx), lineHeight: `${(G.kicker.lhPx / 14.4).toFixed(4)}cqw`,
@@ -140,10 +144,10 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
             ))}
           </p>
           {/* gwiazda outline top-right */}
-          <img src="/assets/onas-star-tr-f.png" alt="" aria-hidden className="absolute"
+          <img src="/assets/onas-star-tr-f.png" alt="" aria-hidden className="hero-star-big absolute"
             style={{ left: c(G.starTR.left), top: c(G.starTR.top), width: c(G.starTR.w), height: c(G.starTR.h) }} />
           {/* TENCJE — outline ZA robotem, rozsunięte */}
-          <div aria-hidden className="absolute inset-0">
+          <div aria-hidden className="hero-text hero-text-d3 absolute inset-0">
             {[{ t: hero.titleOutlineLeft, left: G.tencje.leftL }, { t: hero.titleOutlineRight, left: G.tencje.leftR }].map(({ t, left }) => (
               <span
                 key={t}
@@ -169,7 +173,7 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
           />
           {/* KOMPE — solid NAD robotem; h1 sematycznie obejmuje całość */}
           <h1
-            className="absolute whitespace-nowrap font-display font-black text-brand-blue"
+            className="hero-text hero-text-d2 absolute whitespace-nowrap font-display font-black text-brand-blue"
             style={{
               left: c(G.kompe.left), top: c(G.kompe.top),
               fontSize: c(G.kompe.fontPx), lineHeight: 1, letterSpacing: c(G.kompe.trackPx),
@@ -180,7 +184,7 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
           </h1>
           {/* logo .AI */}
           <img
-            src="/assets/onas-ai-logo.png" alt="" aria-hidden className="absolute"
+            src="/assets/onas-ai-logo.png" alt="" aria-hidden className="hero-text hero-text-d5 absolute"
             style={{ left: c(G.aiLogo.left), top: c(G.aiLogo.top), width: c(G.aiLogo.w), height: c(G.aiLogo.h) }}
             data-node-id="401:2428"
           />
