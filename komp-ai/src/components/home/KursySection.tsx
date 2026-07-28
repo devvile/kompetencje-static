@@ -148,21 +148,39 @@ const G = {
 };
 
 export default function KursySection({ cards }: { cards: KursCard[] }) {
-  const secRef = useRef<HTMLElement | null>(null);
+  const wrapRef = useRef<HTMLElement | null>(null);
+  const stickyRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const sec = secRef.current;
-    if (!sec) return;
+    const wrap = wrapRef.current;
+    const sticky = stickyRef.current;
+    if (!wrap || !sticky) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
+    let extra = 0;
+    // PIN (życzenie Patryka: końcówka nie może „uciekać" scrollem): sekcja
+    // przyklejona na czas wjazdu kart; karty lądują do ~78% extra, resztka
+    // (~22%) = zawieszenie na złożonym układzie, dopiero potem odpięcie.
+    const setSizes = () => {
+      const vh = window.innerHeight;
+      if (reduce) {
+        extra = 0;
+        wrap.style.height = "";
+        sticky.style.top = "0px";
+        return;
+      }
+      extra = Math.round(vh * 0.85);
+      wrap.style.height = `${sticky.offsetHeight + extra}px`;
+      sticky.style.top = `${Math.min(0, vh - sticky.offsetHeight)}px`;
+    };
     const apply = () => {
       raf = 0;
-      const r = sec.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (r.height * 0.9)));
-      const sub = (a: number, b: number) => Math.min(1, Math.max(0, (p - a) / (b - a)));
-      const t = [sub(0, 0.85), sub(0.07, 0.92), sub(0.14, 1)];
+      const raw = reduce || extra === 0
+        ? 1
+        : Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / extra));
+      const sub = (a: number, b: number) => Math.min(1, Math.max(0, (raw - a) / (b - a)));
+      const t = [sub(0, 0.62), sub(0.06, 0.7), sub(0.12, 0.78)];
       const tr = [
         `translateX(${(-(1 - t[0]) * 175).toFixed(2)}%)`, // lewa zza lewego marginesu
         `translateY(${((1 - t[1]) * 160).toFixed(2)}%)`, // środkowa od dołu
@@ -175,18 +193,24 @@ export default function KursySection({ cards }: { cards: KursCard[] }) {
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
     };
+    const onResize = () => {
+      setSizes();
+      schedule();
+    };
+    setSizes();
     window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", onResize);
     schedule();
     return () => {
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
   return (
-    <section ref={secRef} className="relative hidden w-full md:block">
+    <section ref={wrapRef} className="relative hidden w-full bg-page md:block">
+      <div ref={stickyRef} className="sticky top-0">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative aspect-[1440/874] overflow-hidden bg-page">
           {/* niebieskie tło sekcji (1440×806) */}
@@ -214,6 +238,7 @@ export default function KursySection({ cards }: { cards: KursCard[] }) {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
