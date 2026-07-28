@@ -95,18 +95,20 @@ export default function ProwadzacyDesktop({ p }: { p: Prowadzacy }) {
   return (
     <section className="relative z-10 hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
-        <div ref={secRef} className="prow-sec relative bg-page" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="250:9703">
+        {/* overflow-x-clip: prawa gwiazda dochodzi do x1440, dryf wypychał ją
+            poza kadr (h-scroll); pionowo visible — lewa bleeduje pod sekcję */}
+        <div ref={secRef} className="prow-sec relative overflow-x-clip bg-page" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="250:9703">
           {/* niebieskie tło */}
           <div className="absolute inset-x-0 bottom-0 bg-brand-blue" style={{ top: c(G.bgTop) }} />
           {/* gwiazdy lime — KOMPLETNE kształty (SVG) chowane za kartami
               (karty mają nieprzezroczyste tło), z dryfem */}
           <img
-            src="/assets/prow-star-r.svg" alt="" aria-hidden className="hero-star-a absolute"
+            src="/assets/prow-star-r.svg" alt="" aria-hidden className="prow-star hero-star-a absolute"
             style={{ left: c(G.starR.left), top: c(G.starR.top), width: c(G.starR.w), height: c(G.starR.h) }}
             data-node-id="250:9724"
           />
           <img
-            src="/assets/prow-star-l.svg" alt="" aria-hidden className="hero-star-c absolute"
+            src="/assets/prow-star-l.svg" alt="" aria-hidden className="prow-star hero-star-c absolute"
             style={{ left: c(G.starL.left), top: c(G.starL.top), width: c(G.starL.w), height: c(G.starL.h) }}
             data-node-id="250:9714"
           />

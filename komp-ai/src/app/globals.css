@@ -322,6 +322,16 @@ body {
   transform: translateY(0);
 }
 
+/* gwiazdy lime pojawiają się DOPIERO po kartach (fade po kaskadzie kart) */
+.reveal-ready .prow-sec .prow-star {
+  opacity: 0;
+  transition: opacity 0.9s ease 1.15s;
+}
+
+.reveal-ready .prow-sec.is-in .prow-star {
+  opacity: 1;
+}
+
 /* nagłówek + linia (rysuje się od lewej) */
 .reveal-ready .prow-sec .prow-head {
   opacity: 0;
@@ -368,6 +378,7 @@ body {
   .reveal-ready .prow-sec .prow-name,
   .reveal-ready .prow-sec .prow-head,
   .reveal-ready .prow-sec .prow-line,
+  .reveal-ready .prow-sec .prow-star,
   .reveal-ready [data-reveal].reveal-wipe {
     clip-path: none;
     opacity: 1 !important;
