@@ -63,7 +63,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/lime-star-f.png"
             alt=""
-            className="hero-star-a absolute"
+            className="hero-star-pulse absolute"
             style={{ left: c(G.limeStarTR.left), top: c(G.limeStarTR.top), width: c(G.limeStarTR.w), height: c(G.limeStarTR.h) }}
             data-node-id="401:2570"
           />

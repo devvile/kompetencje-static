@@ -89,6 +89,32 @@ body {
   animation: star-drift 7.5s ease-in-out 1.6s infinite;
 }
 
+/* limonkowa gwiazda za napisem hero desktop: float + WYRAŹNY puls skali */
+@keyframes star-pulse-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-8px) rotate(5deg) scale(0.78);
+  }
+  66% {
+    transform: translateY(-3px) rotate(-3deg) scale(1.07);
+  }
+}
+
+.hero-star-pulse {
+  animation: star-pulse-drift 7s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-star-pulse {
+    animation: none;
+  }
+}
+
 /* przezroczyste (outline) gwiazdki: większy dryf po łuku */
 @keyframes star-drift-big {
   0%,
