@@ -42,9 +42,11 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     let raf = 0;
     const apply = () => {
       raf = 0;
-      const r = sec.getBoundingClientRect();
+      // progress liczony od PASA DŁONI (nie od góry sekcji — startowało za
+      // wcześnie i przy dojechaniu do rąk animacja była już na końcu):
+      // 0 = góra wideo na dole viewportu, 1 = wideo w całości widoczne
+      const r = video.getBoundingClientRect();
       const vh = window.innerHeight;
-      // 0 = góra sekcji na dole viewportu, 1 = sekcja w całości widoczna
       const p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / r.height));
       human.style.transform = `translateX(${(-(1 - p) * 115).toFixed(2)}%)`;
       machine.style.transform = `translateX(${((1 - p) * 115).toFixed(2)}%)`;
