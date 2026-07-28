@@ -3,8 +3,8 @@
 /*
  * NASI PROWADZĄCY — desktop z choreografią awwwards-style (życzenie Patryka):
  * wejście w viewport → nagłówek fade-up + linia rysuje się od lewej, karty
- * odsłaniają się WIPE'em clip-path od dołu (stagger 0/0.15/0.3s) ze
- * zdjęciem „osiadającym" z zoomu 1.32→1, nazwiska wyjeżdżają spod maski.
+ * FADE-IN (środkowa pierwsza: delaye 0.22/0/0.34s) ze zdjęciem „osiadającym"
+ * z zoomu 1.32→1, nazwiska wyjeżdżają spod maski.
  * Hover: magnetyczny tilt 3D karty (rotate wg pozycji kursora) + zbliżenie
  * zdjęcia. Style stanów w globals.css (.prow-*); geometria 1:1 z wersji
  * statycznej (ProwadzacySection).
@@ -132,7 +132,8 @@ export default function ProwadzacyDesktop({ p }: { p: Prowadzacy }) {
                   left: c(card.x - G.borderPx), top: c(G.cardY - G.borderPx),
                   width: c(G.cardW + 2 * G.borderPx), height: c(G.cardH + 2 * G.borderPx),
                   borderWidth: c(G.borderPx), borderRadius: c(card.r + G.borderPx),
-                  ["--prow-d" as never]: `${(i * 0.15).toFixed(2)}s`,
+                  // środkowa karta pojawia się PIERWSZA (życzenie Patryka)
+                  ["--prow-d" as never]: `${[0.22, 0, 0.34][i]}s`,
                 }}
                 data-node-id="253:1407"
               >
