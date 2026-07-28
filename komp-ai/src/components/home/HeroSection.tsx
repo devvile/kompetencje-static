@@ -209,6 +209,34 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         className="absolute left-0 top-0 w-full"
         data-node-id="375:1754"
       />
+      {/* robot FULL-BLEED — dotyka lewej i prawej krawędzi ekranu jak
+          w designie (img 525 szer. wystaje poza canvas 402 z obu stron:
+          left -122/402, width 525/402); góra proporcjonalnie do svh
+          (design 219/875), dół bleeduje pod button i jest cięty na foldzie
+          przez overflow-hidden sekcji. Mini .AI na twarzy robota pozycjonowane
+          W TEJ warstwie (procenty względem robota), żeby jechało z jego skalą. */}
+      <div
+        className="absolute"
+        style={{ left: "-30.348%", width: "130.597%", top: "calc(100svh * 0.25029)" }}
+        data-node-id="375:1763"
+      >
+        <Image
+          src="/assets/robot-hero-m-2x.png"
+          alt="Robot AI — kompetencje przyszłości"
+          width={1050}
+          height={1312}
+          priority
+          className="h-auto w-full max-w-none"
+        />
+        {/* mini grupa .AI na robocie */}
+        <img
+          src="/assets/m-mini-group-filtered.png"
+          alt=""
+          className="absolute"
+          style={{ left: "57.524%", top: "33.994%", width: "26.381%" }}
+          data-node-id="375:1767"
+        />
+      </div>
       {/* top bar POZA skalowanym posterem — wspólny komponent, naturalna skala
           i identyczne położenie na wszystkich stronach */}
       <MobileTopBar nav={nav} />
@@ -242,17 +270,6 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
               {hero.headlineLine2}
             </span>
           </h1>
-          {/* robot */}
-          <Image
-            src="/assets/robot-hero-m-2x.png"
-            alt="Robot AI — kompetencje przyszłości"
-            width={1050}
-            height={1312}
-            priority
-            className="absolute max-w-none"
-            style={{ left: cm(GM.robot.left), top: cm(GM.robot.top), width: cm(GM.robot.w), height: cm(GM.robot.h) }}
-            data-node-id="375:1763"
-          />
           {/* gwiazda outline NAD robotem (mobile) */}
           <img
             src="/assets/m-star-outline-filtered.png"
@@ -276,14 +293,6 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           >
             {hero.kicker}
           </p>
-          {/* mini grupa .AI na robocie */}
-          <img
-            src="/assets/m-mini-group-filtered.png"
-            alt=""
-            className="absolute"
-            style={{ left: cm(GM.miniGroup.left), top: cm(GM.miniGroup.top), width: cm(GM.miniGroup.w), height: cm(GM.miniGroup.h) }}
-            data-node-id="375:1767"
-          />
           {/* CTA */}
           <Link
             href={hero.ctaHref}

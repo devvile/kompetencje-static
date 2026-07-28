@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-07-28 (8) — robot hero landing full-bleed (dotyka obu krawędzi)
+
+- Życzenie Patryka: robot w hero landingu większy, ma dotykać lewej I prawej
+  krawędzi. W wersji contain robot (w designie img 525 szer. wystający poza
+  canvas 402 z obu stron) był przycinany do zmniejszonego posteru i „pływał".
+- Robot wyjęty z posteru do warstwy FULL-BLEED na poziomie sekcji (jak blob):
+  left -30.348% / width 130.597% (design -122/402, 525/402), top w svh
+  (calc(100svh*0.25029) = design 219/875), dół bleeduje pod button i jest
+  cięty na foldzie. Mini .AI na twarzy robota przeniesione DO warstwy robota
+  (procenty względem robota: 57.524%/33.994%, w 26.381%) — jedzie z jego skalą.
+  Przy svh=875 układ = dokładnie design. Z-order: robot nad blobem, pod
+  posterem (gwiazda/kicker/button na wierzchu, jak w designie).
+- Zweryfikowane 402×740 i 402×810, hscroll czysty, menu działa, tsc czysty.
+
 ## 2026-07-28 (7) — wspólny MobileTopBar: identyczny top bar na każdej stronie
 
 - Uwagi Patryka: (a) za duży margines top/boki dla menu — top bar skalował się
