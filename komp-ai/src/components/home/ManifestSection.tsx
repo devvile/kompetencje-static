@@ -178,16 +178,17 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
               <Rich segs={m.pill} baseFontPx={G.pill.fontPx} scale={c} />
             </p>
           </div>
-          {/* pasek lime: ai to narzędzie / TY DECYDUJESZ / jak bardzo... */}
+          {/* pasek lime ZAWSZE widoczny (uwaga Patryka) — reveal tylko napisy;
+              TY DECYDUJESZ: reveal na spanie (p ma -translate-x-full) */}
           <div
             className="absolute inset-x-0 bg-brand-lime"
-            style={{ top: c(G.limeBar.top), height: c(G.limeBar.h), transitionDelay: "0.1s" }}
-            data-reveal=""
+            style={{ top: c(G.limeBar.top), height: c(G.limeBar.h) }}
             data-node-id="245:4380"
           >
             <p
               className="absolute whitespace-nowrap font-modular text-black"
               style={{ left: c(G.barLeft.left - 0), top: c(G.barLeft.top - G.limeBar.top), fontSize: c(G.barLeft.fontPx), lineHeight: "normal" }}
+              data-reveal=""
             >
               {m.bar.left}
             </p>
@@ -196,23 +197,25 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
               style={{ left: c(G.barCenter.rightEdge), top: c(G.barCenter.top - G.limeBar.top), fontSize: c(G.barCenter.fontPx), lineHeight: "normal" }}
               data-node-id="245:4384"
             >
-              {m.bar.center}
+              <span className="inline-block" style={{ transitionDelay: "0.1s" }} data-reveal="">
+                {m.bar.center}
+              </span>
             </p>
             <p
               className="absolute whitespace-nowrap font-modular text-black"
-              style={{ left: c(G.barRight.left), top: c(G.barRight.top - G.limeBar.top), fontSize: c(G.barRight.fontPx), lineHeight: "normal" }}
+              style={{ left: c(G.barRight.left), top: c(G.barRight.top - G.limeBar.top), fontSize: c(G.barRight.fontPx), lineHeight: "normal", transitionDelay: "0.15s" }}
+              data-reveal=""
             >
               {m.bar.right}
             </p>
           </div>
-          {/* biały pasek z marquee */}
+          {/* biały pasek ZAWSZE widoczny — reveal tylko na treści marquee */}
           <div
             className="absolute inset-x-0 bg-white"
-            style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h), transitionDelay: "0.2s" }}
-            data-reveal=""
+            style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h) }}
             data-node-id="245:4381"
           >
-            <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h) }} data-node-id="245:4580">
+            <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h), transitionDelay: "0.2s" }} data-reveal="" data-node-id="245:4580">
               <MarqueeRow
                 text={m.marqueeText}
                 scale={c}
@@ -323,13 +326,16 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
             {m.bar.left.toUpperCase().replace(".", "")}
           </p>
           {/* pasek lime z TY DECYDUJESZ */}
-          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top), height: cm(GM.limeBar.h), transitionDelay: "0.15s" }} data-reveal="" data-node-id="375:1854">
+          {/* pasek ZAWSZE widoczny — reveal tylko napis (span, bo p ma translate) */}
+          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top), height: cm(GM.limeBar.h) }} data-node-id="375:1854">
             <p
               className="absolute -translate-x-full whitespace-nowrap font-display font-black text-brand-blue"
               style={{ left: cm(GM.tyDecy.rightEdge), top: cm(GM.tyDecy.top - GM.limeBar.top), fontSize: cm(GM.tyDecy.fontPx), letterSpacing: cm(GM.tyDecy.trackPx), lineHeight: "normal" }}
               data-node-id="375:1863"
             >
-              {m.bar.center}
+              <span className="inline-block" style={{ transitionDelay: "0.1s" }} data-reveal="">
+                {m.bar.center}
+              </span>
             </p>
           </div>
           {/* cienki niebieski pas */}
