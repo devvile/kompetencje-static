@@ -195,13 +195,15 @@ const GM = {
 
 function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    // nav + hero = DOKŁADNIE 100svh (życzenie Patryka, Figma hero-landing
-    // 2043:1621 = canvas 402×875 z top barem w środku): poster skalowany
-    // contain do wysokości ekranu (nic nie ucinane — top bar, robot i button
-    // w całości widoczne). Blob tła renderowany OSOBNO pod spodem na PEŁNĄ
-    // szerokość ekranu (kotwiczony do góry, crop dołu w overflow-hidden) —
-    // dzięki temu przy contain nie ma szarych gutters po bokach.
-    <section className="relative flex h-svh items-center justify-center overflow-hidden bg-page md:hidden">
+    // Sekcja = 100svh + wysokość nawigacji (114px, decyzja Patryka): pierwszy
+    // ekran (100svh z nawigacją) mieści headline, górę robota i CTA button
+    // (przypięty do folda), a CAŁY robot (full-bleed, dotyka obu krawędzi)
+    // kotwiczony do DOŁU sekcji — jego dół dojeżdża się minimalnym scrollem,
+    // nic nie jest ucinane. Blob tła full-bleed pod spodem.
+    <section
+      className="relative overflow-hidden bg-page md:hidden"
+      style={{ height: "calc(100svh + 114px)" }}
+    >
       {/* limonkowy blob tła — full-bleed, poza skalowanym posterem */}
       <img
         src="/assets/m-bg-blob-f.png"
@@ -211,13 +213,12 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
       />
       {/* robot FULL-BLEED — dotyka lewej i prawej krawędzi ekranu jak
           w designie (img 525 szer. wystaje poza canvas 402 z obu stron:
-          left -122/402, width 525/402); góra proporcjonalnie do svh
-          (design 219/875), dół bleeduje pod button i jest cięty na foldzie
-          przez overflow-hidden sekcji. Mini .AI na twarzy robota pozycjonowane
-          W TEJ warstwie (procenty względem robota), żeby jechało z jego skalą. */}
+          left -122/402, width 525/402); kotwiczony do DOŁU sekcji = widoczny
+          W CAŁOŚCI. Mini .AI na twarzy robota pozycjonowane W TEJ warstwie
+          (procenty względem robota), żeby jechało z jego skalą. */}
       <div
         className="absolute"
-        style={{ left: "-30.348%", width: "130.597%", top: "calc(100svh * 0.25029)" }}
+        style={{ left: "-30.348%", width: "130.597%", bottom: 0 }}
         data-node-id="375:1763"
       >
         <Image
@@ -241,7 +242,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           i identyczne położenie na wszystkich stronach */}
       <MobileTopBar nav={nav} />
       <div
-        className="@container relative w-full"
+        className="@container relative mx-auto w-full"
         style={{ width: "min(100%, calc(100svh * (402 / 875)))" }}
       >
         <div className="relative aspect-[402/875] overflow-hidden">
@@ -293,26 +294,26 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           >
             {hero.kicker}
           </p>
-          {/* CTA */}
-          <Link
-            href={hero.ctaHref}
-            className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
-            style={{
-              left: cm(GM.button.left),
-              top: cm(GM.button.top),
-              width: cm(GM.button.w),
-              height: cm(GM.button.h),
-              borderRadius: cm(GM.button.radiusPx),
-              borderWidth: cm(GM.button.borderPx),
-              fontSize: cm(GM.button.fontPx),
-              letterSpacing: cm(GM.button.trackPx),
-            }}
-            data-node-id="401:1838"
-          >
-            {hero.ctaLabel}
-          </Link>
         </div>
       </div>
+      {/* CTA — POZA posterem, przypięty w PIERWSZYM ekranie (100svh z nawigacją):
+          44px nad foldem (design: 875-831), naturalna skala px, centrowany */}
+      <Link
+        href={hero.ctaHref}
+        className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center justify-center border-solid border-white bg-brand-lime text-center font-modular text-brand-blue"
+        style={{
+          top: "calc(100svh - 99px)",
+          width: "min(300px, calc(100vw - 40px))",
+          height: 55,
+          borderRadius: 40,
+          borderWidth: 3,
+          fontSize: 13,
+          letterSpacing: 0.52,
+        }}
+        data-node-id="401:1838"
+      >
+        {hero.ctaLabel}
+      </Link>
     </section>
   );
 }

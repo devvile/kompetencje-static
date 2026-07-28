@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-07-28 (9) — hero landing: sekcja 100svh+114px, CAŁY robot, CTA w 1. ekranie
+
+- Życzenie Patryka: robot ma być widoczny w CAŁOŚCI — sekcja może mieć
+  100vh + wysokość nawigacji, byle CTA button został w pierwszym 100vh.
+- Sekcja hero mobile: height = calc(100svh + 114px). Robot full-bleed
+  kotwiczony do DOŁU sekcji (bottom: 0) → widoczny w całości, dół dojeżdża
+  się minimalnym scrollem. CTA wyjęty z posteru na poziom sekcji: przypięty
+  44px nad foldem (top: calc(100svh - 99px)), naturalna skala px (300×55,
+  radius 40, border 3, font 13), centrowany, min(300px, 100vw-40px).
+- Zweryfikowane 402×740: 1. ekran = nav + headline + góra robota + cały CTA;
+  crop pełnej sekcji (854px) = kompletny robot do dołu. hscroll czysty,
+  menu działa, tsc czysty.
+
 ## 2026-07-28 (8) — robot hero landing full-bleed (dotyka obu krawędzi)
 
 - Życzenie Patryka: robot w hero landingu większy, ma dotykać lewej I prawej
