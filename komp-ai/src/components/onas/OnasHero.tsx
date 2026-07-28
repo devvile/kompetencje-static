@@ -45,7 +45,10 @@ const GMOB = {
   // zostaje, lewy margines rośnie — uwaga Patryka o marginesie z lewej)
   // f80/scaleX0.81: cap designu ~57 przy lh81 — mniejszy font + łagodniejszy
   // ścisk (uwaga Patryka: 0.73 był „too tight")
-  title: { right: 25, top: 244, fontPx: 80, lhPx: 81, trackPx: 0, scaleX: 0.81 },
+  // f92 (z 80): większe litery, prawy margines bez zmian → linie sięgają
+  // bardziej w lewo i minimalnie chowają się za głową robota (życzenie Patryka
+  // po zwężeniu głowy scaleX 0.92)
+  title: { right: 25, top: 236, fontPx: 92, lhPx: 93, trackPx: 0, scaleX: 0.81 },
   logo: { x: 55, y: 650, w: 347, h: 222 },
 };
 
