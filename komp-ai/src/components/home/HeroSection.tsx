@@ -302,7 +302,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         href={hero.ctaHref}
         className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center justify-center border-solid border-white bg-brand-lime text-center font-modular text-brand-blue"
         style={{
-          top: "calc(100svh - 75px)",
+          top: "calc(100svh - 51px)",
           width: "min(300px, calc(100vw - 40px))",
           height: 55,
           borderRadius: 40,
