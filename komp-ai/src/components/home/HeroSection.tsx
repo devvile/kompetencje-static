@@ -167,7 +167,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/ai-logo-filtered.png"
             alt=""
-            className="absolute"
+            className="hero-text hero-text-d5 absolute"
             style={{ left: c(G.aiLogo.left), top: c(G.aiLogo.top), width: c(G.aiLogo.w), height: c(G.aiLogo.h) }}
             data-node-id="401:2584"
           />

@@ -166,6 +166,9 @@ body {
 .hero-text-d4 {
   animation-delay: 0.6s;
 }
+.hero-text-d5 {
+  animation-delay: 0.75s;
+}
 
 /* CTA: wejście, potem puls ze zanikającym pierścieniem (zwraca uwagę) */
 @keyframes hero-cta-in {
