@@ -195,16 +195,13 @@ const GM = {
 
 function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    // hero = 100svh, poster PEŁNEJ SZEROKOŚCI (bez bocznych gutterów) kotwiczony
-    // do GÓRY, przesunięty w górę o martwy szary pas nad hamburgerem (cm(-34)):
-    // hamburger zostaje u góry z małym marginesem, a button „WYBIERZ KURS…"
-    // (design y776) podjeżdża w widoczny obszar; overflow-hidden przycina tylko
-    // dolny fragment robota pod buttonem. Poster (402/875) jest wyższy niż ekran
-    // telefonu — pełnej szerokości nie da się pokazać w całości bez gutterów
-    // (referencja używa contain + ~11% gutterów, odrzucone przez użytkownika).
-    <section className="relative h-svh overflow-hidden md:hidden">
+    // hero mobile = poster PEŁNEJ SZEROKOŚCI w NATURALNEJ wysokości (402/875),
+    // NIC nie przycinane: cały robot + button „WYBIERZ KURS…" widoczne. Poster
+    // jest nieco wyższy niż ekran telefonu → dół dojeżdża się minimalnym scrollem
+    // (świadoma decyzja: lepiej pokazać całość niż kadrować hamburger/button).
+    <section className="relative w-full md:hidden">
       <div className="@container mx-auto w-full">
-        <div className="relative aspect-[402/875] overflow-hidden bg-page" style={{ marginTop: cm(-44) }}>
+        <div className="relative aspect-[402/875] overflow-hidden bg-page">
           {/* limonkowy blob tła */}
           <img
             src="/assets/m-bg-blob-f.png"

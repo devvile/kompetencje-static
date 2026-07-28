@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-07-28 (5) — hero mobile: pełna wysokość, nic nie przycinane
+
+- Decyzja użytkownika: pokazać CAŁY hero (pełen robot + button „WYBIERZ KURS…"),
+  nie kadrować. Zdjęte h-svh/overflow-hidden/marginTop z (4) — sekcja `w-full`,
+  poster pełnej szerokości w naturalnej wysokości (402/875). Nic nie ucinane;
+  poster jest nieco wyższy niż ekran, więc sam dół dojeżdża minimalnym scrollem.
+  Home + o-nas. Desktop bez zmian.
+
 ## 2026-07-28 (4) — hero mobile: kotwica do góry + shift, hamburger I button widoczne
 
 - Poprzednia wersja (cover, `items-center`) ucinała hamburger na krótszym
