@@ -146,8 +146,9 @@ export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[]
           {/* gwiazda outline top-right */}
           <img src="/assets/onas-star-tr-f.png" alt="" aria-hidden className="hero-star-big absolute"
             style={{ left: c(G.starTR.left), top: c(G.starTR.top), width: c(G.starTR.w), height: c(G.starTR.h) }} />
-          {/* TENCJE — outline ZA robotem, rozsunięte */}
-          <div aria-hidden className="hero-text hero-text-d3 absolute inset-0">
+          {/* TENCJE — outline ZA robotem, rozsunięte; pointer-events-none:
+              inset-0 przykrywał SiteNav i blokował klikanie linków */}
+          <div aria-hidden className="hero-text hero-text-d3 pointer-events-none absolute inset-0">
             {[{ t: hero.titleOutlineLeft, left: G.tencje.leftL }, { t: hero.titleOutlineRight, left: G.tencje.leftR }].map(({ t, left }) => (
               <span
                 key={t}
