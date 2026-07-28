@@ -27,52 +27,83 @@ const G = {
 };
 
 export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent }) {
-  const sectionRef = useRef<HTMLElement | null>(null);
+  const wrapRef = useRef<HTMLElement | null>(null);
+  const stickyRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const humanRef = useRef<HTMLSpanElement | null>(null);
   const machineRef = useRef<HTMLSpanElement | null>(null);
+  const captionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const sec = sectionRef.current;
+    const wrap = wrapRef.current;
+    const sticky = stickyRef.current;
     const video = videoRef.current;
     const human = humanRef.current;
     const machine = machineRef.current;
-    if (!sec || !video || !human || !machine) return;
+    const caption = captionRef.current;
+    if (!wrap || !sticky || !video || !human || !machine || !caption) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
+    let extra = 0;
+    // PIN: wrapper wyższy o "extra" — sticky trzyma sekcję w miejscu, a scroll
+    // przez extra napędza WYŁĄCZNIE choreografię (strona nie jedzie po Y).
+    // Odpięcie następuje dopiero po całej sekwencji.
+    const setSizes = () => {
+      const vh = window.innerHeight;
+      if (reduce) {
+        extra = 0;
+        wrap.style.height = "";
+        sticky.style.top = "0px";
+        return;
+      }
+      extra = Math.round(vh * 1.4);
+      wrap.style.height = `${sticky.offsetHeight + extra}px`;
+      // sekcja wyższa niż viewport → pin dołem (caption musi być widoczny)
+      sticky.style.top = `${Math.min(0, vh - sticky.offsetHeight)}px`;
+    };
     const apply = () => {
       raf = 0;
-      // progress od PASA DŁONI; zakres = ~0.9 wysokości viewportu (długa droga
-      // scrolla). Sekwencja (życzenie Patryka): najpierw domykają się NAPISY
-      // (0..40% zakresu), RĘCE ruszają od 30% i łączą się POWOLI dopiero pod
-      // koniec (30..100%, easing ^1.5 — klip ma większość ruchu na początku).
-      const r = video.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const range = Math.min(r.height * 2.2, vh * 0.9);
-      const raw = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / range));
-      const textP = Math.min(1, raw / 0.4);
-      const videoP = Math.pow(Math.min(1, Math.max(0, (raw - 0.3) / 0.7)), 1.5);
+      // raw 0..1 = ile "extra" scrolla skonsumowane podczas pinu.
+      // Choreografia: napisy 0..30% → ręce POWOLI 25..85% (easing ^1.3,
+      // klip ma większość ruchu na początku) → caption 85..100%; dopiero
+      // po 100% sekcja się odpina i strona scrolluje dalej.
+      const raw = reduce || extra === 0
+        ? 1
+        : Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / extra));
+      const textP = Math.min(1, raw / 0.3);
+      const videoP = Math.pow(Math.min(1, Math.max(0, (raw - 0.25) / 0.6)), 1.3);
+      const capP = Math.min(1, Math.max(0, (raw - 0.85) / 0.15));
       human.style.transform = `translateX(${(-(1 - textP) * 115).toFixed(2)}%)`;
       machine.style.transform = `translateX(${((1 - textP) * 115).toFixed(2)}%)`;
       if (video.duration) video.currentTime = videoP * video.duration * 0.999;
+      caption.style.opacity = capP.toFixed(3);
+      caption.style.transform = `translateY(${((1 - capP) * 18).toFixed(2)}px)`;
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
     };
+    const onResize = () => {
+      setSizes();
+      schedule();
+    };
+    setSizes();
     video.addEventListener("loadedmetadata", schedule);
     window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", onResize);
     schedule();
     return () => {
       if (raf) cancelAnimationFrame(raf);
       video.removeEventListener("loadedmetadata", schedule);
       window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative hidden w-full md:block">
+    // wrapper wyższy o "extra" (JS) — sticky w środku pinuje sekcję na czas
+    // choreografii; po jej końcu wrapper się kończy i strona scrolluje dalej
+    <section ref={wrapRef} className="relative hidden w-full bg-[#ebebeb] md:block">
+      <div ref={stickyRef} className="sticky top-0">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         {/* tło #EBEBEB = tło wygenerowanego wideo (strona ma #EFEFEF) */}
         <div className="relative aspect-[1440/810] overflow-hidden bg-[#ebebeb]" data-node-id="245:9699">
@@ -118,20 +149,24 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
               {hm.titleBottom}
             </span>
           </h2>
-          {/* podpis z liniami */}
-          <div className="absolute bg-brand-blue" style={{ left: c(G.lineL.x), top: c(G.lineY), width: c(G.lineL.w), height: c(G.lineH) }} />
-          <div className="absolute bg-brand-blue" style={{ left: c(G.lineR.x), top: c(G.lineY), width: c(G.lineR.w), height: c(G.lineH) }} />
-          <p
-            className="absolute whitespace-nowrap font-modular text-brand-blue"
-            style={{
-              left: c(G.caption.left), top: c(G.caption.top), fontSize: c(G.caption.fontPx),
-              letterSpacing: c(G.caption.trackPx), wordSpacing: c(G.caption.wordPx), lineHeight: 1,
-            }}
-            data-node-id="245:9458"
-          >
-            {hm.caption}
-          </p>
+          {/* podpis z liniami — OSTATNI element choreografii (fade-in po
+              złączeniu rąk, sterowany progressem w JS) */}
+          <div ref={captionRef} className="absolute inset-0" style={{ opacity: 1 }}>
+            <div className="absolute bg-brand-blue" style={{ left: c(G.lineL.x), top: c(G.lineY), width: c(G.lineL.w), height: c(G.lineH) }} />
+            <div className="absolute bg-brand-blue" style={{ left: c(G.lineR.x), top: c(G.lineY), width: c(G.lineR.w), height: c(G.lineH) }} />
+            <p
+              className="absolute whitespace-nowrap font-modular text-brand-blue"
+              style={{
+                left: c(G.caption.left), top: c(G.caption.top), fontSize: c(G.caption.fontPx),
+                letterSpacing: c(G.caption.trackPx), wordSpacing: c(G.caption.wordPx), lineHeight: 1,
+              }}
+              data-node-id="245:9458"
+            >
+              {hm.caption}
+            </p>
+          </div>
         </div>
+      </div>
       </div>
     </section>
   );
