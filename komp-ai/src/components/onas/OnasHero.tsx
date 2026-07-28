@@ -52,11 +52,15 @@ const GMOB = {
 function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   const lines = ["KOMPE", "TEN", "CJ", "E"];
   return (
-    // hero mobile = poster PEŁNEJ SZEROKOŚCI w NATURALNEJ wysokości, NIC nie
-    // przycinane: top bar + cały robot + logo .AI widoczne (dół dojeżdża się
-    // minimalnym scrollem). Bez cappingu svh (boczne gutters) i bez kadrowania.
-    <section className="relative w-full md:hidden">
-      <div className="@container mx-auto w-full">
+    // nav + hero = DOKŁADNIE 100svh (jak hero-landing): poster skalowany
+    // contain do wysokości ekranu, NIC nie ucinane. Kotwiczony do LEWEJ, żeby
+    // robot dalej dotykał lewej krawędzi ekranu; prawy gutter jest niewidoczny
+    // (tło hero = jednolity bg-page, bez blobu na krawędzi).
+    <section className="relative flex h-svh items-center justify-start overflow-hidden bg-page md:hidden">
+      <div
+        className="@container relative w-full"
+        style={{ width: `min(100%, calc(100svh * (402 / ${GMOB.h})))` }}
+      >
         <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
           {/* top bar: logo + burger (assety home mobile) */}
           <a href="/" className="absolute" style={{ left: cm(GMOB.topBar.logo.x), top: cm(GMOB.topBar.logo.y), width: cm(GMOB.topBar.logo.w), height: cm(GMOB.topBar.logo.h) }}>

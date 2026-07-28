@@ -195,21 +195,25 @@ const GM = {
 
 function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    // hero mobile = poster PEŁNEJ SZEROKOŚCI w NATURALNEJ wysokości (402/875),
-    // NIC nie przycinane: cały robot + button „WYBIERZ KURS…" widoczne. Poster
-    // jest nieco wyższy niż ekran telefonu → dół dojeżdża się minimalnym scrollem
-    // (świadoma decyzja: lepiej pokazać całość niż kadrować hamburger/button).
-    <section className="relative w-full md:hidden">
-      <div className="@container mx-auto w-full">
-        <div className="relative aspect-[402/875] overflow-hidden bg-page">
-          {/* limonkowy blob tła */}
-          <img
-            src="/assets/m-bg-blob-f.png"
-            alt=""
-            className="absolute"
-            style={{ left: cm(GM.blob.left), top: cm(GM.blob.top), width: cm(GM.blob.w), height: cm(GM.blob.h) }}
-            data-node-id="375:1754"
-          />
+    // nav + hero = DOKŁADNIE 100svh (życzenie Patryka, Figma hero-landing
+    // 2043:1621 = canvas 402×875 z top barem w środku): poster skalowany
+    // contain do wysokości ekranu (nic nie ucinane — top bar, robot i button
+    // w całości widoczne). Blob tła renderowany OSOBNO pod spodem na PEŁNĄ
+    // szerokość ekranu (kotwiczony do góry, crop dołu w overflow-hidden) —
+    // dzięki temu przy contain nie ma szarych gutters po bokach.
+    <section className="relative flex h-svh items-center justify-center overflow-hidden bg-page md:hidden">
+      {/* limonkowy blob tła — full-bleed, poza skalowanym posterem */}
+      <img
+        src="/assets/m-bg-blob-f.png"
+        alt=""
+        className="absolute left-0 top-0 w-full"
+        data-node-id="375:1754"
+      />
+      <div
+        className="@container relative w-full"
+        style={{ width: "min(100%, calc(100svh * (402 / 875)))" }}
+      >
+        <div className="relative aspect-[402/875] overflow-hidden">
           {/* top bar: logo + burger */}
           <header className="absolute inset-x-0 top-0" data-node-id="375:1739">
             <Link

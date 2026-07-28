@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-07-28 (6) — hero mobile: nav + hero = dokładnie 100svh (contain + blob full-bleed)
+
+- Życzenie Patryka (Figma hero-landing 2043:1621 = canvas 402×875 z top barem):
+  nav + hero mają razem mieć 100vh na mobile. Poster skalowany CONTAIN do
+  100svh — top bar, cały robot i button „WYBIERZ KURS…" w całości widoczne,
+  nic nie ucinane, zero scrolla w hero.
+- Klucz do braku szarych gutters (poprzedni problem przy contain): limonkowy
+  blob tła wyjęty z posteru i renderowany OSOBNO pod spodem na PEŁNĄ szerokość
+  ekranu (w-full, kotwiczony do góry, dół cropowany przez overflow-hidden
+  sekcji). Poster (treść) jest transparentny i centrowany nad blobem.
+- O-nas analogicznie (tło = jednolity szary, bez warstwy blob): poster contain
+  kotwiczony do LEWEJ — robot dalej dotyka lewej krawędzi ekranu, prawy gutter
+  niewidoczny (szary na szarym).
+- Zweryfikowane 402×740 (oba hero w całości, blob do krawędzi), hscroll czysty
+  375–2560, menu działa, tsc czysty.
+
 ## 2026-07-28 (5) — hero mobile: pełna wysokość, nic nie przycinane
 
 - Decyzja użytkownika: pokazać CAŁY hero (pełen robot + button „WYBIERZ KURS…"),
