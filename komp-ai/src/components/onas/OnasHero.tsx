@@ -52,14 +52,11 @@ const GMOB = {
 function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   const lines = ["KOMPE", "TEN", "CJ", "E"];
   return (
-    // poster kotwiczony do GÓRY (nie centrowany!) — resztę 100svh wypełnia
-    // niebieski filler = start tła sekcji 2 (design: blue od y873, robot/logo
-    // kończą się dokładnie na 873; centrowanie wpychało blue na robota)
-    <section className="relative flex h-svh w-full flex-col md:hidden">
-      <div
-        className="@container mx-auto w-full"
-        style={{ width: `min(100%, calc(100svh * (402 / ${GMOB.h})))` }}
-      >
+    // pełna szerokość (jak pozostałe sekcje mobile) — kontener svh robił szare
+    // gutters na realnym iPhone (pasek przeglądarki zmniejsza svh → poster
+    // węższy niż ekran); sekcja 2 (blue) zaczyna się zaraz pod posterem
+    <section className="relative w-full md:hidden">
+      <div className="@container mx-auto w-full">
         <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
           {/* top bar: logo + burger (assety home mobile) */}
           <a href="/" className="absolute" style={{ left: cm(GMOB.topBar.logo.x), top: cm(GMOB.topBar.logo.y), width: cm(GMOB.topBar.logo.w), height: cm(GMOB.topBar.logo.h) }}>
@@ -109,8 +106,6 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
             style={{ left: cm(GMOB.logo.x), top: cm(GMOB.logo.y), width: cm(GMOB.logo.w), height: cm(GMOB.logo.h) }} />
         </div>
       </div>
-      {/* niebieski pas dopełniający pierwszy ekran (design: blue 873..975) */}
-      <div className="w-full flex-1 bg-brand-blue" />
     </section>
   );
 }

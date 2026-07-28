@@ -195,11 +195,11 @@ const GM = {
 
 function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    <section className="relative flex h-svh items-center justify-center md:hidden">
-      <div
-        className="@container mx-auto w-full"
-        style={{ width: "min(100%, calc(100svh * (402 / 875)))" }}
-      >
+    // pełna szerokość jak pozostałe sekcje mobile — kontener svh robił szare
+    // gutters na realnym iPhone (svh < wysokość ekranu przez pasek przeglądarki,
+    // poster zwężał się poniżej 100% i blob nie dobijał do krawędzi)
+    <section className="relative w-full md:hidden">
+      <div className="@container mx-auto w-full">
         <div className="relative aspect-[402/875] overflow-hidden bg-page">
           {/* limonkowy blob tła */}
           <img

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-07-28 (2) — fix szare gutters hero mobile (realny iPhone)
+
+- **Hero mobile home + o-nas**: na iPhone 16 Pro poster hero miał szary margines
+  z lewej. Przyczyna: kontener miał szerokość `min(100%, 100svh * aspect)`, a na
+  realnym telefonie pasek przeglądarki zmniejsza `svh` → wyliczona szerokość
+  spadała poniżej 100%, poster się zwężał i limonkowy blob nie dobijał do
+  krawędzi ekranu (playwright headless tego nie łapał — tam svh == wysokość
+  viewportu). Fix: hero mobile = pełna szerokość `w-full` jak reszta sekcji
+  mobile (bez cappingu przez svh). O-nas: usunięty niebieski filler `flex-1`
+  (był tylko dopełnieniem 100svh). Zweryfikowane screenshotami 402px oraz
+  hscroll czysty 375–2560 na obu stronach.
+
 ## 2026-07-28 — mobilne menu (burger) + nav KURSY → kotwica na landingu
 
 - **MobileMenu** (`components/shared/MobileMenu.tsx`, client): burger = 3 paski
