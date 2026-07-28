@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 2026-07-28 — mobilne menu (burger) + nav KURSY → kotwica na landingu
+
+- **MobileMenu** (`components/shared/MobileMenu.tsx`, client): burger = 3 paski
+  CSS w miejscu asseta designu (m-burger-f.png), morfują w X; overlay
+  pełnoekranowy blue przez portal do `<body>` (canvasy są @container →
+  contain:layout łapałby position:fixed). Wejście: clip-path circle rosnący
+  z rogu burgera (600ms), linki font-display 40 białe z numeracją lime,
+  kaskada 75ms/link, mail lime w stopce, lime-star (asset hero) z animacją
+  float; Escape/klik/link zamyka, scroll-lock body. Wpięty w: home hero
+  mobile, o-nas hero mobile, strony prawne (zamiast martwych buttonów img).
+- **FIX klikalności (pre-existing)**: `<h1 class="absolute inset-0">` na home
+  hero (desktop+mobile) i kurs hero oraz dekoracyjny spark na legal
+  przechwytywały pointer events — burger był fizycznie nieklikalny; dodane
+  `pointer-events-none`.
+- **Nav „KURSY" → `/#kursy`**: kotwica `id="kursy"` na DnaSection (2 wyróżnione
+  kursy przed resztą kafli); `scroll-behavior: smooth` (wyłączane przy
+  prefers-reduced-motion). Podmienione też: footer KURSY, hero CTA,
+  CTA ManifestSection i OnasKontakt — stary `/kursy` nie istniał jako route
+  (404).
+- **Walidacja**: playwright (`scripts/menu-shot.js` — nowy tool) — menu
+  otwiera/zamyka się na home, o-nas, /regulamin; klik KURSY z o-nas ląduje
+  na kartach DNA (mobile i desktop 1440 sprawdzone screenshotami); tsc czysty.
+- Otwarte: menu poza order designu (brak designu menu w Figmie — freeform
+  w estetyce strony), do review Patryka.
+
 ## 2026-07-22 (2) — commit o-nas + fix PROGRAM + podstrony prawne + pomiary kursu
 
 - **Commit `690797e`**: cała zaakceptowana praca o-nas mobile + poprawki po

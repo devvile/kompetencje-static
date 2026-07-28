@@ -18,6 +18,8 @@
 
 html {
   background: var(--color-page);
+  /* kotwice (np. /#kursy) dojeżdżają płynnie */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -41,6 +43,31 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
+    animation: none;
+  }
+}
+
+/* mobilne menu: dekoracyjna gwiazda dryfuje w overlay'u */
+@keyframes menu-star-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(7deg);
+  }
+}
+
+.menu-star-float {
+  animation: menu-star-float 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .menu-star-float {
     animation: none;
   }
 }

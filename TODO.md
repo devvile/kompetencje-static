@@ -193,6 +193,17 @@ tekstury 2624×1630; maski logo).
       `src/content/legal.ts` (getLegalPage), metadata SEO per strona.
       FLAG dla Patryka: [NAZWA FIRMY]/[ADRES]/[NIP] + kontakt@kompetencje.ai
       w treściach = PLACEHOLDERY; całość do weryfikacji prawnej.
+- [x] **Mobilne menu (burger) działa** (2026-07-28): nowy
+      `components/shared/MobileMenu.tsx` (client, portal do body — @container
+      łapie position:fixed) — burger 3 paski CSS morfujące w X, overlay blue
+      clip-path circle z rogu burgera, linki kaskadowe z numeracją lime,
+      mail w stopce, lime-star float. Wpięty: home hero, o-nas hero, legal.
+      FIX przy okazji: h1 `absolute inset-0` (home desktop+mobile, kurs hero)
+      i spark na legal przechwytywały kliknięcia — pointer-events-none.
+- [x] **Nav „KURSY" → `/#kursy`** (2026-07-28): kotwica na DnaSection (2 wy-
+      różnione kursy, przed resztą kafli); scroll-behavior smooth; podmienione
+      też footer KURSY, hero CTA i CTA w ManifestSection/OnasKontakt (stary
+      `/kursy` nie istniał jako route → 404).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home

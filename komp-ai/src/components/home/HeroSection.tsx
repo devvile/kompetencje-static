@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { HomeHero, NavLink } from "../../content/types";
 import SiteNav from "../shared/SiteNav";
+import MobileMenu from "../shared/MobileMenu";
 
 /*
  * Hero + nav = dokładnie 100svh, poster-canvas 1440×833 (desktop).
@@ -93,7 +94,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
             data-node-id="401:2612"
           />
           {/* H1 — linie pozycjonowane osobno; pionowy stretch liter jak w designie */}
-          <h1 className="absolute inset-0 font-display font-black text-brand-blue" data-node-id="401:2579">
+          <h1 className="pointer-events-none absolute inset-0 font-display font-black text-brand-blue" data-node-id="401:2579">
             <span
               className="absolute block origin-top-left whitespace-nowrap"
               style={{
@@ -192,7 +193,7 @@ const GM = {
   button: { left: 51, top: 776, w: 300, h: 55, radiusPx: 40, borderPx: 3, fontPx: 13, trackPx: 0.52 },
 };
 
-function HeroMobile({ hero }: { hero: HomeHero }) {
+function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
     <section className="relative flex h-svh items-center justify-center md:hidden">
       <div
@@ -217,15 +218,11 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
             >
               <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
             </Link>
-            <button
-              type="button"
-              aria-label="Otwórz menu"
+            <MobileMenu
+              nav={nav}
               className="absolute"
               style={{ left: cm(GM.burger.left), top: cm(GM.burger.top), width: cm(GM.burger.w), height: cm(GM.burger.h) }}
-              data-node-id="375:1749"
-            >
-              <img src="/assets/m-burger-f.png" alt="" className="h-full w-full" />
-            </button>
+            />
           </header>
           {/* mała gwiazdka nad headline */}
           <img
@@ -236,7 +233,8 @@ function HeroMobile({ hero }: { hero: HomeHero }) {
             data-node-id="432:1659"
           />
           {/* H1 */}
-          <h1 className="absolute inset-0 text-brand-blue" data-node-id="397:1837">
+          {/* pointer-events-none: inset-0 przykrywał burger i blokował klik */}
+          <h1 className="pointer-events-none absolute inset-0 text-brand-blue" data-node-id="397:1837">
             <span
               className="absolute block w-full text-center font-display font-black"
               style={{ top: cm(GM.h1a.top), fontSize: cm(GM.h1a.fontPx), lineHeight: GM.h1a.leading }}
@@ -329,7 +327,7 @@ export default function HeroSection({
       <div className="hidden md:block">
         <HeroDesktop hero={hero} nav={nav} />
       </div>
-      <HeroMobile hero={hero} />
+      <HeroMobile hero={hero} nav={nav} />
     </>
   );
 }

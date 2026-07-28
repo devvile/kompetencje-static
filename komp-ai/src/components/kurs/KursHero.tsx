@@ -59,7 +59,7 @@ export default function KursHero({ hero, nav }: { hero: KursHeroData; nav: NavLi
             />
           </div>
           {/* tytuł: 2 linie blue + akcent lime */}
-          <h1 className="absolute inset-0 font-display font-black">
+          <h1 className="pointer-events-none absolute inset-0 font-display font-black">
             {[
               { t: hero.titleLines[0], g: G.line1, cls: "text-brand-blue" },
               { t: hero.titleLines[1], g: G.line2, cls: "text-brand-blue" },

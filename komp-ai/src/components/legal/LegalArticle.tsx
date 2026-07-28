@@ -11,6 +11,7 @@
  */
 import type { LegalPage, NavLink } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
+import MobileMenu from "../shared/MobileMenu";
 
 export default function LegalArticle({ page, nav }: { page: LegalPage; nav: NavLink[] }) {
   return (
@@ -28,19 +29,16 @@ export default function LegalArticle({ page, nav }: { page: LegalPage; nav: NavL
           >
             <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
           </a>
-          <button
-            type="button"
-            aria-label="Menu"
+          <MobileMenu
+            nav={nav}
             className="absolute left-[85.0746cqw] top-[14.4279cqw] h-[9.9502cqw] w-[9.9502cqw] md:hidden"
-          >
-            <img src="/assets/m-burger-f.png" alt="" className="h-full w-full" />
-          </button>
+          />
           {/* spark lime przy prawej krawędzi (asset sekcji PROGRAM) */}
           <img
             src="/assets/kurs-prog-spark-f.png"
             alt=""
             aria-hidden
-            className="absolute right-[8px] top-[172px] w-[64px] md:right-[16.8055cqw] md:top-[10.4166cqw] md:w-[8.75cqw]"
+            className="pointer-events-none absolute right-[8px] top-[172px] w-[64px] md:right-[16.8055cqw] md:top-[10.4166cqw] md:w-[8.75cqw]"
           />
           {/* kicker HK + data aktualizacji */}
           <div className="ml-[24px] md:ml-[21.4583cqw]">

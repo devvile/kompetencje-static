@@ -207,11 +207,12 @@ function DnaMobile({ cards, m }: { cards: DnaCard[]; m: HomeManifest }) {
 
 export default function DnaSection({ cards, m }: { cards: DnaCard[]; m: HomeManifest }) {
   return (
-    <>
+    // kotwica nav "KURSY" (/#kursy): landing wyrównany do 2 wyróżnionych kursów
+    <div id="kursy">
       <div className="hidden md:block">
         <DnaDesktop cards={cards} />
       </div>
       <DnaMobile cards={cards} m={m} />
-    </>
+    </div>
   );
 }

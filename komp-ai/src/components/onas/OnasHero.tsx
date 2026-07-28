@@ -9,6 +9,7 @@
  */
 import type { NavLink, ONasHero } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
+import MobileMenu from "../shared/MobileMenu";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
@@ -48,7 +49,7 @@ const GMOB = {
   logo: { x: 55, y: 650, w: 347, h: 222 },
 };
 
-function OnasHeroMobile({ hero }: { hero: ONasHero }) {
+function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   const lines = ["KOMPE", "TEN", "CJ", "E"];
   return (
     // poster kotwiczony do GÓRY (nie centrowany!) — resztę 100svh wypełnia
@@ -64,9 +65,7 @@ function OnasHeroMobile({ hero }: { hero: ONasHero }) {
           <a href="/" className="absolute" style={{ left: cm(GMOB.topBar.logo.x), top: cm(GMOB.topBar.logo.y), width: cm(GMOB.topBar.logo.w), height: cm(GMOB.topBar.logo.h) }}>
             <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
           </a>
-          <button type="button" aria-label="Menu" className="absolute" style={{ left: cm(GMOB.topBar.burger.x), top: cm(GMOB.topBar.burger.y), width: cm(GMOB.topBar.burger.w), height: cm(GMOB.topBar.burger.h) }}>
-            <img src="/assets/m-burger-f.png" alt="" className="h-full w-full" />
-          </button>
+          <MobileMenu nav={nav} className="absolute" style={{ left: cm(GMOB.topBar.burger.x), top: cm(GMOB.topBar.burger.y), width: cm(GMOB.topBar.burger.w), height: cm(GMOB.topBar.burger.h) }} />
           {/* KOMPETENCJE — 4 linie solid, ZA robotem (głowa nachodzi na litery) */}
           <h1
             className="absolute origin-top-right text-right font-display font-black text-brand-blue"
@@ -119,7 +118,7 @@ function OnasHeroMobile({ hero }: { hero: ONasHero }) {
 export default function OnasHero({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   return (
     <>
-    <OnasHeroMobile hero={hero} />
+    <OnasHeroMobile hero={hero} nav={nav} />
     {/* hero + nav = dokładnie 100svh (wytyczna Patryka — jak na home) */}
     <section className="relative hidden h-svh w-full md:flex md:items-center md:justify-center">
       <div

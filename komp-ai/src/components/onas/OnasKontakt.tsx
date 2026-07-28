@@ -46,7 +46,7 @@ export function OnasKontaktMobile({ k, ctaLabel }: { k: Kontakt; ctaLabel: strin
         <div className="relative overflow-hidden bg-brand-blue" style={{ aspectRatio: `402/${GMOB.h}` }}>
           {/* pasek CTA — pełna szerokość, lime między białymi liniami */}
           <a
-            href="/kursy"
+            href="/#kursy"
             className="absolute inset-x-0 top-0 flex items-center justify-center whitespace-nowrap border-solid border-white bg-brand-lime font-modular text-brand-blue"
             style={{
               height: cm(GMOB.band.h),
@@ -97,7 +97,7 @@ export default function OnasKontakt({ k, ctaLabel }: { k: Kontakt; ctaLabel: str
             style={{ left: c(G.starR.x), top: c(G.starR.y), width: c(G.starR.w), height: c(G.starR.h) }} />
           {/* CTA pill — bleed nad sekcję prowadzących */}
           <a
-            href="/kursy"
+            href="/#kursy"
             className="absolute flex items-center justify-center rounded-full border-solid border-white bg-brand-lime font-modular text-brand-blue"
             style={{
               left: c(G.cta.x), top: c(G.cta.y), width: c(G.cta.w), height: c(G.cta.h),

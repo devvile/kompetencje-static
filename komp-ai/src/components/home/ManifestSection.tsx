@@ -299,7 +299,7 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
           <img src="/assets/m-arrow-low-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowLow.left), top: cm(GM.arrowLow.top), width: cm(GM.arrowLow.w), height: cm(GM.arrowLow.h) }} data-node-id="375:1845" />
           {/* CTA */}
           <a
-            href="/kursy"
+            href="/#kursy"
             className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
             style={{ left: cm(GM.button.left), top: cm(GM.button.top), width: cm(GM.button.w), height: cm(GM.button.h), borderRadius: cm(GM.button.radiusPx), borderWidth: cm(GM.button.borderPx), fontSize: cm(GM.button.fontPx), letterSpacing: cm(GM.button.trackPx) }}
             data-node-id="375:1842"
