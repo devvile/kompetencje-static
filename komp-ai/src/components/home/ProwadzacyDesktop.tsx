@@ -21,8 +21,11 @@ const G = {
   bgTop: 103,
   header: { left: 202, top: 272.7, fontPx: 18.5, trackPx: 0.55 },
   line: { x: 487, top: 280.2, w: 158, h: 1.4 },
-  starR: { left: 1155, top: 228, w: 285, h: 266 },
-  starL: { left: 14, top: 643, w: 346, h: 296 },
+  // KOMPLETNE gwiazdy z Figmy (SVG, bez wycięcia pod kartę — uwaga Patryka
+  // przy dryfie): pełne bboxy z transformów eksportu (node origin na stronie
+  // 9724=(1052,5555), 9714=(0,5928.35); origin sekcji y5347)
+  starR: { left: 1052, top: 208, w: 388, h: 393 },
+  starL: { left: 0, top: 581.35, w: 381, h: 377 },
   cardY: 383,
   cards: [
     { x: 200, r: 49, photoH: 406.5 },
@@ -95,16 +98,17 @@ export default function ProwadzacyDesktop({ p }: { p: Prowadzacy }) {
         <div ref={secRef} className="prow-sec relative bg-page" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="250:9703">
           {/* niebieskie tło */}
           <div className="absolute inset-x-0 bottom-0 bg-brand-blue" style={{ top: c(G.bgTop) }} />
-          {/* gwiazdy lime — za kartami, z dryfem */}
+          {/* gwiazdy lime — KOMPLETNE kształty (SVG) chowane za kartami
+              (karty mają nieprzezroczyste tło), z dryfem */}
           <img
-            src="/assets/prow-star-r-f.png" alt="" aria-hidden className="hero-star-a absolute"
+            src="/assets/prow-star-r.svg" alt="" aria-hidden className="hero-star-a absolute"
             style={{ left: c(G.starR.left), top: c(G.starR.top), width: c(G.starR.w), height: c(G.starR.h) }}
-            data-node-id="250:9714"
+            data-node-id="250:9724"
           />
           <img
-            src="/assets/prow-star-l-f.png" alt="" aria-hidden className="hero-star-c absolute"
+            src="/assets/prow-star-l.svg" alt="" aria-hidden className="hero-star-c absolute"
             style={{ left: c(G.starL.left), top: c(G.starL.top), width: c(G.starL.w), height: c(G.starL.h) }}
-            data-node-id="250:9724"
+            data-node-id="250:9714"
           />
           {/* nagłówek + linia (intro choreografii) */}
           <h2
@@ -127,7 +131,7 @@ export default function ProwadzacyDesktop({ p }: { p: Prowadzacy }) {
                 ref={(el) => {
                   cardRefs.current[i] = el;
                 }}
-                className="prow-card absolute flex flex-col items-center border-solid border-white"
+                className="prow-card absolute flex flex-col items-center border-solid border-white bg-brand-blue"
                 style={{
                   left: c(card.x - G.borderPx), top: c(G.cardY - G.borderPx),
                   width: c(G.cardW + 2 * G.borderPx), height: c(G.cardH + 2 * G.borderPx),
