@@ -207,11 +207,12 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
       className="relative overflow-hidden bg-page md:hidden"
       style={{ height: "calc(100svh + 114px)" }}
     >
-      {/* limonkowy blob tła — full-bleed, poza skalowanym posterem */}
+      {/* limonkowy blob tła — full-bleed, poza skalowanym posterem; pulsuje
+          jak CTA (obecny rozmiar = maksimum pulsu) */}
       <img
         src="/assets/m-bg-blob-f.png"
         alt=""
-        className="absolute left-0 top-0 w-full"
+        className="hero-blob-pulse absolute left-0 top-0 w-full"
         data-node-id="375:1754"
       />
       {/* robot FULL-BLEED — dotyka lewej i prawej krawędzi ekranu jak

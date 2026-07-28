@@ -209,6 +209,30 @@ body {
   }
 }
 
+/* hero landing mobile: wielka limonkowa gwiazda tła pulsuje (jak CTA);
+   obecny rozmiar = MAKSIMUM pulsu (skaluje tylko w dół) */
+@keyframes hero-blob-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.955);
+  }
+}
+
+.hero-blob-pulse {
+  animation: hero-blob-pulse 3s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob-pulse {
+    animation: none;
+  }
+}
+
 /* mobilne menu: dekoracyjna gwiazda dryfuje w overlay'u */
 @keyframes menu-star-float {
   0%,
