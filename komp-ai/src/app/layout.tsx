@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Manrope, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import RevealObserver from "../components/shared/RevealObserver";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -65,7 +66,10 @@ export default function RootLayout({
       lang="pl"
       className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-page">{children}</body>
+      <body className="min-h-full flex flex-col bg-page">
+        <RevealObserver />
+        {children}
+      </body>
     </html>
   );
 }

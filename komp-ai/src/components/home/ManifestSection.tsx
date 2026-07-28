@@ -83,6 +83,7 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             alt=""
             className="absolute max-w-none"
             style={{ left: c(G.limeStar.left), top: c(G.limeStar.top), width: c(G.limeStar.w), height: c(G.limeStar.h) }}
+            data-reveal=""
             data-node-id="407:2854"
           />
           {/* glob: robot z tabletem (okrągły clip) */}
@@ -90,13 +91,15 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             src="/assets/glob-robot-f.png"
             alt="Robot AI czytający z tabletu"
             className="absolute"
-            style={{ left: c(G.glob.left), top: c(G.glob.top), width: c(G.glob.w), height: c(G.glob.h) }}
+            style={{ left: c(G.glob.left), top: c(G.glob.top), width: c(G.glob.w), height: c(G.glob.h), transitionDelay: "0.1s" }}
+            data-reveal=""
             data-node-id="245:4367"
           />
           {/* NIE CHODZI O TO, */}
           <h2
             className="absolute font-modular font-normal text-white"
             style={{ left: c(G.lineA.left), top: c(G.lineA.top), width: c(G.lineA.w), fontSize: c(G.lineA.fontPx), lineHeight: "normal" }}
+            data-reveal=""
             data-node-id="245:4395"
           >
             {m.lineA}
@@ -104,7 +107,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
           {/* CZY AI ZMIENI TWOJĄ BRANŻĘ. */}
           <p
             className="absolute font-display font-medium text-white"
-            style={{ right: c(G.lineB.right), top: c(G.lineB.top), width: c(G.lineB.w), fontSize: c(G.lineB.fontPx), lineHeight: "normal", textAlign: "right" as const }}
+            style={{ right: c(G.lineB.right), top: c(G.lineB.top), width: c(G.lineB.w), fontSize: c(G.lineB.fontPx), lineHeight: "normal", textAlign: "right" as const, transitionDelay: "0.12s" }}
+            data-reveal=""
             data-node-id="407:2853"
           >
             {m.lineB}
@@ -112,7 +116,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
           {/* CHODZI O TO, / CZY JESTEŚ NA TO GOTOWY. */}
           <p
             className="absolute whitespace-nowrap font-display font-black text-white"
-            style={{ right: c(G.lineC.right), top: c(G.lineC.top), fontSize: c(G.lineC.fontPx), lineHeight: "normal", textAlign: "right" as const }}
+            style={{ right: c(G.lineC.right), top: c(G.lineC.top), fontSize: c(G.lineC.fontPx), lineHeight: "normal", textAlign: "right" as const, transitionDelay: "0.22s" }}
+            data-reveal=""
             data-node-id="245:4382"
           >
             {m.lineC[0]}
@@ -122,7 +127,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
           {/* akapit */}
           <p
             className="absolute font-body text-white"
-            style={{ left: c(G.para.left), top: c(G.para.top), width: c(G.para.w), fontSize: c(G.para.fontPx), lineHeight: 1.313, textAlign: "justify" as const }}
+            style={{ left: c(G.para.left), top: c(G.para.top), width: c(G.para.w), fontSize: c(G.para.fontPx), lineHeight: 1.313, textAlign: "justify" as const, transitionDelay: "0.3s" }}
+            data-reveal=""
             data-node-id="245:4399"
           >
             <Rich segs={m.paragraph} baseFontPx={G.para.fontPx} scale={c} />
@@ -132,7 +138,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             src="/assets/gwiazdka.svg"
             alt=""
             className="absolute"
-            style={{ left: c(G.sparkle.left), top: c(G.sparkle.top), width: c(G.sparkle.w), height: c(G.sparkle.h) }}
+            style={{ left: c(G.sparkle.left), top: c(G.sparkle.top), width: c(G.sparkle.w), height: c(G.sparkle.h), transitionDelay: "0.35s" }}
+            data-reveal=""
             data-node-id="412:2909"
           />
           {/* biała strzałka-gwiazda przy prawej krawędzi */}
@@ -140,7 +147,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             src="/assets/star-arrow-white.svg"
             alt=""
             className="absolute max-w-none"
-            style={{ left: c(G.arrowWhite.left), top: c(G.arrowWhite.top), width: c(G.arrowWhite.w), height: c(G.arrowWhite.h) }}
+            style={{ left: c(G.arrowWhite.left), top: c(G.arrowWhite.top), width: c(G.arrowWhite.w), height: c(G.arrowWhite.h), transitionDelay: "0.3s" }}
+            data-reveal=""
             data-node-id="407:2865"
           />
           {/* polygon (kontur) */}
@@ -148,7 +156,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             src="/assets/polygon-manifest.svg"
             alt=""
             className="absolute"
-            style={{ left: c(G.polygon.left), top: c(G.polygon.top), width: c(G.polygon.w), height: c(G.polygon.h) }}
+            style={{ left: c(G.polygon.left), top: c(G.polygon.top), width: c(G.polygon.w), height: c(G.polygon.h), transitionDelay: "0.15s" }}
+            data-reveal=""
             data-node-id="407:2874"
           />
           {/* limonkowy pill z tekstem */}
@@ -157,8 +166,9 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
             style={{
               left: c(G.pill.left), top: c(G.pill.top), width: c(G.pill.w), height: c(G.pill.h),
               borderRadius: c(G.pill.radiusPx), borderWidth: c(G.pill.borderPx),
-              paddingLeft: c(54), paddingRight: c(46),
+              paddingLeft: c(54), paddingRight: c(46), transitionDelay: "0.4s",
             }}
+            data-reveal=""
             data-node-id="407:2863"
           >
             <p
@@ -171,7 +181,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
           {/* pasek lime: ai to narzędzie / TY DECYDUJESZ / jak bardzo... */}
           <div
             className="absolute inset-x-0 bg-brand-lime"
-            style={{ top: c(G.limeBar.top), height: c(G.limeBar.h) }}
+            style={{ top: c(G.limeBar.top), height: c(G.limeBar.h), transitionDelay: "0.1s" }}
+            data-reveal=""
             data-node-id="245:4380"
           >
             <p
@@ -197,7 +208,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
           {/* biały pasek z marquee */}
           <div
             className="absolute inset-x-0 bg-white"
-            style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h) }}
+            style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h), transitionDelay: "0.2s" }}
+            data-reveal=""
             data-node-id="245:4381"
           >
             <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h) }} data-node-id="245:4580">
@@ -254,40 +266,40 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
           {/* niebieskie tło TLO */}
           <div className="absolute inset-x-0 top-0 bg-brand-blue" style={{ height: cm(GM.blueBg.h) }} data-node-id="375:1793" />
           {/* strzałka na górze */}
-          <img src="/assets/m-arrow-top-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowTop.left), top: cm(GM.arrowTop.top), width: cm(GM.arrowTop.w), height: cm(GM.arrowTop.h) }} data-node-id="432:1538" />
+          <img src="/assets/m-arrow-top-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowTop.left), top: cm(GM.arrowTop.top), width: cm(GM.arrowTop.w), height: cm(GM.arrowTop.h) }} data-reveal="" data-node-id="432:1538" />
           {/* tagline lime */}
-          <p className="absolute font-modular text-brand-lime" style={{ left: cm(GM.tagline.left), top: cm(GM.tagline.top), width: cm(GM.tagline.w), fontSize: cm(GM.tagline.fontPx), lineHeight: "normal" }} data-node-id="432:1536">
+          <p className="absolute font-modular text-brand-lime" style={{ left: cm(GM.tagline.left), top: cm(GM.tagline.top), width: cm(GM.tagline.w), fontSize: cm(GM.tagline.fontPx), lineHeight: "normal" }} data-reveal="" data-node-id="432:1536">
             {m.mobileTagline}
           </p>
           {/* duże .AI na lime blobie */}
-          <img src="/assets/m-group9-f.png" alt="" className="absolute" style={{ left: cm(GM.group9.left), top: cm(GM.group9.top), width: cm(GM.group9.w), height: cm(GM.group9.h) }} data-node-id="432:1537" />
+          <img src="/assets/m-group9-f.png" alt="" className="absolute" style={{ left: cm(GM.group9.left), top: cm(GM.group9.top), width: cm(GM.group9.w), height: cm(GM.group9.h), transitionDelay: "0.1s" }} data-reveal="" data-node-id="432:1537" />
           {/* lime gwiazdy za globem */}
-          <img src="/assets/m-lime-star2-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.limeStar2.left), top: cm(GM.limeStar2.top), width: cm(GM.limeStar2.w), height: cm(GM.limeStar2.h) }} data-node-id="375:1833" />
-          <img src="/assets/m-lime-star1-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.limeStar1.left), top: cm(GM.limeStar1.top), width: cm(GM.limeStar1.w), height: cm(GM.limeStar1.h) }} data-node-id="375:1809" />
+          <img src="/assets/m-lime-star2-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.limeStar2.left), top: cm(GM.limeStar2.top), width: cm(GM.limeStar2.w), height: cm(GM.limeStar2.h), transitionDelay: "0.1s" }} data-reveal="" data-node-id="375:1833" />
+          <img src="/assets/m-lime-star1-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.limeStar1.left), top: cm(GM.limeStar1.top), width: cm(GM.limeStar1.w), height: cm(GM.limeStar1.h), transitionDelay: "0.15s" }} data-reveal="" data-node-id="375:1809" />
           {/* NIE CHODZI O TO, */}
-          <h2 className="absolute font-modular font-normal text-white" style={{ left: cm(GM.lineA.left), top: cm(GM.lineA.top), width: cm(GM.lineA.w), fontSize: cm(GM.lineA.fontPx), lineHeight: GM.lineA.leading }} data-node-id="375:1794">
+          <h2 className="absolute font-modular font-normal text-white" style={{ left: cm(GM.lineA.left), top: cm(GM.lineA.top), width: cm(GM.lineA.w), fontSize: cm(GM.lineA.fontPx), lineHeight: GM.lineA.leading }} data-reveal="" data-node-id="375:1794">
             {m.lineA}
           </h2>
           {/* czy AI zmieni Twoją branżę. */}
-          <p className="absolute font-body font-normal text-white" style={{ right: cm(GM.lineB.right), top: cm(GM.lineB.top), width: cm(GM.lineB.w), fontSize: cm(GM.lineB.fontPx), lineHeight: GM.lineB.leading, textAlign: "right" as const }} data-node-id="375:1807">
+          <p className="absolute font-body font-normal text-white" style={{ right: cm(GM.lineB.right), top: cm(GM.lineB.top), width: cm(GM.lineB.w), fontSize: cm(GM.lineB.fontPx), lineHeight: GM.lineB.leading, textAlign: "right" as const, transitionDelay: "0.12s" }} data-reveal="" data-node-id="375:1807">
             {m.lineB.toLowerCase().replace("czy ai", "czy AI").replace("twoją", "Twoją")}
           </p>
           {/* glob z robotem */}
-          <img src="/assets/m-glob-f.png" alt="Robot AI czytający z tabletu" className="absolute max-w-none" style={{ left: cm(GM.glob.left), top: cm(GM.glob.top), width: cm(GM.glob.w), height: cm(GM.glob.h) }} data-node-id="375:1795" />
+          <img src="/assets/m-glob-f.png" alt="Robot AI czytający z tabletu" className="absolute max-w-none" style={{ left: cm(GM.glob.left), top: cm(GM.glob.top), width: cm(GM.glob.w), height: cm(GM.glob.h), transitionDelay: "0.15s" }} data-reveal="" data-node-id="375:1795" />
           {/* CHODZI O TO, / CZY JESTEŚ NA TO GOTOWY. */}
-          <p className="absolute font-display font-black text-white" style={{ right: cm(GM.lineC.right), top: cm(GM.lineC.top), width: cm(355), fontSize: cm(GM.lineC.fontPx), lineHeight: "normal", textAlign: "right" as const }} data-node-id="375:1808">
+          <p className="absolute font-display font-black text-white" style={{ right: cm(GM.lineC.right), top: cm(GM.lineC.top), width: cm(355), fontSize: cm(GM.lineC.fontPx), lineHeight: "normal", textAlign: "right" as const, transitionDelay: "0.2s" }} data-reveal="" data-node-id="375:1808">
             {m.lineC[0]}
             <br />
             {m.lineC[1]}
           </p>
           {/* akapit */}
-          <p className="absolute font-body text-white" style={{ left: cm(GM.para.left), top: cm(GM.para.top), width: cm(GM.para.w), fontSize: cm(GM.para.fontPx), lineHeight: GM.para.leading, textAlign: "justify" as const }} data-node-id="375:1818">
+          <p className="absolute font-body text-white" style={{ left: cm(GM.para.left), top: cm(GM.para.top), width: cm(GM.para.w), fontSize: cm(GM.para.fontPx), lineHeight: GM.para.leading, textAlign: "justify" as const, transitionDelay: "0.28s" }} data-reveal="" data-node-id="375:1818">
             <Rich segs={m.paragraph} baseFontPx={GM.para.fontPx} scale={cm} />
           </p>
           {/* pill */}
           <div
             className="absolute flex items-center justify-center border-solid border-white bg-brand-lime"
-            style={{ left: cm(GM.pill.left), top: cm(GM.pill.top), width: cm(GM.pill.w), height: cm(GM.pill.h), borderRadius: cm(GM.pill.radiusPx), borderWidth: cm(GM.pill.borderPx), paddingLeft: cm(GM.pill.padX), paddingRight: cm(GM.pill.padX) }}
+            style={{ left: cm(GM.pill.left), top: cm(GM.pill.top), width: cm(GM.pill.w), height: cm(GM.pill.h), borderRadius: cm(GM.pill.radiusPx), borderWidth: cm(GM.pill.borderPx), paddingLeft: cm(GM.pill.padX), paddingRight: cm(GM.pill.padX), transitionDelay: "0.35s" }} data-reveal=""
             data-node-id="375:1820"
           >
             <p className="font-body text-brand-blue" style={{ fontSize: cm(GM.pill.fontPx), lineHeight: cm(22), textAlign: "justify" as const }}>
@@ -295,23 +307,23 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
             </p>
           </div>
           {/* strzałki */}
-          <img src="/assets/m-arrow-mid-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.arrowMid.left), top: cm(GM.arrowMid.top), width: cm(GM.arrowMid.w), height: cm(GM.arrowMid.h) }} data-node-id="375:1823" />
-          <img src="/assets/m-arrow-low-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowLow.left), top: cm(GM.arrowLow.top), width: cm(GM.arrowLow.w), height: cm(GM.arrowLow.h) }} data-node-id="375:1845" />
+          <img src="/assets/m-arrow-mid-f.png" alt="" className="absolute max-w-none" style={{ left: cm(GM.arrowMid.left), top: cm(GM.arrowMid.top), width: cm(GM.arrowMid.w), height: cm(GM.arrowMid.h), transitionDelay: "0.3s" }} data-reveal="" data-node-id="375:1823" />
+          <img src="/assets/m-arrow-low-f.png" alt="" className="absolute" style={{ left: cm(GM.arrowLow.left), top: cm(GM.arrowLow.top), width: cm(GM.arrowLow.w), height: cm(GM.arrowLow.h), transitionDelay: "0.3s" }} data-reveal="" data-node-id="375:1845" />
           {/* CTA */}
           <a
             href="/#kursy"
             className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
-            style={{ left: cm(GM.button.left), top: cm(GM.button.top), width: cm(GM.button.w), height: cm(GM.button.h), borderRadius: cm(GM.button.radiusPx), borderWidth: cm(GM.button.borderPx), fontSize: cm(GM.button.fontPx), letterSpacing: cm(GM.button.trackPx) }}
+            style={{ left: cm(GM.button.left), top: cm(GM.button.top), width: cm(GM.button.w), height: cm(GM.button.h), borderRadius: cm(GM.button.radiusPx), borderWidth: cm(GM.button.borderPx), fontSize: cm(GM.button.fontPx), letterSpacing: cm(GM.button.trackPx), transitionDelay: "0.4s" }} data-reveal=""
             data-node-id="375:1842"
           >
             {m.mobileCtaLabel}
           </a>
           {/* AI TO NARZĘDZIE */}
-          <p className="absolute whitespace-nowrap font-modular text-white" style={{ left: cm(GM.aiToTag.left), top: cm(GM.aiToTag.top), fontSize: cm(GM.aiToTag.fontPx), lineHeight: GM.aiToTag.leading }} data-node-id="375:1861">
+          <p className="absolute whitespace-nowrap font-modular text-white" style={{ left: cm(GM.aiToTag.left), top: cm(GM.aiToTag.top), fontSize: cm(GM.aiToTag.fontPx), lineHeight: GM.aiToTag.leading, transitionDelay: "0.1s" }} data-reveal="" data-node-id="375:1861">
             {m.bar.left.toUpperCase().replace(".", "")}
           </p>
           {/* pasek lime z TY DECYDUJESZ */}
-          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top), height: cm(GM.limeBar.h) }} data-node-id="375:1854">
+          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top), height: cm(GM.limeBar.h), transitionDelay: "0.15s" }} data-reveal="" data-node-id="375:1854">
             <p
               className="absolute -translate-x-full whitespace-nowrap font-display font-black text-brand-blue"
               style={{ left: cm(GM.tyDecy.rightEdge), top: cm(GM.tyDecy.top - GM.limeBar.top), fontSize: cm(GM.tyDecy.fontPx), letterSpacing: cm(GM.tyDecy.trackPx), lineHeight: "normal" }}
