@@ -62,8 +62,8 @@ export default function MobileMenu({
   }, []);
 
   /* clip-path rośnie ze środka burgera (MobileTopBar: 20px od prawej + 20px
-     do środka przycisku, top 59px + 20px) */
-  const origin = "calc(100% - 40px) 79px";
+     do środka przycisku, top 37px + 20px) */
+  const origin = "calc(100% - 40px) 57px";
 
   return (
     <>
