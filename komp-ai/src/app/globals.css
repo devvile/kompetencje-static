@@ -18,8 +18,8 @@
 
 html {
   background: var(--color-page);
-  /* kotwice (np. /#kursy) dojeżdżają płynnie */
-  scroll-behavior: smooth;
+  /* kotwice (np. /#kontakt) skaczą NATYCHMIAST (bez smooth) — płynne
+     przewijanie stopowało się na pinowanej sekcji Human-Machine */
 }
 
 body {
@@ -393,9 +393,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   .menu-star-float {
     animation: none;
   }

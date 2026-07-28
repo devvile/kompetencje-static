@@ -125,6 +125,12 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     };
     const onScroll = () => {
       if (phase === "playing") {
+        // duży skok (nawigacja kotwicą, np. nav KONTAKT) — zwolnij lock
+        if (Math.abs(window.scrollY - lockY) > window.innerHeight) {
+          video.pause();
+          jumpToEnd();
+          return;
+        }
         // zamrożony ekran na czas odtwarzania
         window.scrollTo(0, lockY);
         return;
