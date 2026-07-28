@@ -88,9 +88,10 @@ export default function KontaktSection({ k }: { k: Kontakt }) {
   const fields = k.fields.filter((f) => f.kind !== "textarea");
   const message = k.fields.find((f) => f.kind === "textarea");
   return (
-    <>
+    // kotwica nav "KONTAKT" (/#kontakt) — wspólna dla wariantu mobile i desktop
+    <div id="kontakt">
     <KontaktMobile k={k} />
-    <section id="kontakt" className="relative hidden w-full md:block">
+    <section className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative overflow-hidden bg-brand-blue" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="245:9696">
           {/* gwiazdy outline (biel ~18%) — za formularzem */}
@@ -119,6 +120,6 @@ export default function KontaktSection({ k }: { k: Kontakt }) {
         </div>
       </div>
     </section>
-    </>
+    </div>
   );
 }

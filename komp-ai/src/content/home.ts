@@ -3,12 +3,14 @@ import type { HomePage, SiteSettings } from "./types";
 export const siteSettings: SiteSettings = {
   _type: "siteSettings",
   nav: [
-    // landing z kotwicą na 2 wyróżnionych kursach (sekcja DNA, przed resztą kafli)
-    { _type: "navLink", label: "KURSY", href: "/#kursy" },
+    // KURSY = po prostu landing (decyzja Patryka 2026-07-28)
+    { _type: "navLink", label: "KURSY", href: "/" },
     { _type: "navLink", label: "O NAS", href: "/o-nas" },
+    // MANIFEST = własna podstrona (na razie placeholder)
     { _type: "navLink", label: "MANIFEST", href: "/manifest" },
     // W designie "KONTACT" — literówka designera, poprawiona świadomie.
-    { _type: "navLink", label: "KONTAKT", href: "/kontakt" },
+    // KONTAKT = landing, kotwica na formularzu (smooth scroll)
+    { _type: "navLink", label: "KONTAKT", href: "/#kontakt" },
   ],
   footer: {
     _type: "footer",
@@ -21,7 +23,7 @@ export const siteSettings: SiteSettings = {
     copyrightLime: "2026 KOMPETENCJE.AI ",
     copyrightWhite: "all rights reserved",
     navLinks: [
-      { _type: "footerLink", label: "KURSY", href: "/#kursy" },
+      { _type: "footerLink", label: "KURSY", href: "/" },
       { _type: "footerLink", label: "O NAS", href: "/o-nas" },
       { _type: "footerLink", label: "SZKOLENIA", href: "/szkolenia" },
     ],
