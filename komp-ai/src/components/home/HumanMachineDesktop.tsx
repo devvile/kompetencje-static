@@ -54,7 +54,7 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     let lockY = 0;
     caption.style.opacity = "0";
     caption.style.transform = "translateY(18px)";
-    caption.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    caption.style.transition = "opacity 0.35s ease, transform 0.35s ease";
     const finishCaption = () => {
       caption.style.opacity = "1";
       caption.style.transform = "translateY(0)";
@@ -100,12 +100,25 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
         }
       }
     };
+    // caption NATYCHMIAST gdy ruch rąk się kończy (klip ma statyczną końcówkę
+    // — czekanie na 'ended' trwało za długo): odpalamy ~0.9s przed końcem
+    let captionShown = false;
+    const onTimeUpdate = () => {
+      if (!captionShown && video.duration && video.currentTime >= video.duration - 0.9) {
+        captionShown = true;
+        finishCaption();
+        setTimeout(() => {
+          phase = "done";
+        }, 250);
+      }
+    };
     const onEnded = () => {
-      finishCaption();
-      // chwila na fade-in captionu, potem odblokowanie scrolla
-      setTimeout(() => {
+      // fallback gdyby timeupdate nie zdążył
+      if (!captionShown) {
+        captionShown = true;
+        finishCaption();
         phase = "done";
-      }, 650);
+      }
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
@@ -123,6 +136,7 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
       schedule();
     };
     setSizes();
+    video.addEventListener("timeupdate", onTimeUpdate);
     video.addEventListener("ended", onEnded);
     video.addEventListener("loadedmetadata", schedule);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -130,6 +144,7 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     schedule();
     return () => {
       if (raf) cancelAnimationFrame(raf);
+      video.removeEventListener("timeupdate", onTimeUpdate);
       video.removeEventListener("ended", onEnded);
       video.removeEventListener("loadedmetadata", schedule);
       window.removeEventListener("scroll", onScroll);
