@@ -95,8 +95,10 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           />
           {/* H1 — linie pozycjonowane osobno; pionowy stretch liter jak w designie */}
           <h1 className="pointer-events-none absolute inset-0 font-display font-black text-brand-blue" data-node-id="401:2579">
+            {/* uwaga: animacja hero-text nadpisuje inline transform — OK póki
+                scaleY linii = 1 (obecne wartości G) */}
             <span
-              className="absolute block origin-top-left whitespace-nowrap"
+              className="hero-text hero-text-d1 absolute block origin-top-left whitespace-nowrap"
               style={{
                 left: c(G.h1.left),
                 top: c(G.h1.line1.top),
@@ -108,7 +110,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
               {hero.headlineLine1}
             </span>
             <span
-              className="absolute block origin-top-left whitespace-nowrap"
+              className="hero-text hero-text-d2 absolute block origin-top-left whitespace-nowrap"
               style={{
                 left: c(G.h1.left),
                 top: c(G.h1.line2.top),
@@ -122,7 +124,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           </h1>
           {/* kicker */}
           <p
-            className="absolute whitespace-nowrap font-display font-normal text-brand-blue"
+            className="hero-text hero-text-d3 absolute whitespace-nowrap font-display font-normal text-brand-blue"
             style={{ left: c(G.kicker.left), top: c(G.kicker.top), fontSize: c(G.kicker.fontPx), lineHeight: 1 }}
             data-node-id="401:2580"
           >
@@ -130,7 +132,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           </p>
           {/* tagline HK Modular */}
           <p
-            className="absolute font-modular text-brand-blue"
+            className="hero-text hero-text-d4 absolute font-modular text-brand-blue"
             style={{
               right: c(G.tagline.right),
               textAlign: "right" as const,
@@ -146,7 +148,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           {/* CTA */}
           <Link
             href={hero.ctaHref}
-            className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
+            className="hero-cta absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
             style={{
               left: c(G.button.left),
               top: c(G.button.top),
@@ -258,13 +260,13 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           {/* pointer-events-none: inset-0 przykrywał burger i blokował klik */}
           <h1 className="pointer-events-none absolute inset-0 text-brand-blue" data-node-id="397:1837">
             <span
-              className="absolute block w-full text-center font-display font-black"
+              className="hero-text hero-text-d1 absolute block w-full text-center font-display font-black"
               style={{ top: cm(GM.h1a.top), fontSize: cm(GM.h1a.fontPx), lineHeight: GM.h1a.leading }}
             >
               {hero.headlineLine1}
             </span>
             <span
-              className="absolute block w-full text-center font-modular"
+              className="hero-text hero-text-d2 absolute block w-full text-center font-modular"
               style={{ top: cm(GM.h1b.top), fontSize: cm(GM.h1b.fontPx), lineHeight: GM.h1b.leading }}
               data-node-id="375:1764"
             >
@@ -281,7 +283,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           />
           {/* kicker (2 linie, do prawej) */}
           <p
-            className="absolute font-display font-normal text-brand-blue"
+            className="hero-text hero-text-d3 absolute font-display font-normal text-brand-blue"
             style={{
               right: cm(GM.kicker.right),
               top: cm(GM.kicker.top),
@@ -296,24 +298,26 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           </p>
         </div>
       </div>
-      {/* CTA — POZA posterem, przypięty w PIERWSZYM ekranie (100svh z nawigacją):
-          20px nad foldem (Patryk: niżej niż designowe 44px), naturalna skala px */}
-      <Link
-        href={hero.ctaHref}
-        className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center justify-center border-solid border-white bg-brand-lime text-center font-modular text-brand-blue"
+      {/* CTA — POZA posterem, przypięty w PIERWSZYM ekranie (100svh z nawigacją).
+          Wrapper trzyma pozycję (translate centrowania kolidowałoby
+          z transformami animacji hero-cta na samym przycisku) */}
+      <div
+        className="absolute left-1/2 z-10 -translate-x-1/2"
         style={{
           top: "calc(100svh - 23.5px)",
           width: "min(300px, calc(100vw - 40px))",
           height: 55,
-          borderRadius: 40,
-          borderWidth: 3,
-          fontSize: 13,
-          letterSpacing: 0.52,
         }}
-        data-node-id="401:1838"
       >
-        {hero.ctaLabel}
-      </Link>
+        <Link
+          href={hero.ctaHref}
+          className="hero-cta flex h-full w-full items-center justify-center border-solid border-white bg-brand-lime text-center font-modular text-brand-blue"
+          style={{ borderRadius: 40, borderWidth: 3, fontSize: 13, letterSpacing: 0.52 }}
+          data-node-id="401:1838"
+        >
+          {hero.ctaLabel}
+        </Link>
+      </div>
     </section>
   );
 }

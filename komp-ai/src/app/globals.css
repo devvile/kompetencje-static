@@ -97,6 +97,87 @@ body {
   }
 }
 
+/* hero landing: wejście napisów (fade + slide-up), potem delikatny dryf */
+@keyframes hero-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-text-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.hero-text {
+  animation:
+    hero-text-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+    hero-text-drift 8s ease-in-out infinite;
+}
+
+/* kaskada: delay wejścia, dryf startuje po wejściu z przesuniętą fazą */
+.hero-text-d1 {
+  animation-delay: 0.1s, 2.6s;
+}
+.hero-text-d2 {
+  animation-delay: 0.25s, 3s;
+}
+.hero-text-d3 {
+  animation-delay: 0.45s, 3.4s;
+}
+.hero-text-d4 {
+  animation-delay: 0.6s, 3.8s;
+}
+
+/* CTA: wejście, potem puls ze zanikającym pierścieniem (zwraca uwagę) */
+@keyframes hero-cta-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-cta-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.65);
+  }
+  45% {
+    transform: scale(1.045);
+  }
+  75% {
+    box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
+  }
+}
+
+.hero-cta {
+  animation:
+    hero-cta-in 0.7s ease-out 0.75s both,
+    hero-cta-pulse 3s ease-in-out 2.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text,
+  .hero-cta {
+    animation: none;
+  }
+}
+
 /* mobilne menu: dekoracyjna gwiazda dryfuje w overlay'u */
 @keyframes menu-star-float {
   0%,
