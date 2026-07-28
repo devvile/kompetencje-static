@@ -47,6 +47,56 @@ body {
   }
 }
 
+/* hero landing: gwiazdki — delikatny dryf, obrót i „mrugnięcie" */
+@keyframes star-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-9px) rotate(7deg) scale(1.05);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(-12deg) scale(0.88);
+    opacity: 0.75;
+  }
+}
+
+.hero-star-a,
+.hero-star-b,
+.hero-star-c {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.hero-star-a {
+  animation: star-drift 6s ease-in-out infinite;
+}
+
+.hero-star-b {
+  animation: star-twinkle 4.5s ease-in-out 0.8s infinite;
+}
+
+.hero-star-c {
+  animation: star-drift 7.5s ease-in-out 1.6s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-star-a,
+  .hero-star-b,
+  .hero-star-c {
+    animation: none;
+  }
+}
+
 /* mobilne menu: dekoracyjna gwiazda dryfuje w overlay'u */
 @keyframes menu-star-float {
   0%,

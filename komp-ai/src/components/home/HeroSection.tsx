@@ -54,7 +54,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/star-outline-f.png"
             alt=""
-            className="absolute"
+            className="hero-star-c absolute"
             style={{ left: c(G.starRobot.left), top: c(G.starRobot.top), width: c(G.starRobot.w), height: c(G.starRobot.h) }}
             data-node-id="401:2610"
           />
@@ -73,7 +73,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/lime-star-f.png"
             alt=""
-            className="absolute"
+            className="hero-star-a absolute"
             style={{ left: c(G.limeStarTR.left), top: c(G.limeStarTR.top), width: c(G.limeStarTR.w), height: c(G.limeStarTR.h) }}
             data-node-id="401:2570"
           />
@@ -81,7 +81,7 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/star-outline-sm-f.png"
             alt=""
-            className="absolute"
+            className="hero-star-b absolute"
             style={{ left: c(G.starTRsmall.left), top: c(G.starTRsmall.top), width: c(G.starTRsmall.w), height: c(G.starTRsmall.h) }}
             data-node-id="401:2611"
           />
@@ -250,7 +250,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/m-star-sm-filtered.png"
             alt=""
-            className="absolute"
+            className="hero-star-b absolute"
             style={{ left: cm(GM.starSm.left), top: cm(GM.starSm.top), width: cm(GM.starSm.w), height: cm(GM.starSm.h) }}
             data-node-id="432:1659"
           />
@@ -275,7 +275,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/m-star-outline-filtered.png"
             alt=""
-            className="absolute"
+            className="hero-star-a absolute"
             style={{ left: cm(GM.starOutline.left), top: cm(GM.starOutline.top), width: cm(GM.starOutline.w), height: cm(GM.starOutline.h) }}
             data-node-id="432:1664"
           />
