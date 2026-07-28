@@ -54,22 +54,12 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/star-outline-f.png"
             alt=""
-            className="hero-star-c absolute"
+            className="hero-star-big absolute"
             style={{ left: c(G.starRobot.left), top: c(G.starRobot.top), width: c(G.starRobot.w), height: c(G.starRobot.h) }}
             data-node-id="401:2610"
           />
-          {/* robot */}
-          <Image
-            src="/assets/robot-hero-alpha-2x.png"
-            alt="Robot AI — kompetencje przyszłości"
-            width={1292}
-            height={1614}
-            priority
-            className="absolute"
-            style={{ left: c(G.robot.left), top: c(G.robot.top), width: c(G.robot.w), height: c(G.robot.h) }}
-            data-node-id="401:2568"
-          />
-          {/* limonkowa gwiazda przy prawej krawędzi */}
+          {/* limonkowa gwiazda przy prawej krawędzi (przed robotem w DOM —
+              wszystkie gwiazdki ZA zdjęciem robota, decyzja Patryka) */}
           <img
             src="/assets/lime-star-f.png"
             alt=""
@@ -81,9 +71,20 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/star-outline-sm-f.png"
             alt=""
-            className="hero-star-b absolute"
+            className="hero-star-big-b absolute"
             style={{ left: c(G.starTRsmall.left), top: c(G.starTRsmall.top), width: c(G.starTRsmall.w), height: c(G.starTRsmall.h) }}
             data-node-id="401:2611"
+          />
+          {/* robot */}
+          <Image
+            src="/assets/robot-hero-alpha-2x.png"
+            alt="Robot AI — kompetencje przyszłości"
+            width={1292}
+            height={1614}
+            priority
+            className="absolute"
+            style={{ left: c(G.robot.left), top: c(G.robot.top), width: c(G.robot.w), height: c(G.robot.h) }}
+            data-node-id="401:2568"
           />
           {/* limonkowy swoosh (STAR_ARROW) */}
           <img
@@ -223,6 +224,15 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         style={{ left: "-30.348%", width: "130.597%", bottom: 0 }}
         data-node-id="375:1763"
       >
+        {/* gwiazda outline ZA robotem (z-index — decyzja Patryka, w designie
+            była nad); % względem robota, jedzie z jego skalą */}
+        <img
+          src="/assets/m-star-outline-filtered.png"
+          alt=""
+          className="hero-star-big absolute"
+          style={{ left: "46.038%", top: "-0.884%", width: "27.238%" }}
+          data-node-id="432:1664"
+        />
         <Image
           src="/assets/robot-hero-m-2x.png"
           alt="Robot AI — kompetencje przyszłości"
@@ -252,7 +262,7 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           <img
             src="/assets/m-star-sm-filtered.png"
             alt=""
-            className="hero-star-b absolute"
+            className="hero-star-big-b absolute"
             style={{ left: cm(GM.starSm.left), top: cm(GM.starSm.top), width: cm(GM.starSm.w), height: cm(GM.starSm.h) }}
             data-node-id="432:1659"
           />
@@ -273,14 +283,6 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
               {hero.headlineLine2}
             </span>
           </h1>
-          {/* gwiazda outline NAD robotem (mobile) */}
-          <img
-            src="/assets/m-star-outline-filtered.png"
-            alt=""
-            className="hero-star-a absolute"
-            style={{ left: cm(GM.starOutline.left), top: cm(GM.starOutline.top), width: cm(GM.starOutline.w), height: cm(GM.starOutline.h) }}
-            data-node-id="432:1664"
-          />
           {/* kicker (2 linie, do prawej) */}
           <p
             className="hero-text hero-text-d3 absolute font-display font-normal text-brand-blue"
