@@ -8,6 +8,7 @@
  */
 
 import HandsVideo from "../shared/HandsVideo";
+import HumanMachineDesktop from "./HumanMachineDesktop";
 
 export interface HumanMachineContent {
   titleTop: string; // HUMAN
@@ -140,60 +141,9 @@ export default function HumanMachineSection({ hm }: { hm: HumanMachineContent })
   return (
     <>
     <HumanMachineMobile hm={hm} />
-    <section className="relative hidden w-full md:block">
-      <div className="@container mx-auto w-full max-w-(--workspace)">
-        <div className="relative aspect-[1440/810] overflow-hidden bg-page" data-node-id="245:9699">
-          {/* dłonie — wideo Higgsfield (start: daleko od siebie → dotyk; ostatnia
-              klatka = statyczny asset) — POD napisami (MACHINE nachodzi na ramię) */}
-          <HandsVideo
-            src="/assets/hm-hands-video.mp4"
-            poster="/assets/hm-hands.png"
-            label="Dłoń robota i dłoń człowieka zbliżają się i stykają palcami"
-            className="absolute left-0"
-            style={{ top: c(G.hands.top), width: c(G.hands.w), height: c(G.hands.h) }}
-          />
-          {/* HUMAN — solid */}
-          <h2
-            className="absolute whitespace-nowrap font-display font-black text-brand-blue"
-            style={{
-              left: c(G.human.left), top: c(G.human.top),
-              fontSize: c(G.human.fontPx), lineHeight: 1, letterSpacing: c(G.human.trackPx),
-            }}
-            data-node-id="245:9368"
-          >
-            {/* HUMAN nad konturem MACHINE (z-index) — jak w designie N przykrywa róg M */}
-            <span className="relative z-[2]">{hm.titleTop}</span>
-            {/* MACHINE — outline; Poppins, bo kontury Montserrat mają
-                samoprzecinające się ścieżki i stroke pokazuje szwy glifów */}
-            <span
-              className="absolute z-[1] whitespace-nowrap font-extrabold text-transparent"
-              style={{
-                left: c(G.machine.left - G.human.left),
-                top: c(G.machine.top - G.human.top),
-                fontFamily: "var(--font-poppins)",
-                fontSize: c(G.machine.fontPx), lineHeight: 1, letterSpacing: c(G.machine.trackPx),
-                WebkitTextStroke: `${c(G.machine.strokePx)} var(--color-brand-blue)`,
-              }}
-            >
-              {hm.titleBottom}
-            </span>
-          </h2>
-          {/* podpis z liniami */}
-          <div className="absolute bg-brand-blue" style={{ left: c(G.lineL.x), top: c(G.lineY), width: c(G.lineL.w), height: c(G.lineH) }} />
-          <div className="absolute bg-brand-blue" style={{ left: c(G.lineR.x), top: c(G.lineY), width: c(G.lineR.w), height: c(G.lineH) }} />
-          <p
-            className="absolute whitespace-nowrap font-modular text-brand-blue"
-            style={{
-              left: c(G.caption.left), top: c(G.caption.top), fontSize: c(G.caption.fontPx),
-              letterSpacing: c(G.caption.trackPx), wordSpacing: c(G.caption.wordPx), lineHeight: 1,
-            }}
-            data-node-id="245:9458"
-          >
-            {hm.caption}
-          </p>
-        </div>
-      </div>
-    </section>
+    {/* desktop = scroll-scrubbing (wideo + napisy napędzane scrollem) —
+        wydzielony client component HumanMachineDesktop */}
+    <HumanMachineDesktop hm={hm} />
     </>
   );
 }
