@@ -209,15 +209,17 @@ body {
   }
 }
 
-/* hero landing mobile: wielka limonkowa gwiazda tła pulsuje (jak CTA);
-   obecny rozmiar = MAKSIMUM pulsu (skaluje tylko w dół) */
+/* hero landing mobile: wielka limonkowa gwiazda tła pulsuje (jak CTA).
+   Blob ma 108% szerokości (overscan przycięty przez overflow sekcji), więc
+   nawet w dołku pulsu (0.94 → ~101.5% viewportu) krawędzie lewa/prawa są
+   ZAWSZE dociągnięte — bez pustych pasów przy marginesach */
 @keyframes hero-blob-pulse {
   0%,
   100% {
     transform: scale(1);
   }
   50% {
-    transform: scale(0.955);
+    transform: scale(0.94);
   }
 }
 
