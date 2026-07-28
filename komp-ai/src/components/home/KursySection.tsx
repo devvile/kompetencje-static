@@ -150,29 +150,36 @@ const G = {
 export default function KursySection({ cards }: { cards: KursCard[] }) {
   const wrapRef = useRef<HTMLElement | null>(null);
   const stickyRef = useRef<HTMLDivElement | null>(null);
+  const headerRef = useRef<HTMLHeadingElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const wrap = wrapRef.current;
     const sticky = stickyRef.current;
-    if (!wrap || !sticky) return;
+    const header = headerRef.current;
+    if (!wrap || !sticky || !header) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let extra = 0;
     // PIN (życzenie Patryka: końcówka nie może „uciekać" scrollem): sekcja
-    // przyklejona na czas wjazdu kart; karty lądują do ~78% extra, resztka
-    // (~22%) = zawieszenie na złożonym układzie, dopiero potem odpięcie.
+    // przyklejona GÓRĄ (napis NIE CZEKAJ zawsze w kadrze); karty lądują do
+    // ~78% extra, potem zawieszenie, a nagłówek pojawia się jako FINAŁ
+    // dopiero gdy wszystkie karty są na miejscach.
+    if (!reduce) {
+      header.style.opacity = "0";
+      header.style.transform = "translateY(16px)";
+      header.style.transition = "opacity 0.45s ease, transform 0.45s ease";
+    }
     const setSizes = () => {
       const vh = window.innerHeight;
+      sticky.style.top = "0px";
       if (reduce) {
         extra = 0;
         wrap.style.height = "";
-        sticky.style.top = "0px";
         return;
       }
       extra = Math.round(vh * 0.85);
       wrap.style.height = `${sticky.offsetHeight + extra}px`;
-      sticky.style.top = `${Math.min(0, vh - sticky.offsetHeight)}px`;
     };
     const apply = () => {
       raf = 0;
@@ -189,6 +196,12 @@ export default function KursySection({ cards }: { cards: KursCard[] }) {
       cardRefs.current.forEach((el, i) => {
         if (el) el.style.transform = tr[i];
       });
+      // nagłówek = finał choreografii (po wylądowaniu wszystkich kart)
+      if (!reduce) {
+        const showHeader = raw >= 0.8;
+        header.style.opacity = showHeader ? "1" : "0";
+        header.style.transform = showHeader ? "translateY(0)" : "translateY(16px)";
+      }
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
@@ -217,6 +230,7 @@ export default function KursySection({ cards }: { cards: KursCard[] }) {
           <div className="absolute inset-x-0 top-0 bg-brand-blue" style={{ height: c(806) }} data-node-id="245:8087" />
           {/* nagłówek — w designie krzywe, tu prawdziwy HK Modular */}
           <h2
+            ref={headerRef}
             className="absolute font-modular font-normal text-white"
             style={{ left: c(G.header.left), top: c(G.header.line1Top), fontSize: c(G.header.fontPx), lineHeight: c(G.header.lineHeightPx), wordSpacing: c(G.header.wordPx) }}
             data-node-id="245:8090"
