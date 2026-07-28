@@ -195,10 +195,12 @@ const GM = {
 
 function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    // pełna szerokość jak pozostałe sekcje mobile — kontener svh robił szare
-    // gutters na realnym iPhone (svh < wysokość ekranu przez pasek przeglądarki,
-    // poster zwężał się poniżej 100% i blob nie dobijał do krawędzi)
-    <section className="relative w-full md:hidden">
+    // hero = 100svh, poster PEŁNEJ SZEROKOŚCI wyśrodkowany pionowo i przycięty
+    // (cover): poster 402/875 jest wyższy niż ekran telefonu → równy crop
+    // góra/dół (logo zostaje u góry, robot+button na dole widoczne). Wcześniej
+    // kotwiczony do góry → dolna część robota i button ucinane, a górny szary
+    // pas nad hamburgerem w całości widoczny („niepotrzebny margines").
+    <section className="relative flex h-svh items-center overflow-hidden md:hidden">
       <div className="@container mx-auto w-full">
         <div className="relative aspect-[402/875] overflow-hidden bg-page">
           {/* limonkowy blob tła */}

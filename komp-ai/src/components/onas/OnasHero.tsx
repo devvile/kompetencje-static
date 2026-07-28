@@ -52,10 +52,11 @@ const GMOB = {
 function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
   const lines = ["KOMPE", "TEN", "CJ", "E"];
   return (
-    // pełna szerokość (jak pozostałe sekcje mobile) — kontener svh robił szare
-    // gutters na realnym iPhone (pasek przeglądarki zmniejsza svh → poster
-    // węższy niż ekran); sekcja 2 (blue) zaczyna się zaraz pod posterem
-    <section className="relative w-full md:hidden">
+    // hero = 100svh, poster PEŁNEJ SZEROKOŚCI wyśrodkowany pionowo i przycięty
+    // (cover): poster jest wyższy niż ekran telefonu → równy crop góra/dół
+    // (top bar zostaje u góry, robot na dole widoczny). Bez cappingu svh (który
+    // robił boczne gutters) i bez kotwiczenia do góry (górny szary margines)
+    <section className="relative flex h-svh items-center overflow-hidden md:hidden">
       <div className="@container mx-auto w-full">
         <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
           {/* top bar: logo + burger (assety home mobile) */}

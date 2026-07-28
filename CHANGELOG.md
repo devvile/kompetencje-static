@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-07-28 (3) — hero mobile: cover-crop zamiast kotwiczenia do góry
+
+- **Hero mobile home + o-nas**: po fixie szerokości poster (402/875) był
+  kotwiczony do góry i wyższy niż ekran → dolna część robota i button ucinane,
+  a górny szary pas nad hamburgerem widoczny w całości (zgłoszony „niepotrzebny
+  margines na górze"). Referencja (mobile-preview-landing-hero1.jpeg, 942×2048
+  ≈ aspect posteru 0.46) pokazuje poster wyśrodkowany pionowo z równym, małym
+  cropem góra/dół. Fix: sekcja = `flex h-svh items-center overflow-hidden`,
+  poster pełnej szerokości wyśrodkowany (cover) — logo/hamburger u góry, robot
+  wyśrodkowany, button na dole widoczny. Zweryfikowane przy 402×810 i 402×762
+  (logo nieucięte), hscroll czysty 375–2560, menu działa.
+
 ## 2026-07-28 (2) — fix szare gutters hero mobile (realny iPhone)
 
 - **Hero mobile home + o-nas**: na iPhone 16 Pro poster hero miał szary margines
