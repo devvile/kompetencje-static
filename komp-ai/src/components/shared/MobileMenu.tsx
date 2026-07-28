@@ -61,8 +61,9 @@ export default function MobileMenu({
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
-  /* clip-path rośnie z miejsca burgera (prawy górny róg ekranu) */
-  const origin = "calc(100% - 44px) 62px";
+  /* clip-path rośnie ze środka burgera (MobileTopBar: 20px od prawej + 20px
+     do środka przycisku, top 59px + 20px) */
+  const origin = "calc(100% - 40px) 79px";
 
   return (
     <>
@@ -71,7 +72,9 @@ export default function MobileMenu({
         aria-label={open ? "Zamknij menu" : "Otwórz menu"}
         aria-expanded={open}
         onClick={open ? hide : show}
-        className={`relative ${className ?? ""}`}
+        // rodzic podaje pozycjonowanie (absolute + offsety); fallback relative
+        // tylko gdy nie podał — paski w środku są absolute
+        className={className ?? "relative"}
         style={style}
       >
         {/* 3 paski jak w assecie designu; morf w X */}

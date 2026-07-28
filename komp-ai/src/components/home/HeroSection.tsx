@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { HomeHero, NavLink } from "../../content/types";
 import SiteNav from "../shared/SiteNav";
-import MobileMenu from "../shared/MobileMenu";
+import MobileTopBar from "../shared/MobileTopBar";
 
 /*
  * Hero + nav = dokładnie 100svh, poster-canvas 1440×833 (desktop).
@@ -209,26 +209,14 @@ function HeroMobile({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
         className="absolute left-0 top-0 w-full"
         data-node-id="375:1754"
       />
+      {/* top bar POZA skalowanym posterem — wspólny komponent, naturalna skala
+          i identyczne położenie na wszystkich stronach */}
+      <MobileTopBar nav={nav} />
       <div
         className="@container relative w-full"
         style={{ width: "min(100%, calc(100svh * (402 / 875)))" }}
       >
         <div className="relative aspect-[402/875] overflow-hidden">
-          {/* top bar: logo + burger */}
-          <header className="absolute inset-x-0 top-0" data-node-id="375:1739">
-            <Link
-              href="/"
-              className="absolute"
-              style={{ left: cm(GM.logo.left), top: cm(GM.logo.top), width: cm(GM.logo.w), height: cm(GM.logo.h) }}
-            >
-              <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
-            </Link>
-            <MobileMenu
-              nav={nav}
-              className="absolute"
-              style={{ left: cm(GM.burger.left), top: cm(GM.burger.top), width: cm(GM.burger.w), height: cm(GM.burger.h) }}
-            />
-          </header>
           {/* mała gwiazdka nad headline */}
           <img
             src="/assets/m-star-sm-filtered.png"

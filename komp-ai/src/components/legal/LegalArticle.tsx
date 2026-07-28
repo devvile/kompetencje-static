@@ -11,7 +11,7 @@
  */
 import type { LegalPage, NavLink } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
-import MobileMenu from "../shared/MobileMenu";
+import MobileTopBar from "../shared/MobileTopBar";
 
 export default function LegalArticle({ page, nav }: { page: LegalPage; nav: NavLink[] }) {
   return (
@@ -22,17 +22,9 @@ export default function LegalArticle({ page, nav }: { page: LegalPage; nav: NavL
           <div className="hidden md:block">
             <SiteNav nav={nav} />
           </div>
-          {/* top bar mobile: logo + burger (assety home mobile) */}
-          <a
-            href="/"
-            className="absolute left-[3.7313cqw] top-[10.6965cqw] h-[17.4129cqw] w-[15.1095cqw] md:hidden"
-          >
-            <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
-          </a>
-          <MobileMenu
-            nav={nav}
-            className="absolute left-[85.0746cqw] top-[14.4279cqw] h-[9.9502cqw] w-[9.9502cqw] md:hidden"
-          />
+          {/* top bar mobile — wspólny komponent, identyczne położenie jak
+              na landingu i o-nas */}
+          <MobileTopBar nav={nav} />
           {/* spark lime przy prawej krawędzi (asset sekcji PROGRAM) */}
           <img
             src="/assets/kurs-prog-spark-f.png"

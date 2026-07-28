@@ -9,7 +9,7 @@
  */
 import type { NavLink, ONasHero } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
-import MobileMenu from "../shared/MobileMenu";
+import MobileTopBar from "../shared/MobileTopBar";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
@@ -57,16 +57,14 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
     // robot dalej dotykał lewej krawędzi ekranu; prawy gutter jest niewidoczny
     // (tło hero = jednolity bg-page, bez blobu na krawędzi).
     <section className="relative flex h-svh items-center justify-start overflow-hidden bg-page md:hidden">
+      {/* top bar POZA skalowanym posterem — wspólny komponent, identyczne
+          położenie jak na landingu */}
+      <MobileTopBar nav={nav} />
       <div
         className="@container relative w-full"
         style={{ width: `min(100%, calc(100svh * (402 / ${GMOB.h})))` }}
       >
         <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
-          {/* top bar: logo + burger (assety home mobile) */}
-          <a href="/" className="absolute" style={{ left: cm(GMOB.topBar.logo.x), top: cm(GMOB.topBar.logo.y), width: cm(GMOB.topBar.logo.w), height: cm(GMOB.topBar.logo.h) }}>
-            <img src="/assets/m-logo-f.png" alt="Kompetencje.ai" className="h-full w-full" />
-          </a>
-          <MobileMenu nav={nav} className="absolute" style={{ left: cm(GMOB.topBar.burger.x), top: cm(GMOB.topBar.burger.y), width: cm(GMOB.topBar.burger.w), height: cm(GMOB.topBar.burger.h) }} />
           {/* KOMPETENCJE — 4 linie solid, ZA robotem (głowa nachodzi na litery) */}
           <h1
             className="absolute origin-top-right text-right font-display font-black text-brand-blue"

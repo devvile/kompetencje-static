@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-07-28 (7) — wspólny MobileTopBar: identyczny top bar na każdej stronie
+
+- Uwagi Patryka: (a) za duży margines top/boki dla menu — top bar skalował się
+  razem z posterem contain i „uciekał" od krawędzi; (b) top bar na o-nas
+  wyglądał inaczej niż na landingu (osobne implementacje per strona).
+- Nowy `components/shared/MobileTopBar.tsx`: logo + hamburger POZA skalowanym
+  posterem, naturalna skala px z designu (logo 15px/44px 61×70, burger 20px od
+  prawej/59px 40×40), identyczny na home, o-nas i stronach prawnych (zamiast
+  3 osobnych implementacji cqw). Fix w MobileMenu: nie wymusza już `relative`
+  (kolidowało z absolute z top bara — burger lądował z lewej); origin clip-path
+  dopasowany do realnego środka burgera (100%-40px, 79px).
+- Zweryfikowane 402×740: top bar w tych samych miejscach na /, /o-nas,
+  /regulamin; hero 100svh bez zmian; hscroll czysty ×3; menu działa; tsc czysty.
+
 ## 2026-07-28 (6) — hero mobile: nav + hero = dokładnie 100svh (contain + blob full-bleed)
 
 - Życzenie Patryka (Figma hero-landing 2043:1621 = canvas 402×875 z top barem):
