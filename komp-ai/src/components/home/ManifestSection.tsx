@@ -209,13 +209,14 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
               {m.bar.right}
             </p>
           </div>
-          {/* biały pasek ZAWSZE widoczny — reveal tylko na treści marquee */}
+          {/* biały pasek z marquee — BEZ animacji pojawiania (uwaga Patryka):
+              widoczny od razu, po prostu przewija się w lewo */}
           <div
             className="absolute inset-x-0 bg-white"
             style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h) }}
             data-node-id="245:4381"
           >
-            <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h), transitionDelay: "0.2s" }} data-reveal="" data-node-id="245:4580">
+            <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h) }} data-node-id="245:4580">
               <MarqueeRow
                 text={m.marqueeText}
                 scale={c}
