@@ -42,15 +42,19 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     let raf = 0;
     const apply = () => {
       raf = 0;
-      // progress liczony od PASA DŁONI (nie od góry sekcji — startowało za
-      // wcześnie i przy dojechaniu do rąk animacja była już na końcu):
-      // 0 = góra wideo na dole viewportu, 1 = wideo w całości widoczne
+      // progress od PASA DŁONI; zakres = ~0.9 wysokości viewportu (długa droga
+      // scrolla). Sekwencja (życzenie Patryka): najpierw domykają się NAPISY
+      // (0..40% zakresu), RĘCE ruszają od 30% i łączą się POWOLI dopiero pod
+      // koniec (30..100%, easing ^1.5 — klip ma większość ruchu na początku).
       const r = video.getBoundingClientRect();
       const vh = window.innerHeight;
-      const p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / r.height));
-      human.style.transform = `translateX(${(-(1 - p) * 115).toFixed(2)}%)`;
-      machine.style.transform = `translateX(${((1 - p) * 115).toFixed(2)}%)`;
-      if (video.duration) video.currentTime = p * video.duration * 0.999;
+      const range = Math.min(r.height * 2.2, vh * 0.9);
+      const raw = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / range));
+      const textP = Math.min(1, raw / 0.4);
+      const videoP = Math.pow(Math.min(1, Math.max(0, (raw - 0.3) / 0.7)), 1.5);
+      human.style.transform = `translateX(${(-(1 - textP) * 115).toFixed(2)}%)`;
+      machine.style.transform = `translateX(${((1 - textP) * 115).toFixed(2)}%)`;
+      if (video.duration) video.currentTime = videoP * video.duration * 0.999;
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(apply);
