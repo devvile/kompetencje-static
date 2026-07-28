@@ -68,7 +68,8 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
   return (
     <section ref={sectionRef} className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
-        <div className="relative aspect-[1440/810] overflow-hidden bg-page" data-node-id="245:9699">
+        {/* tło #EBEBEB = tło wygenerowanego wideo (strona ma #EFEFEF) */}
+        <div className="relative aspect-[1440/810] overflow-hidden bg-[#ebebeb]" data-node-id="245:9699">
           {/* dłonie — wideo scrubowane scrollem (bez postera: przed dojechaniem
               widoczna PIERWSZA klatka — dłonie daleko od siebie); object-cover
               ścina symetryczny padding 21:9 */}

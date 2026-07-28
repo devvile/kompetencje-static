@@ -71,7 +71,7 @@ function HumanMachineMobile({ hm }: { hm: HumanMachineContent }) {
         {/* overflow-x-clip: box MACHINE wystaje trailing-letter-spacingiem poza
             402px (h-scroll); pionowo visible — bleedy gwiazd (17px góra, 4px dół) */}
         <div
-          className="relative overflow-x-clip overflow-y-visible bg-page"
+          className="relative overflow-x-clip overflow-y-visible bg-[#ebebeb]"
           style={{ aspectRatio: `402/${GM.h}` }}
           data-node-id="423:3066"
         >
