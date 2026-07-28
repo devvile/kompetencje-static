@@ -1,5 +1,10 @@
+"use client";
+
 /*
  * Sekcja 4: kursy — 3 karty na niebieskim tle (TYLKO desktop; mobile odłożone).
+ * Scroll-scrubbing kart (życzenie Patryka): lewa wjeżdża zza LEWEGO marginesu,
+ * środkowa od DOŁU, prawa zza PRAWEGO marginesu — progress = scroll, z lekkim
+ * staggerem; overflow-hidden sekcji przycina karty poza kadrem.
  * Canvas 1440×874 (strona y3663–4537), niebieskie tło h806.
  * Karty w designie są w 100% zamienione na krzywe (zero tekstów!) — treść
  * odtworzona prawdziwymi fontami z pomiarów renderu (SEO: prawdziwe nagłówki).
@@ -10,6 +15,8 @@
  * szerokość panelu 273×211, button 210×45.5 z twardym jasnym cieniem (+14,+28)
  * przyciętym do panelu.
  */
+
+import { useEffect, useRef } from "react";
 
 export interface KursCard {
   tag: string;
@@ -141,8 +148,45 @@ const G = {
 };
 
 export default function KursySection({ cards }: { cards: KursCard[] }) {
+  const secRef = useRef<HTMLElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const sec = secRef.current;
+    if (!sec) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    const apply = () => {
+      raf = 0;
+      const r = sec.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (r.height * 0.9)));
+      const sub = (a: number, b: number) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+      const t = [sub(0, 0.85), sub(0.07, 0.92), sub(0.14, 1)];
+      const tr = [
+        `translateX(${(-(1 - t[0]) * 175).toFixed(2)}%)`, // lewa zza lewego marginesu
+        `translateY(${((1 - t[1]) * 160).toFixed(2)}%)`, // środkowa od dołu
+        `translateX(${((1 - t[2]) * 175).toFixed(2)}%)`, // prawa zza prawego marginesu
+      ];
+      cardRefs.current.forEach((el, i) => {
+        if (el) el.style.transform = tr[i];
+      });
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    schedule();
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+
   return (
-    <section className="relative hidden w-full md:block">
+    <section ref={secRef} className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative aspect-[1440/874] overflow-hidden bg-page">
           {/* niebieskie tło sekcji (1440×806) */}
@@ -158,7 +202,14 @@ export default function KursySection({ cards }: { cards: KursCard[] }) {
             <span style={{ letterSpacing: c(G.header.track2Px) }}>WYBIERZ KURS I WYPRZEDŹ INNYCH.</span>
           </h2>
           {cards.map((card, i) => (
-            <div key={i} className="absolute" style={{ left: c(G.cards[i].left), top: c(G.cards[i].top) }}>
+            <div
+              key={i}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className="absolute will-change-transform"
+              style={{ left: c(G.cards[i].left), top: c(G.cards[i].top) }}
+            >
               <KursCardBox card={card} />
             </div>
           ))}
