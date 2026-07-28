@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 2026-07-28 (podsumowanie sesji) — menu mobilne, naprawy hero, Faza 2 animacji
+
+Duża sesja (ok. 30 commitów, wszystko na masterze). Skrót:
+
+- **Menu mobilne**: MobileMenu (burger→X, overlay clip-path, kaskada linków)
+  + wspólny MobileTopBar (identyczny na wszystkich stronach, margines top
+  zmniejszony o połowę). Po drodze fix pre-existing: h1/spark inset-0
+  blokowały klikanie (pointer-events-none) — dotyczyło też SiteNav na o-nas
+  (wrapper TENCJE).
+- **Nawigacja**: KURSY→`/` , O NAS→`/o-nas`, MANIFEST→`/manifest` (NOWA
+  podstrona-placeholder), KONTAKT→`/#kontakt` (kotwica na wrapperze,
+  skok natychmiastowy — global smooth scroll USUNIĘTY, bo stopował się
+  na pinowanej sekcji HM).
+- **Hero landing mobile**: pełna szerokość, sekcja 100svh+114px, robot
+  full-bleed kotwiczony do dołu (cały widoczny), CTA przypięty przy foldzie,
+  blob z overscanem 108% pulsuje bez odklejania krawędzi.
+- **Hero o-nas mobile**: pełna szerokość, scaleY(0.88), głowa robota
+  scaleX(0.92), litery KOMPE/TEN/CJ/E f92 (chowają się za głową).
+- **Animacje (Faza 2, CSS/JS bez GSAP)**: wejścia napisów hero (kaskada),
+  pulsy gwiazd i CTA, scroll-reveal manifestu (RevealObserver + [data-reveal],
+  paski zawsze widoczne/marquee bez reveal), scroll-scrubbing kart kursów
+  z pinem i finałowym nagłówkiem, choreografia prowadzących (fade-in kart
+  od środkowej, zoom-settle zdjęć, maski nazwisk, tilt 3D na hover, gwiazdy
+  po kartach; kompletne SVG gwiazd z Figmy zamiast wyciętych PNG +
+  overflow-x-clip).
+- **Higgsfield (Faza 3 start)**: wideo dłoni human-machine (Seedance 2.0,
+  end_image = asset strony, 2×45 kredytów). Desktop: pin + sekwencja
+  napisy-scrubbing → płynny playback rąk z lockiem scrolla → caption;
+  mobile: play-once w viewporcie. Tło sekcji #EBEBEB (kolor wideo).
+
 ## 2026-07-28 (9) — hero landing: sekcja 100svh+114px, CAŁY robot, CTA w 1. ekranie
 
 - Życzenie Patryka: robot ma być widoczny w CAŁOŚCI — sekcja może mieć

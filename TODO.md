@@ -215,8 +215,19 @@ tekstury 2624×1630; maski logo).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
-- [ ] Faza 2: GSAP + Three.js (po akceptacji pixel-perfect)
-- [ ] Faza 3: Higgsfield hero-assety
+- [x] **Faza 2 (częściowo, 2026-07-28, CSS/JS bez GSAP)**: animacje home —
+      hero (wejścia napisów, pulsy gwiazd/CTA/bloba), manifest (scroll-reveal
+      przez RevealObserver), kursy (scrubbing kart + pin + finałowy nagłówek),
+      human-machine (pin + napisy scrubbing + wideo playback z lockiem +
+      caption), prowadzący (fade-in kart od środkowej, zoom-settle, maski
+      nazwisk, tilt 3D hover, gwiazdy SVG po kartach). Hero o-nas: kaskady
+      wejścia + dryf gwiazd. OTWARTE: animacje dla pozostałych sekcji home
+      (DNA, kontakt, stopka) i podstron; ewent. migracja na GSAP.
+- [x] **Faza 3 start (2026-07-28)**: Higgsfield MCP podpięty (plan Plus,
+      ~898 kredytów po sesji). Wideo dłoni human-machine wygenerowane
+      (Seedance 2.0, end_image = asset strony): hm-hands-video.mp4 (desktop)
+      + hm-hands-m-video.mp4 (mobile) w public/assets.
+- [ ] Faza 3: pozostałe hero-assety Higgsfield (landing, o-nas, kurs)
 - [ ] Ustalić repo do publikacji (stare devvile/kompetencje-strona-nowa vs nowe)
 
 ## Znalezione problemy w designie (do zgłoszenia)
