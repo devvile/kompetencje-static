@@ -7,6 +7,8 @@
  * Iskra do wydzielenia z warstwy przy animacjach (Faza 2).
  */
 
+import HandsVideo from "../shared/HandsVideo";
+
 export interface HumanMachineContent {
   titleTop: string; // HUMAN
   titleBottom: string; // MACHINE
@@ -103,10 +105,12 @@ function HumanMachineMobile({ hm }: { hm: HumanMachineContent }) {
               {hm.titleBottom}
             </span>
           </h2>
-          {/* dłonie (iskra i ramię gwiazdy wypieczone w cropie) */}
-          <img
-            src="/assets/hm-hands-m.png"
-            alt="Dłoń robota i dłoń człowieka stykające się palcami"
+          {/* dłonie — wideo Higgsfield (start: daleko od siebie → dotyk;
+              ostatnia klatka = statyczny asset); object-cover ścina padding 21:9 */}
+          <HandsVideo
+            src="/assets/hm-hands-m-video.mp4"
+            poster="/assets/hm-hands-m.png"
+            label="Dłoń robota i dłoń człowieka zbliżają się i stykają palcami"
             className="absolute left-0"
             style={{ top: m(GM.hands.top), width: m(GM.hands.w), height: m(GM.hands.h) }}
           />
@@ -139,13 +143,14 @@ export default function HumanMachineSection({ hm }: { hm: HumanMachineContent })
     <section className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative aspect-[1440/810] overflow-hidden bg-page" data-node-id="245:9699">
-          {/* dłonie (robot + iskra + człowiek) — POD napisami (MACHINE nachodzi na ramię) */}
-          <img
-            src="/assets/hm-hands.png"
-            alt="Dłoń robota i dłoń człowieka stykające się palcami"
+          {/* dłonie — wideo Higgsfield (start: daleko od siebie → dotyk; ostatnia
+              klatka = statyczny asset) — POD napisami (MACHINE nachodzi na ramię) */}
+          <HandsVideo
+            src="/assets/hm-hands-video.mp4"
+            poster="/assets/hm-hands.png"
+            label="Dłoń robota i dłoń człowieka zbliżają się i stykają palcami"
             className="absolute left-0"
             style={{ top: c(G.hands.top), width: c(G.hands.w), height: c(G.hands.h) }}
-            data-node-id="245:9356"
           />
           {/* HUMAN — solid */}
           <h2
