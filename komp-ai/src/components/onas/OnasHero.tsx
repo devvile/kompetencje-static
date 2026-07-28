@@ -59,7 +59,11 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
     <section className="relative w-full bg-page md:hidden">
       <MobileTopBar nav={nav} />
       <div className="@container relative mx-auto w-full">
-        <div className="relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}` }} data-node-id="326:1050">
+        {/* wrapper: mniejsza wysokość bez utraty szerokości (życzenie Patryka)
+            — canvas ściśnięty pionowo scaleY(0.88), wrapper rezerwuje już
+            przeskalowaną wysokość (873×0.88 ≈ 768.2) i przycina resztę */}
+        <div className="relative overflow-hidden" style={{ aspectRatio: "402/768.2" }}>
+        <div className="origin-top relative overflow-x-clip bg-page" style={{ aspectRatio: `402/${GMOB.h}`, transform: "scaleY(0.88)" }} data-node-id="326:1050">
           {/* KOMPETENCJE — 4 linie solid, ZA robotem (głowa nachodzi na litery) */}
           <h1
             className="absolute origin-top-right text-right font-display font-black text-brand-blue"
@@ -101,6 +105,7 @@ function OnasHeroMobile({ hero, nav }: { hero: ONasHero; nav: NavLink[] }) {
           {/* logo .AI mobile */}
           <img src="/assets/onas-m-logo-f.png" alt="" aria-hidden className="absolute"
             style={{ left: cm(GMOB.logo.x), top: cm(GMOB.logo.y), width: cm(GMOB.logo.w), height: cm(GMOB.logo.h) }} />
+        </div>
         </div>
       </div>
     </section>
