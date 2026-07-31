@@ -50,15 +50,11 @@ kompetencje-ostateczna/
         │   ├── polityka-prywatnosci/ # Strona prawna
         │   └── regulamin/     # Strona prawna
         ├── components/        # Komponenty React
-        │   ├── ui/            # Wspólne atomy UI (RichText.tsx)
-        │   ├── home/          # Sekcje strony głównej
-        │   │   ├── hero/      # Moduł Hero (HeroDesktop, HeroMobile, HeroGraphics)
-        │   │   ├── manifest/  # Moduł Manifest (ManifestDesktop, ManifestMobile, ManifestGraphics, MarqueeRow)
-        │   │   ├── DnaSection.tsx, KursySection.tsx, HumanMachineSection.tsx, etc.
+        │   ├── home/          # Sekcje strony głównej (Hero, Manifest, DNA, Kursy, HumanMachine, Prowadzacy, Kontakt, Stopka)
         │   ├── onas/          # Sekcje podstrony O Nas
         │   ├── kurs/          # Sekcje podstrony kursu
         │   ├── legal/         # Komponenty stron prawnych
-        │   └── shared/        # Komponenty nawigacji, formularzy (useContactForm.ts, ContactFormDesktop, ContactFormMobile)
+        │   └── shared/        # Komponenty nawigacji, formularzy i animacji (MobileMenu, SiteNav, ProtectedEmail, etc.)
         ├── content/           # Abstrakcja warstwy treści (home.ts, onas.ts, kurs.ts, legal.ts, types.ts, index.ts)
         └── fonts/             # Pliki czcionek (modular.woff2)
 ```
@@ -78,16 +74,15 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
-* **2026-07-31 (Refaktoryzacja Monolityczności i Porządkowanie Kodu):**
-  1. **Podział sekcji Hero:** Rozbito monolityczny `HeroSection.tsx` na mniejsze komponenty w `src/components/home/hero/` (`HeroDesktop.tsx`, `HeroMobile.tsx`, `HeroGraphics.tsx`).
-  2. **Podział sekcji Manifest:** Rozbito monolityczny `ManifestSection.tsx` na dedykowany moduł `src/components/home/manifest/` (`ManifestDesktop.tsx`, `ManifestMobile.tsx`, `ManifestGraphics.tsx`, `MarqueeRow.tsx`).
-  3. **Wydzielenie atomów UI:** Utworzono komponent `src/components/ui/RichText.tsx` do renderowania sformatowanych fragmentów treści (`RichSeg[]`).
-  4. **Ekstrakcja logiki formularzy:** Utworzono custom hook `src/components/shared/useContactForm.ts`, który zjednoczył zarządzanie stanem i wysyłką w `ContactFormDesktop.tsx` oraz `ContactFormMobile.tsx`.
-* **2026-07-31 (Kontakt i Anty-spam):**
+* **2026-07-31:**
   1. **Aktualizacja danych kontaktowych i ochrona anty-spamowa:**
      * Zmieniono adres e-mail na `patryk@kompetencje.ai`.
      * Zmieniono numer telefonu na `513 301 081`.
-     * Wdrożono komponenty `ProtectedEmail` i `ProtectedPhone` w `StopkaSection.tsx` oraz `MobileMenu.tsx` (odwzorowanie `1` -> `l` w HTML oraz dynamiczny rozruch `mailto:`/`tel:` po stronie klienta).
+     * Stworzono i wdrożono komponenty `ProtectedEmail` i `ProtectedPhone` w `StopkaSection.tsx` i `MobileMenu.tsx` chroniące przed scraperami (odwzorowanie `1` -> `l` w HTML oraz dynamiczny rozruch `mailto:`/`tel:` w JS po stronie klienta).
+  2. **Audyt Architektury i Kodu:**
+     * Przeprowadzono audyt organizacji kodu i stworzono raport `code_organization_audit.md`.
+  3. **Wdrożenie Standardu OVERVIEW.md i AGENTS.md:**
+     * Utworzono plik `OVERVIEW.md` oraz ustalono żelazną zasadę w `AGENTS.md` dotyczącą odczytu i aktualizacji tego pliku przez Agenty AI przy każdej sesji i operacji.
 
 ---
 

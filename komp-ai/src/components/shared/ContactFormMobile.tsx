@@ -1,10 +1,12 @@
-"use client";
-
 /*
- * Współdzielony formularz kontaktowy MOBILE (353×864)
+ * Współdzielony formularz kontaktowy MOBILE (353×864) — instancja z home
+ * (423:3366) i o-nas (341:1863) jest identyczna, różni się tylko pozycją.
+ * Wymiary/fonty = pomiar ink z budowy home (label 11 / input 11.5 /
+ * checkbox 10.5 / button 14.4; pitch pól 97 = label 32 + input 50 + gap 15).
+ * Pozycja (left/top) w px designu 402 — przeliczana na cqw u rodzica
+ * (kontener @container musi być piętro wyżej).
  */
 import type { Kontakt } from "@/content/types";
-import { useContactForm } from "./useContactForm";
 
 const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
 
@@ -22,13 +24,11 @@ const F = {
 };
 
 export default function ContactFormMobile({ k, left, top, idPrefix = "kontakt-m" }: { k: Kontakt; left: number; top: number; idPrefix?: string }) {
-  const { values, submitted, error, handleChange, handleSubmit } = useContactForm();
   const fields = k.fields.filter((f) => f.kind !== "textarea");
   const message = k.fields.find((f) => f.kind === "textarea");
-
   return (
     <form
-      onSubmit={handleSubmit}
+      action="#"
       className="absolute flex flex-col items-center border-solid border-white bg-brand-blue"
       style={{
         left: cm(left), top: cm(top), width: cm(F.w), height: cm(F.h),
@@ -50,12 +50,8 @@ export default function ContactFormMobile({ k, left, top, idPrefix = "kontakt-m"
                 {f.label}
               </label>
               <input
-                id={`${idPrefix}-${f.id}`}
-                name={f.id}
-                type={f.kind}
+                id={`${idPrefix}-${f.id}`} name={f.id} type={f.kind}
                 placeholder={f.placeholder}
-                value={(values as any)[f.id] || ""}
-                onChange={handleChange}
                 className="w-full border-solid border-white bg-transparent font-display font-medium text-white placeholder:text-[#cacaca]"
                 style={{
                   height: cm(F.input.h), borderWidth: cm(F.input.borderPx), borderRadius: cm(F.input.r),
@@ -76,11 +72,8 @@ export default function ContactFormMobile({ k, left, top, idPrefix = "kontakt-m"
                 {message.label}
               </label>
               <textarea
-                id={`${idPrefix}-wiadomosc`}
-                name={message.id}
+                id={`${idPrefix}-wiadomosc`} name={message.id}
                 placeholder={message.placeholder}
-                value={values.wiadomosc}
-                onChange={handleChange}
                 className="w-full resize-none border-solid border-white bg-transparent font-display font-medium text-white placeholder:text-[#cacaca]"
                 style={{
                   height: cm(F.textarea.h), borderWidth: cm(F.input.borderPx), borderRadius: cm(F.textarea.r),
@@ -91,25 +84,19 @@ export default function ContactFormMobile({ k, left, top, idPrefix = "kontakt-m"
           )}
           <div className="flex w-full items-center" style={{ columnGap: cm(F.checkbox.gap), paddingLeft: cm(F.label.padX), paddingRight: cm(F.label.padX) }}>
             <input
-              id={`${idPrefix}-zgoda`}
-              name="zgoda"
-              type="checkbox"
-              checked={values.zgoda}
-              onChange={handleChange}
-              className="shrink-0 appearance-none border-solid border-white bg-[#0b11a3] checked:bg-brand-lime cursor-pointer"
+              id={`${idPrefix}-zgoda`} name="zgoda" type="checkbox"
+              className="shrink-0 appearance-none border-solid border-white bg-[#0b11a3] checked:bg-brand-lime"
               style={{ width: cm(F.checkbox.size), height: cm(F.checkbox.size), borderWidth: cm(F.input.borderPx), borderRadius: cm(F.checkbox.r) }}
             />
-            <label htmlFor={`${idPrefix}-zgoda`} className="font-display text-white cursor-pointer" style={{ fontSize: cm(F.checkbox.fontPx), lineHeight: 1.3, padding: `${cm(10)} ${cm(4)}` }}>
+            <label htmlFor={`${idPrefix}-zgoda`} className="font-display text-white" style={{ fontSize: cm(F.checkbox.fontPx), lineHeight: 1.3, padding: `${cm(10)} ${cm(4)}` }}>
               {k.consentLabel}
             </label>
           </div>
-          {error && <p className="text-red-400 font-modular text-xs">{error}</p>}
-          {submitted && <p className="text-brand-lime font-modular text-xs">Wiadomość została wysłana!</p>}
         </div>
       </div>
       <button
         type="submit"
-        className="flex shrink-0 items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue transition-opacity hover:opacity-90 cursor-pointer"
+        className="flex shrink-0 items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue"
         style={{
           width: cm(F.button.w), height: cm(F.button.h), borderWidth: cm(F.button.borderPx),
           borderRadius: cm(F.button.r), fontSize: cm(F.button.fontPx), letterSpacing: cm(F.button.trackPx),
