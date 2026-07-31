@@ -36,6 +36,7 @@ export default function HandsVideo({
         for (const e of entries) {
           if (e.isIntersecting && !played.current) {
             played.current = true;
+            video.playbackRate = 1.3; // złączenie dłoni ~30% szybciej
             video.play().catch(() => {
               /* autoplay zablokowany → zostaje poster */
             });

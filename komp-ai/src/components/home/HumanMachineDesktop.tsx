@@ -52,6 +52,7 @@ export default function HumanMachineDesktop({ hm }: { hm: HumanMachineContent })
     // 3) po końcu wideo: fade-in captionu i odblokowanie scrolla.
     let phase: "idle" | "playing" | "done" = "idle";
     let lockY = 0;
+    video.playbackRate = 1.3; // życzenie Patryka: złączenie dłoni ~30% szybciej
     caption.style.opacity = "0";
     caption.style.transform = "translateY(18px)";
     caption.style.transition = "opacity 0.35s ease, transform 0.35s ease";
