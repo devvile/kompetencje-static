@@ -10,3 +10,7 @@ design-refs/tools/
 
 # logi dev-serwera
 *.log
+
+# artefakty robocze (propozycje Higgsfield, screenshoty walidacyjne)
+design-refs/robot-proposals/
+design-refs/validate/

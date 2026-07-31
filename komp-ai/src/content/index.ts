@@ -1,8 +1,13 @@
 import { homePage, siteSettings } from "./home";
 import { kursy } from "./kurs";
 import { legalPages } from "./legal";
+import { manifestPage } from "./manifest";
 import { oNasPage } from "./onas";
-import type { HomePage, KursPage, LegalPage, ONasPage, SiteSettings } from "./types";
+import type { HomePage, KursPage, LegalPage, ManifestPage, ONasPage, SiteSettings } from "./types";
+
+export async function getManifestPage(): Promise<ManifestPage> {
+  return manifestPage;
+}
 
 export async function getHomePage(): Promise<HomePage> {
   return homePage;

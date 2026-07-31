@@ -264,6 +264,42 @@ body {
   }
 }
 
+/* /manifest: robot lekko unosi się i opada (oddech); iskra delikatnie pulsuje */
+@keyframes manifest-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.6%);
+  }
+}
+
+.manifest-float {
+  animation: manifest-float 5.5s ease-in-out infinite;
+}
+
+@keyframes manifest-spark {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.18) rotate(8deg);
+  }
+}
+
+.manifest-spark {
+  animation: manifest-spark 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifest-float,
+  .manifest-spark {
+    animation: none;
+  }
+}
+
 /* hero landing mobile: wielka limonkowa gwiazda tła pulsuje (jak CTA).
    Blob ma 108% szerokości (overscan przycięty przez overflow sekcji), więc
    nawet w dołku pulsu (0.94 → ~101.5% viewportu) krawędzie lewa/prawa są

@@ -290,3 +290,32 @@ export interface LegalPage {
   metaTitle: string;
   metaDescription: string;
 }
+
+export interface ManifestPage {
+  _type: "manifestPage";
+  /** kicker HK nad tytułem (linie) */
+  kickerLines: string[];
+  /** wielki napis display, "MANIFEST" */
+  heading: string;
+  /** akapity 1-2 (obok robota); strong = limonkowy marker */
+  paragraphsTop: RichSeg[][];
+  /** stat na niebieskiej beli: 25–50% miejsc pracy */
+  stat: {
+    from: number;
+    to: number;
+    /** tekst za liczbami */
+    label: string;
+    /** dopisek pod labelem */
+    sub: string;
+  };
+  /** wielka linia display ("PRZYSZŁOŚĆ NALEŻY DO ODWAŻNYCH") */
+  displayLine: [string, string];
+  /** akapity 3-4 (po beli); strong = limonkowy marker */
+  paragraphsBottom: RichSeg[][];
+  /** zamknięcie o iskrze (wyróżnione) */
+  closingLine: string;
+  ctaLabel: string;
+  ctaHref: string;
+  metaTitle: string;
+  metaDescription: string;
+}
