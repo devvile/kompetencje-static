@@ -9,8 +9,28 @@
  * bg identyczny z kanwą).
  */
 import { useEffect, useState } from "react";
-import { Mail, Smartphone } from "lucide-react";
+import { ArrowUp, Mail, Smartphone } from "lucide-react";
 import type { Footer } from "@/content/types";
+
+function ScrollTopButton({ style }: { style: React.CSSProperties }) {
+  const handleClick = () => {
+    // natywny smooth: przerywalny scrollem użytkownika; lock HumanMachine
+    // nie koliduje (przy stopce faza sekwencji jest już "done")
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  };
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label="Wróć na górę strony"
+      className="scroll-top-btn absolute flex items-center justify-center rounded-full border border-solid border-brand-lime text-brand-lime transition-colors hover:bg-brand-lime hover:text-[#000ae6]"
+      style={style}
+    >
+      <ArrowUp aria-hidden style={{ width: "55%", height: "55%" }} strokeWidth={1.5} />
+    </button>
+  );
+}
 
 function ProtectedEmail({
   email,
@@ -192,6 +212,7 @@ function StopkaMobile({ f }: { f: Footer }) {
             <span className="text-brand-lime" style={{ fontSize: cm(GM.copyLimeFontPx) }}>{f.copyrightLime}</span>
             <span className="text-white" style={{ fontSize: cm(GM.copyWhiteFontPx), marginLeft: cm(12) }}>{f.copyrightWhite}</span>
           </p>
+          <ScrollTopButton style={{ right: cm(47), top: cm(612), width: cm(44), height: cm(44) }} />
         </div>
       </div>
     </footer>
@@ -275,6 +296,7 @@ export default function StopkaSection({ f }: { f: Footer }) {
               />
             </div>
           </div>
+          <ScrollTopButton style={{ right: c(130), top: c(214), width: c(44), height: c(44) }} />
         </div>
       </div>
     </footer>

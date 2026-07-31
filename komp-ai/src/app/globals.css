@@ -235,6 +235,35 @@ body {
   }
 }
 
+/* stopka: przycisk "na górę" — podwójny podskok co kilka sekund (zwraca
+   uwagę); translateY w %, żeby skalował się z rozmiarem przycisku (cqw) */
+@keyframes scroll-top-hop {
+  0%,
+  26%,
+  100% {
+    transform: translateY(0);
+  }
+  8% {
+    transform: translateY(-22%);
+  }
+  16% {
+    transform: translateY(0);
+  }
+  21% {
+    transform: translateY(-9%);
+  }
+}
+
+.scroll-top-btn {
+  animation: scroll-top-hop 3.5s ease-in-out 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn {
+    animation: none;
+  }
+}
+
 /* hero landing mobile: wielka limonkowa gwiazda tła pulsuje (jak CTA).
    Blob ma 108% szerokości (overscan przycięty przez overflow sekcji), więc
    nawet w dołku pulsu (0.94 → ~101.5% viewportu) krawędzie lewa/prawa są
