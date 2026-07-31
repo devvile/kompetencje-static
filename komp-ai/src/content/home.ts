@@ -33,9 +33,8 @@ export const siteSettings: SiteSettings = {
       { _type: "footerLink", label: "POLITYKA PRYWATNOŚCI", href: "/polityka-prywatnosci" },
     ],
     contactHeading: "KONTAKT",
-    email: "kontakt@kompetencje.ai",
-    // placeholder z designu — do podmiany na prawdziwy numer przez Patryka
-    phone: "000 000 000",
+    email: "patryk@kompetencje.ai",
+    phone: "513 301 081",
   },
 };
 

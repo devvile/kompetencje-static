@@ -165,10 +165,14 @@ export default function MobileMenu({
               }}
             >
               <a
-                href="mailto:kontakt@kompetencje.ai"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = "mailto:patryk@kompetencje.ai";
+                }}
                 className="font-modular text-[12px] tracking-[0.06em] text-brand-lime"
               >
-                KONTAKT@KOMPETENCJE.AI
+                PATRYK@KOMPETENCJE.AI
               </a>
             </div>
             {/* dekoracyjna limonkowa gwiazda (asset hero) */}

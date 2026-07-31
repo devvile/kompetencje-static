@@ -1,14 +1,90 @@
+"use client";
+
 /*
  * Stopka (desktop y7755–8046, canvas 1440×291, bg #000ae6 — CIEMNIEJSZY niż
  * brand blue; border-top 1 white). Struktura z get_design_context 245:9562:
  * content 1171 wyśrodkowany, lewa kolumna 298 (logo + opis Montserrat Light 15
  * + copyright HK 9/8), grid linków 746 (1fr:2fr:2fr, gap-x 100), kolumna
  * kontakt z ikonami SVG. Logo .AI = crop z renderu (tekstury/maski wypieczone,
- * bg identyczny z kanwą). Literówka designera „POlityka prywatnośco" i telefon
- * „000 000 000" — poprawione/oflagowane w content.
+ * bg identyczny z kanwą).
  */
+import { useEffect, useState } from "react";
 import { Mail, Smartphone } from "lucide-react";
 import type { Footer } from "@/content/types";
+
+function ProtectedEmail({
+  email,
+  className,
+  style,
+}: {
+  email: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const [user, domain] = email.split("@");
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (user && domain) {
+      window.location.href = `mailto:${user}@${domain}`;
+    }
+  };
+
+  return (
+    <a
+      href={mounted && user && domain ? `mailto:${user}@${domain}` : "#"}
+      onClick={handleClick}
+      className={className}
+      style={style}
+    >
+      {mounted ? email : `${user || "patryk"} [at] ${domain || "kompetencje.ai"}`}
+    </a>
+  );
+}
+
+function ProtectedPhone({
+  phone,
+  className,
+  style,
+}: {
+  phone: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const rawDigits = phone.replace(/\D/g, "");
+  // Ochrona antyspamowa: zamiana cyfr '1' na 'l' w surowym kodzie HTML (SSR) dla scraperów
+  const obfuscatedPhone = phone.replace(/1/g, "l");
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (rawDigits) {
+      window.location.href = `tel:${rawDigits}`;
+    }
+  };
+
+  return (
+    <a
+      href={mounted && rawDigits ? `tel:${rawDigits}` : "#"}
+      onClick={handleClick}
+      className={className}
+      style={style}
+    >
+      {mounted ? phone : obfuscatedPhone}
+    </a>
+  );
+}
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
@@ -97,15 +173,19 @@ function StopkaMobile({ f }: { f: Footer }) {
             </p>
             <div className="flex items-center" style={{ marginTop: cm(15), columnGap: cm(4) }}>
               <Mail aria-hidden className="shrink-0 text-brand-lime" style={{ width: cm(24), height: cm(24) }} strokeWidth={1.5} />
-              <a href={`mailto:${f.email}`} className="whitespace-nowrap font-display font-medium text-brand-lime" style={{ fontSize: cm(14), lineHeight: 1.579 }}>
-                {f.email}
-              </a>
+              <ProtectedEmail
+                email={f.email}
+                className="whitespace-nowrap font-display font-medium text-brand-lime hover:underline"
+                style={{ fontSize: cm(14), lineHeight: 1.579 }}
+              />
             </div>
             <div className="flex items-center" style={{ marginTop: cm(12), columnGap: cm(2) }}>
               <Smartphone aria-hidden className="shrink-0 text-brand-lime" style={{ width: cm(20), height: cm(20) }} strokeWidth={1.5} />
-              <a href={`tel:${f.phone.replace(/\s/g, "")}`} className="whitespace-nowrap font-display font-medium text-brand-lime" style={{ fontSize: cm(14), lineHeight: 1.579 }}>
-                {f.phone}
-              </a>
+              <ProtectedPhone
+                phone={f.phone}
+                className="whitespace-nowrap font-display font-medium text-brand-lime hover:underline"
+                style={{ fontSize: cm(14), lineHeight: 1.579 }}
+              />
             </div>
           </div>
           <p className="absolute inset-x-0 flex items-baseline justify-center whitespace-nowrap font-modular" style={{ top: cm(GM.copyTop), lineHeight: 1.579 }}>
@@ -180,15 +260,19 @@ export default function StopkaSection({ f }: { f: Footer }) {
             </p>
             <div className="flex items-center" style={{ marginTop: c(15), columnGap: c(4) }}>
               <Mail aria-hidden className="shrink-0 text-brand-lime" style={{ width: c(24), height: c(24) }} strokeWidth={1.5} />
-              <a href={`mailto:${f.email}`} className="whitespace-nowrap font-display font-medium text-brand-lime" style={{ fontSize: c(G.contactFontPx), lineHeight: 1.579 }}>
-                {f.email}
-              </a>
+              <ProtectedEmail
+                email={f.email}
+                className="whitespace-nowrap font-display font-medium text-brand-lime hover:underline"
+                style={{ fontSize: c(G.contactFontPx), lineHeight: 1.579 }}
+              />
             </div>
             <div className="flex items-center" style={{ marginTop: c(12), columnGap: c(2) }}>
               <Smartphone aria-hidden className="shrink-0 text-brand-lime" style={{ width: c(20), height: c(20) }} strokeWidth={1.5} />
-              <a href={`tel:${f.phone.replace(/\s/g, "")}`} className="whitespace-nowrap font-display font-medium text-brand-lime" style={{ fontSize: c(G.contactFontPx), lineHeight: 1.579 }}>
-                {f.phone}
-              </a>
+              <ProtectedPhone
+                phone={f.phone}
+                className="whitespace-nowrap font-display font-medium text-brand-lime hover:underline"
+                style={{ fontSize: c(G.contactFontPx), lineHeight: 1.579 }}
+              />
             </div>
           </div>
         </div>
