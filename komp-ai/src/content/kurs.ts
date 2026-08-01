@@ -110,8 +110,12 @@ export const kursAgentAi: KursPage = {
   kontaktHeadingLines: ["Napisz do nas", "pomożemy dobrać kurs", "do TWOICH POTRZEB"],
 };
 
-/** slug → kurs; na razie oba kursy z home wskazują na ten sam mock */
+/** slug → kurs; na razie wszystkie kursy z home wskazują na ten sam mock
+ * (dedykowane treści podstron do dostarczenia przez klienta) */
 export const kursy: Record<string, KursPage> = {
   "agent-ai-w-twoim-biznesie": kursAgentAi,
   "bezpieczenstwo-aplikacji": { ...kursAgentAi, slug: "bezpieczenstwo-aplikacji" },
+  "automatyzacja-pracy-z-ai": { ...kursAgentAi, slug: "automatyzacja-pracy-z-ai" },
+  "tworzenie-tresci-z-ai": { ...kursAgentAi, slug: "tworzenie-tresci-z-ai" },
+  "prompt-engineering": { ...kursAgentAi, slug: "prompt-engineering" },
 };

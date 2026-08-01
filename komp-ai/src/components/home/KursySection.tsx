@@ -24,6 +24,9 @@ export interface KursCard {
   price: string;
   ctaLabel: string;
   ctaHref: string;
+  photo: string;
+  leadLabel: string;
+  leadName: string;
 }
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
@@ -85,8 +88,8 @@ function KursCardBox({ card }: { card: KursCard }) {
             className="flex items-center whitespace-nowrap text-brand-blue"
             style={{ gap: c(8), width: c(K.sidebar.textLen), justifyContent: "flex-end", paddingRight: c(K.sidebar.endPad) }}
           >
-            <span className="font-modular" style={{ fontSize: c(8), lineHeight: 1.2 }}>PROWADZĄCY:</span>
-            <span className="font-display font-black" style={{ fontSize: c(15), lineHeight: 1.2, letterSpacing: c(1) }}>PIOTR MAŁYSZ</span>
+            <span className="font-modular" style={{ fontSize: c(8), lineHeight: 1.2 }}>{card.leadLabel}</span>
+            <span className="font-display font-black" style={{ fontSize: c(15), lineHeight: 1.2, letterSpacing: c(1) }}>{card.leadName}</span>
           </div>
         </div>
       </div>
@@ -99,7 +102,7 @@ function KursCardBox({ card }: { card: KursCard }) {
       </p>
       {/* zdjęcie — pełna szerokość panelu */}
       <img
-        src="/assets/kurs-photo.png"
+        src={card.photo}
         alt=""
         className="absolute"
         style={{ left: c(K.photo.left), top: c(K.photo.top), width: c(K.photo.w), height: c(K.photo.h) }}

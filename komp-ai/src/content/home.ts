@@ -78,33 +78,83 @@ export const homePage: HomePage = {
     mobileTagline: "i wyrusz z nami ku przyszłości !",
     mobileCtaLabel: "POZNAJ NASZE KURSY",
   },
-  // UWAGA: designer zostawił obie karty z identyczną treścią (placeholder) —
-  // treść drugiej karty do podmiany, gdy klient dostarczy.
-  dnaCards: [1, 2].map(() => ({
-    _type: "dnaCard" as const,
-    price: "1500 PLN netto",
-    leadLabel: "PROWADZĄCY",
-    leadName: "PIOTR MAŁYSZ",
-    titleLines: ["AGENT AI", "W TWOIM", "BIZNESIE"] as [string, string, string],
-    body: [
-      { text: "Dowiedz się, jak wykorzystać sztuczną inteligencję do automatyzacji procesów, zwiększania efektywności i " },
-      { text: "skalowania działań bez zwiększania zespołu. ", strong: true, break: true },
-      { text: "", break: true },
-      // literówki designera poprawione: "rozwók"→"rozwój", "aż do  operacje"→"aż po operacje"
-      { text: "Ten kurs pokaże Ci jak krok po kroku, wdrożyć AI do codziennej pracy - od obsługi klientów, przez marketing, aż po operacje - tak, aby realnie wspierało rozwój Twojego biznesu." },
-    ],
-    ctaLabel: "ZOBACZ SZCZEGÓŁY", // w designie "SZCZEGOŁY" (literówka)
-    ctaHref: "/kursy/agent-ai-w-twoim-biznesie",
-  })),
-  // 3 identyczne kafle w designie (placeholder) — treść do podmiany
-  kursTiles: [1, 2, 3].map(() => ({
-    _type: "kursTile" as const,
-    tag: "AI W BIZNESIE",
-    title: ["BEZPIECZEŃSTWO", "APLIKACJI"] as [string, string],
-    price: "1500 PLN netto",
-    ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
-    ctaHref: "/kursy/bezpieczenstwo-aplikacji",
-  })),
+  // Karty zróżnicowane (życzenie Patryka 2026-08-01); treść marketingowa
+  // robocza — do akceptacji/podmiany przez klienta. Grafiki: Higgsfield
+  // (nano banana, styl-referencja = card-waga-src.png).
+  dnaCards: [
+    {
+      _type: "dnaCard" as const,
+      price: "1500 PLN netto",
+      leadLabel: "PROWADZĄCY",
+      leadName: "PIOTR MAŁYSZ",
+      titleLines: ["AGENT AI", "W TWOIM", "BIZNESIE"] as [string, string, string],
+      body: [
+        { text: "Dowiedz się, jak wykorzystać sztuczną inteligencję do automatyzacji procesów, zwiększania efektywności i " },
+        { text: "skalowania działań bez zwiększania zespołu. ", strong: true, break: true },
+        { text: "", break: true },
+        // literówki designera poprawione: "rozwók"→"rozwój", "aż do  operacje"→"aż po operacje"
+        { text: "Ten kurs pokaże Ci jak krok po kroku, wdrożyć AI do codziennej pracy - od obsługi klientów, przez marketing, aż po operacje - tak, aby realnie wspierało rozwój Twojego biznesu." },
+      ],
+      ctaLabel: "ZOBACZ SZCZEGÓŁY", // w designie "SZCZEGOŁY" (literówka)
+      ctaHref: "/kursy/agent-ai-w-twoim-biznesie",
+      photo: "/assets/card-waga-src.png",
+      photoM: "/assets/m-card-photo-r.png",
+    },
+    {
+      _type: "dnaCard" as const,
+      price: "1800 PLN netto",
+      leadLabel: "PROWADZĄCY",
+      leadName: "PATRYK CZEMIEROWSKI",
+      // "AUTOMATYZACJA" nie mieści się w kolumnie tytułu (437px @45px vs slot
+      // 297px) — tytuł marketingowy z krótkimi wierszami, temat bez zmian
+      titleLines: ["PRACUJ", "MĄDRZEJ", "Z AI"] as [string, string, string],
+      body: [
+        { text: "Poznaj narzędzia, które przejmą za Ciebie powtarzalne zadania — od maili i raportów po całe przepływy pracy — i " },
+        { text: "odzyskaj godziny każdego tygodnia. ", strong: true, break: true },
+        { text: "", break: true },
+        { text: "Nauczysz się łączyć modele AI z aplikacjami, których już używasz, i budować automatyzacje bez pisania kodu — od pierwszego scenariusza po działający system." },
+      ],
+      ctaLabel: "ZOBACZ SZCZEGÓŁY",
+      ctaHref: "/kursy/automatyzacja-pracy-z-ai",
+      photo: "/assets/card-automatyzacja-src.png",
+      photoM: "/assets/m-card-automatyzacja-r.png",
+    },
+  ],
+  kursTiles: [
+    {
+      _type: "kursTile" as const,
+      tag: "AI W BIZNESIE",
+      title: ["BEZPIECZEŃSTWO", "APLIKACJI"] as [string, string],
+      price: "1500 PLN netto",
+      ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
+      ctaHref: "/kursy/bezpieczenstwo-aplikacji",
+      photo: "/assets/kurs-bezpieczenstwo.png",
+      leadLabel: "PROWADZĄCY:",
+      leadName: "PIOTR MAŁYSZ",
+    },
+    {
+      _type: "kursTile" as const,
+      tag: "GENERATYWNA AI",
+      title: ["TWORZENIE", "TREŚCI Z AI"] as [string, string],
+      price: "1200 PLN netto",
+      ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
+      ctaHref: "/kursy/tworzenie-tresci-z-ai",
+      photo: "/assets/kurs-tresci.png",
+      leadLabel: "PROWADZĄCA:",
+      leadName: "WIKTORIA SŁAWIŃSKA",
+    },
+    {
+      _type: "kursTile" as const,
+      tag: "PRACA Z AI",
+      title: ["PROMPT", "ENGINEERING"] as [string, string],
+      price: "990 PLN netto",
+      ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
+      ctaHref: "/kursy/prompt-engineering",
+      photo: "/assets/kurs-prompt.png",
+      leadLabel: "PROWADZĄCY:",
+      leadName: "PATRYK CZEMIEROWSKI",
+    },
+  ],
   humanMachine: {
     _type: "humanMachine",
     titleTop: "HUMAN",

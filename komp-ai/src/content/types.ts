@@ -51,6 +51,10 @@ export interface DnaCard {
   body: RichSeg[];
   ctaLabel: string;
   ctaHref: string;
+  /** zdjęcie karty desktop (prawa kolumna 415×554) */
+  photo: string;
+  /** zdjęcie karty mobile (316×210, zaokrąglone) */
+  photoM: string;
 }
 
 export interface KursTile {
@@ -60,6 +64,11 @@ export interface KursTile {
   price: string;
   ctaLabel: string;
   ctaHref: string;
+  /** zdjęcie kafla (273×211, pełna szerokość panelu) */
+  photo: string;
+  /** pionowy sidebar na lime pasku */
+  leadLabel: string;
+  leadName: string;
 }
 
 export interface HumanMachine {

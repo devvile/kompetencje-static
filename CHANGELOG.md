@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 2026-07-31 (podsumowanie sesji) — /manifest z wideo, roboty Higgsfield, przycisk stopki
+
+- **Przycisk „na górę" w stopce** (commit „stopka"): ScrollTopButton w obu wariantach,
+  natywny smooth scroll (bez konfliktu z lockiem HumanMachine), podskok co 3,5 s.
+- **Nowy robot w sekcji Manifest na landingu** (commit „update robota na landingu"):
+  wariant „visor" wygenerowany w Higgsfield (Nano Banana Pro, referencja = stary robot),
+  4 propozycje w design-refs/robot-proposals/; podmiana glob-robot-f.png i m-glob-f.png
+  z dopasowaniem bbox alfy. ⚠ Odstępstwo od Figmy (świadoma decyzja).
+- **Wideo dłoni HUMAN/MACHINE 30% szybciej** (playbackRate 1.3, desktop + mobile).
+- **Podstrona /manifest — pełna treść + autorski layout** (commit b9c8de6): content layer
+  (manifest.ts, RichSeg z limonkowymi markerami), hero MANIFEST + tekst lewa / robot prawa
+  (flip, kotwiczy na beli), bela ze statem 25–50% (count-up), display line, iskra + CTA.
+  Robot power-on: wideo Seedance 2.0 (end_image = poza PNG), tło wyrównane filtrem
+  brightness do #EFEFEF (mix-blend-multiply NIE działa — stacking konteksty izolują blend);
+  fallbacki reduced-motion / no-autoplay. 4 propozycje wideo w design-refs/robot-proposals/.
+- **Splash-gwiazda za robotem**: zaimplementowany i WYCOFANY na życzenie Patryka
+  (git restore do b9c8de6) — receptura w OVERVIEW/rozmowie, gdyby wracać.
+- Walidacje: hscroll 375–2560 czysty, tsc czysty, pomiary pikselowe tła wideo,
+  testy Playwright (count-up, reveale, playbackRate, scroll-top).
+- Otwarte: review Patryka całości /manifest; ewentualny commit dev-stanu; splash w zapasie.
+
+
 ## 2026-07-28 (podsumowanie sesji) — menu mobilne, naprawy hero, Faza 2 animacji
 
 Duża sesja (ok. 30 commitów, wszystko na masterze). Skrót:

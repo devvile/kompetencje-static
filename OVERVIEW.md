@@ -74,6 +74,15 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
+* **2026-08-01:**
+  1. **Zróżnicowanie kart kursów (landing) — ⚠ treść marketingowa robocza, do akceptacji klienta:**
+     * Karty były komponentami, ale grafika i prowadzący byli zahardcodowani — teraz w propsach/content layer: `DnaCard` + `photo`/`photoM`, `KursTile` + `photo`/`leadLabel`/`leadName` (sidebar kafla z propsów).
+     * `dnaCards`: #1 AGENT AI W TWOIM BIZNESIE (Piotr Małysz, 1500 PLN, waga — bez zmian), #2 PRACUJ MĄDRZEJ Z AI / automatyzacja (Patryk Czemierowski, 1800 PLN, nowe body). UWAGA: „AUTOMATYZACJA" NIE mieści się w kolumnie tytułu karty (437px @45px vs slot 297px) — stąd krótki tytuł marketingowy.
+     * `kursTiles`: BEZPIECZEŃSTWO APLIKACJI (Piotr Małysz, 1500), TWORZENIE TREŚCI Z AI (Wiktoria Sławińska, 1200), PROMPT ENGINEERING (Patryk Czemierowski, 990). Nowe slugi w `kurs.ts` aliasują mock kursAgentAi (brak 404; dedykowane podstrony do dostarczenia).
+     * Grafiki Higgsfield (nano banana, styl-referencja = card-waga-src.png; chrom+szkło, granatowa monochromatyka): `card-automatyzacja-src.png` + `m-card-automatyzacja-r.png` (ramię robota z trybikami), `kurs-bezpieczenstwo.png` (kłódka), `kurs-tresci.png` (pióro z hologramami), `kurs-prompt.png` (dymek czatu). Crop do wymiarów slotów (546×422 kafle @2x, 830×1108 / 632×420 DNA).
+     * Walidacja: screenshoty desktop/mobile obu sekcji, hscroll 375–2560 czysty, tsc czysty.
+     * Fix: cena nie mieściła się na lime sidebarze karty DNA #2 (zawartość 549px vs slot 437px — długie nazwisko; karta #1 też przelewała o 18px). Nowy `components/home/FitRow.tsx` (klient): mierzy zawartość wiersza i skaluje ją `transform: scale` (origin right, ResizeObserver na resize/cqw), użyty w sidebarach kart DNA desktop+mobile. Karta #1 skala 0.96 (niezauważalne), #2 skala 0.80 — wszystko na pasku. Generyczne — długie treści z przyszłego CMS nie rozsadzą paska.
+
 * **2026-07-31:**
   0. **Nowy robot w sekcji Manifest (⚠ ODSTĘPSTWO OD FIGMY — świadoma decyzja Patryka):**
      * Wygenerowano w Higgsfield (Nano Banana Pro, referencja = stary robot) 4 propozycje; wybrano wariant 4 „visor" (biały android z ciemną szklaną szybą i granatową mechaniką, styl nawiązuje do robota hero). Propozycje w `design-refs/robot-proposals/`.

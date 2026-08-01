@@ -1,4 +1,5 @@
 import type { DnaCard, HomeManifest, RichSeg } from "../../content/types";
+import FitRow from "./FitRow";
 
 /*
  * Sekcja 3: bloki DNA — 2 karty kursu na szarym tle z chromowanymi helisami.
@@ -40,16 +41,17 @@ function CardDesktop({ card }: { card: DnaCard }) {
       {/* sidebar: obrocony lime pasek */}
       <div className="flex h-full shrink-0 items-center justify-center" style={{ width: c(84) }}>
         <div className="-rotate-90">
-          <div
+          <FitRow
             className="flex items-center justify-end bg-brand-lime text-brand-blue"
-            style={{ width: c(557), height: c(84), gap: c(55), paddingLeft: c(60), paddingRight: c(60), borderTopLeftRadius: c(40), borderTopRightRadius: c(40) }}
+            style={{ width: c(557), height: c(84), paddingLeft: c(60), paddingRight: c(60), borderTopLeftRadius: c(40), borderTopRightRadius: c(40) }}
+            innerGap={c(55)}
           >
             <p className="whitespace-nowrap font-modular" style={{ fontSize: c(12), lineHeight: 1.11 }}>{card.price}</p>
             <div className="flex items-center" style={{ gap: c(13) }}>
               <p className="whitespace-nowrap font-modular" style={{ fontSize: c(12), lineHeight: 1.483 }}>{card.leadLabel}</p>
               <p className="whitespace-nowrap font-display font-black" style={{ fontSize: c(18), lineHeight: 1.483 }}>{card.leadName}</p>
             </div>
-          </div>
+          </FitRow>
         </div>
       </div>
       {/* środek */}
@@ -76,7 +78,7 @@ function CardDesktop({ card }: { card: DnaCard }) {
       </div>
       {/* zdjęcie */}
       <div className="h-full shrink-0 overflow-hidden" style={{ width: c(415), borderTopRightRadius: c(40), borderBottomRightRadius: c(40) }}>
-        <img src="/assets/card-waga-src.png" alt="" className="h-full w-full" style={{ objectFit: "fill" }} />
+        <img src={card.photo} alt="" className="h-full w-full" style={{ objectFit: "fill" }} />
       </div>
     </div>
   );
@@ -92,16 +94,17 @@ function CardMobile({ card }: { card: DnaCard }) {
       {/* sidebar */}
       <div className="flex h-full shrink-0 items-center justify-center" style={{ width: cm(46) }}>
         <div className="-rotate-90">
-          <div
+          <FitRow
             className="flex items-center justify-end bg-brand-lime text-brand-blue"
-            style={{ width: cm(715), height: cm(46), gap: cm(179), paddingLeft: cm(60), paddingRight: cm(60), borderTopLeftRadius: cm(40), borderTopRightRadius: cm(40) }}
+            style={{ width: cm(715), height: cm(46), paddingLeft: cm(60), paddingRight: cm(60), borderTopLeftRadius: cm(40), borderTopRightRadius: cm(40) }}
+            innerGap={cm(179)}
           >
             <p className="whitespace-nowrap font-modular" style={{ fontSize: cm(12), lineHeight: 1.11 }}>{card.price}</p>
             <div className="flex items-center" style={{ gap: cm(13) }}>
               <p className="whitespace-nowrap font-modular" style={{ fontSize: cm(12), lineHeight: 1.483 }}>{card.leadLabel}</p>
               <p className="whitespace-nowrap font-display font-black" style={{ fontSize: cm(18), lineHeight: 1.483 }}>{card.leadName}</p>
             </div>
-          </div>
+          </FitRow>
         </div>
       </div>
       {/* treść */}
@@ -114,7 +117,7 @@ function CardMobile({ card }: { card: DnaCard }) {
           <span className="text-brand-lime">{card.titleLines[2]}</span>
         </h3>
         <div className="relative overflow-hidden" style={{ width: cm(316), height: cm(210.3), borderRadius: cm(20) }}>
-          <img src="/assets/m-card-photo-r.png" alt="" className="h-full w-full" />
+          <img src={card.photoM} alt="" className="h-full w-full" />
         </div>
         <p className="font-body font-light text-white" style={{ width: cm(262), fontSize: cm(15), lineHeight: 1.16, textAlign: "justify" as const }}>
           <Rich segs={card.body} scale={cm} strongClass="font-semibold" />
