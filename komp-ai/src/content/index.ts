@@ -1,9 +1,12 @@
 import { homePage, siteSettings } from "./home";
-import { kursy } from "./kurs";
 import { legalPages } from "./legal";
 import { manifestPage } from "./manifest";
 import { oNasPage } from "./onas";
-import type { HomePage, KursPage, LegalPage, ManifestPage, ONasPage, SiteSettings } from "./types";
+import type { HomePage, LegalPage, ManifestPage, ONasPage, SiteSettings } from "./types";
+
+// kursy: jeden plik na kurs w ./courses (przyszły schemat CMS-a)
+export { getCourse, getCourseSlugs, courseStats } from "./courses";
+export type { CourseContent } from "./courses";
 
 export async function getManifestPage(): Promise<ManifestPage> {
   return manifestPage;
@@ -19,14 +22,6 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 
 export async function getONasPage(): Promise<ONasPage> {
   return oNasPage;
-}
-
-export async function getKursPage(slug: string): Promise<KursPage | null> {
-  return kursy[slug] ?? null;
-}
-
-export async function getKursSlugs(): Promise<string[]> {
-  return Object.keys(kursy);
 }
 
 export async function getLegalPage(slug: string): Promise<LegalPage | null> {

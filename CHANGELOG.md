@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## 2026-09-17 — kurs „Z ROZMOWY DO OFERTY W 60 MINUT", CourseContent, mobile strony kursu
+
+Branch `feat/zmiany-z-promptu` (NIECOMMITOWANE — czeka na review Patryka).
+
+- **Nowy model treści kursu** `src/content/courses/` (typ `CourseContent` = przyszły
+  schemat CMS-a; jeden plik na kurs; `getCourse(slug)`/`getCourseSlugs()`/`courseStats()`
+  re-eksportowane z `content/index.ts`). Stary `content/kurs.ts` + typ `KursPage` usunięte
+  (pola `dlaKogo`/`marqueeText`/`kontaktHeadingLines` do niezbudowanej sekcji DLA KOGO —
+  w historii gita). Liczby na pasku hero liczone z danych (polska liczebność).
+- **Nowy kurs** `z-rozmowy-do-oferty` (treść ostateczna od Patryka, 3 moduły / 9 lekcji).
+  Stara treść → `agent-ai-w-twoim-biznesie` (fallback dla `bezpieczenstwo-aplikacji`,
+  `prompt-engineering`, `tworzenie-tresci-z-ai`). 301 `/kursy/automatyzacja-pracy-z-ai` →
+  `/kursy/z-rozmowy-do-oferty` (next.config, `statusCode: 301`).
+- **Szablon kursu desktop → układ przepływowy** (hero lewa kolumna, panel CO ZYSKASZ,
+  panel PROGRAM): odstępy przepisane z różnic `top` Figmy, stara treść renderuje się
+  1:1 (pomiar DOM: H1 184/274/361, benefity ±4px, moduły/lekcje co do piksela; jedyna
+  odchyłka: ostatnia lekcja modułu 2 o 18px wyżej — design miał tam pitch 197 zamiast 179).
+  Linie H1 dopasowywane per linia do szerokości 527px (`shared/FitText`, reguła
+  designera „każda linia równej szerokości"). Dymek podsumowania = CSS-elipsa + gwiazdy
+  SVG (bake 330×140 nie mieści ~130 znaków). Kolumna lekcji 576px, `whitespace-nowrap`
+  usunięte.
+- **Wersja mobilna strony kursu** (nowa; brak projektu w Figmie — przepływ px jak
+  /manifest): hero (top bar, H1 FitText, lead, meta, kadr robota jak desktop), panel
+  CO ZYSKASZ, kicker + PROGRAM (stroke) bleed na panel, moduły w kolumnie z dymkiem
+  POD lekcjami, closing + przycisk full-width, istniejąca stopka mobile.
+- **Strona główna**: karta DNA #2 → „Z ROZMOWY / DO OFERTY / W 60 MINUT", nowe body,
+  link do nowego sluga, cena 1500 PLN brutto; wszystkie ceny „netto" → „brutto"
+  (KursySection renderuje dopisek z danych zamiast zahardcodowanego „netto");
+  linie tytułu karty DNA desktop przez FitText (nowe linie 312px > slot 297px).
+- Walidacje: tsc czysty, `next build` OK, eslint = 6 błędów identycznych z masterem
+  (nie w zmienionych plikach), hscroll 375–2560 czysty (kurs nowy, kurs stary, home),
+  zrzuty 390/768/1280/1440/1920, `curl -I` 301, diff home przed/po ograniczony do kart.
+- Otwarte: „8 lekcji" z briefu vs 9 lekcji w danych (liczone z treści — pasek pokazuje 9);
+  `cta.href: "#kontakt"` — na stronie kursu nie ma sekcji kontakt (jak dotąd; ewent. `/#kontakt`);
+  pogrubienia w leadzie starego kursu spłaszczone (schemat `lead: string`);
+  mobile kursu do review Patryka (decyzje projektowe własne).
+
 ## 2026-07-31 (podsumowanie sesji) — /manifest z wideo, roboty Higgsfield, przycisk stopki
 
 - **Przycisk „na górę" w stopce** (commit „stopka"): ScrollTopButton w obu wariantach,

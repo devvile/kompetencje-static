@@ -55,7 +55,8 @@ kompetencje-ostateczna/
         │   ├── kurs/          # Sekcje podstrony kursu
         │   ├── legal/         # Komponenty stron prawnych
         │   └── shared/        # Komponenty nawigacji, formularzy i animacji (MobileMenu, SiteNav, ProtectedEmail, etc.)
-        ├── content/           # Abstrakcja warstwy treści (home.ts, onas.ts, kurs.ts, legal.ts, types.ts, index.ts)
+        ├── content/           # Abstrakcja warstwy treści (home.ts, onas.ts, manifest.ts, legal.ts, types.ts, index.ts)
+        │   └── courses/       # Treść kursów: types.ts (CourseContent), jeden plik na kurs, index.ts (getCourse, courseStats)
         └── fonts/             # Pliki czcionek (modular.woff2)
 ```
 
@@ -73,6 +74,14 @@ kompetencje-ostateczna/
 ---
 
 ## 5. Ostatnie Zmiany w Projekcie
+
+* **2026-09-17 (branch `feat/zmiany-z-promptu`, niecommitowane):**
+  1. **Podstrona kursu — treść jako dane (`src/content/courses/`)**: typ `CourseContent` (`types.ts`, przyszły schemat CMS-a), pliki `z-rozmowy-do-oferty.ts` (nowy kurs, treść ostateczna od Patryka) i `agent-ai-w-twoim-biznesie.ts` (stara treść 1:1, fallback dla 3 slugów bez własnej treści), `index.ts` z `getCourse(slug)` / `getCourseSlugs()` / `courseStats()` (liczby modułów/lekcji liczone z danych). Stary `content/kurs.ts` i typ `KursPage` usunięte. `generateMetadata` z `metaTitle`/`metaDescription`.
+  2. **Slug**: `/kursy/automatyzacja-pracy-z-ai` → 301 na `/kursy/z-rozmowy-do-oferty` (`next.config.ts`, `statusCode: 301`).
+  3. **Szablon kursu desktop przepisany na układ przepływowy** (hero: tytuł→lead→meta; CO ZYSKASZ: wiersze min-h 94 + wysokość panelu z treści; PROGRAM: panel bez aspect-ratio, dowolna liczba modułów/lekcji, odstępy z różnic `top` Figmy → stara treść 1:1). `shared/FitText.tsx` (nowy, klient): zmniejsza stopień linii szerszej niż slot (H1 kursu 527px, tytuł karty DNA 297px, H1 mobile). Dymek podsumowania modułu = CSS-elipsa + gwiazdy SVG (bake'i `kurs-bubble*-f.png` już nieużywane — zostawione w public/assets).
+  4. **Wersja mobilna strony kursu** (nowa, ⚠ brak projektu w Figmie — layout autorski, przepływ px jak /manifest): `KursHero`/`KursZyskasz`/`KursProgram` mają drzewa `md:hidden` z tych samych propsów `CourseContent`.
+  5. **Strona główna**: karta DNA #2 = „Z ROZMOWY / DO OFERTY / W 60 MINUT" (1500 PLN brutto, Patryk Czemierowski, link do nowego sluga); wszystkie ceny „netto" → „brutto" (KursySection: dopisek z danych przez `priceParts()`). Pozostałe karty bez zmian treści (czekają na CMS).
+  6. Walidacja: tsc/next build czyste, hscroll 375–2560 ok, zrzuty 390/768/1280/1440/1920, 301 sprawdzone `curl -I`, diff home przed/po tylko w obszarze kart.
 
 * **2026-07-31:**
   1. **Aktualizacja danych kontaktowych i ochrona anty-spamowa:**

@@ -41,10 +41,16 @@ const K = {
   photo: { left: 43, top: 64, w: 273, h: 211 }, // pełna szerokość panelu
   title: { left: 54.7, top: 289.8, fontPx: 19.5, lineHeightPx: 18, trackPx: -0.5 }, // cap-top L1 = 291 (4170)
   divider: { left: 55, top: 335, w: 214 },
-  price: { left: 56, top: 348.5, fontPx: 12, nettoPx: 8 }, // ink y350..359; "netto" mniejsze (brak lowercase w HK Modular)
+  price: { left: 56, top: 348.5, fontPx: 12, nettoPx: 8 }, // ink y350..359; dopisek netto/brutto mniejszy (brak lowercase w HK Modular)
   button: { left: 56.2, top: 378, w: 212.6, h: 45.5, r: 23, borderPx: 2.5, fontPx: 13, trackPx: 0.5 },
   btnShadow: { dx: 17, dy: 28, blur: 4, color: "#dcdce6" }, // miękki cień, klip do panelu
 };
+
+/** "1500 PLN brutto" → { amount: "1500 PLN", suffix: "brutto" } */
+function priceParts(price: string): { amount: string; suffix: string } {
+  const m = price.match(/^(.*?)\s*(netto|brutto)\s*$/i);
+  return m ? { amount: m[1], suffix: m[2] } : { amount: price, suffix: "" };
+}
 
 function KursCardBox({ card }: { card: KursCard }) {
   return (
@@ -118,10 +124,11 @@ function KursCardBox({ card }: { card: KursCard }) {
       </h3>
       {/* linia */}
       <div className="absolute bg-brand-blue" style={{ left: c(K.divider.left), top: c(K.divider.top), width: c(K.divider.w), height: "max(1px, 0.07cqw)" }} />
-      {/* cena — "netto" mniejszym stopniem (HK Modular nie ma prawdziwego lowercase) */}
+      {/* cena — dopisek (netto/brutto — ostatnie słowo z danych) mniejszym
+          stopniem (HK Modular nie ma prawdziwego lowercase) */}
       <p className="absolute whitespace-nowrap font-modular text-brand-blue" style={{ left: c(K.price.left), top: c(K.price.top), fontSize: c(K.price.fontPx), lineHeight: 1 }}>
-        {card.price.replace(/\s*netto\s*$/i, "")}{" "}
-        <span style={{ fontSize: c(K.price.nettoPx) }}>netto</span>
+        {priceParts(card.price).amount}{" "}
+        <span style={{ fontSize: c(K.price.nettoPx) }}>{priceParts(card.price).suffix}</span>
       </p>
       {/* CTA */}
       <a

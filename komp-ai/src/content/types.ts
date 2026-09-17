@@ -215,56 +215,7 @@ export interface ONasPage {
   prowadzacy: ONasProwadzacy;
 }
 
-/* ============ KURS (course details) ============ */
-
-export interface KursHeroData {
-  /** linie solid blue tytułu, np. ["AGENT AI", "W TWOIM"] */
-  titleLines: string[];
-  /** linia akcentowa lime, np. "BIZNESIE" */
-  titleAccent: string;
-  description: RichSeg[];
-  metaFormat: string; // "Kurs online"
-  metaModules: string; // "4 moduły"
-  metaLessons: string; // "16 lekcji"
-}
-
-export interface KursLesson {
-  title: string;
-  /** punkty lekcji — w designie osobne linie jednego bloku */
-  items: string[];
-}
-
-export interface KursModule {
-  num: string; // "01"
-  title: string; // "WPROWADZENIE DO AI I MICROSOFT 365 COPILOT"
-  lessons: KursLesson[];
-  /** dymek-komentarz przy module (elipsa z tekstem) */
-  bubble: string;
-}
-
-export interface KursPage {
-  _type: "kursPage";
-  slug: string;
-  hero: KursHeroData;
-  zyskasz: {
-    /** nagłówek łamany na linie */
-    headingLines: string[];
-    benefits: string[];
-  };
-  program: {
-    kicker: string; // "gotowy do wejścia na następny poziom wtajemniczenia ?"
-    heading: string; // "PROGRAM"
-    modules: KursModule[];
-    outro: string; // "nie czekaj aż inni cię wyprzedzą !"
-    ctaLabel: string; // "ZAPISZ SIĘ"
-  };
-  dlaKogo: {
-    headingLines: string[];
-    audience: string[];
-  };
-  marqueeText: string; // "KURS STARTUJE JUŻ 20 lipca"
-  kontaktHeadingLines: string[];
-}
+/* KURS (podstrona kursu): schemat w ./courses/types.ts (CourseContent) */
 
 /* ============ STRONY PRAWNE (polityka prywatności / regulamin) ============ */
 

@@ -153,9 +153,23 @@ tekstury 2624×1630; maski logo).
       134805px nietknięta). 4) Desktop onas-star-kicker-f.png też przebakowany
       (miał wypieczony fragment litery K i kickera). Hero mobile po poprawkach
       3.96% (wzrost z 3.37% = celowo przesunięta gwiazdka).
-- [ ] **KURSY (szczegóły kursu) — WIP, NIECOMMITOWANE** (sesje 2026-07-22): route
-      `/kursy/[slug]` + KursHero/KursZyskasz/KursProgram (desktop), content
-      `src/content/kurs.ts`, assety `kurs-*-f.png`, render `design-refs/
+- [ ] **KURS „Z ROZMOWY DO OFERTY" + CourseContent + mobile kursu** (2026-09-17, branch
+      `feat/zmiany-z-promptu`, niecommitowane) — czeka na review Patryka:
+      - [ ] review desktop `/kursy/z-rozmowy-do-oferty` (dymki CSS zamiast bake'ów,
+            panel CO ZYSKASZ wyższy niż 571 przez tekst benefitów, meta „9 lekcji"
+            liczone z danych — brief mówił „8 lekcji")
+      - [ ] review MOBILE strony kursu (layout autorski bez Figmy: hero z kadrem
+            robota pod tekstem, PROGRAM stroke bleed, dymek pod lekcjami, button full-width)
+      - [ ] `cta.href` „#kontakt" nie ma celu na stronie kursu (brak sekcji kontakt) —
+            zmienić na `/#kontakt`? (stan sprzed zmian był taki sam)
+      - [ ] dedykowane treści dla `bezpieczenstwo-aplikacji`, `prompt-engineering`,
+            `tworzenie-tresci-z-ai` (dziś fallback na agent-ai) + karty home do CMS
+      - [ ] sekcja DLA KOGO: dane `dlaKogo`/`marqueeText`/`kontaktHeadingLines` ze starego
+            `content/kurs.ts` (usunięty) są w historii gita — dodać do `CourseContent`
+            gdy sekcja będzie budowana
+- [ ] **KURSY (szczegóły kursu) — WIP** (sesje 2026-07-22): route
+      `/kursy/[slug]` + KursHero/KursZyskasz/KursProgram (desktop; od 2026-09-17 układ
+      przepływowy + mobile), content `src/content/courses/`, assety `kurs-*-f.png`, render `design-refs/
       kurs-desktop-full.png` (1440×7241; treść do y6194, niżej pusto) +
       `kurs-mobile-full.png`. PROGRAM naprawiony po uwadze Patryka (wszystkie
       litery solid blue + biały stroke zewn. 2.75px, paint-order: stroke —
