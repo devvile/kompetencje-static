@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-08 — Stripe Checkout (hosted), szkielet
+
+- Zależność `stripe` 23.0.0 w komp-ai; endpoint `POST /api/checkout`
+  (`src/app/api/checkout/route.ts`) — tworzy Checkout Session z parametrami z Checkout Studio
+  (`ui_mode: hosted_page`, `mode: payment`) i robi 303 redirect na `session.url`.
+- `.env.local` z placeholderami `STRIPE_SECRET_KEY`, `DOMAIN` (poza gitem).
+- Walidacja: `tsc --noEmit` czysty. Nie testowane end-to-end (brak kluczy i Price ID).
+- Otwarte (szczegóły w STRIPE_INTEGRATION_TODO.md): Price ID per kurs, strona /success,
+  podpięcie przycisków zakupu, webhook realizacji zamówień.
+- Decyzja Patryka: checkout zostaje jako DRAFT (nieaktywny).
+- Zaprojektowany flow formularza zapisu + płatności (ustalenia w TODO.md → „Odłożone”):
+  1 formularz = 1 uczestnik, lista zgłoszeń w Supabase (panel, bez /admin), status tylko
+  z webhooka, faktury/KSeF później, hosting Vercel, Stripe sandbox.
+- Schemat bazy `komp-ai/supabase/zgloszenia.sql` (tabela zgloszenia, RLS bez polityk) —
+  NIE uruchomiony na żadnej bazie.
+- Następna sesja: zależnie od Figmy — widok formularza (na razie bez obsługi bazy),
+  a po założeniu Supabase backend (zapis, sesja Stripe, webhook, /success).
+
 ## 2026-07-31 (podsumowanie sesji) — /manifest z wideo, roboty Higgsfield, przycisk stopki
 
 - **Przycisk „na górę" w stopce** (commit „stopka"): ScrollTopButton w obu wariantach,

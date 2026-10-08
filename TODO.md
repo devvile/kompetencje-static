@@ -239,3 +239,22 @@ tekstury 2624×1630; maski logo).
 - DNA mobile, karta #2: wnętrze karty ~6px niżej niż w designie (button ZOBACZ
   SZCZEGÓŁY: impl y4790 vs design y4784) — do domknięcia przy następnym przejściu
   po sekcji DNA.
+
+## Odłożone
+
+- **Stripe Checkout — DRAFT** (decyzja Patryka 2026-10-08): endpoint `POST /api/checkout` jest gotowy,
+  ale nieaktywny. Nie rozwijać bez sygnału. Otwarte kroki: `STRIPE_INTEGRATION_TODO.md`.
+- **Formularz zapisu + płatność — ustalenia (2026-10-08):**
+  - Flow: „kup kurs” → widok formularza (Figma — wkrótce) → Server Action: zapis do Supabase
+    (status `oczekuje`) → Checkout Session (`client_reference_id` = id zgłoszenia, `customer_email`)
+    → webhook `/api/stripe/webhook` (`checkout.session.completed` → `oplacone`,
+    `checkout.session.expired` → `porzucone`). Status ustawia WYŁĄCZNIE webhook.
+  - 1 formularz = 1 uczestnik (firma wypełnia osobno dla każdego pracownika).
+  - Lista zgłoszeń = panel Supabase (bez /admin na razie). Schemat: `komp-ai/supabase/zgloszenia.sql`.
+    Baza do założenia przez Patryka (region UE).
+  - Faktury: pole „chcę fakturę + NIP” w formularzu; integracja KSeF (Fakturownia/inFakt) później
+    — narzędzie jeszcze niewykupione. Kolumna `faktura_status` przygotowana.
+  - **Plan na następną sesję:** sprawdzić, czy formularz jest w Figmie. Jeśli nie — tymczasowy widok
+    formularza (sam UI, bez bazy). Gdy Patryk założy Supabase — backend (Server Action, sesja Stripe,
+    webhook, /success).
+  - Hosting: Vercel. Stripe: sandbox. Pola telefon/adres wyłączyć w Stripe, jeśli zbiera je formularz.

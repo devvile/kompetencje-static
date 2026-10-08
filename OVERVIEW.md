@@ -44,6 +44,7 @@ kompetencje-ostateczna/
     └── src/
         ├── app/               # Ścieżki Next.js App Router
         │   ├── page.tsx       # Landing page (Strona Główna)
+        │   ├── api/checkout/  # Endpoint Stripe Checkout (POST)
         │   ├── o-nas/         # Podstrona O Nas
         │   ├── kursy/[slug]/  # Podstrona szczegółów kursu
         │   ├── manifest/      # Podstrona Manifestu
@@ -73,6 +74,10 @@ kompetencje-ostateczna/
 ---
 
 ## 5. Ostatnie Zmiany w Projekcie
+
+* **2026-10-08:**
+  1. **Integracja Stripe Checkout (hosted):** dodano zależność `stripe` (23.0.0) i endpoint `POST /api/checkout` (`src/app/api/checkout/route.ts`) tworzący sesję Checkout i przekierowujący (303) na stronę płatności Stripe. Zmienne: `STRIPE_SECRET_KEY`, `DOMAIN` (`.env.local`). Placeholdery (Price ID, success/cancel URL) i dalsze kroki: `STRIPE_INTEGRATION_TODO.md` w katalogu głównym repo. Status: DRAFT (nieaktywny).
+  2. **Schemat bazy zgłoszeń** `supabase/zgloszenia.sql` (Supabase, tabela `zgloszenia`, RLS bez polityk) — pod przyszły formularz zapisu; flow i ustalenia w `TODO.md` → „Odłożone”.
 
 * **2026-08-01:**
   1. **Zróżnicowanie kart kursów (landing) — ⚠ treść marketingowa robocza, do akceptacji klienta:**

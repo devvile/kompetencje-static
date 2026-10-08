@@ -41,6 +41,14 @@ per podstrona.
 - **TODO.md** = źródło prawdy o otwartej pracy. Czytaj na starcie, aktualizuj na bieżąco.
 - **CHANGELOG.md** = jeden datowany wpis na koniec każdej sesji: co zrobione, co zwalidowane,
   co otwarte.
+- **STATUS.md** = raport dla zespołu NIETECHNICZNEGO (Patryk, Victoria, Piotr) i agenta
+  dokumentacyjnego (zaciąga go automatycznie do vaulta Obsidian w `../kompetencje-agent`).
+  Aktualizować na KONIEC KAŻDEJ sesji — nawet krótkiej; jeśli nic się nie zmieniło,
+  odświeżyć samą datę (nieaktualna data = sygnał „projekt stoi"). Język biznesowy: ZERO
+  node ID, nazw komponentów, commitów, diffów — te zostają w CHANGELOG/TODO. Stały format
+  (nagłówki): Faza / Ostatnio ukończone / W toku / Czekam na \/ zablokowane / Następne
+  kroki / Ryzyka. Sekcja „Czekam na / zablokowane" ZAWSZE kompletna i imiennie
+  (np. „Patryk: review /manifest"); gdy blokada zniknie — usunąć. Brak blokad = „nic".
 - Proces: sekcja po sekcji od góry → build → walidacja vs crop designu → pokaż użytkownikowi →
   poprawki → następna sekcja.
 - Walidacja: `komp-ai/scripts/shot.js` (czeka na fonty; NIE używać gołego playwright screenshot),
