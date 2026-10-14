@@ -1,20 +1,14 @@
 import { homePage, siteSettings } from "./home";
-import { kursy } from "./kurs";
 import { kursyV2 } from "./kurs-v2";
 import { legalPages } from "./legal";
 import { manifestPage } from "./manifest";
 import { oNasPage } from "./onas";
 import { webinary } from "./webinary";
-import type {
-  HomePage,
-  KursPage,
-  KursV2Page,
-  LegalPage,
-  ManifestPage,
-  ONasPage,
-  SiteSettings,
-  WebinarPage,
-} from "./types";
+import type { HomePage, KursV2Page, LegalPage, ManifestPage, ONasPage, SiteSettings, WebinarPage } from "./types";
+
+// kursy (stary szablon): jeden plik na kurs w ./courses (przyszły schemat CMS-a)
+export { getCourse, getCourseSlugs, courseStats } from "./courses";
+export type { CourseContent } from "./courses";
 
 export async function getManifestPage(): Promise<ManifestPage> {
   return manifestPage;
@@ -32,17 +26,13 @@ export async function getONasPage(): Promise<ONasPage> {
   return oNasPage;
 }
 
-export async function getKursPage(slug: string): Promise<KursPage | null> {
-  return kursy[slug] ?? null;
-}
-
-/** kurs w szablonie v2 (design UI/UX 2026-10); null → stary szablon / 404 */
+/** kurs w szablonie v2 (design UI/UX 2026-10); null → stary szablon (./courses) / 404 */
 export async function getKursV2Page(slug: string): Promise<KursV2Page | null> {
   return kursyV2[slug] ?? null;
 }
 
-export async function getKursSlugs(): Promise<string[]> {
-  return [...Object.keys(kursy), ...Object.keys(kursyV2)];
+export async function getKursV2Slugs(): Promise<string[]> {
+  return Object.keys(kursyV2);
 }
 
 export async function getLegalPage(slug: string): Promise<LegalPage | null> {

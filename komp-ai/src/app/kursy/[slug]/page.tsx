@@ -5,13 +5,19 @@ import KursZyskasz from "../../../components/kurs/KursZyskasz";
 import KursProgramModules, { KursProgramIntro } from "../../../components/kurs/KursProgram";
 import StopkaSection from "../../../components/home/StopkaSection";
 import KursV2Template from "../../../components/kurs-v2/KursV2Template";
-import { getKursPage, getKursSlugs, getKursV2Page, getSiteSettings } from "../../../content";
+import { getCourse, getCourseSlugs, getKursV2Page, getKursV2Slugs, getSiteSettings } from "../../../content";
+
+/*
+ * /kursy/[slug] — dwa szablony:
+ *  1. KursV2Template (design UI/UX 2026-10) — kursy z content/kurs-v2.ts (pierwszeństwo),
+ *  2. stary szablon (KursHero…) — kursy z content/courses (CourseContent).
+ */
 
 type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams() {
-  const slugs = await getKursSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const slugs = new Set([...(await getCourseSlugs()), ...(await getKursV2Slugs())]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -25,25 +31,23 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       openGraph: { title: `${v2.metaTitle} | Kompetencje.ai`, description: v2.metaDescription },
     };
   }
-  const kurs = await getKursPage(slug);
-  if (!kurs) return {};
-  const title = `${kurs.hero.titleLines.join(" ")} ${kurs.hero.titleAccent}`;
+  const course = await getCourse(slug);
+  if (!course) return {};
   return {
-    title: `${title} — kurs AI online`,
-    description:
-      "Kurs online kompetencje.ai: wdrażanie AI w biznesie krok po kroku — automatyzacja procesów, Microsoft 365 Copilot, praktyczne moduły i lekcje.",
+    // metaTitle z danych zawiera już „| Kompetencje.ai" — bez szablonu layoutu
+    title: { absolute: course.metaTitle },
+    description: course.metaDescription,
     alternates: { canonical: `/kursy/${slug}` },
     openGraph: {
-      title: `${title} | Kompetencje.ai`,
-      description:
-        "Dowiedz się, jak wdrożyć AI do codziennej pracy i realnie wspierać rozwój Twojego biznesu.",
+      title: course.metaTitle,
+      description: course.metaDescription,
     },
   };
 }
 
 export default async function KursPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const [v2, kurs, settings] = await Promise.all([getKursV2Page(slug), getKursPage(slug), getSiteSettings()]);
+  const [v2, course, settings] = await Promise.all([getKursV2Page(slug), getCourse(slug), getSiteSettings()]);
 
   /* szablon v2 (design UI/UX 2026-10) — KursV2Template z danych kursu
      (desktop/laptop/tablet + mobile) */
@@ -56,14 +60,14 @@ export default async function KursPage({ params }: { params: Params }) {
     );
   }
 
-  if (!kurs) notFound();
+  if (!course) notFound();
 
   return (
     <main className="w-full">
-      <KursHero hero={kurs.hero} nav={settings.nav} />
-      <KursZyskasz zyskasz={kurs.zyskasz} />
-      <KursProgramIntro program={kurs.program} />
-      <KursProgramModules program={kurs.program} />
+      <KursHero course={course} nav={settings.nav} />
+      <KursZyskasz course={course} />
+      <KursProgramIntro course={course} />
+      <KursProgramModules course={course} />
       <StopkaSection f={settings.footer} />
     </main>
   );

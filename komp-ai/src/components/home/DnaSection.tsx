@@ -1,5 +1,6 @@
 import type { DnaCard, HomeManifest, RichSeg } from "../../content/types";
 import FitRow from "./FitRow";
+import FitText from "../shared/FitText";
 
 /*
  * Sekcja 3: bloki DNA — 2 karty kursu na szarym tle z chromowanymi helisami.
@@ -56,12 +57,13 @@ function CardDesktop({ card }: { card: DnaCard }) {
       </div>
       {/* środek */}
       <div className="flex h-full shrink-0 flex-col items-center" style={{ width: c(364), gap: c(37), paddingTop: c(46) }}>
+        {/* linie tytułu: FitText zmniejsza stopień linii szerszej niż slot
+            297px (np. „Z ROZMOWY" 312px @45) — CMS-proof, krótkie linie
+            renderują się 1:1 jak dotąd */}
         <h3 className="font-display font-black text-white" style={{ width: c(297), fontSize: c(45), lineHeight: 1.03 }}>
-          {card.titleLines[0]}
-          <br />
-          {card.titleLines[1]}
-          <br />
-          <span className="text-brand-lime">{card.titleLines[2]}</span>
+          <FitText>{card.titleLines[0]}</FitText>
+          <FitText>{card.titleLines[1]}</FitText>
+          <FitText className="text-brand-lime">{card.titleLines[2]}</FitText>
         </h3>
         <div className="relative" style={{ width: c(292), height: c(308) }}>
           <p className="absolute inset-x-0 top-0 font-body font-light text-white" style={{ fontSize: c(15), lineHeight: 1.11, textAlign: "justify" as const }}>

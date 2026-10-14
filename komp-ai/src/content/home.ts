@@ -84,7 +84,7 @@ export const homePage: HomePage = {
   dnaCards: [
     {
       _type: "dnaCard" as const,
-      price: "1500 PLN netto",
+      price: "1500 PLN brutto",
       leadLabel: "PROWADZĄCY",
       leadName: "PIOTR MAŁYSZ",
       titleLines: ["AGENT AI", "W TWOIM", "BIZNESIE"] as [string, string, string],
@@ -101,21 +101,22 @@ export const homePage: HomePage = {
       photoM: "/assets/m-card-photo-r.png",
     },
     {
+      // Treść OSTATECZNA od Patryka (2026-09-17): kurs „Z rozmowy do oferty
+      // w 60 minut" (zastąpił roboczą „PRACUJ MĄDRZEJ Z AI"). Linie tytułu
+      // szersze niż slot 297px @45px → CardDesktop dopasowuje stopień per
+      // linia (FitText).
       _type: "dnaCard" as const,
-      price: "1800 PLN netto",
+      price: "1500 PLN brutto",
       leadLabel: "PROWADZĄCY",
       leadName: "PATRYK CZEMIEROWSKI",
-      // "AUTOMATYZACJA" nie mieści się w kolumnie tytułu (437px @45px vs slot
-      // 297px) — tytuł marketingowy z krótkimi wierszami, temat bez zmian
-      titleLines: ["PRACUJ", "MĄDRZEJ", "Z AI"] as [string, string, string],
+      titleLines: ["Z ROZMOWY", "DO OFERTY", "W 60 MINUT"] as [string, string, string],
       body: [
-        { text: "Poznaj narzędzia, które przejmą za Ciebie powtarzalne zadania — od maili i raportów po całe przepływy pracy — i " },
-        { text: "odzyskaj godziny każdego tygodnia. ", strong: true, break: true },
+        { text: "Z notatek, cennika i rozmowy z klientem na Messengerze do gotowej oferty w PDF lub PPTX – w Claude Code, z grafikami pod Twoją markę z Higgsfield.", break: true },
         { text: "", break: true },
-        { text: "Nauczysz się łączyć modele AI z aplikacjami, których już używasz, i budować automatyzacje bez pisania kodu — od pierwszego scenariusza po działający system." },
+        { text: "Nauczysz się budować brief, który robi 80% roboty, robić prezentację prosto z rozmowy i wyceniać na podstawie realnych stawek rynkowych, nie zgadywania." },
       ],
       ctaLabel: "ZOBACZ SZCZEGÓŁY",
-      ctaHref: "/kursy/automatyzacja-pracy-z-ai",
+      ctaHref: "/kursy/z-rozmowy-do-oferty",
       photo: "/assets/card-automatyzacja-src.png",
       photoM: "/assets/m-card-automatyzacja-r.png",
     },
@@ -127,7 +128,7 @@ export const homePage: HomePage = {
       _type: "kursTile" as const,
       tag: "AI W BIZNESIE",
       title: ["BEZPIECZEŃSTWO", "APLIKACJI"] as [string, string],
-      price: "1500 PLN netto",
+      price: "1500 PLN brutto",
       ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
       ctaHref: "/kursy/bezpieczenstwo-aplikacji",
       photo: "/assets/kurs-bezpieczenstwo.png",
@@ -138,7 +139,7 @@ export const homePage: HomePage = {
       _type: "kursTile" as const,
       tag: "GENERATYWNA AI",
       title: ["TWORZENIE", "TREŚCI Z AI"] as [string, string],
-      price: "1200 PLN netto",
+      price: "1200 PLN brutto",
       ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
       ctaHref: "/kursy/tworzenie-tresci-z-ai",
       photo: "/assets/kurs-tresci.png",
@@ -149,7 +150,7 @@ export const homePage: HomePage = {
       _type: "kursTile" as const,
       tag: "PRACA Z AI",
       title: ["PROMPT", "ENGINEERING"] as [string, string],
-      price: "990 PLN netto",
+      price: "990 PLN brutto",
       ctaLabel: "DOWIEDZ SIĘ WIĘCEJ",
       ctaHref: "/kursy/prompt-engineering",
       photo: "/assets/kurs-prompt.png",
