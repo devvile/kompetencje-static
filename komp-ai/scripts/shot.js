@@ -7,7 +7,11 @@ const { chromium } = require('playwright');
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: +w, height: +h }, deviceScaleFactor: +dpr });
   await p.emulateMedia({ reducedMotion: 'reduce' });
-  await p.goto(url, { waitUntil: 'networkidle' });
+  // dev server Next 16.2 bywa nigdy „networkidle" (HMR) → fallback na load
+  await p.goto(url, { waitUntil: 'networkidle', timeout: 15000 }).catch(async () => {
+    await p.waitForLoadState('load');
+    await p.waitForTimeout(1500);
+  });
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(150);
   await p.screenshot({ path: out, fullPage: full === 'full' });

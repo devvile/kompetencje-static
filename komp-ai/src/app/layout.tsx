@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Manrope, Poppins } from "next/font/google";
+import { Audiowide, Montserrat, Manrope, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import RevealObserver from "../components/shared/RevealObserver";
@@ -22,7 +22,14 @@ const poppins = Poppins({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+// Audiowide — napisy display w szablonie kursu v2 (design UI/UX 2026-10)
+const audiowide = Audiowide({
+  variable: "--font-audiowide",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 const hkModular = localFont({
@@ -64,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="pl"
-      className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} ${poppins.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} ${poppins.variable} ${audiowide.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page">
         <RevealObserver />

@@ -210,8 +210,33 @@ tekstury 2624×1630; maski logo).
       `/#kontakt` (kotwica na formularzu landing, smooth scroll). Kotwica
       `#kursy` na DnaSection zostaje (używana wcześniej), ale nav już z niej
       nie korzysta.
-- [ ] MANIFEST: docelowy design podstrony (obecnie placeholder) — czeka na
-      widok z Figmy.
+- [x] MANIFEST v2 (2026-10-14): design z pliku `5ufIXE17KqmkvVrfSVzUFE` node `458:1640`
+      (płótno 1510). Desktop ≥1024 1:1 (diffy 1.6–2.9%), mobile/tablet autorski.
+      CZEKA NA REVIEW Patryka.
+- [x] Manifest: nowe wideo power-on z przezroczystością (AlphaVideo, packed alpha).
+      CZEKA: wybór wariantu A/B przez Patryka (aktywny B); potem usunąć stary
+      RobotPowerOn.tsx + manifest-robot-poweron.mp4/poster/f.png.
+- [ ] Tablet 768–1023 na home i /o-nas: desktopowy formularz kontaktu skalowany do
+      szerokości → etykiety ~7px. Na /manifest rozwiązane (OnasKontaktMobile capPx 560
+      do lg) — rozważyć to samo na pozostałych stronach.
+- [ ] Figma: przenieść pracę na nowy plik `5ufIXE17KqmkvVrfSVzUFE`? (plik roboczy
+      `XsorNfllBh0GzGUQraAmtS` jest nieaktualny) — ustalić z Patrykiem.
+- [x] KURS v2 „Z rozmowy do oferty w 60 minut" (2026-10-14): desktop/laptop/duże ekrany
+      + tablet, route `/kursy/z-rozmowy-do-oferty`. CZEKA NA REVIEW Patryka.
+- [x] KURS v2 — mobile (<768) wdrożony (2026-10-15): hero/korzyści/pasek/prowadzący 1:1,
+      pasek CTA/program/zapis autorskie. CZEKA NA REVIEW + decyzję: zapewnienie mobile
+      „6 latami w fintechu" vs desktop „7 latami wdrożeń".
+- [ ] KURS v2 — decyzje: (a) uproszczona stopka z designu vs obecna stopka serwisu,
+      (b) link do kursu z home (żaden kafel jeszcze nie prowadzi do tego kursu),
+      (c) ✔ formularz zapisu zrobiony (2026-10-15) — zostaje płatność Stripe po zapisie.
+- [x] Zapis → Stripe Checkout → ekrany dziękujemy/w toku/przerwana/błąd + webhook (2026-10-15).
+- [ ] Test end-to-end (tryb testowy Stripe, karta 4242…) — potrzebna zgoda Patryka (zapis do
+      Supabase) + STRIPE_WEBHOOK_SECRET ze `stripe listen`. Checklista: STRIPE_INTEGRATION_TODO.md.
+- [x] WEBINAR — szablon strony szczegółów `/webinary/[slug]` (2026-10-15), noindex.
+- [x] WEBINAR — karta reklamy na home nad paskiem TY DECYDUJESZ (2026-10-15), link do szczegółów.
+- [ ] WEBINAR — do uzupełnienia: termin (`details.start`), potwierdzenie prowadzącego, link
+      zapisu (`register.href`), ewent. mobile design; decyzja: wersja designu 2002:1803 vs
+      nowsza 479:1789 (avatar, plakietka, siatki); publikacja = `published: true` (link z home już jest).
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
@@ -242,15 +267,15 @@ tekstury 2624×1630; maski logo).
 
 ## Odłożone
 
-- **Stripe Checkout — DRAFT** (decyzja Patryka 2026-10-08): endpoint `POST /api/checkout` jest gotowy,
-  ale nieaktywny. Nie rozwijać bez sygnału. Otwarte kroki: `STRIPE_INTEGRATION_TODO.md`.
+- ~~Stripe Checkout — DRAFT~~ → wdrożony 2026-10-15 na sygnał Patryka (przepływ zapis → Stripe →
+  ekrany wyniku + webhook). Otwarte kroki: `STRIPE_INTEGRATION_TODO.md`.
 - **Formularz zapisu + płatność — ustalenia (2026-10-08):**
   - Flow: „kup kurs” → widok formularza (Figma — wkrótce) → Server Action: zapis do Supabase
     (status `oczekuje`) → Checkout Session (`client_reference_id` = id zgłoszenia, `customer_email`)
     → webhook `/api/stripe/webhook` (`checkout.session.completed` → `oplacone`,
     `checkout.session.expired` → `porzucone`). Status ustawia WYŁĄCZNIE webhook.
   - 1 formularz = 1 uczestnik (firma wypełnia osobno dla każdego pracownika).
-  - Lista zgłoszeń = panel Supabase (bez /admin na razie). Schemat: `komp-ai/supabase/zgloszenia.sql`.
+  - Lista zgłoszeń = panel Supabase (bez /admin na razie). Schemat: `komp-ai/supabase/migrations/0001_zgloszenia.sql`.
     Baza do założenia przez Patryka (region UE).
   - Faktury: pole „chcę fakturę + NIP” w formularzu; integracja KSeF (Fakturownia/inFakt) później
     — narzędzie jeszcze niewykupione. Kolumna `faktura_status` przygotowana.

@@ -1,5 +1,222 @@
 # CHANGELOG
 
+## 2026-10-15 (7) — ukryta sekcja 3 kart kursów na home
+
+- `app/page.tsx`: flaga `SHOW_KURSY_TILES = false` — `KursySection` (3 karty kursów, desktop)
+  nie jest renderowana; komponent, animacje i dane `homePage.kursTiles` bez zmian
+  (włączenie = `true`). Kotwica nav `/#kursy` siedzi na DnaSection — działa dalej.
+  Przejście DNA → HUMAN/MACHINE sprawdzone na 1440 (czyste), hscroll OK.
+
+## 2026-10-15 (6) — karta reklamy webinaru na stronie głównej
+
+- Design: Figma `2085:1762` („REKLAMA WEBINARU – V5", 1440×720). `components/webinar/WebinarPromo.tsx`:
+  ≥1024 poster 1:1 (cqw, teksty HTML zamiast krzywych z Illustratora, tło z siatką, panel
+  ze zdjęciem = eksport `2085:1829`, plakietka AI GYM, gwiazdy, ikony pigułek), <1024 układ
+  pionowy (autorski). CTA → `/webinary/[slug]`.
+- Dane: `WebinarPage.promo` (pigułki, nagłówek — ostatnia linia limonkowa, opis, zdjęcie,
+  pigułka kompetencji, forma, CTA, dopisek); prowadzący, cena („BEZPŁATNIE") oraz data
+  i godziny („[DD.MM.RRRR]", „[GG:MM–GG:MM]" z designu) liczą się z `details` — bez
+  terminu pokazuje „Termin wkrótce". Wspólne formatowanie dat: `src/lib/webinar.ts`.
+- Home: `homePage.webinarSlugs` (lista kart — na razie 1); sekcja wstawiona między manifest
+  a pasek TY DECYDUJESZ. ManifestSection rozdzielony na `ManifestSection` (poster 0..1130 /
+  mobile 0..2150) + `ManifestBar` (pasek + marquee / „AI TO NARZĘDZIE" + pasek) — wygląd bez
+  zmian (pasek vs Figma 1.77%, kolumna tekstów manifestu 3.75%).
+- Strona webinaru jest teraz podlinkowana z home, ale nadal `published: false` → noindex.
+- hscroll czysty 360–2560; tsc czysty.
+
+## 2026-10-15 (5) — strona szczegółów webinaru (WebinarTemplate)
+
+- Design: Figma `2002:1803` („WEBINAR – przed aktualizacją 07.10", wskazany przez Patryka;
+  nowsza wersja `479:1789` ma dodatkowo avatar prowadzącego, okrągłą plakietkę i siatki FX).
+- Route `/webinary/[slug]` (NIEpodlinkowany w serwisie); `published: false` → `noindex, nofollow`.
+- Model `WebinarPage` (types.ts) + `content/webinary.ts` (getter `getWebinarPage`): pigułka,
+  tytuł (linie przed/akcent/po), tagline, opis (RichSeg), CTA zapisu (`register.href` — na
+  razie /#kontakt), karta szczegółów (prowadzący, `start` ISO → „piątek, 23.10, godz. 18:00"
+  Europe/Warsaw lub „Termin wkrótce", format, czas, narzędzie, cena 0 → „Bezpłatnie"),
+  porównanie (opcjonalne), przebieg (dowolna liczba kroków, numeracja auto), korzyści,
+  dla kogo + bezpieczeństwo, zamknięcie.
+- `components/webinar/WebinarTemplate.tsx`: ≥1024 1:1 z designem (cqw płótna 1440, płótno
+  ograniczone wysokością okna — intro + CTA w 1. ekranie), <1024 układ autorski. JSON-LD
+  schema.org/EducationEvent (gdy podany termin: start/end, online, oferta, prowadzący).
+- Treść pierwszego webinaru 1:1 z designu; placeholdery designu: prowadzący → „Piotr Małysz"
+  (z nowszej wersji designu), termin → pusty („Termin wkrótce"), cena → bezpłatnie.
+- Walidacja: sbs z renderem Figmy 1440 (zgodne), 1024, 402; hscroll czysty 360–2560; tsc czysty.
+
+## 2026-10-15 (4) — zapis → Stripe Checkout → ekrany wyniku + webhook
+
+- Server Action `zapiszNaKurs`: walidacja → `zgloszenia` (oczekuje) → Stripe Checkout Session
+  (ui_mode hosted_page, locale pl, client_reference_id = id zgłoszenia, metadata, cena
+  z `kurs.price` przez price_data albo opcjonalne `kurs.stripePriceId`, sesja 1 h) →
+  `{status:"redirect", url}`; modal pokazuje „Przechodzimy do płatności…" i przekierowuje.
+- Ekrany (brak designu → w estetyce formularza, `K2ResultScreen`, px, karta maks. 720):
+  `/kursy/[slug]/dziekujemy?session_id=…` — stan z API Stripe: opłacone / w toku (płatność
+  odroczona) / niedokończone / błąd (zły, cudzy lub wygasły link); `/kursy/[slug]/platnosc-przerwana`
+  (cancel_url). noindex.
+- Webhook `POST /api/stripe/webhook` (podpis STRIPE_WEBHOOK_SECRET, idempotentny): completed(paid)/
+  async_succeeded → oplacone (+ payment_intent, kwota), async_failed/expired → porzucone
+  (tylko z „oczekuje"), charge.refunded → zwrot. 500 przy błędzie bazy → Stripe ponawia.
+- `src/lib/stripe.ts` (klient server-only, appUrl); usunięty stary szkic `/api/checkout`;
+  `.env.example` + `STRIPE_INTEGRATION_TODO.md` przepisane pod nowy przepływ.
+- Testy: ekrany błędu (brak / fałszywy session_id) i przerwania na 1440 i 402; webhook bez
+  podpisu → 400; stary endpoint → 404; tsc czysty. NIE testowane end-to-end (wymaga zgody —
+  zapis do Supabase — i STRIPE_WEBHOOK_SECRET ze `stripe listen`).
+
+## 2026-10-15 (3) — kurs v2: formularz zapisu (modal / panel od dołu)
+
+- Design: laptop `2034:2000` (modal 1080, podsumowanie | formularz), mobile `2037:1761`
+  (panel od dołu, zwinięte podsumowanie „Co jest w cenie?"). `K2EnrollModal` (client):
+  ≥1024 dwie kolumny, 768–1023 wąski modal 560 + kompaktowe podsumowanie, <768 panel od dołu.
+  Rozmiary w PX (nie cqw) — na 1920/2560 modal zostaje 1080 (bez „plakatowości");
+  max-height okna, przewija się kolumna formularza. Animacje k2-fade/k2-sheet (reduced-motion off).
+- Otwieranie: delegacja kliknięć na `[data-enroll-open]` (`ENROLL_OPEN` w k2.ts: hero, pasek CTA,
+  karta ceny — desktop i mobile, przyklejony pasek) + adres `#zapisz-sie`. Przycisk przy
+  prowadzącym dalej przewija do ceny. Esc / X / klik w tło zamyka; blokada scrolla; pułapka Tab.
+- Pola = tabela `zgloszenia`: imię, nazwisko, e-mail, telefon (opc.), faktura → NIP + firma,
+  regulamin (wymagany), newsletter. Walidacja wspólna klient/serwer `src/lib/zapis.ts`
+  (e-mail, NIP z sumą kontrolną, wymagane pola).
+- Server Action `app/kursy/[slug]/actions.ts` (`zapiszNaKurs`): walidacja → insert do
+  `zgloszenia` (status „oczekuje", kwota z ceny kursu) → stan „Dziękujemy". Bez SUPABASE_* →
+  stan „Zapisy online ruszają lada dzień" (nic nie zapisuje). Stripe NIEaktywny (decyzja).
+- Model: `KursV2Page.name` (nazwa zdaniem — podsumowanie, pasek, JSON-LD), `instructor.avatar`,
+  `enroll.form {note, submitLabel, footnote}`; usunięte `enrollHref` (zastąpione formularzem).
+- Testy (bez wysyłki — w .env.local jest SUPABASE_URL, realny zapis trafiłby do bazy):
+  walidacja pustego/błędnego formularza (0 POST), NIP poprawny/niepoprawny, Esc, otwarcie
+  z #zapisz-sie, układy 402/820/1024/1440/1920/2560. tsc czysty.
+
+## 2026-10-15 (2) — kurs v2: wersja mobile (<768) + parametry mobilne
+
+- Design mobile (402): hero `2056:1971`, „Co zyskasz" + przyklejony pasek `2056:2031`,
+  prowadzący `2069:2015` — wdrożone 1:1 w `components/kurs-v2/K2Mobile.tsx` (flow px,
+  treść max 520 px). Bez widoku mobile w Figmie → autorskie w tej samej estetyce: pasek CTA,
+  PROGRAM (napis z białym obrysem, moduły, owal efektu jako zaokrąglona ramka), zapis (biała
+  karta). Stopka = wspólna.
+- Przyklejony pasek ceny `K2StickyBar` (client): pokazuje się po przewinięciu karty ceny hero,
+  znika od sekcji zapisu w dół. Liczony scrollem (rAF) — IntersectionObserver nie łapał
+  skoków przewijania (kotwice). Przetestowane 360/402/600.
+- Parametry mobilne w `KursV2Page` (wszystkie opcjonalne, brak = tekst desktopu):
+  `mobile.{kicker, lead, description, assurances, instructorPill, stickyName, stickyCtaLabel}`,
+  `benefits.items[].{titleMobile, textMobile}`, `instructor.photoMobile`;
+  `hero.extraStats` = `{icon, value, label}` (desktop „value label", mobile value nad label);
+  `pluralWord` (moduły/lekcji bez liczby) do statystyk mobile.
+- Zdjęcie prowadzącego mobile = eksport kadru z Figmy (`2069:2023`), inny niż desktop.
+- Różnice z designem świadome: górny pasek logo/burger = wspólny MobileTopBar (+14 px);
+  zapewnienie „Prowadzi praktyk z 6 latami w fintechu" (mobile) ≠ desktop „7 latami wdrożeń
+  w firmach" — użyty tekst desktopu, do decyzji Patryka (pole `mobile.assurances` gotowe).
+- Walidacja: tsc czysty; mobile sbs vs Figma (hero, korzyści, prowadzący zgodne); hscroll
+  czysty 360/402/600; desktop bez zmian.
+
+## 2026-10-15 — kurs v2 jako wielokrotnie używalny szablon (KursV2Template)
+
+- `KursV2Template` (components/kurs-v2) przyjmuje jeden dokument `KursV2Page`; route
+  `/kursy/[slug]` renderuje go dla kursów z `kursyV2`. Typ przebudowany pod CMS:
+  `price {value, currency, note}` (jedno źródło: hero, karta zapisu, JSON-LD), `enrollHref`,
+  `hero.image {src, alt, width?, height?, offsetX?, decorStar?}`, `hero.titleLines[]` (dowolna
+  liczba, pigułka opcjonalna), `hero.extraStats`, narzędzia/tag dolny/owal efektu opcjonalne.
+- Automatycznie: „N moduły / M lekcji" (polska odmiana, `plural`), numeracja modułów,
+  tytuł karty zapisu, punkt „N moduły i M lekcji online", JSON-LD schema.org/Course (offer
+  z ceną, prowadzący, sylabus) — SEO.
+- Korzyści: zygzak dla dowolnej liczby kart (pierwsze 4 pozycje 1:1 z designu, dalej rytm
+  ~352 px, strzałki między każdą parą).
+- Grafika hero kotwiczona do dołu hero (styk z panelem) — działa dla dowolnej grafiki.
+- Weryfikacja: kurs „Z rozmowy do oferty" po refaktorze identyczny (lewa kolumna hero 0/0 px,
+  sekcje bez zmian; hero vs Figma 17.8% = celowo obniżony robot). Tymczasowy kurs testowy
+  (3 linie tytułu bez pigułki, 5 korzyści, 2 moduły w tym 1 bez owalu, 1+3 lekcje, cena
+  12 000 PLN, bez narzędzi i tagu dolnego, inna grafika bez gwiazdy) wyrenderował się
+  poprawnie — USUNIĘTY po teście. tsc czysty.
+
+## 2026-10-14 (2) — kurs „Z rozmowy do oferty w 60 minut" (szablon kurs v2), desktop
+
+- Design: Figma `5ufIXE17KqmkvVrfSVzUFE`, frame `2009:1973` (1440×8186, auto-layout).
+  Nowy route `/kursy/z-rozmowy-do-oferty` — szablon v2 obok starego (stare slugi bez zmian).
+- Content: `src/content/kurs-v2.ts` + typ `KursV2Page` (getter `getKursV2Page`); komponenty
+  `components/kurs-v2/` (K2Hero, K2Benefits [+pasek CTA], K2Program, K2Instructor, K2Enroll),
+  helper `k2.ts` (c = px/14.4 cqw, fs = podłoga fontu). Layout flex jak w Figmie, wymiary
+  w cqw → proporcjonalnie 768–2560 (cap workspace). Nav = SiteNav, stopka = StopkaSection
+  (design ma własną uproszczoną stopkę — NIE wdrożona, do decyzji).
+- Fonty: design używa **Audiowide** (numery modułów, MODUŁ, hasła, imię, owale, pigułka) —
+  dodany przez next/font (`--font-audio`); HK Modular tam, gdzie w designie (przyciski,
+  etykieta hero; notatka designera „Audiowide → zamień na HK Modular" tylko na przycisku hero).
+- Pułapki znalezione: (1) Tailwind v4 `leading-normal` = 1.5, NIE CSS normal — Figma
+  „leading-[normal]" → `leading-[normal]`; (2) preflight `img{max-width:100%}` ścieśniał
+  robota hero (596 zamiast 635) → `max-w-none`; (3) Montserrat w Figmie minimalnie szerszy —
+  szer. punktów programu 539 (zamiast 540) daje łamania 36/36 identyczne; (4) lh punktów 26px
+  (1.625), nie 1.65; (5) zdjęcie prowadzącego = eksport kadru node'a 2023:1976 (crop z Figmy).
+- Wysokości sekcji = design ±2px (827/1795/262/3227/1243/572). Diff 1440: nav 2.6% (render
+  Figmy), hero 3.9%, korzyści 1.3%, CTA 1.3%, program 4.2%, prowadzący 6.1% (AA tekstu, wagi
+  Montserrat Medium), zapis 2.3%. hscroll czysty 360–2560 (11 szerokości).
+- Tablet 768–1023: te same komponenty z podłogami fontów; przycisk hero min-width, lead
+  zawija się, owal „efekt modułu" rośnie z tekstem. Mobile <768: tylko top bar + stopka —
+  czeka na osobny design (decyzja Patryka).
+- Przyciski „zapisz się" → kotwica #zapis; przycisk w karcie ceny tymczasowo → /#kontakt
+  (docelowo formularz zapisu + Stripe).
+- `scripts`: narzędzia `design-refs/tools/k2-sbs.js`, `k2-sections.js` (NODE_PATH=./node_modules).
+- **Poprawka Patryka (błąd designu):** robot hero ma DOTYKAĆ niebieskiego panelu „Co zyskasz"
+  (w Figmie wisiał ~34px nad nim). Robot kotwiczony do dołu hero (bottom −24.5 = padding
+  sekcji korzyści + 0.5px zakładki) — zweryfikowane 768–2560: styk 0.3–0.8px, hero dalej 827.
+- **Skala zależna od wysokości okna (prośba Patryka, monitor 1920×1200):** płótno kursu v2
+  ma max-width `min(--workspace, 100svh × 1440/827)` (`K2_MAX_W` w k2.ts, inline — zmienna
+  w :root w globals.css była wycinana z arkusza). Całość skaluje się JEDNYM współczynnikiem
+  (szerokość i wysokość), nav + hero mieszczą się w 1. ekranie: 1920×1080 → płótno 1881,
+  1920×969 → 1687, 1440×780 → 1358, 2560×1300 → 2264; 1440×900 bez zmian (=design).
+  Tła sekcji pełnej szerokości; tło programu: lewy pas do krawędzi okna + prawa krawędź
+  wydłużona marginesem, żeby zaokrąglony róg leżał przy krawędzi okna (bez „schodka").
+  1366×650: hero 655 (podłogi fontów), karta ceny w całości w 1. ekranie.
+- **Prowadzący i program — dopasowanie do wysokości okna (prośba Patryka):** prowadzący:
+  płótno ≤ 100svh×1440/1043, odstęp pionowy min(120, max(20, (100svh − panel)/2)) → cała
+  sekcja = 1 ekran; program: płótno ≤ 100svh×1440/1170 → najwyższy moduł (02) w 1 ekranie.
+  Podłogi fontów w tych sekcjach obniżone (punkty programu 11, teksty prowadzącego 11–12).
+  Wynik: 1920×1080, 1920×969, 1440×900, 2560×1300 — obie sekcje OK; 1440×780 — moduły OK,
+  prowadzący +7px; okna ≤730 wys. (np. 1366×650) — nie mieszczą się (tekst nie może maleć
+  poniżej czytelności; brak 19–159px).
+
+## 2026-10-14 — /manifest v2 z designu designera (desktop 1:1) + mobile/tablet
+
+- Design: NOWY plik Figmy `5ufIXE17KqmkvVrfSVzUFE` („komp.ai-07.10.26-23-40"), frame
+  MANIFEST `458:1640` (1510×5703 — płótno 1510, nie 1440!). Plik roboczy
+  `XsorNfllBh0GzGUQraAmtS` NIE ma manifestu (stara kopia z lipca).
+  Uwaga: designer wkleił do frame'u ZRZUTY naszej strony (nav y0–109, bela ze statem
+  y1145–1609) — nav zostaje SiteNav (spójność podstron), bela odbudowana z pomiarów zrzutu.
+- Desktop ≥1024 (`ManifestDesktop`, poster 1510 → c=px/15.1 cqw): hero (MANIFEST
+  Montserrat 900 z limonkowym obrysem 10px paint-order, niebieski boks r100 z akapitami
+  i markerami lime, NOWY robot `rob 1` z rawImages → mf-robot.webp 80 KB, limonkowa karta),
+  bela 25–50% (count-up), sekcja lime (rounded-bl 245: elipsa „przyszłość", gwiazdy,
+  wielka biała gwiazda, nagłówek + akapit, niebieski boks), zamknięcie (kicker HK +
+  3 belki lime), kontakt = OnasKontakt z geometrią `MANIFEST_KONTAKT` (biała linia,
+  nagłówek HK 28 pitch 49 bez scaleX, formularz w skali 1440/1510, gwiazdy z eksportu).
+  Podłogi fontów (max(px, cqw)) dla laptopów 1024–1280.
+- Gwiazdy/elipsa = eksporty SVG node'ów z wyciętym wypieczonym tłem (`design-refs/tools/mf-clean.js`
+  zapisuje origin z translate prostokąta frame'u — pozycje 1:1, zweryfikowane overlayem).
+- Diff vs render (1510): hero 2.94% · stat 2.25% · lime 1.65% · zamknięcie 1.93% · kontakt 1.62%
+  (nav 4.46% — w designie zrzut innej szerokości). Interlinia nagłówka „Przyszłość należy…"
+  zmierzona (pitch 60.7), Figma podaje 100.88% — błędnie.
+- Mobile/tablet <1024 (`ManifestMobile`): brak widoku w Figmie → układ autorski
+  w estetyce v2 (stack, kolumna max 720, robot zachodzi na boks, karta przykrywa cięcie,
+  elipsa jako mini-poster cqw). Kontakt na <1024 = OnasKontaktMobile z capem 560px
+  (na tablecie desktopowy formularz miał etykiety ~7px); pasek CTA dociągnięty gradientem.
+- Współdzielone komponenty rozszerzone (zachowanie /o-nas bez zmian — domyślne wartości):
+  OnasKontakt (`layout`, `lineClass`, `visibilityClass`, clip-path dołu), OnasKontaktMobile
+  (`visibilityClass`, `capPx`), ContactFormDesktop (`scale`), RichSeg (`weight`, `trackEm`),
+  Manrope +600. Typ `ManifestPage` przebudowany pod v2; treść wg designu
+  („Twoim przewodnikiem", „Przyszłość należy do tych, którzy ją tworzą").
+- Robot power-on — NOWE wideo dla nowego robota (ta sama sesja, druga część):
+  Seedance 2.0 1080p 5 s BEZ audio (2 warianty, 60 kr) + Nano Banana Pro (2 kr) do
+  przeniesienia robota na tło magenta (#FF00FF; robot nie ma magenty) = end_image.
+  Tło wycięte lokalnie (`design-refs/tools/mf-key.js`: alfa z min(R,B)−G, odmieszanie
+  koloru od magenty → bez różowej obwódki) do MP4 „packed alpha" (kolor | maska obok
+  siebie, 1620×1080, 600 KB). Odtwarzacz `AlphaVideo` (WebGL składa RGBA na canvasie —
+  działa też w Safari/iOS, gdzie WebM z alfą nie działa); `RobotVideo` = dopasowanie
+  ramki wideo do bboxa robota z designu (skala zmierzona, różnica <1%). Fallback
+  (reduced-motion / brak WebGL / błąd) = ostatnia klatka webp. Wariant B aktywny,
+  wariant A + porównanie w `design-refs/manifest-v2/video/` (porownanie-A-B.mp4).
+  Upload plików do Higgsfield z tego komputera NIE działa (Cloudflare odrzuca TLS do
+  upload.higgsfield.ai) — obejście: `media_import_url` z publicznego URL assetu Figmy.
+  Stary `RobotPowerOn.tsx` + stare mp4 nieużywane (do usunięcia po akceptacji).
+- `scripts/shot.js`: fallback gdy dev server Next 16.2 nie osiąga networkidle.
+- Walidacja: tsc czysty; zrzuty 402/375/768/1024/1510/2560; hscroll czysty na 360–2560
+  (12 szerokości) dla /manifest, /o-nas i / (regresja współdzielonego kontaktu).
+- Otwarte: review Patryka; nowe wideo power-on dla nowego robota (opcjonalnie);
+  tablet 768–1023 na home i /o-nas ma ten sam problem małego formularza.
+
 ## 2026-10-08 — Stripe Checkout (hosted), szkielet
 
 - Zależność `stripe` 23.0.0 w komp-ai; endpoint `POST /api/checkout`
@@ -13,7 +230,7 @@
 - Zaprojektowany flow formularza zapisu + płatności (ustalenia w TODO.md → „Odłożone”):
   1 formularz = 1 uczestnik, lista zgłoszeń w Supabase (panel, bez /admin), status tylko
   z webhooka, faktury/KSeF później, hosting Vercel, Stripe sandbox.
-- Schemat bazy `komp-ai/supabase/zgloszenia.sql` (tabela zgloszenia, RLS bez polityk) —
+- Schemat bazy `komp-ai/supabase/migrations/0001_zgloszenia.sql` (tabela zgloszenia, RLS bez polityk) —
   NIE uruchomiony na żadnej bazie.
 - Następna sesja: zależnie od Figmy — widok formularza (na razie bez obsługi bazy),
   a po założeniu Supabase backend (zapis, sesja Stripe, webhook, /success).

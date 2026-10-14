@@ -6,6 +6,8 @@
   --font-modular: var(--font-hk-modular);
   /* rola: napisy outline (text-stroke) — Poppins ma czyste kontury glifów */
   --font-outline: var(--font-poppins);
+  /* rola: display „tech" w szablonie kursu v2 (numery modułów, hasła) */
+  --font-audio: var(--font-audiowide);
 }
 
 @theme {
@@ -472,4 +474,53 @@ body {
   .menu-star-float {
     animation: none;
   }
+}
+
+/* kurs v2 — formularz zapisu: przyciemnienie + panel (mobile: wjazd od dołu,
+   ≥768: lekkie powiększenie) */
+@keyframes k2-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes k2-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes k2-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+.k2-fade {
+  animation: k2-fade 0.25s ease-out;
+}
+.k2-sheet {
+  animation: k2-sheet-up 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 768px) {
+  .k2-sheet {
+    animation: k2-pop 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k2-fade,
+  .k2-sheet {
+    animation: none;
+  }
+}
+
+/* kurs v2 — pasek postępu przy przekierowaniu do płatności */
+@keyframes k2-progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+.k2-progress {
+  animation: k2-progress 1.1s ease-in-out infinite;
 }

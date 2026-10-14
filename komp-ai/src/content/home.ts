@@ -120,6 +120,8 @@ export const homePage: HomePage = {
       photoM: "/assets/m-card-automatyzacja-r.png",
     },
   ],
+  // karty webinarów nad paskiem TY DECYDUJESZ (na razie 1)
+  webinarSlugs: ["zbuduj-agenta-ai-w-60-minut"],
   kursTiles: [
     {
       _type: "kursTile" as const,

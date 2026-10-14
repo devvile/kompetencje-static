@@ -26,6 +26,10 @@ export interface RichSeg {
   fontPx?: number;
   /** twardy łamacz linii PO segmencie */
   break?: boolean;
+  /** waga fontu (np. 500/600/700) — bez markera */
+  weight?: number;
+  /** letter-spacing w em (np. rozstrzelone „r e w o l u c j i") */
+  trackEm?: number;
 }
 
 export interface HomeManifest {
@@ -145,6 +149,8 @@ export interface HomePage {
   manifest: HomeManifest;
   dnaCards: DnaCard[];
   kursTiles: KursTile[];
+  /** webinary promowane kartą nad paskiem TY DECYDUJESZ (slugi z content/webinary.ts) */
+  webinarSlugs: string[];
   humanMachine: HumanMachine;
   prowadzacy: Prowadzacy;
   kontakt: Kontakt;
@@ -266,6 +272,217 @@ export interface KursPage {
   kontaktHeadingLines: string[];
 }
 
+/* ============ KURS v2 — wielokrotnie używalny szablon strony kursu ============
+ * Design UI/UX 2026-10 (Figma 5ufIXE17KqmkvVrfSVzUFE, frame 2009:1973).
+ * Jeden dokument KursV2Page = jedna podstrona /kursy/[slug]. Wszystko, co
+ * zależy od kursu, jest tutaj; layout/typografia/kolory w KursV2Template.
+ * Liczby modułów i lekcji liczą się AUTOMATYCZNIE z `program` (hero, karta
+ * ceny, JSON-LD) — nie wpisuje się ich ręcznie.
+ * W RichSeg strong = pogrubienie (nie limonkowy marker). */
+
+export type KursV2Icon = "moduly" | "lekcje" | "czas";
+
+export interface KursV2Lesson {
+  title: string;
+  /** punkty lekcji (lista) */
+  items: string[];
+}
+
+export interface KursV2Module {
+  /** tytuł modułu (wyświetlany uppercase); numer 01/02… nadawany automatycznie */
+  title: string;
+  lessons: KursV2Lesson[];
+  /** tekst w owalu „efekt modułu" (opcjonalny) */
+  effect?: string;
+}
+
+/** Grafika hero (prawa kolumna). Wymiary w px płótna 1440 — domyślnie jak
+ * robot z designu (635×775, x −39 względem kolumny grafiki); stopy grafiki
+ * stoją na niebieskim panelu „Co zyskasz" (kotwica do dołu hero). */
+export interface KursV2HeroImage {
+  src: string;
+  alt: string;
+  /** szerokość/wysokość pudełka grafiki (object-contain, wyrównanie do dołu) */
+  width?: number;
+  height?: number;
+  /** przesunięcie poziome względem kolumny grafiki (domyślnie −39) */
+  offsetX?: number;
+  /** limonkowa gwiazda za grafiką (domyślnie true) */
+  decorStar?: boolean;
+}
+
+export interface KursV2Instructor {
+  pill: string; // „POZNAJMY SIĘ · KTO PROWADZI KURS?"
+  name: string;
+  /** tagi nad zdjęciem (1–3 krótkie) i jeden pod zdjęciem */
+  tagsTop: string[];
+  tagBottom?: string;
+  /** zdjęcie ~400×646 (kadr pionowy; object-cover) */
+  photo: string;
+  /** opcjonalny kadr na mobile (~306×383, proporcja 4:5); domyślnie `photo` */
+  photoMobile?: string;
+  /** okrągły avatar (~88×88) w formularzu zapisu; domyślnie `photo` */
+  avatar?: string;
+  photoAlt: string;
+  role: string; // „Prowadzący kursu"
+  bio: RichSeg[];
+  /** statystyki w rzędzie (zwykle 2) */
+  stats: { value: string; label: string }[];
+  pathHeading: string; // „JAK PRACUJE I UCZY"
+  /** kroki 01–0N (numeracja automatyczna) */
+  steps: { title: string; text: string }[];
+  ctaLabel: string;
+}
+
+export interface KursV2Page {
+  _type: "kursV2Page";
+  slug: string;
+  /** nazwa kursu zdaniem („Z rozmowy do oferty w 60 minut") — podsumowanie
+   * w formularzu zapisu, przyklejony pasek, JSON-LD */
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  /** opcjonalny Price ID z panelu Stripe (price_…); brak → cena z `price` */
+  stripePriceId?: string;
+  /** cena — jedno źródło dla hero, karty zapisu, płatności Stripe i JSON-LD */
+  price: {
+    value: number; // 1500
+    currency: string; // "PLN"
+    /** dopisek pod ceną, np. „brutto, płatność jednorazowa" */
+    note: string;
+  };
+  hero: {
+    /** numer kursu w ofercie („02") */
+    number: string;
+    kicker: string; // „KURS ONLINE NA ŻYWO"
+    /** linie tytułu (Montserrat Black); pigułka doklejana do OSTATNIEJ linii */
+    titleLines: string[];
+    titlePill?: string;
+    /** linia na limonkowym tle */
+    titleAccent: string;
+    lead: string;
+    description: RichSeg[];
+    /** statystyki DODATKOWE po automatycznych „N moduły" i „M lekcji";
+     * desktop: „value label" w jednej linii, mobile: value nad label */
+    extraStats?: { icon: KursV2Icon; value: string; label: string }[];
+    image: KursV2HeroImage;
+    ctaLabel: string;
+    toolsLabel?: string; // „Pracujesz w:"
+    tools?: string[];
+    assurances: { icon: "check" | "star"; text: string }[];
+  };
+  benefits: {
+    heading: string;
+    /** titleMobile/textMobile — opcjonalne krótsze wersje na telefon */
+    items: { title: string; text: string; titleMobile?: string; textMobile?: string }[];
+  };
+  ctaBand: { text: string; ctaLabel: string };
+  program: { heading: string; modules: KursV2Module[] };
+  instructor: KursV2Instructor;
+  /** opcjonalne teksty TYLKO na telefon (brak pola = tekst z desktopu) */
+  mobile?: {
+    kicker?: string; // „KURS ONLINE"
+    lead?: string;
+    description?: RichSeg[];
+    /** zapewnienia w karcie ceny hero (brak = jak na desktopie) */
+    assurances?: { icon: "check" | "star"; text: string }[];
+    instructorPill?: string; // „KTO PROWADZI KURS?"
+    /** przyklejony dolny pasek (pojawia się po przewinięciu hero) */
+    stickyName?: string; // „Z rozmowy do oferty"; domyślnie tytuł kursu
+    stickyCtaLabel?: string; // „ZAPISUJĘ SIĘ"
+  };
+  enroll: {
+    heading: string;
+    /** domyślnie tytuł kursu (linie tytułu + akcent) */
+    cardTitle?: string;
+    /** punkty „w cenie" PO automatycznym „N moduły i M lekcji online" */
+    included: string[];
+    ctaLabel: string;
+    /** formularz zapisu (modal / panel od dołu) */
+    form?: {
+      /** limonkowe zapewnienie w podsumowaniu */
+      note?: string;
+      /** tekst przycisku wysyłki (domyślnie „PRZEJDŹ DO PŁATNOŚCI") */
+      submitLabel?: string;
+      /** informacja pod przyciskiem */
+      footnote?: string;
+    };
+  };
+}
+
+/* ============ WEBINAR — szablon strony szczegółów ============
+ * Design: Figma 5ufIXE17KqmkvVrfSVzUFE, frame 2002:1803 („WEBINAR – przed
+ * aktualizacją 07.10"). Jeden dokument WebinarPage = /webinary/[slug].
+ * Termin podany jako data ISO formatuje się sam („czwartek, 23.10, godz. 18:00",
+ * strefa Europe/Warsaw); cena 0 = „Bezpłatnie". */
+
+export interface WebinarPage {
+  _type: "webinarPage";
+  slug: string;
+  /** opublikowany = indeksowany w Google; false → noindex (strona „ukryta") */
+  published: boolean;
+  /** nazwa zdaniem („Zbuduj swojego agenta AI w 60 minut") — SEO, JSON-LD */
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  /** pigułka nad tytułem („AI GYM · WEBINAR NA ŻYWO") */
+  badge: string;
+  /** tytuł: linie przed akcentem, linia na limonkowym tle, linie po */
+  title: { before: string[]; accent: string; after: string[] };
+  tagline: string; // „TE SAME DANE. INNY MÓZG."
+  /** akapity opisu; strong = pogrubienie */
+  description: RichSeg[][];
+  /** pogrubiona linia pod opisem */
+  boldNote?: string;
+  /** zapis: link (formularz / platforma webinarowa), tekst przycisku, linie obok przycisku */
+  register: { href: string; label: string; note: string[] };
+  /** karta „SZCZEGÓŁY" */
+  details: {
+    /** imię i nazwisko — pionowo na limonkowym pasku karty */
+    instructor: string;
+    /** data i godzina startu (ISO, np. "2026-10-23T18:00:00+02:00"); brak = „Termin wkrótce" */
+    start?: string;
+    format: string;
+    duration: string;
+    /** czas w minutach — do JSON-LD (Event.endDate) */
+    durationMin: number;
+    tool?: string;
+    /** 0 = „Bezpłatnie" */
+    price: { value: number; currency: string };
+    /** etykieta wiersza ceny (design: „INWESTYCJA"; domyślnie „CENA") */
+    priceLabel?: string;
+    note?: string;
+  };
+  /** sekcja „to samo pytanie, dwie odpowiedzi" (opcjonalna) */
+  comparison?: {
+    heading: string[];
+    text: string;
+    plain: { label: string; items: string[]; effect: string };
+    agent: { label: string; items: string[]; effect: string };
+  };
+  agenda: { heading: string; subheading?: string; steps: { time: string; title: string; text: string }[] };
+  outcomes: { heading: string[]; items: string[] };
+  audience: { heading: string; tags: string[]; text: string; safety?: { label: string; text: string } };
+  closing: { lines: string[]; ctaLabel?: string };
+  /** karta reklamy webinaru na stronie głównej (design 2085:1762) — opcjonalna;
+   * prowadzący, cena, data i godziny biorą się z `details` */
+  promo?: {
+    chips: { icon: "star" | "arrow"; text: string; variant: "lime" | "outline" }[];
+    /** linie nagłówka; OSTATNIA na limonkowo */
+    headingLines: string[];
+    description: RichSeg[];
+    /** grafika panelu (zdjęcie prowadzącego z tłem), proporcja ~483×561 */
+    image: string;
+    imageAlt: string;
+    /** pigułka na zdjęciu („Agenci AI · procesy · fintech") */
+    expertise?: string;
+    /** trzecia pigułka po dacie i godzinie („Online, na żywo") */
+    formatChip: string;
+    ctaLabel: string; // „ZAPISZ SIĘ ZA DARMO"
+    ctaNote?: string;
+  };
+}
+
 /* ============ STRONY PRAWNE (polityka prywatności / regulamin) ============ */
 
 /** Blok treści sekcji prawnej: akapit LUB lista punktowana */
@@ -302,12 +519,12 @@ export interface LegalPage {
 
 export interface ManifestPage {
   _type: "manifestPage";
-  /** kicker HK nad tytułem (linie) */
-  kickerLines: string[];
   /** wielki napis display, "MANIFEST" */
   heading: string;
-  /** akapity 1-2 (obok robota); strong = limonkowy marker */
-  paragraphsTop: RichSeg[][];
+  /** akapity w niebieskim boksie (obok robota); strong = limonkowy marker */
+  intro: RichSeg[][];
+  /** akapit w limonkowej karcie pod boksem */
+  lead: RichSeg[];
   /** stat na niebieskiej beli: 25–50% miejsc pracy */
   stat: {
     from: number;
@@ -317,12 +534,16 @@ export interface ManifestPage {
     /** dopisek pod labelem */
     sub: string;
   };
-  /** wielka linia display ("PRZYSZŁOŚĆ NALEŻY DO ODWAŻNYCH") */
-  displayLine: [string, string];
-  /** akapity 3-4 (po beli); strong = limonkowy marker */
-  paragraphsBottom: RichSeg[][];
-  /** zamknięcie o iskrze (wyróżnione) */
-  closingLine: string;
+  /** „przyszłość" w elipsie + „należy do odważnych !" */
+  future: { word: string; tail: string };
+  /** nagłówek sekcji limonkowej + akapit pod nim */
+  futureHeading: string;
+  futureBody: string;
+  /** tekst w niebieskim boksie (prawy dół sekcji limonkowej) */
+  pride: RichSeg[];
+  /** zamknięcie: kicker HK + linie na limonkowych belkach */
+  closingKicker: string;
+  closingLines: string[];
   ctaLabel: string;
   ctaHref: string;
   metaTitle: string;

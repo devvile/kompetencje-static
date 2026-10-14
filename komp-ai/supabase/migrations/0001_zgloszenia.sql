@@ -1,5 +1,5 @@
 -- Tabela zgłoszeń na kursy (1 zgłoszenie = 1 uczestnik = 1 płatność).
--- Uruchomić raz w Supabase: SQL Editor → wkleić → Run.
+-- Uruchomić raz na KAŻDEJ bazie (dev i prod): SQL Editor → wkleić → Run.
 -- Pola danych osobowych są wstępne — do korekty, gdy formularz pojawi się w Figmie.
 
 create table public.zgloszenia (

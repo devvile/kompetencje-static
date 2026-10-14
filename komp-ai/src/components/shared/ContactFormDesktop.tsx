@@ -5,7 +5,6 @@
  */
 import type { Kontakt } from "@/content/types";
 
-const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
 const G = {
   form: { w: 674, h: 864, r: 42, borderPx: 2, padT: 48, padB: 63, padX: 93 },
@@ -20,7 +19,19 @@ const G = {
   button: { w: 268, h: 55, r: 30, borderPx: 3, fontPx: 17, trackPx: 0.68 },
 };
 
-export default function ContactFormDesktop({ k, left, top }: { k: Kontakt; left: number; top: number }) {
+/** scale: mnożnik geometrii względem canvasu 1440 (np. /manifest v2: 1440/1510) */
+export default function ContactFormDesktop({
+  k,
+  left,
+  top,
+  scale = 1,
+}: {
+  k: Kontakt;
+  left: number;
+  top: number;
+  scale?: number;
+}) {
+  const c = (px: number) => `${((px * scale) / 14.4).toFixed(4)}cqw`;
   const fields = k.fields.filter((f) => f.kind !== "textarea");
   const message = k.fields.find((f) => f.kind === "textarea");
   return (
@@ -43,7 +54,7 @@ export default function ContactFormDesktop({ k, left, top }: { k: Kontakt; left:
                     <label
                       htmlFor={`kontakt-${f.id}`}
                       className="font-modular text-white"
-                      style={{ padding: `${c(G.label.padY)} ${c(G.label.padX)}`, fontSize: c(G.label.fontPx), lineHeight: `${(G.label.lhPx / 14.4).toFixed(4)}cqw` }}
+                      style={{ padding: `${c(G.label.padY)} ${c(G.label.padX)}`, fontSize: c(G.label.fontPx), lineHeight: c(G.label.lhPx) }}
                     >
                       {f.label}
                     </label>
@@ -65,7 +76,7 @@ export default function ContactFormDesktop({ k, left, top }: { k: Kontakt; left:
                     <label
                       htmlFor="kontakt-wiadomosc"
                       className="font-modular text-white"
-                      style={{ padding: `${c(G.label.padY)} ${c(G.label.padX)}`, fontSize: c(G.label.fontPx), lineHeight: `${(G.label.lhPx / 14.4).toFixed(4)}cqw` }}
+                      style={{ padding: `${c(G.label.padY)} ${c(G.label.padX)}`, fontSize: c(G.label.fontPx), lineHeight: c(G.label.lhPx) }}
                     >
                       {message.label}
                     </label>

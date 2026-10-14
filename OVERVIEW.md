@@ -44,21 +44,42 @@ kompetencje-ostateczna/
     └── src/
         ├── app/               # Ścieżki Next.js App Router
         │   ├── page.tsx       # Landing page (Strona Główna)
-        │   ├── api/checkout/  # Endpoint Stripe Checkout (POST)
+        │   ├── api/stripe/webhook/ # Webhook Stripe (statusy zgłoszeń)
         │   ├── o-nas/         # Podstrona O Nas
         │   ├── kursy/[slug]/  # Podstrona szczegółów kursu
         │   ├── manifest/      # Podstrona Manifestu
+        │   ├── webinary/[slug]/ # Szczegóły webinaru (szablon, na razie ukryte)
         │   ├── polityka-prywatnosci/ # Strona prawna
         │   └── regulamin/     # Strona prawna
         ├── components/        # Komponenty React
         │   ├── home/          # Sekcje strony głównej (Hero, Manifest, DNA, Kursy, HumanMachine, Prowadzacy, Kontakt, Stopka)
         │   ├── onas/          # Sekcje podstrony O Nas
-        │   ├── kurs/          # Sekcje podstrony kursu
+        │   ├── kurs/          # Sekcje podstrony kursu (stary szablon)
+        │   ├── kurs-v2/       # Szablon kursu v2 (design UI/UX 2026-10)
         │   ├── legal/         # Komponenty stron prawnych
         │   └── shared/        # Komponenty nawigacji, formularzy i animacji (MobileMenu, SiteNav, ProtectedEmail, etc.)
-        ├── content/           # Abstrakcja warstwy treści (home.ts, onas.ts, kurs.ts, legal.ts, types.ts, index.ts)
+        ├── content/           # Abstrakcja warstwy treści (home.ts, onas.ts, kurs.ts, kurs-v2.ts, manifest.ts, legal.ts, types.ts, index.ts)
         └── fonts/             # Pliki czcionek (modular.woff2)
 ```
+
+### Szablon kursu v2 — jak dodać nowy kurs
+
+1. W `komp-ai/src/content/kurs-v2.ts` dodaj obiekt `KursV2Page` (najprościej: skopiuj
+   `kursZRozmowyDoOferty`) i wpisz go do `kursyV2` — klucz = slug → adres `/kursy/<slug>`.
+2. Assety do `komp-ai/public/assets/kurs2/`: grafika hero (webp z przezroczystością, ~1270 px
+   szer.), zdjęcie prowadzącego (jpg, kadr pionowy ~800×1292).
+3. Pola zależne od kursu: `price` (value/currency/note — jedno źródło dla hero, karty zapisu
+   i JSON-LD), `enrollHref`, `hero` (numer, kicker, `titleLines[]` + opcjonalna `titlePill`,
+   `titleAccent`, lead, opis, `extraStats`, `image` {src, alt, opcjonalnie width/height/
+   offsetX/decorStar}, narzędzia, zapewnienia), `benefits.items[]` (dowolna liczba — zygzak
+   ze strzałkami układa się sam), `program.modules[]` (tytuł, lekcje, opcjonalny `effect`),
+   `instructor` (zdjęcie, imię, tagi, rola, bio, statystyki, kroki), `enroll`, `ctaBand`, meta.
+4. Mobile (<768): `K2Mobile` + przyklejony pasek `K2StickyBar`; teksty tylko na telefon w
+   `mobile.*`, `benefits.items[].titleMobile/textMobile`, `instructor.photoMobile` (opcjonalne).
+5. Liczą się SAME: „N moduły / M lekcji" (z polską odmianą), numeracja modułów i kroków,
+   tytuł karty zapisu, punkt „N moduły i M lekcji online", JSON-LD schema.org/Course.
+6. Render: `KursV2Template` (`components/kurs-v2/`), route `app/kursy/[slug]/page.tsx`
+   (najpierw szuka kursu v2, potem starego szablonu).
 
 ---
 
@@ -75,9 +96,21 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
+* **2026-10-15:**
+  5. **Home:** sekcja 3 kart kursów (`KursySection`) ukryta flagą `SHOW_KURSY_TILES` w `app/page.tsx` — komponent zachowany.
+  4. **Karta webinaru na home** `components/webinar/WebinarPromo.tsx` (dane `WebinarPage.promo`, lista `homePage.webinarSlugs`), wstawiona między `ManifestSection` a nowym `ManifestBar` (pasek TY DECYDUJESZ wydzielony).
+  3. **Webinar** — szablon `components/webinar/WebinarTemplate.tsx`, route `/webinary/[slug]`, treść `content/webinary.ts` (`WebinarPage`, `getWebinarPage`). Nowy webinar = nowy obiekt w `webinary`; `published: false` = noindex i brak linków.
+  2. **Formularz zapisu na kurs** `K2EnrollModal` (modal/panel od dołu), walidacja `src/lib/zapis.ts`, Server Action `app/kursy/[slug]/actions.ts` → tabela `zgloszenia` (Supabase). Otwierają go elementy z `data-enroll-open` i adres `#zapisz-sie`. Po zapisie → Stripe Checkout (`src/lib/stripe.ts`), powrót: `/kursy/[slug]/dziekujemy` i `/platnosc-przerwana` (`K2ResultScreen`), statusy w bazie ustawia webhook `/api/stripe/webhook`. Checklista startu: `STRIPE_INTEGRATION_TODO.md`.
+  1. **Kurs v2 jako wielokrotnie używalny szablon** `KursV2Template` — cała strona kursu z jednego dokumentu `KursV2Page` (cena, grafika hero, prowadzący, moduły/lekcje, korzyści); liczby, numeracja i JSON-LD Course automatycznie. Instrukcja: sekcja „Szablon kursu v2 — jak dodać nowy kurs".
+
+* **2026-10-14:**
+  0. **Kurs v2 „Z rozmowy do oferty w 60 minut"** (Figma `5ufIXE17KqmkvVrfSVzUFE` / `2009:1973`): route `/kursy/z-rozmowy-do-oferty`, content `content/kurs-v2.ts` (`KursV2Page`, `getKursV2Page`), komponenty `components/kurs-v2/` (K2Hero, K2Benefits, K2Program, K2Instructor, K2Enroll, helper `k2.ts`), assety `public/assets/kurs2/`, font Audiowide (`--font-audio`). Desktop+tablet; mobile czeka na design.
+  1. **/manifest v2** wg nowego designu (Figma `5ufIXE17KqmkvVrfSVzUFE`, node `458:1640`, płótno 1510): `components/manifest/ManifestDesktop.tsx` (≥1024, poster 1:1), `ManifestMobile.tsx` (<1024, układ autorski), `ManifestRich.tsx` (markery lime / wagi / rozstrzelenie). Assety w `public/assets/manifest/` (SVG gwiazd/elipsy z Figmy, `mf-robot.webp`). Robot z animacją power-on: `RobotVideo.tsx` + `AlphaVideo.tsx` (MP4 packed alpha składany WebGL-em — przezroczystość we wszystkich przeglądarkach), assety `mf-robot-poweron.mp4` / `-last.webp`; generacja: Higgsfield na tle magenta + `design-refs/tools/mf-key.js`.
+  2. Rozszerzone współdzielone komponenty (domyślne zachowanie bez zmian): `OnasKontakt` (`layout`, `lineClass`, `visibilityClass`), `OnasKontaktMobile` (`visibilityClass`, `capPx`), `ContactFormDesktop` (`scale`); typ `RichSeg` (+`weight`, `trackEm`), typ `ManifestPage` przebudowany; Manrope +600.
+
 * **2026-10-08:**
   1. **Integracja Stripe Checkout (hosted):** dodano zależność `stripe` (23.0.0) i endpoint `POST /api/checkout` (`src/app/api/checkout/route.ts`) tworzący sesję Checkout i przekierowujący (303) na stronę płatności Stripe. Zmienne: `STRIPE_SECRET_KEY`, `DOMAIN` (`.env.local`). Placeholdery (Price ID, success/cancel URL) i dalsze kroki: `STRIPE_INTEGRATION_TODO.md` w katalogu głównym repo. Status: DRAFT (nieaktywny).
-  2. **Schemat bazy zgłoszeń** `supabase/zgloszenia.sql` (Supabase, tabela `zgloszenia`, RLS bez polityk) — pod przyszły formularz zapisu; flow i ustalenia w `TODO.md` → „Odłożone”.
+  2. **Schemat bazy zgłoszeń** `supabase/migrations/0001_zgloszenia.sql` (Supabase, tabela `zgloszenia`, RLS bez polityk) — pod przyszły formularz zapisu; flow i ustalenia w `TODO.md` → „Odłożone”.
 
 * **2026-08-01:**
   1. **Zróżnicowanie kart kursów (landing) — ⚠ treść marketingowa robocza, do akceptacji klienta:**

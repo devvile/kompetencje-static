@@ -14,3 +14,8 @@ design-refs/tools/
 # artefakty robocze (propozycje Higgsfield, screenshoty walidacyjne)
 design-refs/robot-proposals/
 design-refs/validate/
+
+# referencje z Figmy dla nowych widoków (rendery, eksporty, zrzuty walidacyjne)
+design-refs/kurs-v2/
+design-refs/manifest-v2/
+design-refs/webinar/

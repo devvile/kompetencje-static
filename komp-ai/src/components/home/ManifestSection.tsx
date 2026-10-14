@@ -1,7 +1,7 @@
 import type { HomeManifest, RichSeg } from "../../content/types";
 
 /*
- * Sekcja 2: manifest "NIE CHODZI O TO," + pasek TY DECYDUJESZ + marquee.
+ * Sekcja 2: manifest "NIE CHODZI O TO," + (osobno: ManifestBar) pasek TY DECYDUJESZ + marquee.
  * Desktop: canvas 1440×1328 (strona y833–2161). Współrzędne = px designu - 833.
  * Wzorzec poster-canvas jak w HeroSection (@container + cqw).
  */
@@ -76,7 +76,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
   return (
     <section className="relative w-full">
       <div className="@container mx-auto w-full max-w-(--workspace)">
-        <div className="relative aspect-[1440/1328] overflow-hidden bg-brand-blue">
+        {/* górna część posteru (0..1130); pasek TY DECYDUJESZ + marquee = ManifestBarDesktop */}
+        <div className="relative aspect-[1440/1130] overflow-hidden bg-brand-blue">
           {/* wielka limonkowa gwiazda za robotem */}
           <img
             src="/assets/gwiazdka-lime-big-f.png"
@@ -178,11 +179,25 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
               <Rich segs={m.pill} baseFontPx={G.pill.fontPx} scale={c} />
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* pasek TY DECYDUJESZ + marquee (design y1963..2161 = canvas 1130..1328) —
+   osobny poster, żeby między manifest a pasek dało się wstawić sekcję
+   (reklama webinaru na home). Wygląd 1:1 jak w jednym posterze. */
+function ManifestBarDesktop({ m }: { m: HomeManifest }) {
+  return (
+    <section className="relative w-full">
+      <div className="@container mx-auto w-full max-w-(--workspace)">
+        <div className="relative aspect-[1440/198] overflow-hidden bg-brand-blue">
           {/* pasek lime ZAWSZE widoczny (uwaga Patryka) — reveal tylko napisy;
               TY DECYDUJESZ: reveal na spanie (p ma -translate-x-full) */}
           <div
             className="absolute inset-x-0 bg-brand-lime"
-            style={{ top: c(G.limeBar.top), height: c(G.limeBar.h) }}
+            style={{ top: 0, height: c(G.limeBar.h) }}
             data-node-id="245:4380"
           >
             <p
@@ -213,7 +228,7 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
               widoczny od razu, po prostu przewija się w lewo */}
           <div
             className="absolute inset-x-0 bg-white"
-            style={{ top: c(G.whiteBar.top), height: c(G.whiteBar.h) }}
+            style={{ top: c(G.whiteBar.top - G.limeBar.top), height: c(G.whiteBar.h) }}
             data-node-id="245:4381"
           >
             <div className="absolute inset-x-0" style={{ top: c(G.marquee.top - G.whiteBar.top), height: c(G.marquee.h) }} data-node-id="245:4580">
@@ -266,7 +281,8 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
   return (
     <section className="relative w-full md:hidden">
       <div className="@container mx-auto w-full">
-        <div className="relative aspect-[402/2309] overflow-hidden bg-page">
+        {/* górna część (0..2150); „AI TO NARZĘDZIE" + pasek TY DECYDUJESZ = ManifestBarMobile */}
+        <div className="relative aspect-[402/2150] overflow-hidden bg-page">
           {/* niebieskie tło TLO */}
           <div className="absolute inset-x-0 top-0 bg-brand-blue" style={{ height: cm(GM.blueBg.h) }} data-node-id="375:1793" />
           {/* strzałka na górze */}
@@ -322,13 +338,27 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
           >
             {m.mobileCtaLabel}
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* dolna część mobile (canvas 2150..2309): „AI TO NARZĘDZIE" + pasek TY DECYDUJESZ */
+const MB = 2150;
+function ManifestBarMobile({ m }: { m: HomeManifest }) {
+  return (
+    <section className="relative w-full md:hidden">
+      <div className="@container mx-auto w-full">
+        <div className="relative aspect-[402/159] overflow-hidden bg-page">
+          <div className="absolute inset-x-0 top-0 bg-brand-blue" style={{ height: cm(GM.blueBg.h - MB) }} />
           {/* AI TO NARZĘDZIE */}
-          <p className="absolute whitespace-nowrap font-modular text-white" style={{ left: cm(GM.aiToTag.left), top: cm(GM.aiToTag.top), fontSize: cm(GM.aiToTag.fontPx), lineHeight: GM.aiToTag.leading, transitionDelay: "0.1s" }} data-reveal="" data-node-id="375:1861">
+          <p className="absolute whitespace-nowrap font-modular text-white" style={{ left: cm(GM.aiToTag.left), top: cm(GM.aiToTag.top - MB), fontSize: cm(GM.aiToTag.fontPx), lineHeight: GM.aiToTag.leading, transitionDelay: "0.1s" }} data-reveal="" data-node-id="375:1861">
             {m.bar.left.toUpperCase().replace(".", "")}
           </p>
           {/* pasek lime z TY DECYDUJESZ */}
           {/* pasek ZAWSZE widoczny — reveal tylko napis (span, bo p ma translate) */}
-          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top), height: cm(GM.limeBar.h) }} data-node-id="375:1854">
+          <div className="absolute inset-x-0 bg-brand-lime" style={{ top: cm(GM.limeBar.top - MB), height: cm(GM.limeBar.h) }} data-node-id="375:1854">
             <p
               className="absolute -translate-x-full whitespace-nowrap font-display font-black text-brand-blue"
               style={{ left: cm(GM.tyDecy.rightEdge), top: cm(GM.tyDecy.top - GM.limeBar.top), fontSize: cm(GM.tyDecy.fontPx), letterSpacing: cm(GM.tyDecy.trackPx), lineHeight: "normal" }}
@@ -340,10 +370,23 @@ function ManifestMobile({ m }: { m: HomeManifest }) {
             </p>
           </div>
           {/* cienki niebieski pas */}
-          <div className="absolute inset-x-0 bg-brand-blue" style={{ top: cm(GM.blueStrip.top), height: `max(1px, ${cm(GM.blueStrip.h)})` }} />
+          <div className="absolute inset-x-0 bg-brand-blue" style={{ top: cm(GM.blueStrip.top - MB), height: `max(1px, ${cm(GM.blueStrip.h)})` }} />
         </div>
       </div>
     </section>
+  );
+}
+
+/** pasek TY DECYDUJESZ + marquee (desktop) / „AI TO NARZĘDZIE" + pasek (mobile) —
+ *  renderowany osobno po ManifestSection (miejsce na sekcje pomiędzy) */
+export function ManifestBar({ m }: { m: HomeManifest }) {
+  return (
+    <>
+      <div className="hidden md:block">
+        <ManifestBarDesktop m={m} />
+      </div>
+      <ManifestBarMobile m={m} />
+    </>
   );
 }
 
