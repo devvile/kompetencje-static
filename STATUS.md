@@ -24,6 +24,7 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Strona pojedynczego kursu: wersja desktop częściowo zbudowana (hero, „co zyskasz", program); brakuje sekcji „dla kogo", paska z datą startu, kontaktu i całej wersji mobilnej.
 
 ## Czekam na / zablokowane
+- **Patryk**: konto Resend (wysyłka maili) i dostęp do ustawień DNS domeny kompetencje.ai — bez tego formularz kontaktowy nie wysyła wiadomości.
 - **Patryk**: termin webinaru, potwierdzenie prowadzącego (w projekcie było puste pole; wpisaliśmy Piotra Małysza) i link, pod który mają prowadzić przyciski „Zapisz się".
 - **Designer**: (opcjonalnie) widoki mobilne programu kursu, paska „Gotowy…" i karty zapisu — teraz zrobione przez nas w tym samym stylu.
 - **Patryk**: na telefonie projekt mówi „praktyk z 6 latami w fintechu", na komputerze „7 latami wdrożeń w firmach" — który tekst jest prawdziwy?
@@ -37,6 +38,7 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - **Zespół/designer**: projekty pozostałych podstron (ewentualne kolejne widoki) oraz wersje mobilne nowych widoków.
 
 ## Następne kroki
+- Uruchomienie wysyłki formularza kontaktowego i maili z potwierdzeniem zapisu (usługa Resend).
 - Dokończenie konfiguracji płatności (Stripe: webhook, test płatności testowej, klucze na Vercel).
 - Formularz zapisu na kurs: najpierw sam wygląd (bez zapisywania danych), potem podpięcie bazy i płatności.
 - Dokończenie strony kursu (desktop: brakujące sekcje, potem wersja mobilna).

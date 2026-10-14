@@ -251,6 +251,12 @@ tekstury 2624×1630; maski logo).
 - [ ] WEBINAR — do uzupełnienia: termin (`details.start`), potwierdzenie prowadzącego, link
       zapisu (`register.href`), ewent. mobile design; decyzja: wersja designu 2002:1803 vs
       nowsza 479:1789 (avatar, plakietka, siatki); publikacja = `published: true` (link z home już jest).
+- [ ] **Wysyłka formularzy (Resend) — następna sesja, razem ze Stripe:**
+      formularz kontaktowy (home, /o-nas, /manifest — teraz `action="#"`, nic nie wysyła):
+      Server Action + walidacja + honeypot/limit → mail na patryk@kompetencje.ai (+ opcj.
+      zapis do Supabase); mail potwierdzający zapis na kurs z webhooka Stripe + powiadomienie
+      dla Patryka; ewent. zapisy na webinar. Potrzebne: konto Resend + RESEND_API_KEY
+      (.env.local + Vercel), rekordy DNS kompetencje.ai (SPF/DKIM), adres nadawcy.
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
 - [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
