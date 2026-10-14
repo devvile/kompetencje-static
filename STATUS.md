@@ -34,10 +34,10 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - **Patryk**: przegląd nowej podstrony Manifest (komputer + telefon) i wybór jednego z dwóch wariantów animacji robota.
 - **Patryk**: prawdziwy numer telefonu do stopki (w projekcie jest placeholder „000 000 000").
 - **Patryk**: dane firmy (nazwa, adres, NIP) do regulaminu i polityki prywatności + weryfikacja prawna tych treści.
-- **Patryk**: decyzja, dokąd publikujemy kod (stare repo czy nowe) — blokuje wdrożenie online.
 - **Zespół/designer**: projekty pozostałych podstron (ewentualne kolejne widoki) oraz wersje mobilne nowych widoków.
 
 ## Następne kroki
+- Dokończenie konfiguracji płatności (Stripe: webhook, test płatności testowej, klucze na Vercel).
 - Formularz zapisu na kurs: najpierw sam wygląd (bez zapisywania danych), potem podpięcie bazy i płatności.
 - Dokończenie strony kursu (desktop: brakujące sekcje, potem wersja mobilna).
 - Podpięcie wysyłki formularza kontaktowego (teraz formularz nie wysyła wiadomości).
@@ -50,4 +50,4 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Faktury: wymagany system zgodny z KSeF (np. Fakturownia/inFakt) — jeszcze niewykupiony; przed startem sprzedaży trzeba go wybrać.
 - W projekcie kursu widnieje data „KURS STARTUJE JUŻ 20 LIPCA" — już nieaktualna; przed publikacją trzeba ustalić prawdziwą datę startu (docelowo daty i ceny powinny być łatwo edytowalne).
 - Treści prawne (regulamin, polityka prywatności) to robocze wersje — wymagają weryfikacji prawnika przed startem.
-- Strona nie jest jeszcze nigdzie opublikowana online — działa tylko lokalnie.
+- Wersja testowa strony jest wdrażana na Vercel (projekt kompetencje-main) z każdą zmianą w repozytorium; płatności i zapisy wymagają jeszcze konfiguracji kluczy produkcyjnych.
