@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-10-29 (14) — regulamin/polityka: czas dostępu, retencja webinaru, LiveWebinar, wzór odstąpienia
+
+- Nagrania dostępne 360 dni; dane z zapisu na webinar 2 lata po webinarze; platforma zajęć: LiveWebinar
+  (dodana też do odbiorców danych w polityce).
+- Regulamin: rozdział 15 „WZÓR FORMULARZA ODSTĄPIENIA OD UMOWY” (wzór z zał. nr 2 do ustawy o prawach
+  konsumenta, z danymi sprzedawcy i e-mailem); rozdział o odstąpieniu odsyła do niego.
+- Zostały: [SYSTEM DO FAKTUR] ×2, [BIURO RACHUNKOWE], [OKRES PRZECHOWYWANIA LOGÓW].
+
 ## 2026-10-29 (13) — dane sprzedawcy/administratora w regulaminie i polityce
 
 - `content/legal.ts`: Patryk Czemierowski, JDG „Futurista Patryk Czemierowski”, ul. Pory 78,

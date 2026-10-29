@@ -109,6 +109,7 @@ export const politykaPrywatnosci: LegalPage = {
         {
           items: [
             "Vercel – hosting serwisu,",
+            "LiveWebinar – platforma, na której prowadzimy kursy i webinary online (imię, nazwisko lub nick i adres e-mail uczestnika),",
             "Supabase – baza danych, w której zapisujemy zgłoszenia na kursy,",
             "Stripe – obsługa płatności online,",
             "Resend – wysyłka wiadomości e-mail (po uruchomieniu tej usługi),",
@@ -152,7 +153,7 @@ export const politykaPrywatnosci: LegalPage = {
             "dane z zapisu na kurs – przez czas realizacji umowy, a potem do upływu terminu przedawnienia roszczeń z umowy,",
             "faktury i dokumenty księgowe – przez 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku,",
             "dane związane z reklamacją lub odstąpieniem od umowy – do zakończenia sprawy, a potem do upływu terminu przedawnienia roszczeń,",
-            "dane z zapisu na bezpłatny webinar – do zakończenia webinaru i przez [OKRES PO WEBINARZE] po nim,",
+            "dane z zapisu na bezpłatny webinar – do zakończenia webinaru i przez 2 lata po nim,",
             "wiadomości z formularza kontaktowego – do zakończenia sprawy, nie dłużej niż 12 miesięcy od ostatniego kontaktu,",
             "dane do newslettera – do cofnięcia zgody, a informację o udzieleniu i cofnięciu zgody – do upływu terminu przedawnienia roszczeń,",
             "logi serwera – przez okres wynikający z ustawień dostawcy hostingu, nie dłużej niż [OKRES PRZECHOWYWANIA LOGÓW].",
@@ -297,7 +298,7 @@ export const regulamin: LegalPage = {
           ],
         },
         {
-          text: "Kursy i Webinary odbywają się na platformie [PLATFORMA DO ZAJĘĆ ONLINE]. Link do zajęć wyślemy Ci e-mailem przed ich rozpoczęciem.",
+          text: "Kursy i Webinary odbywają się na platformie LiveWebinar. Link do zajęć wyślemy Ci e-mailem przed ich rozpoczęciem.",
         },
         {
           text: "Korzystanie z internetu wiąże się z typowymi zagrożeniami, takimi jak złośliwe oprogramowanie czy próby wyłudzenia danych. Dbaj o aktualne oprogramowanie i nie otwieraj podejrzanych linków – nigdy nie poprosimy Cię e-mailem o hasło ani dane karty.",
@@ -382,7 +383,7 @@ export const regulamin: LegalPage = {
           text: "Jeśli nie weźmiesz udziału w zajęciach w ustalonym terminie, nie oznacza to, że nie wykonaliśmy Umowy. Jeśli Kurs przewiduje Nagranie, możesz z niego skorzystać na zasadach poniżej.",
         },
         {
-          text: "Jeśli strona Kursu przewiduje Nagranie, udostępnimy je przez [CZAS DOSTĘPU] od dnia jego udostępnienia. Po tym czasie dostęp wygasa.",
+          text: "Jeśli strona Kursu przewiduje Nagranie, udostępnimy je przez 360 dni od dnia jego udostępnienia. Po tym czasie dostęp wygasa.",
         },
         {
           text: "Z ważnych przyczyn, takich jak choroba prowadzącego albo awaria platformy, możemy przenieść Kurs na inny termin. Poinformujemy Cię o tym e-mailem. Jeśli nowy termin Ci nie odpowiada, możesz odstąpić od Umowy, a my zwrócimy całą wpłatę w ciągu 14 dni.",
@@ -420,7 +421,7 @@ export const regulamin: LegalPage = {
           text: "Jeśli jesteś Konsumentem lub Przedsiębiorcą na prawach konsumenta, możesz odstąpić od Umowy w ciągu 14 dni od dnia jej zawarcia, bez podawania przyczyny. Wystarczy, że przed upływem tego terminu wyślesz nam oświadczenie o odstąpieniu na adres patryk@kompetencje.ai.",
         },
         {
-          text: "Możesz skorzystać ze wzoru formularza odstąpienia od umowy, który stanowi załącznik nr 2 do ustawy o prawach konsumenta: [WZÓR FORMULARZA ODSTĄPIENIA]. Nie jest to obowiązkowe. Otrzymanie oświadczenia potwierdzimy e-mailem.",
+          text: "Możesz skorzystać ze wzoru formularza odstąpienia od umowy, który stanowi załącznik nr 2 do ustawy o prawach konsumenta – znajdziesz go w rozdziale 15 „WZÓR FORMULARZA ODSTĄPIENIA OD UMOWY” na końcu regulaminu. Nie jest to obowiązkowe. Otrzymanie oświadczenia potwierdzimy e-mailem.",
         },
         {
           text: "Po odstąpieniu zwrócimy Ci wszystkie płatności w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności, której użyłeś, chyba że wyraźnie zgodzisz się na inną. Nie poniesiesz żadnych opłat za zwrot.",
@@ -543,6 +544,36 @@ export const regulamin: LegalPage = {
         },
         {
           text: "W sprawach nieuregulowanych regulaminem stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Wybór prawa polskiego nie pozbawia Konsumenta ochrony, jaką dają mu bezwzględnie obowiązujące przepisy kraju jego zwykłego pobytu.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "15",
+      title: "WZÓR FORMULARZA ODSTĄPIENIA OD UMOWY",
+      blocks: [
+        {
+          text: "Wzór zgodny z załącznikiem nr 2 do ustawy z 30 maja 2014 r. o prawach konsumenta. Formularz wypełnij i odeślij tylko wtedy, gdy chcesz odstąpić od umowy – możesz go przesłać e-mailem na adres patryk@kompetencje.ai. Możesz też złożyć oświadczenie w dowolnej innej formie.",
+        },
+        {
+          text: "Adresat: Futurista Patryk Czemierowski, ul. Pory 78, 02-757 Warszawa, e-mail: patryk@kompetencje.ai.",
+        },
+        {
+          text: "Ja/My(*) niniejszym informuję/informujemy(*) o moim/naszym(*) odstąpieniu od umowy o świadczenie następującej usługi / dostarczenie następujących treści cyfrowych(*):",
+        },
+        {
+          items: [
+            "nazwa kursu lub webinaru: …………………………………………,",
+            "data zawarcia umowy: …………………………………………,",
+            "imię i nazwisko konsumenta(-ów): …………………………………………,",
+            "adres konsumenta(-ów): …………………………………………,",
+            "adres e-mail podany przy zapisie: …………………………………………,",
+            "podpis konsumenta(-ów) (tylko jeżeli formularz jest przesyłany w wersji papierowej): …………………………………………,",
+            "data: ………………………………………….",
+          ],
+        },
+        {
+          text: "(*) Niepotrzebne skreślić.",
         },
       ],
     },
