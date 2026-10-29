@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-10-29 (13) — dane sprzedawcy/administratora w regulaminie i polityce
+
+- `content/legal.ts`: Patryk Czemierowski, JDG „Futurista Patryk Czemierowski”, ul. Pory 78,
+  02-757 Warszawa, NIP 7123092049, REGON 529334846, wpis do CEIDG (zamiast KRS + numeru —
+  JDG nie ma numeru KRS). NIP i REGON zweryfikowane sumą kontrolną.
+- E-mail kontaktowy: patryk@kompetencje.ai (7 miejsc). Zostały placeholdery: [SYSTEM DO FAKTUR] ×2, [BIURO RACHUNKOWE],
+  [CZAS DOSTĘPU], [OKRES PO WEBINARZE], [OKRES PRZECHOWYWANIA LOGÓW], [PLATFORMA DO ZAJĘĆ ONLINE],
+  [WZÓR FORMULARZA ODSTĄPIENIA].
+
 ## 2026-10-29 (12) — zgoda konsumenta na start kursu przed upływem 14 dni (formularz zapisu)
 
 - `src/lib/zgodaStart.ts`: `wymagaZgodyNaStart(start, now)` — jedna reguła dla przeglądarki i serwera:

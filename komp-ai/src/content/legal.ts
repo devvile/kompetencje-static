@@ -18,10 +18,10 @@ export const politykaPrywatnosci: LegalPage = {
       title: "ADMINISTRATOR DANYCH",
       blocks: [
         {
-          text: "Administratorem Twoich danych osobowych jest [NAZWA FIRMY] z siedzibą pod adresem [ADRES SIEDZIBY], NIP [NIP], REGON [REGON], wpisana do [KRS/CEIDG] pod numerem [NUMER], dalej „Administrator” lub „my”.",
+          text: "Administratorem Twoich danych osobowych jest Patryk Czemierowski prowadzący jednoosobową działalność gospodarczą pod firmą „Futurista Patryk Czemierowski”, adres: ul. Pory 78, 02-757 Warszawa, NIP 7123092049, REGON 529334846, wpisany do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG), dalej „Administrator” lub „my”.",
         },
         {
-          text: "W każdej sprawie dotyczącej Twoich danych możesz napisać do nas na adres [E-MAIL KONTAKTOWY]. Nie wyznaczyliśmy inspektora ochrony danych, bo nie mamy takiego obowiązku.",
+          text: "W każdej sprawie dotyczącej Twoich danych możesz napisać do nas na adres patryk@kompetencje.ai. Nie wyznaczyliśmy inspektora ochrony danych, bo nie mamy takiego obowiązku.",
         },
         {
           text: "Polityka opisuje, jak przetwarzamy dane osób, które korzystają z serwisu kompetencje.ai, zapisują się na kursy i webinary, piszą do nas przez formularz kontaktowy lub zapisują się na newsletter.",
@@ -94,7 +94,7 @@ export const politykaPrywatnosci: LegalPage = {
           text: "Newsletter wysyłamy wyłącznie osobom, które wyraziły na to zgodę, na przykład zaznaczając odpowiednie pole w formularzu zapisu. Piszemy w nim o naszych kursach, webinarach i materiałach o AI.",
         },
         {
-          text: "Z newslettera możesz się wypisać w każdej chwili – klikając link w wiadomości albo pisząc na adres [E-MAIL KONTAKTOWY]. Cofnięcie zgody nie wpływa na zgodność z prawem wysyłek sprzed jej cofnięcia.",
+          text: "Z newslettera możesz się wypisać w każdej chwili – klikając link w wiadomości albo pisząc na adres patryk@kompetencje.ai. Cofnięcie zgody nie wpływa na zgodność z prawem wysyłek sprzed jej cofnięcia.",
         },
       ],
     },
@@ -181,7 +181,7 @@ export const politykaPrywatnosci: LegalPage = {
           ],
         },
         {
-          text: "Aby skorzystać z tych praw, napisz na adres [E-MAIL KONTAKTOWY]. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu miesiąca.",
+          text: "Aby skorzystać z tych praw, napisz na adres patryk@kompetencje.ai. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu miesiąca.",
         },
         {
           text: "Jeśli uważasz, że przetwarzamy Twoje dane niezgodnie z prawem, możesz złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).",
@@ -253,10 +253,10 @@ export const regulamin: LegalPage = {
           text: "Regulamin określa zasady korzystania z serwisu kompetencje.ai, zapisu na płatne kursy online i bezpłatne webinary oraz korzystania z formularza kontaktowego. Jest to regulamin, o którym mowa w art. 8 ustawy o świadczeniu usług drogą elektroniczną.",
         },
         {
-          text: "Serwis prowadzi i sprzedaje kursy [NAZWA FIRMY] z siedzibą pod adresem [ADRES SIEDZIBY], NIP [NIP], REGON [REGON], wpisana do [KRS/CEIDG] pod numerem [NUMER], dalej „Sprzedawca” lub „my”.",
+          text: "Serwis prowadzi i sprzedaje kursy Patryk Czemierowski prowadzący jednoosobową działalność gospodarczą pod firmą „Futurista Patryk Czemierowski”, adres: ul. Pory 78, 02-757 Warszawa, NIP 7123092049, REGON 529334846, wpisany do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG), dalej „Sprzedawca” lub „my”.",
         },
         {
-          text: "Kontaktować się z nami możesz pod adresem e-mail [E-MAIL KONTAKTOWY] lub przez formularz kontaktowy w serwisie. Regulamin jest dostępny bezpłatnie pod adresem kompetencje.ai/regulamin – możesz go w każdej chwili pobrać, zapisać i wydrukować.",
+          text: "Kontaktować się z nami możesz pod adresem e-mail patryk@kompetencje.ai lub przez formularz kontaktowy w serwisie. Regulamin jest dostępny bezpłatnie pod adresem kompetencje.ai/regulamin – możesz go w każdej chwili pobrać, zapisać i wydrukować.",
         },
       ],
     },
@@ -401,7 +401,7 @@ export const regulamin: LegalPage = {
           text: "Na Webinar zapisujesz się przez formularz zapisu, bez żadnych opłat. Umowa o udział w Webinarze zostaje zawarta z chwilą wysłania formularza i obejmuje udział w Webinarze w podanym terminie.",
         },
         {
-          text: "Z udziału w Webinarze możesz zrezygnować w każdej chwili, bez podawania przyczyny i bez kosztów, pisząc na adres [E-MAIL KONTAKTOWY].",
+          text: "Z udziału w Webinarze możesz zrezygnować w każdej chwili, bez podawania przyczyny i bez kosztów, pisząc na adres patryk@kompetencje.ai.",
         },
         {
           text: "W trakcie Webinaru możemy przedstawić nasze płatne Kursy. Zapis na Webinar nie zobowiązuje Cię do żadnego zakupu.",
@@ -417,7 +417,7 @@ export const regulamin: LegalPage = {
       title: "ODSTĄPIENIE OD UMOWY",
       blocks: [
         {
-          text: "Jeśli jesteś Konsumentem lub Przedsiębiorcą na prawach konsumenta, możesz odstąpić od Umowy w ciągu 14 dni od dnia jej zawarcia, bez podawania przyczyny. Wystarczy, że przed upływem tego terminu wyślesz nam oświadczenie o odstąpieniu na adres [E-MAIL KONTAKTOWY].",
+          text: "Jeśli jesteś Konsumentem lub Przedsiębiorcą na prawach konsumenta, możesz odstąpić od Umowy w ciągu 14 dni od dnia jej zawarcia, bez podawania przyczyny. Wystarczy, że przed upływem tego terminu wyślesz nam oświadczenie o odstąpieniu na adres patryk@kompetencje.ai.",
         },
         {
           text: "Możesz skorzystać ze wzoru formularza odstąpienia od umowy, który stanowi załącznik nr 2 do ustawy o prawach konsumenta: [WZÓR FORMULARZA ODSTĄPIENIA]. Nie jest to obowiązkowe. Otrzymanie oświadczenia potwierdzimy e-mailem.",
@@ -443,7 +443,7 @@ export const regulamin: LegalPage = {
       title: "REKLAMACJE",
       blocks: [
         {
-          text: "Odpowiadamy za to, aby Kurs, Nagranie i Materiały były zgodne z Umową. Jeśli coś nie działa lub odbiega od opisu, złóż reklamację na adres [E-MAIL KONTAKTOWY].",
+          text: "Odpowiadamy za to, aby Kurs, Nagranie i Materiały były zgodne z Umową. Jeśli coś nie działa lub odbiega od opisu, złóż reklamację na adres patryk@kompetencje.ai.",
         },
         { text: "W reklamacji podaj:" },
         {
