@@ -5,6 +5,7 @@ Ostatnia aktualizacja: 2026-10-29
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
+- Formularz zapisu na kurs: gdy kurs zaczyna się za mniej niż 15 dni (albo nie ma jeszcze daty), pojawia się obowiązkowa zgoda klienta na rozpoczęcie kursu przed upływem 14 dni na odstąpienie od umowy. Zgoda jest zapisywana w bazie z datą i widoczna przy płatności w Stripe. Przy checkboxie jest krótkie zdanie, a pełna treść zgody rozwija się po kliknięciu „Pełna treść zgody”.
 - Naprawione: na telefonie na stronie głównej nie pokazywały się zdjęcia prowadzących (animacja odsłaniania nigdy się nie uruchamiała).
 - Strona webinaru na telefonie ma teraz te same elementy co na komputerze (kafelki, pasek liczb, pieczątka, przykładowe pytanie, przypis, formularz) — ułożone pod wąski ekran. Projektu mobilnego w Figmie nie było, więc wzorem była wersja komputerowa.
 - Strona webinaru „Zbuduj swojego agenta AI w 60 minut" (komputer) zaktualizowana według nowego projektu Victorii: nowy początek strony (kafelki „co potrafi agent", pasek z liczbami, okrągła pieczątka AI GYM), pasek z przykładowym pytaniem między porównaniem odpowiedzi, przypis w programie, subtelne siatki w tle i formularz kontaktowy na dole strony — przyciski „Zapisz się" przewijają do niego.
@@ -40,6 +41,8 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Strona pojedynczego kursu: wersja desktop częściowo zbudowana (hero, „co zyskasz", program); brakuje sekcji „dla kogo", paska z datą startu, kontaktu i całej wersji mobilnej.
 
 ## Czekam na / zablokowane
+- **Patryk**: uruchomienie aktualizacji bazy (nowa kolumna na zgodę, plik 0002 w supabase/migrations) na bazie testowej i produkcyjnej — do tego czasu zapisy działają, ale data zgody nie trafia do bazy (jest tylko w Stripe).
+- **Bloker startu sprzedaży**: brak maila z potwierdzeniem zapisu (Resend) — prawo wymaga przesłania klientowi potwierdzenia zgody i regulaminu na trwałym nośniku.
 - **Patryk**: odpowiedzi do „Najczęstszych pytań" na stronach kursów (w projekcie jest tylko jedna, zastępcza) — szczególnie nagrania spotkań i zasady zwrotów; termin startu kursów; cena kursu „AI pod kontrolą od podstaw".
 - **Patryk**: przegląd zaktualizowanej strony głównej (komputer + telefon) po poprawkach Victorii.
 - **Patryk**: podstrona i treść kursu „AI pod kontrolą od podstaw" (dziś przycisk karty prowadzi do formularza kontaktowego) oraz decyzja: ceny w kartach „netto" (jak w projekcie) czy „brutto" (jak teraz na stronie).

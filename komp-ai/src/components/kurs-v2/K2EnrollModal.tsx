@@ -19,6 +19,7 @@ import {
   type ZapisResult,
 } from "@/lib/zapis";
 import { zapiszNaKurs } from "@/app/kursy/[slug]/actions";
+import { wymagaZgodyNaStart, ZGODA_START_KROTKO, ZGODA_START_TRESC } from "@/lib/zgodaStart";
 
 export interface EnrollSummary {
   slug: string;
@@ -34,6 +35,8 @@ export interface EnrollSummary {
   note?: string;
   submitLabel: string;
   footnote?: string;
+  /** data startu kursu (ISO) — od niej zależy zgoda na start przed upływem 14 dni */
+  start?: string;
 }
 
 export const ENROLL_HASH = "zapisz-sie";
@@ -105,6 +108,7 @@ function Check({
   checked,
   onChange,
   error,
+  extra,
 }: {
   id: string;
   name: string;
@@ -112,12 +116,14 @@ function Check({
   checked: boolean;
   onChange: (v: boolean) => void;
   error?: string;
+  /** treść pod etykietą, POZA <label> (klik nie przełącza checkboxa) */
+  extra?: React.ReactNode;
 }) {
   return (
     <div className="flex flex-col gap-1">
       <label
         htmlFor={id}
-        className="flex cursor-pointer items-start gap-3 md:items-center"
+        className={`flex cursor-pointer items-start gap-3 ${extra ? "" : "md:items-center"}`}
       >
         <input
           id={id}
@@ -142,6 +148,7 @@ function Check({
           {children}
         </span>
       </label>
+      {extra}
       {error && (
         <p className="pl-9 font-display text-[12px] font-medium text-[#ffc2c2]">
           {error}
@@ -293,6 +300,9 @@ export default function K2EnrollModal({ s }: { s: EnrollSummary }) {
   const [faktura, setFaktura] = useState(false);
   const [regulamin, setRegulamin] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
+  const [zgodaNaStart, setZgodaNaStart] = useState(false);
+  // reguła liczona przy otwarciu formularza (czas klienta); serwer sprawdza ją ponownie
+  const [zgodaWymagana, setZgodaWymagana] = useState(true);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
 
@@ -318,10 +328,14 @@ export default function K2EnrollModal({ s }: { s: EnrollSummary }) {
       e.preventDefault();
       returnFocus.current = t;
       setView("form");
+      setZgodaWymagana(wymagaZgodyNaStart(s.start));
       setOpen(true);
     };
     const fromHash = () => {
-      if (window.location.hash === `#${ENROLL_HASH}`) setOpen(true);
+      if (window.location.hash === `#${ENROLL_HASH}`) {
+        setZgodaWymagana(wymagaZgodyNaStart(s.start));
+        setOpen(true);
+      }
     };
     document.addEventListener("click", onClick);
     window.addEventListener("hashchange", fromHash);
@@ -367,7 +381,7 @@ export default function K2EnrollModal({ s }: { s: EnrollSummary }) {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const errs = validateZapis(normalizeZapis(fd));
+    const errs = validateZapis(normalizeZapis(fd), s.start);
     setErrors(errs);
     if (Object.keys(errs).length) {
       const firstKey = Object.keys(errs)[0];
@@ -379,7 +393,11 @@ export default function K2EnrollModal({ s }: { s: EnrollSummary }) {
     setPending(true);
     try {
       const res = await zapiszNaKurs(s.slug, fd);
-      if (res.status === "invalid") setErrors(res.errors);
+      if (res.status === "invalid") {
+        setErrors(res.errors);
+        // serwer uznał, że zgoda jest potrzebna (np. próg minął przy otwartym formularzu) → pokaż pole
+        if (res.errors.zgodaNaStart) setZgodaWymagana(true);
+      }
       else if (res.status === "redirect") {
         setView("redirect");
         window.location.assign(res.url); // strona płatności Stripe
@@ -572,6 +590,26 @@ export default function K2EnrollModal({ s }: { s: EnrollSummary }) {
                     Chcę otrzymywać newsletter o nowych kursach i webinarach
                     (opcjonalnie).
                   </Check>
+                  {zgodaWymagana && (
+                    <Check
+                      id={id("zgodaNaStart")}
+                      name="zgodaNaStart"
+                      checked={zgodaNaStart}
+                      onChange={setZgodaNaStart}
+                      error={errors.zgodaNaStart}
+                      extra={
+                        <details className="group pl-9">
+                          <summary className="cursor-pointer list-none font-display text-[11px] font-semibold text-white/70 underline underline-offset-2 [&::-webkit-details-marker]:hidden">
+                            <span className="group-open:hidden">Pełna treść zgody</span>
+                            <span className="hidden group-open:inline">Zwiń</span>
+                          </summary>
+                          <p className="mt-1 font-display text-[11px] leading-[1.45] text-white/70">{ZGODA_START_TRESC}</p>
+                        </details>
+                      }
+                    >
+                      {ZGODA_START_KROTKO} *
+                    </Check>
+                  )}
                 </div>
                 <div className="flex flex-col items-center gap-2 pt-[6px] md:pt-0">
                   <button

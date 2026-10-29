@@ -1,7 +1,7 @@
 // Mock content stron prawnych — docelowo dokumenty Sanity.
-// UWAGA (FLAG dla Patryka): dane administratora ([NAZWA FIRMY], adres, NIP)
-// oraz e-mail kontaktowy to PLACEHOLDERY do uzupełnienia prawdziwymi danymi;
-// całość treści do weryfikacji prawnej przed publikacją.
+// UWAGA (FLAG dla Patryka): PROJEKT TREŚCI do weryfikacji przez prawnika przed publikacją.
+// Wszystkie [PLACEHOLDERY W NAWIASACH] trzeba uzupełnić prawdziwymi danymi
+// (dane firmy, e-mail, system do faktur, czas dostępu do nagrań itd.).
 import type { LegalPage } from "./types";
 
 export const politykaPrywatnosci: LegalPage = {
@@ -10,7 +10,7 @@ export const politykaPrywatnosci: LegalPage = {
   kickerLines: ["zanim nam zaufasz —", "sprawdź, jak dbamy o twoje dane"],
   pageTitle: "Polityka prywatności",
   heading: "PRYWATNOŚĆ",
-  updated: "Ostatnia aktualizacja: 22 lipca 2026",
+  updated: "Ostatnia aktualizacja: 29 października 2026",
   sections: [
     {
       _type: "legalSection",
@@ -18,10 +18,13 @@ export const politykaPrywatnosci: LegalPage = {
       title: "ADMINISTRATOR DANYCH",
       blocks: [
         {
-          text: "Administratorem danych osobowych zbieranych za pośrednictwem serwisu kompetencje.ai jest [NAZWA FIRMY] z siedzibą w [ADRES], NIP [NIP], zwana dalej „Administratorem”.",
+          text: "Administratorem Twoich danych osobowych jest [NAZWA FIRMY] z siedzibą pod adresem [ADRES SIEDZIBY], NIP [NIP], REGON [REGON], wpisana do [KRS/CEIDG] pod numerem [NUMER], dalej „Administrator” lub „my”.",
         },
         {
-          text: "W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami pod adresem e-mail: kontakt@kompetencje.ai.",
+          text: "W każdej sprawie dotyczącej Twoich danych możesz napisać do nas na adres [E-MAIL KONTAKTOWY]. Nie wyznaczyliśmy inspektora ochrony danych, bo nie mamy takiego obowiązku.",
+        },
+        {
+          text: "Polityka opisuje, jak przetwarzamy dane osób, które korzystają z serwisu kompetencje.ai, zapisują się na kursy i webinary, piszą do nas przez formularz kontaktowy lub zapisują się na newsletter.",
         },
       ],
     },
@@ -30,12 +33,15 @@ export const politykaPrywatnosci: LegalPage = {
       num: "02",
       title: "JAKIE DANE PRZETWARZAMY",
       blocks: [
-        { text: "W zależności od tego, jak korzystasz z serwisu, przetwarzamy następujące dane:" },
+        { text: "Przetwarzamy tylko te dane, które sam nam podajesz, oraz podstawowe dane techniczne:" },
         {
           items: [
-            "dane podane w formularzu kontaktowym: imię, adres e-mail, numer telefonu, treść wiadomości,",
-            "dane podane przy zakupie kursu: dane rozliczeniowe niezbędne do wystawienia dokumentu sprzedaży,",
-            "dane techniczne zbierane automatycznie: adres IP, typ przeglądarki, dane o aktywności w serwisie (pliki cookies).",
+            "przy zapisie na kurs: imię, nazwisko, adres e-mail, numer telefonu, a jeśli chcesz fakturę – nazwę firmy, adres i NIP,",
+            "przy płatności: informacje o transakcji (kwota, data, status płatności); pełne dane karty widzi tylko operator płatności Stripe, my ich nie otrzymujemy,",
+            "przy zapisie na bezpłatny webinar: dane podane w formularzu zapisu, w szczególności imię, nazwisko i adres e-mail,",
+            "w formularzu kontaktowym: imię, adres e-mail, numer telefonu (jeśli go podasz) i treść wiadomości,",
+            "przy zapisie na newsletter: adres e-mail i informację o udzielonej zgodzie,",
+            "dane techniczne: adres IP i podstawowe informacje o urządzeniu i przeglądarce, zapisywane w logach serwera przez dostawcę hostingu.",
           ],
         },
       ],
@@ -45,80 +51,179 @@ export const politykaPrywatnosci: LegalPage = {
       num: "03",
       title: "CELE I PODSTAWY PRAWNE",
       blocks: [
-        { text: "Twoje dane przetwarzamy wyłącznie w konkretnych celach:" },
+        { text: "Każdy cel przetwarzania ma swoją podstawę prawną z art. 6 ust. 1 RODO:" },
         {
           items: [
-            "odpowiedź na wiadomość z formularza kontaktowego — art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes),",
-            "zawarcie i realizacja umowy o dostęp do kursu — art. 6 ust. 1 lit. b RODO,",
-            "wypełnienie obowiązków księgowych i podatkowych — art. 6 ust. 1 lit. c RODO,",
-            "marketing własnych usług, w tym newsletter — art. 6 ust. 1 lit. a RODO (zgoda, którą możesz cofnąć w każdej chwili).",
+            "zawarcie i wykonanie umowy o udział w kursie, w tym kontakt w sprawie terminu, dostępu i nagrań – art. 6 ust. 1 lit. b RODO,",
+            "obsługa zapisu na bezpłatny webinar i wysyłka informacji o nim – art. 6 ust. 1 lit. b RODO,",
+            "przyjęcie płatności oraz wystawienie i przechowywanie faktur i dokumentacji księgowej – art. 6 ust. 1 lit. c RODO (obowiązek prawny),",
+            "rozpatrzenie reklamacji i obsługa odstąpienia od umowy – art. 6 ust. 1 lit. c RODO,",
+            "odpowiedź na wiadomość z formularza kontaktowego – art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony interes, czyli komunikacja z Tobą),",
+            "ustalenie, dochodzenie lub obrona roszczeń – art. 6 ust. 1 lit. f RODO,",
+            "zapewnienie bezpieczeństwa i prawidłowego działania serwisu – art. 6 ust. 1 lit. f RODO,",
+            "wysyłka newslettera – art. 6 ust. 1 lit. a RODO (Twoja zgoda).",
           ],
+        },
+        {
+          text: "Nie podejmujemy wobec Ciebie decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu, w tym profilowaniu, które wywoływałyby skutki prawne lub w podobny sposób istotnie na Ciebie wpływały.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "04",
-      title: "ODBIORCY DANYCH",
+      title: "CZY MUSISZ PODAĆ DANE",
       blocks: [
         {
-          text: "Dane możemy powierzać podmiotom, które wspierają nas w prowadzeniu serwisu: dostawcy hostingu, operatorowi płatności, biuru księgowemu oraz dostawcom narzędzi analitycznych i mailingowych. Wszystkie te podmioty przetwarzają dane na podstawie umów powierzenia i wyłącznie w zakresie niezbędnym do świadczenia usług.",
+          text: "Podanie danych jest dobrowolne. Bez danych oznaczonych w formularzu jako wymagane nie zapiszemy Cię jednak na kurs lub webinar ani nie odpowiemy na wiadomość.",
         },
         {
-          text: "Nie sprzedajemy Twoich danych i nie przekazujemy ich podmiotom trzecim do ich własnych celów marketingowych.",
+          text: "Dane do faktury podajesz tylko wtedy, gdy chcesz ją otrzymać. Jeśli o nią poprosisz, podanie tych danych wynika z przepisów podatkowych.",
+        },
+        {
+          text: "Zgoda na newsletter jest całkowicie dobrowolna. Jej brak nie ma wpływu na zapis na kurs ani na webinar.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "05",
-      title: "OKRES PRZECHOWYWANIA",
+      title: "NEWSLETTER",
       blocks: [
         {
-          items: [
-            "korespondencja z formularza — do zakończenia sprawy, maksymalnie 12 miesięcy od ostatniego kontaktu,",
-            "dane związane z zakupem kursu — przez okres wymagany przepisami podatkowymi (5 lat od końca roku podatkowego),",
-            "dane przetwarzane na podstawie zgody — do momentu jej cofnięcia.",
-          ],
+          text: "Newsletter wysyłamy wyłącznie osobom, które wyraziły na to zgodę, na przykład zaznaczając odpowiednie pole w formularzu zapisu. Piszemy w nim o naszych kursach, webinarach i materiałach o AI.",
+        },
+        {
+          text: "Z newslettera możesz się wypisać w każdej chwili – klikając link w wiadomości albo pisząc na adres [E-MAIL KONTAKTOWY]. Cofnięcie zgody nie wpływa na zgodność z prawem wysyłek sprzed jej cofnięcia.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "06",
-      title: "TWOJE PRAWA",
+      title: "ODBIORCY DANYCH",
       blocks: [
-        { text: "W związku z przetwarzaniem danych przysługują Ci prawa:" },
+        {
+          text: "Twoje dane powierzamy tylko firmom, które pomagają nam prowadzić serwis. Przetwarzają je na nasze polecenie, na podstawie umów powierzenia i tylko w niezbędnym zakresie:",
+        },
         {
           items: [
-            "dostępu do danych i otrzymania ich kopii,",
-            "sprostowania, usunięcia lub ograniczenia przetwarzania,",
-            "przenoszenia danych,",
-            "sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie,",
-            "cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem wcześniejszego przetwarzania),",
-            "skargi do Prezesa Urzędu Ochrony Danych Osobowych.",
+            "Vercel – hosting serwisu,",
+            "Supabase – baza danych, w której zapisujemy zgłoszenia na kursy,",
+            "Stripe – obsługa płatności online,",
+            "Resend – wysyłka wiadomości e-mail (po uruchomieniu tej usługi),",
+            "[SYSTEM DO FAKTUR] – wystawianie faktur,",
+            "[BIURO RACHUNKOWE] – prowadzenie księgowości.",
           ],
         },
-        { text: "Aby skorzystać z któregokolwiek z praw, napisz do nas na adres kontakt@kompetencje.ai." },
+        {
+          text: "Dane mogą też otrzymać organy publiczne, jeśli wymagają tego przepisy. Nie sprzedajemy Twoich danych i nie udostępniamy ich innym firmom do ich własnego marketingu.",
+        },
       ],
     },
     {
       _type: "legalSection",
       num: "07",
-      title: "PLIKI COOKIES",
+      title: "PRZEKAZYWANIE DANYCH POZA EOG",
       blocks: [
         {
-          text: "Serwis korzysta z plików cookies — niezbędnych do jego prawidłowego działania oraz, za Twoją zgodą, analitycznych i marketingowych. Możesz zarządzać cookies w ustawieniach przeglądarki; ograniczenie cookies niezbędnych może wpłynąć na działanie serwisu.",
+          text: "Część naszych dostawców, w szczególności Vercel, Stripe, Supabase i Resend, może przetwarzać dane poza Europejskim Obszarem Gospodarczym (EOG). W takim przypadku przekazanie odbywa się tylko na podstawie mechanizmów przewidzianych w RODO.",
+        },
+        { text: "Podstawą przekazania jest, w zależności od dostawcy:" },
+        {
+          items: [
+            "decyzja Komisji Europejskiej stwierdzająca odpowiedni stopień ochrony danych, w tym dla firm certyfikowanych w ramach EU–US Data Privacy Framework,",
+            "standardowe klauzule umowne zatwierdzone przez Komisję Europejską.",
+          ],
+        },
+        {
+          text: "Podstawa przekazania dla poszczególnych dostawców: [PODSTAWA PRZEKAZANIA – DO WERYFIKACJI]. Na Twoją prośbę przekażemy informację o zastosowanych zabezpieczeniach i sposobie uzyskania ich kopii.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "08",
+      title: "JAK DŁUGO PRZECHOWUJEMY DANE",
+      blocks: [
+        { text: "Dane przechowujemy tylko tak długo, jak to potrzebne do danego celu:" },
+        {
+          items: [
+            "dane z zapisu na kurs – przez czas realizacji umowy, a potem do upływu terminu przedawnienia roszczeń z umowy,",
+            "faktury i dokumenty księgowe – przez 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku,",
+            "dane związane z reklamacją lub odstąpieniem od umowy – do zakończenia sprawy, a potem do upływu terminu przedawnienia roszczeń,",
+            "dane z zapisu na bezpłatny webinar – do zakończenia webinaru i przez [OKRES PO WEBINARZE] po nim,",
+            "wiadomości z formularza kontaktowego – do zakończenia sprawy, nie dłużej niż 12 miesięcy od ostatniego kontaktu,",
+            "dane do newslettera – do cofnięcia zgody, a informację o udzieleniu i cofnięciu zgody – do upływu terminu przedawnienia roszczeń,",
+            "logi serwera – przez okres wynikający z ustawień dostawcy hostingu, nie dłużej niż [OKRES PRZECHOWYWANIA LOGÓW].",
+          ],
+        },
+        {
+          text: "Jeśli wniesiesz skuteczny sprzeciw wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie, przestaniemy przetwarzać dane w tym celu wcześniej.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "09",
+      title: "TWOJE PRAWA",
+      blocks: [
+        { text: "W związku z przetwarzaniem danych masz prawo do:" },
+        {
+          items: [
+            "dostępu do swoich danych i otrzymania ich kopii,",
+            "sprostowania danych, które są nieprawidłowe lub niepełne,",
+            "usunięcia danych, jeśli nie ma już podstawy do ich przetwarzania,",
+            "ograniczenia przetwarzania,",
+            "przenoszenia danych, które przetwarzamy na podstawie umowy lub zgody,",
+            "sprzeciwu wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie,",
+            "cofnięcia zgody w dowolnym momencie, bez wpływu na zgodność z prawem przetwarzania sprzed jej cofnięcia.",
+          ],
+        },
+        {
+          text: "Aby skorzystać z tych praw, napisz na adres [E-MAIL KONTAKTOWY]. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu miesiąca.",
+        },
+        {
+          text: "Jeśli uważasz, że przetwarzamy Twoje dane niezgodnie z prawem, możesz złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "10",
+      title: "PLIKI COOKIES",
+      blocks: [
+        {
+          text: "Serwis kompetencje.ai nie korzysta dziś z narzędzi analitycznych ani reklamowych i nie zapisuje na Twoim urządzeniu plików cookies w celach statystycznych lub marketingowych. Czcionki ładujemy z naszego własnego serwera, a nie z zewnętrznych usług.",
+        },
+        {
+          text: "Pliki cookies pojawiają się na stronie płatności prowadzonej przez Stripe. Stripe używa ich, aby bezpiecznie przeprowadzić płatność i zapobiegać oszustwom. Zasady opisuje polityka prywatności Stripe.",
+        },
+        {
+          text: "Jeśli w przyszłości wprowadzimy narzędzia analityczne lub reklamowe, uruchomimy je dopiero po uzyskaniu Twojej zgody i wcześniej zaktualizujemy tę politykę. Pliki cookies możesz w każdej chwili usunąć lub zablokować w ustawieniach przeglądarki.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "11",
+      title: "BEZPIECZEŃSTWO",
+      blocks: [
+        {
+          text: "Stosujemy środki techniczne i organizacyjne odpowiednie do ryzyka, w szczególności szyfrowane połączenie (HTTPS) i ograniczony dostęp do bazy zgłoszeń. Dostęp do danych mają tylko osoby, które potrzebują ich do obsługi kursów i webinarów.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "12",
       title: "ZMIANY POLITYKI",
       blocks: [
         {
-          text: "Polityka może być aktualizowana, np. przy zmianie przepisów lub funkcji serwisu. Aktualna wersja jest zawsze dostępna pod adresem kompetencje.ai/polityka-prywatnosci wraz z datą ostatniej aktualizacji.",
+          text: "Możemy zmieniać tę politykę, na przykład gdy zmienią się przepisy, nasi dostawcy lub funkcje serwisu. Aktualna wersja jest zawsze dostępna pod adresem kompetencje.ai/polityka-prywatnosci, z datą ostatniej aktualizacji na górze strony.",
+        },
+        {
+          text: "O istotnych zmianach poinformujemy osoby zapisane na kursy lub newsletter wiadomością e-mail.",
         },
       ],
     },
@@ -128,7 +233,7 @@ export const politykaPrywatnosci: LegalPage = {
   ctaHref: "/#kontakt",
   metaTitle: "Polityka prywatności",
   metaDescription:
-    "Dowiedz się, jak kompetencje.ai chroni Twoje dane osobowe: jakie dane zbieramy, w jakich celach, jak długo je przechowujemy i jakie prawa Ci przysługują.",
+    "Polityka prywatności kompetencje.ai: kto przetwarza Twoje dane, w jakim celu i jak długo oraz jakie prawa Ci przysługują.",
 };
 
 export const regulamin: LegalPage = {
@@ -137,18 +242,21 @@ export const regulamin: LegalPage = {
   kickerLines: ["jasne zasady gry —", "wszystko czarno na białym"],
   pageTitle: "Regulamin",
   heading: "REGULAMIN",
-  updated: "Ostatnia aktualizacja: 22 lipca 2026",
+  updated: "Ostatnia aktualizacja: 29 października 2026",
   sections: [
     {
       _type: "legalSection",
       num: "01",
-      title: "POSTANOWIENIA OGÓLNE",
+      title: "SPRZEDAWCA I POSTANOWIENIA OGÓLNE",
       blocks: [
         {
-          text: "Regulamin określa zasady korzystania z serwisu kompetencje.ai oraz zakupu i realizacji kursów online oferowanych w serwisie. Właścicielem serwisu i sprzedawcą jest [NAZWA FIRMY] z siedzibą w [ADRES], NIP [NIP], zwana dalej „Sprzedawcą”.",
+          text: "Regulamin określa zasady korzystania z serwisu kompetencje.ai, zapisu na płatne kursy online i bezpłatne webinary oraz korzystania z formularza kontaktowego. Jest to regulamin, o którym mowa w art. 8 ustawy o świadczeniu usług drogą elektroniczną.",
         },
         {
-          text: "Korzystanie z serwisu oznacza akceptację niniejszego regulaminu. Kontakt ze Sprzedawcą: kontakt@kompetencje.ai.",
+          text: "Serwis prowadzi i sprzedaje kursy [NAZWA FIRMY] z siedzibą pod adresem [ADRES SIEDZIBY], NIP [NIP], REGON [REGON], wpisana do [KRS/CEIDG] pod numerem [NUMER], dalej „Sprzedawca” lub „my”.",
+        },
+        {
+          text: "Kontaktować się z nami możesz pod adresem e-mail [E-MAIL KONTAKTOWY] lub przez formularz kontaktowy w serwisie. Regulamin jest dostępny bezpłatnie pod adresem kompetencje.ai/regulamin – możesz go w każdej chwili pobrać, zapisać i wydrukować.",
         },
       ],
     },
@@ -157,12 +265,18 @@ export const regulamin: LegalPage = {
       num: "02",
       title: "DEFINICJE",
       blocks: [
+        { text: "Pojęcia użyte w regulaminie oznaczają:" },
         {
           items: [
-            "Serwis — strona internetowa dostępna pod adresem kompetencje.ai,",
-            "Kurs — szkolenie online udostępniane w formie cyfrowej (nagrania, materiały, zadania),",
-            "Klient — osoba fizyczna, prawna lub jednostka organizacyjna dokonująca zakupu w serwisie,",
-            "Konsument — Klient będący osobą fizyczną, dokonujący zakupu niezwiązanego bezpośrednio z działalnością gospodarczą lub zawodową.",
+            "Serwis – strona internetowa dostępna pod adresem kompetencje.ai,",
+            "Ty lub Klient – osoba fizyczna, osoba prawna albo jednostka organizacyjna, która korzysta z Serwisu lub zapisuje się na Kurs albo Webinar,",
+            "Konsument – osoba fizyczna, która zawiera z nami umowę niezwiązaną bezpośrednio z jej działalnością gospodarczą lub zawodową,",
+            "Przedsiębiorca na prawach konsumenta – osoba fizyczna, która zawiera umowę bezpośrednio związaną z jej działalnością gospodarczą, gdy z treści umowy wynika, że nie ma ona dla niej charakteru zawodowego, w szczególności w świetle przedmiotu działalności ujawnionego w CEIDG,",
+            "Kurs – płatne szkolenie online prowadzone na żywo w ustalonym terminie, w przypadku części kursów udostępniane także w formie Nagrania,",
+            "Nagranie – zapis Kursu udostępniany Klientowi jako treść cyfrowa, jeśli strona Kursu przewiduje taki dostęp,",
+            "Webinar – bezpłatne spotkanie online prowadzone na żywo,",
+            "Materiały – treści udostępniane w ramach Kursu lub Webinaru, w szczególności prezentacje, nagrania, ćwiczenia i szablony,",
+            "Umowa – umowa o udział w Kursie albo Webinarze zawierana na odległość przez Serwis.",
           ],
         },
       ],
@@ -170,85 +284,265 @@ export const regulamin: LegalPage = {
     {
       _type: "legalSection",
       num: "03",
-      title: "ZAKRES USŁUG",
+      title: "WYMAGANIA TECHNICZNE",
       blocks: [
+        { text: "Aby korzystać z Serwisu, Kursów i Webinarów, potrzebujesz:" },
         {
-          text: "Sprzedawca oferuje kursy online z zakresu kompetencji AI. Szczegółowy opis każdego kursu — program, liczba modułów i lekcji, format — znajduje się na stronie danego kursu.",
+          items: [
+            "urządzenia z dostępem do internetu (komputera, tabletu lub telefonu),",
+            "aktualnej wersji przeglądarki, na przykład Chrome, Firefox, Safari lub Edge, z włączoną obsługą JavaScript,",
+            "aktywnego adresu e-mail,",
+            "na zajęciach na żywo – głośników lub słuchawek, a jeśli chcesz zabierać głos – mikrofonu i kamery,",
+            "stabilnego łącza internetowego, które pozwala na odtwarzanie wideo.",
+          ],
         },
         {
-          text: "Do korzystania z kursów niezbędne jest urządzenie z dostępem do internetu, aktualna przeglądarka internetowa oraz aktywny adres e-mail.",
+          text: "Kursy i Webinary odbywają się na platformie [PLATFORMA DO ZAJĘĆ ONLINE]. Link do zajęć wyślemy Ci e-mailem przed ich rozpoczęciem.",
+        },
+        {
+          text: "Korzystanie z internetu wiąże się z typowymi zagrożeniami, takimi jak złośliwe oprogramowanie czy próby wyłudzenia danych. Dbaj o aktualne oprogramowanie i nie otwieraj podejrzanych linków – nigdy nie poprosimy Cię e-mailem o hasło ani dane karty.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "04",
-      title: "ZAMÓWIENIA I PŁATNOŚCI",
+      title: "USŁUGI W SERWISIE",
       blocks: [
+        { text: "W Serwisie świadczymy następujące usługi:" },
         {
-          text: "Zamówienia składane są przez formularz zakupu w serwisie. Ceny podane przy kursach są cenami brutto. Płatność realizowana jest za pośrednictwem operatora płatności wskazanego w procesie zakupu.",
+          items: [
+            "płatne Kursy online na żywo, na przykład „Z rozmowy do oferty w 60 minut” i „AI pod kontrolą od podstaw”, w części z dostępem do Nagrania,",
+            "bezpłatne Webinary online na żywo,",
+            "formularz kontaktowy, przez który możesz zadać nam pytanie,",
+            "newsletter, który wysyłamy wyłącznie za Twoją zgodą.",
+          ],
         },
         {
-          text: "Umowa zostaje zawarta z chwilą potwierdzenia zamówienia przez Sprzedawcę, a dokument sprzedaży wystawiany jest zgodnie z obowiązującymi przepisami.",
+          text: "Szczegóły każdego Kursu – program, termin, czas trwania, cenę i informację o Nagraniu – podajemy na jego stronie w Serwisie. Opis na stronie Kursu jest częścią Umowy.",
+        },
+        {
+          text: "Nie wolno przesyłać przez Serwis treści bezprawnych, obraźliwych ani naruszających prawa innych osób. Usługi formularza kontaktowego i newslettera są bezpłatne i możesz z nich zrezygnować w każdej chwili.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "05",
-      title: "DOSTĘP DO KURSU",
+      title: "ZAPIS NA KURS I ZAWARCIE UMOWY",
       blocks: [
+        { text: "Zapis na Kurs przebiega w następujących krokach:" },
         {
-          text: "Dostęp do kursu przyznawany jest po zaksięgowaniu płatności, na adres e-mail podany w zamówieniu, w terminie wskazanym na stronie kursu. Jeżeli kurs ma określoną datę startu, dostęp uruchamiany jest w tej dacie.",
+          items: [
+            "wypełniasz formularz zapisu: imię, nazwisko, adres e-mail i numer telefonu, a jeśli chcesz fakturę – dane firmy i NIP,",
+            "akceptujesz regulamin i politykę prywatności (to warunek zapisu), a zgodę na newsletter możesz zaznaczyć dobrowolnie,",
+            "przechodzisz do płatności przez Stripe i opłacasz Kurs,",
+            "otrzymujesz od nas e-mail z potwierdzeniem zapisu i zawarcia Umowy.",
+          ],
         },
         {
-          text: "Materiały kursowe objęte są prawami autorskimi. Dostęp jest imienny — udostępnianie materiałów osobom trzecim, ich kopiowanie i rozpowszechnianie jest zabronione.",
+          text: "Umowa zostaje zawarta w chwili, gdy płatność zostanie zaakceptowana przez operatora płatności. Potwierdzenie zawarcia Umowy, wraz z treścią regulaminu, wyślemy na podany adres e-mail.",
+        },
+        {
+          text: "Jeśli płatność się nie powiedzie lub ją przerwiesz, zapis nie jest skuteczny i Umowa nie zostaje zawarta. Możesz wtedy zapisać się ponownie, o ile są jeszcze wolne miejsca.",
+        },
+        {
+          text: "Liczba miejsc na Kurs może być ograniczona. Jeśli miejsca skończą się w trakcie Twojej płatności, zwrócimy całą wpłatę w ciągu 14 dni.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "06",
-      title: "ODSTĄPIENIE OD UMOWY",
+      title: "CENY I PŁATNOŚCI",
       blocks: [
         {
-          text: "Konsument ma prawo odstąpić od umowy w terminie 14 dni od jej zawarcia bez podania przyczyny, składając oświadczenie na adres kontakt@kompetencje.ai.",
+          text: "Ceny Kursów podajemy w złotych polskich (PLN) jako ceny brutto, czyli kwoty, które faktycznie płacisz. Cena obejmuje wszystkie podatki, jeśli mają zastosowanie, i nie doliczamy do niej żadnych dodatkowych opłat.",
         },
         {
-          text: "Prawo odstąpienia nie przysługuje w odniesieniu do treści cyfrowych, jeżeli spełnianie świadczenia rozpoczęło się za wyraźną zgodą Konsumenta przed upływem terminu odstąpienia i po poinformowaniu go o utracie tego prawa (art. 38 pkt 13 ustawy o prawach konsumenta).",
+          text: "Za Kurs płacisz jednorazowo, z góry, przez operatora płatności Stripe. Dostępne metody płatności – karta płatnicza, a gdy zostaną uruchomione także BLIK lub Przelewy24 – widzisz na stronie płatności.",
+        },
+        {
+          text: "Gdy obniżamy cenę Kursu, obok ceny po obniżce podajemy także najniższą cenę z 30 dni przed wprowadzeniem obniżki.",
+        },
+        {
+          text: "Fakturę wystawiamy na Twoje żądanie, na podstawie danych podanych w formularzu zapisu. Faktury wystawiamy w systemie [SYSTEM DO FAKTUR], zgodnie z przepisami o Krajowym Systemie e-Faktur (KSeF).",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "07",
-      title: "REKLAMACJE",
+      title: "KURSY NA ŻYWO I NAGRANIA",
       blocks: [
         {
-          text: "Reklamacje dotyczące działania serwisu lub kursów można składać na adres kontakt@kompetencje.ai. Reklamacja powinna zawierać opis problemu oraz dane umożliwiające kontakt.",
+          text: "Kurs odbywa się online, w terminie podanym na stronie Kursu. Link do zajęć wyślemy na Twój adres e-mail przed ich rozpoczęciem.",
         },
         {
-          text: "Sprzedawca rozpatruje reklamacje w terminie 14 dni od ich otrzymania i informuje o wyniku na podany adres e-mail.",
+          text: "Jeśli nie weźmiesz udziału w zajęciach w ustalonym terminie, nie oznacza to, że nie wykonaliśmy Umowy. Jeśli Kurs przewiduje Nagranie, możesz z niego skorzystać na zasadach poniżej.",
+        },
+        {
+          text: "Jeśli strona Kursu przewiduje Nagranie, udostępnimy je przez [CZAS DOSTĘPU] od dnia jego udostępnienia. Po tym czasie dostęp wygasa.",
+        },
+        {
+          text: "Z ważnych przyczyn, takich jak choroba prowadzącego albo awaria platformy, możemy przenieść Kurs na inny termin. Poinformujemy Cię o tym e-mailem. Jeśli nowy termin Ci nie odpowiada, możesz odstąpić od Umowy, a my zwrócimy całą wpłatę w ciągu 14 dni.",
+        },
+        {
+          text: "Dostęp do Kursu i Nagrania jest imienny. Nie wolno przekazywać linku ani danych dostępowych innym osobom.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "08",
-      title: "DANE OSOBOWE",
+      title: "BEZPŁATNE WEBINARY",
       blocks: [
         {
-          text: "Zasady przetwarzania danych osobowych w serwisie opisuje Polityka prywatności dostępna pod adresem kompetencje.ai/polityka-prywatnosci.",
+          text: "Na Webinar zapisujesz się przez formularz zapisu, bez żadnych opłat. Umowa o udział w Webinarze zostaje zawarta z chwilą wysłania formularza i obejmuje udział w Webinarze w podanym terminie.",
+        },
+        {
+          text: "Z udziału w Webinarze możesz zrezygnować w każdej chwili, bez podawania przyczyny i bez kosztów, pisząc na adres [E-MAIL KONTAKTOWY].",
+        },
+        {
+          text: "W trakcie Webinaru możemy przedstawić nasze płatne Kursy. Zapis na Webinar nie zobowiązuje Cię do żadnego zakupu.",
+        },
+        {
+          text: "Z ważnych przyczyn możemy zmienić termin Webinaru lub go odwołać. Poinformujemy Cię o tym e-mailem z wyprzedzeniem, jeśli to możliwe.",
         },
       ],
     },
     {
       _type: "legalSection",
       num: "09",
+      title: "ODSTĄPIENIE OD UMOWY",
+      blocks: [
+        {
+          text: "Jeśli jesteś Konsumentem lub Przedsiębiorcą na prawach konsumenta, możesz odstąpić od Umowy w ciągu 14 dni od dnia jej zawarcia, bez podawania przyczyny. Wystarczy, że przed upływem tego terminu wyślesz nam oświadczenie o odstąpieniu na adres [E-MAIL KONTAKTOWY].",
+        },
+        {
+          text: "Możesz skorzystać ze wzoru formularza odstąpienia od umowy, który stanowi załącznik nr 2 do ustawy o prawach konsumenta: [WZÓR FORMULARZA ODSTĄPIENIA]. Nie jest to obowiązkowe. Otrzymanie oświadczenia potwierdzimy e-mailem.",
+        },
+        {
+          text: "Po odstąpieniu zwrócimy Ci wszystkie płatności w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności, której użyłeś, chyba że wyraźnie zgodzisz się na inną. Nie poniesiesz żadnych opłat za zwrot.",
+        },
+        {
+          text: "Jeśli wyraźnie zażądasz, abyśmy zaczęli świadczyć usługę przed upływem 14 dni, a potem odstąpisz od Umowy, zapłacisz za część Kursu zrealizowaną do chwili odstąpienia, proporcjonalnie do ceny.",
+        },
+        { text: "Prawo odstąpienia od Umowy nie przysługuje Ci:" },
+        {
+          items: [
+            "w zakresie zajęć na żywo – po pełnym wykonaniu usługi, jeśli rozpoczęliśmy ją za Twoją wyraźną i uprzednią zgodą, a Ty przyjąłeś do wiadomości, że po jej pełnym wykonaniu utracisz prawo odstąpienia,",
+            "w zakresie Nagrań i innych treści cyfrowych – od chwili rozpoczęcia ich dostarczania, jeśli nastąpiło to za Twoją wyraźną i uprzednią zgodą przed upływem terminu odstąpienia, po poinformowaniu Cię o utracie tego prawa, a my przekazaliśmy Ci potwierdzenie na trwałym nośniku, na przykład e-mailem.",
+          ],
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "10",
+      title: "REKLAMACJE",
+      blocks: [
+        {
+          text: "Odpowiadamy za to, aby Kurs, Nagranie i Materiały były zgodne z Umową. Jeśli coś nie działa lub odbiega od opisu, złóż reklamację na adres [E-MAIL KONTAKTOWY].",
+        },
+        { text: "W reklamacji podaj:" },
+        {
+          items: [
+            "swoje imię, nazwisko i adres e-mail użyty przy zapisie,",
+            "nazwę i termin Kursu lub Webinaru,",
+            "opis problemu i datę jego wystąpienia,",
+            "swoje żądanie, na przykład usunięcie problemu lub obniżenie ceny.",
+          ],
+        },
+        {
+          text: "Odpowiemy na reklamację w ciągu 14 dni od jej otrzymania, na adres e-mail, z którego ją wysłano. Jeśli jesteś Konsumentem i nie odpowiemy w tym terminie, uznaje się, że reklamację uwzględniliśmy.",
+        },
+        {
+          text: "Konsumentowi i Przedsiębiorcy na prawach konsumenta przysługują uprawnienia przewidziane w ustawie o prawach konsumenta dla treści i usług cyfrowych: doprowadzenie do zgodności z Umową, obniżenie ceny albo odstąpienie od Umowy. Wobec pozostałych Klientów odpowiedzialność z tytułu rękojmi jest wyłączona w zakresie, w jakim pozwala na to prawo.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "11",
+      title: "PRAWA AUTORSKIE",
+      blocks: [
+        {
+          text: "Kursy, Nagrania, Materiały oraz treści Serwisu są chronione prawem autorskim i należą do nas albo do osób, które udzieliły nam na nie licencji.",
+        },
+        {
+          text: "Z chwilą zawarcia Umowy udzielamy Ci niewyłącznej i nieprzenoszalnej licencji na korzystanie z Materiałów na własny użytek, w tym na potrzeby Twojej pracy lub działalności. Licencja obowiązuje przez czas dostępu do Kursu, a Materiały pobrane w tym czasie możesz zachować.",
+        },
+        { text: "Bez naszej pisemnej zgody nie możesz w szczególności:" },
+        {
+          items: [
+            "nagrywać zajęć na żywo,",
+            "kopiować, publikować ani rozpowszechniać Nagrań i Materiałów,",
+            "udostępniać Materiałów, linków ani dostępu do Kursu innym osobom,",
+            "wykorzystywać Materiałów do prowadzenia własnych szkoleń.",
+          ],
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "12",
+      title: "ODPOWIEDZIALNOŚĆ",
+      blocks: [
+        {
+          text: "Kursy i Webinary mają charakter edukacyjny. Pokazujemy w nich, jak korzystać z narzędzi sztucznej inteligencji, ale to Ty decydujesz, jak wykorzystasz tę wiedzę i jakie dane wprowadzisz do tych narzędzi.",
+        },
+        {
+          text: "Narzędzia AI omawiane na zajęciach są dostarczane przez inne firmy, na ich własnych zasadach. Nie odpowiadamy za ich działanie, dostępność, ceny ani zmiany wprowadzane przez ich dostawców.",
+        },
+        {
+          text: "Nie odpowiadamy za przerwy w dostępie wynikające z przyczyn od nas niezależnych, w szczególności z awarii Twojego sprzętu lub łącza. Prace techniczne, jeśli to możliwe, planujemy poza terminami zajęć.",
+        },
+        {
+          text: "Wobec Klientów, którzy nie są Konsumentami ani Przedsiębiorcami na prawach konsumenta, nasza odpowiedzialność jest ograniczona do wysokości ceny zapłaconej za Kurs i nie obejmuje utraconych korzyści. Postanowienia tego rozdziału nie ograniczają praw Konsumentów wynikających z przepisów.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "13",
+      title: "POZASĄDOWE ROZWIĄZYWANIE SPORÓW",
+      blocks: [
+        {
+          text: "Zależy nam, aby każdy spór rozwiązać polubownie, dlatego w razie problemu najpierw napisz do nas. Jeśli jesteś Konsumentem, możesz też skorzystać z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń:",
+        },
+        {
+          items: [
+            "zwrócić się o bezpłatną pomoc do powiatowego lub miejskiego rzecznika konsumentów albo organizacji konsumenckiej,",
+            "złożyć wniosek o mediację lub do stałego polubownego sądu konsumenckiego przy wojewódzkim inspektoracie Inspekcji Handlowej.",
+          ],
+        },
+        {
+          text: "Informacje o tych sposobach i procedurach znajdziesz na stronie Urzędu Ochrony Konkurencji i Konsumentów: www.uokik.gov.pl. Skorzystanie z nich jest dobrowolne.",
+        },
+      ],
+    },
+    {
+      _type: "legalSection",
+      num: "14",
       title: "POSTANOWIENIA KOŃCOWE",
       blocks: [
         {
-          text: "W sprawach nieuregulowanych regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Sprzedawca może zmienić regulamin z ważnych przyczyn; do umów zawartych przed zmianą stosuje się wersję obowiązującą w dniu zawarcia umowy.",
+          text: "Zasady przetwarzania danych osobowych opisuje Polityka prywatności dostępna pod adresem kompetencje.ai/polityka-prywatnosci.",
+        },
+        { text: "Możemy zmienić regulamin z ważnych przyczyn, w szczególności:" },
+        {
+          items: [
+            "zmiany przepisów prawa,",
+            "zmiany sposobu płatności lub dostawców, z których korzystamy,",
+            "wprowadzenia nowych usług lub zmiany funkcji Serwisu.",
+          ],
+        },
+        {
+          text: "O zmianie poinformujemy w Serwisie i e-mailem osoby z aktywnym dostępem do Kursu, co najmniej 14 dni przed jej wejściem w życie. Do Umów zawartych przed zmianą stosujemy regulamin w wersji z dnia zawarcia Umowy.",
+        },
+        {
+          text: "W sprawach nieuregulowanych regulaminem stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Wybór prawa polskiego nie pozbawia Konsumenta ochrony, jaką dają mu bezwzględnie obowiązujące przepisy kraju jego zwykłego pobytu.",
         },
       ],
     },
@@ -258,7 +552,7 @@ export const regulamin: LegalPage = {
   ctaHref: "/#kontakt",
   metaTitle: "Regulamin",
   metaDescription:
-    "Regulamin serwisu kompetencje.ai: zasady zakupu kursów AI online, płatności, dostęp do materiałów, odstąpienie od umowy i reklamacje.",
+    "Regulamin kompetencje.ai: zapis na kursy AI online i bezpłatne webinary, płatności, nagrania, odstąpienie od umowy i reklamacje.",
 };
 
 export const legalPages: Record<string, LegalPage> = {

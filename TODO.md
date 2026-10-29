@@ -79,6 +79,19 @@ tekstury 2624×1630; maski logo).
 
 ## Otwarte zadania
 
+- [ ] **Zgoda na start przed upływem 14 dni — dalsze kroki** (checkbox w formularzu gotowy 2026-10-29):
+  - [ ] Uruchomić `supabase/migrations/0002_zgoda_start_przed_terminem.sql` na dev i prod PRZED wdrożeniem
+        (inaczej zapis na kurs zwróci błąd).
+  - [ ] Mail z potwierdzeniem zapisu (Resend) — musi powtórzyć treść zgody (`ZGODA_START_TRESC`) i zawierać
+        regulamin (potwierdzenie na trwałym nośniku). Bloker startu sprzedaży.
+  - [ ] Gdy zgody nie było (kurs za ≥15 dni): nie wysyłać nagrań, materiałów, preworku ani dostępu do
+        platformy przed upływem 14 dni od zapisu (link do zajęć może wyjść wcześniej). Uwzględnić w każdej
+        przyszłej automatycznej wysyłce materiałów.
+  - [ ] Kursy z kilkoma terminami do wyboru: reguła liczy od terminu wybranego przez klienta
+        (`wymagaZgodyNaStart(wybranyStart)`).
+  - [ ] Komunikat błędu mówi „za mniej niż 14 dni" także dla kursów bez daty — ewentualnie wariant
+        dla „termin wkrótce" (decyzja Patryka).
+
 - [ ] **KURS v3 — dwie strony kursów wg nowych widoków Victorii (zlecenie 2026-10-29)**
   Figma `5ufIXE17KqmkvVrfSVzUFE`: „Z rozmowy do oferty" desktop `2136:2432` (1440×10645) /
   mobile `2139:1991` (402×14958); „AI pod kontrolą od podstaw" desktop `2279:2811` (1440×12531) /

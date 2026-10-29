@@ -1,8 +1,9 @@
 /*
  * Formularz zapisu na kurs — walidacja WSPÓLNA dla przeglądarki (komunikaty
  * przy polach) i serwera (Server Action nie ufa klientowi). Pola = kolumny
- * tabeli `zgloszenia` (supabase/migrations/0001_zgloszenia.sql).
+ * tabeli `zgloszenia` (supabase/migrations/0001_zgloszenia.sql, 0002_…).
  */
+import { wymagaZgodyNaStart, ZGODA_START_BLAD } from "./zgodaStart";
 
 export interface ZapisInput {
   imie: string;
@@ -14,6 +15,8 @@ export interface ZapisInput {
   firma: string;
   regulamin: boolean;
   newsletter: boolean;
+  /** zgoda na rozpoczęcie przed upływem 14 dni (pole widoczne tylko, gdy wymagana) */
+  zgodaNaStart: boolean;
 }
 
 export type ZapisErrors = Partial<Record<keyof ZapisInput, string>>;
@@ -51,10 +54,12 @@ export function normalizeZapis(fd: FormData): ZapisInput {
     firma: s("firma"),
     regulamin: fd.get("regulamin") === "on",
     newsletter: fd.get("newsletter") === "on",
+    zgodaNaStart: fd.get("zgodaNaStart") === "on",
   };
 }
 
-export function validateZapis(v: ZapisInput): ZapisErrors {
+/** kursStart = data startu kursu (ISO) — od niej zależy wymóg zgody (lib/zgodaStart) */
+export function validateZapis(v: ZapisInput, kursStart?: string, now: Date = new Date()): ZapisErrors {
   const e: ZapisErrors = {};
   if (!v.imie) e.imie = "Podaj imię.";
   if (!v.nazwisko) e.nazwisko = "Podaj nazwisko.";
@@ -67,5 +72,6 @@ export function validateZapis(v: ZapisInput): ZapisErrors {
     if (!v.firma) e.firma = "Podaj nazwę firmy.";
   }
   if (!v.regulamin) e.regulamin = "Zaakceptuj regulamin i politykę prywatności.";
+  if (wymagaZgodyNaStart(kursStart, now) && !v.zgodaNaStart) e.zgodaNaStart = ZGODA_START_BLAD;
   return e;
 }

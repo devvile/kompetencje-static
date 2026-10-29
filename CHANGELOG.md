@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026-10-29 (12) — zgoda konsumenta na start kursu przed upływem 14 dni (formularz zapisu)
+
+- `src/lib/zgodaStart.ts`: `wymagaZgodyNaStart(start, now)` — jedna reguła dla przeglądarki i serwera:
+  start za < 15 dni (zapas na sesję Stripe 1 h i strefy) LUB brak/nieczytelna data → zgoda wymagana;
+  treść zgody i komunikat błędu jako stałe.
+- Data startu kursu = `KursV2Page.hero.startDate` (w kursach nie ma `details.start` — to pole webinarów).
+- `K2EnrollModal`: nowy checkbox (styl jak regulamin/newsletter), niezaznaczony, widoczny tylko gdy
+  wymagany; reguła liczona przy otwarciu formularza; gdy serwer zgłosi błąd zgody — pole się pokazuje.
+- `lib/zapis.ts`: pole `zgodaNaStart` w `normalizeZapis`, `validateZapis(v, kursStart, now)`.
+- `actions.ts`: reguła liczona ponownie na serwerze z danych kursu; `zgoda_start_przed_terminem_at`
+  (czas zgody / NULL) w insercie; Stripe `metadata.zgoda_start: "tak" | "nie_wymagana"` (sesja i PaymentIntent).
+- `supabase/migrations/0002_zgoda_start_przed_terminem.sql` + README (UWAGA: uruchomić przed wdrożeniem —
+  bez kolumny insert się nie uda).
+- Testy w przeglądarce (dev, data tymczasowo w danych, przywrócona): +7 dni → checkbox jest, bez
+  zaznaczenia błąd; +30 dni → checkboxa nie ma; brak daty → checkbox jest i jest wymagany. tsc czysty.
+- Wersja minimalistyczna (decyzja Patryka): przy checkboxie krótka etykieta `ZGODA_START_KROTKO`,
+  pełna treść `ZGODA_START_TRESC` pod rozwijanym „Pełna treść zgody" (poza <label>, klik nie zaznacza).
+- Zabezpieczenie wdrożenia: gdy w bazie brak kolumny (migracja 0002 nieuruchomiona), zapis ponawiany
+  bez niej + log błędu — zapisy nie stoją; zgoda i tak trafia do metadanych Stripe.
+- Wgrane razem z nową treścią regulaminu i polityki prywatności (`content/legal.ts`, agent projektowy).
+
 ## 2026-10-29 (11) — fix: niewidoczne zdjęcia prowadzących na home (mobile)
 
 - Zdjęcia mają animację `.reveal-wipe` (start: `clip-path: inset(101%)`). Chrome liczy przecięcie

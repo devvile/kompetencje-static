@@ -14,6 +14,7 @@
  */
 import { getKursV2Page } from "@/content";
 import { normalizeZapis, validateZapis, type ZapisResult } from "@/lib/zapis";
+import { wymagaZgodyNaStart } from "@/lib/zgodaStart";
 
 /** sesja płatności ważna 1 h — po wygaśnięciu webhook oznacza zgłoszenie jako porzucone */
 const SESSION_TTL_S = 60 * 60;
@@ -23,7 +24,11 @@ export async function zapiszNaKurs(slug: string, fd: FormData): Promise<ZapisRes
   if (!kurs) return { status: "error" };
 
   const v = normalizeZapis(fd);
-  const errors = validateZapis(v);
+  // reguła zgody liczona PONOWNIE z daty kursu na serwerze (nie ufamy przeglądarce;
+  // formularz mógł być otwarty długo i próg 15 dni minąć w międzyczasie)
+  const now = new Date();
+  const zgodaWymagana = wymagaZgodyNaStart(kurs.hero.startDate, now);
+  const errors = validateZapis(v, kurs.hero.startDate, now);
   if (Object.keys(errors).length) return { status: "invalid", errors };
 
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SECRET_KEY) {
@@ -36,9 +41,7 @@ export async function zapiszNaKurs(slug: string, fd: FormData): Promise<ZapisRes
   let id: string;
   try {
     const { supabaseAdmin } = await import("@/lib/supabase");
-    const { data, error } = await supabaseAdmin()
-      .from("zgloszenia")
-      .insert({
+    const row = {
         kurs_slug: slug,
         imie: v.imie,
         nazwisko: v.nazwisko,
@@ -50,11 +53,21 @@ export async function zapiszNaKurs(slug: string, fd: FormData): Promise<ZapisRes
         faktura_status: v.faktura ? "do_wystawienia" : null,
         zgoda_regulamin_at: new Date().toISOString(),
         zgoda_marketing: v.newsletter,
+        // czas zgody na start przed upływem 14 dni; null = zgoda nie była wymagana
+        zgoda_start_przed_terminem_at: zgodaWymagana ? now.toISOString() : null,
         kwota_grosze: amount,
         waluta: kurs.price.currency,
-      })
-      .select("id")
-      .single();
+    };
+    const insert = (r: Record<string, unknown>) => supabaseAdmin().from("zgloszenia").insert(r).select("id").single();
+    let { data, error } = await insert(row);
+    // migracja 0002 jeszcze nieuruchomiona (brak kolumny) → zapis bez niej, żeby nie blokować zapisów;
+    // zgoda i tak jest w metadanych Stripe. Po migracji ta gałąź nie wykona się nigdy.
+    if (error && /zgoda_start_przed_terminem_at/.test(error.message ?? "")) {
+      const { zgoda_start_przed_terminem_at: _pominiete, ...bezKolumny } = row;
+      void _pominiete;
+      console.error("[zapis] brak kolumny zgoda_start_przed_terminem_at — uruchom migrację 0002");
+      ({ data, error } = await insert(bezKolumny));
+    }
     if (error || !data) return { status: "error" };
     id = data.id as string;
   } catch {
@@ -73,8 +86,10 @@ export async function zapiszNaKurs(slug: string, fd: FormData): Promise<ZapisRes
       locale: "pl",
       customer_email: v.email,
       client_reference_id: id,
-      metadata: { zgloszenie_id: id, kurs_slug: slug },
-      payment_intent_data: { metadata: { zgloszenie_id: id, kurs_slug: slug } },
+      metadata: { zgloszenie_id: id, kurs_slug: slug, zgoda_start: zgodaWymagana ? "tak" : "nie_wymagana" },
+      payment_intent_data: {
+        metadata: { zgloszenie_id: id, kurs_slug: slug, zgoda_start: zgodaWymagana ? "tak" : "nie_wymagana" },
+      },
       // dane (telefon, NIP, firma) zbiera nasz formularz — Stripe ich nie dubluje
       billing_address_collection: "auto",
       automatic_tax: { enabled: false },

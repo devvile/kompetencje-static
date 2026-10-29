@@ -79,6 +79,7 @@ function enrollSummary(k: KursV2Page): EnrollSummary {
     note: k.enroll.form?.note,
     submitLabel: k.enroll.form?.submitLabel ?? "PRZEJDŹ DO PŁATNOŚCI",
     footnote: k.enroll.form?.footnote,
+    start: k.hero.startDate,
   };
 }
 
