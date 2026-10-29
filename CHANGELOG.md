@@ -12,6 +12,8 @@
   `.env.example` uzupełniony. `WebinarPage.details.joinUrl` — link do pokoju LiveWebinar w mailu (opcjonalny).
 - `supabase/migrations/0003_webinar_zapisy.sql` (+README). Test lokalny: walidacja, otwarcie z przycisku
   i z adresu, desktop i 390 px OK; zapis kończy się błędem do czasu uruchomienia migracji 0003 (oczekiwane).
+- Wieczorem: Patryk przywrócił uśpione bazy Supabase i uruchomił migracje. Test e2e na dev (Playwright): zapis → wiersz
+  w `webinar_zapisy`, ponowny zapis → „już jesteś na liście”; wpis testowy usunięty.
 - Dalej: przypomnienia 24 h / 1 h (Vercel Cron), mail po opłaceniu kursu (webhook Stripe), faktury.
 
 ## 2026-10-29 (15) — SEO: kanoniczna domena www (powód braku indeksacji) + logi 30 dni

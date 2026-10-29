@@ -5,7 +5,7 @@ Ostatnia aktualizacja: 2026-10-29
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
-- Zapis na bezpłatny webinar: przycisk „Zapisz się za darmo” otwiera krótki formularz (imię, e-mail, zgody). Zapis trafia do bazy, a po podłączeniu poczty (Resend) klient od razu dostanie mail z potwierdzeniem. Karta webinaru na stronie głównej otwiera ten formularz. Wgrane na stronę 29.10 — zacznie działać po aktualizacji bazy.
+- Zapis na bezpłatny webinar: przycisk „Zapisz się za darmo” otwiera krótki formularz (imię, e-mail, zgody). Zapis trafia do bazy, a po podłączeniu poczty (Resend) klient od razu dostanie mail z potwierdzeniem. Karta webinaru na stronie głównej otwiera ten formularz. Wgrane na stronę 29.10; bazy zaktualizowane, zapis sprawdzony na bazie testowej (wpis trafia do bazy, ponowny zapis tym samym e-mailem jest blokowany).
 - Znaleziona przyczyna, dla której Google nie indeksował strony: strona podawała jako „właściwy” adres bez „www”, a ten przekierowuje na wersję z „www”. Wszystkie adresy (mapa strony, znaczniki dla Google, linki udostępniania) wskazują teraz na www.kompetencje.ai.
 - Formularz zapisu na kurs: gdy kurs zaczyna się za mniej niż 15 dni (albo nie ma jeszcze daty), pojawia się obowiązkowa zgoda klienta na rozpoczęcie kursu przed upływem 14 dni na odstąpienie od umowy. Zgoda jest zapisywana w bazie z datą i widoczna przy płatności w Stripe. Przy checkboxie jest krótkie zdanie, a pełna treść zgody rozwija się po kliknięciu „Pełna treść zgody”.
 - Naprawione: na telefonie na stronie głównej nie pokazywały się zdjęcia prowadzących (animacja odsłaniania nigdy się nie uruchamiała).
@@ -44,9 +44,8 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 
 ## Czekam na / zablokowane
 - **Patryk** (dziś po 19:00): konto Resend z podpiętą domeną — klucz i adres nadawcy trzeba dodać w Vercel; wtedy ruszą maile z potwierdzeniem zapisów.
-- **Patryk**: uruchomienie aktualizacji bazy — pliki 0002 (zgoda na start kursu) i 0003 (zapisy na webinar) w supabase/migrations, najpierw baza testowa, potem produkcyjna; bez 0003 zapis na webinar pokaże błąd.
+- **Patryk**: sprawdzić w Vercel klucze bazy produkcyjnej (adres i klucz „secret”, tylko środowisko Production), ponownie wdrożyć stronę i zrobić jeden próbny zapis na webinar.
 - **Patryk**: dodanie strony do Google Search Console, zgłoszenie mapy strony i prośba o zindeksowanie strony głównej oraz kursów (instrukcja w CHANGELOG); opcjonalnie w Vercelu zmiana przekierowania bez-www → www na stałe.
-- **Patryk**: uruchomienie aktualizacji bazy (nowa kolumna na zgodę, plik 0002 w supabase/migrations) na bazie testowej i produkcyjnej — do tego czasu zapisy działają, ale data zgody nie trafia do bazy (jest tylko w Stripe).
 - **Bloker startu sprzedaży**: brak maila z potwierdzeniem zapisu (Resend) — prawo wymaga przesłania klientowi potwierdzenia zgody i regulaminu na trwałym nośniku.
 - **Patryk**: odpowiedzi do „Najczęstszych pytań" na stronach kursów (w projekcie jest tylko jedna, zastępcza) — szczególnie nagrania spotkań i zasady zwrotów; termin startu kursów; cena kursu „AI pod kontrolą od podstaw".
 - **Patryk**: przegląd zaktualizowanej strony głównej (komputer + telefon) po poprawkach Victorii.

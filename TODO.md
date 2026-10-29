@@ -81,7 +81,7 @@ tekstury 2624×1630; maski logo).
 
 - [ ] **Zapisy i płatności (plan uzgodniony 2026-10-29, bez kont użytkowników)**
   - [x] Zapis na webinar: formularz, tabela `webinar_zapisy`, mail potwierdzający (Resend, gdy klucz).
-  - [ ] Patryk: Resend (konto, domena, DNS) → `RESEND_API_KEY`, `MAIL_FROM` w Vercel; migracje 0002 i 0003 na dev i prod.
+  - [ ] Patryk: Resend (konto, domena, DNS) → `RESEND_API_KEY`, `MAIL_FROM` w Vercel. Migracje 0001–0003 uruchomione na dev i prod (29.10, test e2e na dev OK). Do sprawdzenia: klucze SUPABASE_* prod w Vercel + próbny zapis na produkcji.
   - [ ] Link do pokoju LiveWebinar: `details.joinUrl` webinaru (+ analogiczne pole dla kursów).
   - [ ] Przypomnienia webinaru 24 h i 1 h przed (Vercel Cron, kolumny `przypomnienie_*_at`).
   - [ ] Mail po opłaceniu kursu (webhook Stripe → status „opłacone”): podsumowanie, treść zgody na start,
