@@ -3,6 +3,7 @@ import { Audiowide, Montserrat, Manrope, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import RevealObserver from "../components/shared/RevealObserver";
+import { SITE_NAME, SITE_URL, ogFor } from "../lib/seo";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -38,7 +39,7 @@ const hkModular = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kompetencje.ai"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Kompetencje.ai — zdobądź z nami kompetencje AI",
     template: "%s | Kompetencje.ai",
@@ -52,15 +53,37 @@ export const metadata: Metadata = {
     "szkolenia AI",
     "sztuczna inteligencja kurs",
   ],
-  openGraph: {
-    type: "website",
-    locale: "pl_PL",
-    url: "https://kompetencje.ai",
-    siteName: "Kompetencje.ai",
-    title: "Kompetencje.ai — zdobądź z nami kompetencje AI",
-    description:
-      "Kursy AI, które dają realne kompetencje przyszłości. Wykorzystaj dziś swoją szansę i wyrusz z nami ku przyszłości.",
-  },
+  openGraph: ogFor(
+    "/",
+    "Kompetencje.ai — zdobądź z nami kompetencje AI",
+    "Kursy AI, które dają realne kompetencje przyszłości. Wykorzystaj dziś swoją szansę i wyrusz z nami ku przyszłości.",
+  ),
+  twitter: { card: "summary_large_image" },
+};
+
+/** schema.org — marka (logo/kontakt w wynikach Google) + serwis */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/assets/ai-logo-2x.png`,
+      email: "patryk@kompetencje.ai",
+      description: "Kursy i szkolenia AI dla firm i profesjonalistów — praktyczne kompetencje AI.",
+      areaServed: "PL",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: "pl-PL",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -74,6 +97,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${manrope.variable} ${hkModular.variable} ${poppins.variable} ${audiowide.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <RevealObserver />
         {children}
       </body>

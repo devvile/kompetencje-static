@@ -125,22 +125,23 @@ export const webinarAgentAi: WebinarPage = {
   },
   // karta reklamy na stronie głównej (design 2085:1762 „REKLAMA WEBINARU – V5")
   promo: {
+    // teksty z redesignu home (Figma 2204:1684, 2026-10)
     chips: [
       { icon: "star", text: "Agent gotowy w 20 min", variant: "lime" },
-      { icon: "arrow", text: "Dla managerów i liderów", variant: "outline" },
+      { icon: "arrow", text: "Dla specjalistów i managerów", variant: "outline" },
     ],
-    headingLines: ["AGENT AI,", "KTÓRY ZNA", "TWOJĄ PRACĘ"],
+    headingLines: ["AGENT AI,", "ZNA SPECYFIKĘ", "TWOJEJ PRACY"],
+    headingSmall: "KTÓRY",
     description: [
-      { text: "Jedna komenda nie zadziałała i masz wrażenie, że AI nie pomoże Ci w Twojej pracy? " },
+      { text: "AI zmyśla i nie pomaga przy Twojej pracy?", strong: true, weight: 700 },
+      { text: " Pokażę Ci, jak szybko zbudować agenta, który nie tylko mówi prawdę, ale też jest ekspertem w Twojej dziedzinie. " },
       { text: "W 60 minut", strong: true },
-      {
-        text: " zbudujesz w Gemini agenta, który zna Twoją rolę, standardy i styl komunikacji, a gdy czegoś nie wie, mówi to wprost. ",
-      },
-      { text: "Wychodzisz z nim i z gotowymi promptami.", strong: true },
+      { text: " nauczysz go ról członków zespołu i Twoich standardów komunikacji. Gdy czegoś nie wie, mówi to wprost. " },
+      { text: "Wychodzisz z agentem i gotowymi promptami do tworzenia kolejnych.", strong: true },
     ],
-    image: "/assets/webinar/w-ad-panel-piotr.webp",
+    image: "/assets/webinar/w-ad-panel-piotr-v2.webp",
     imageAlt: "Piotr Małysz — prowadzący webinar",
-    expertise: "Agenci AI · procesy · fintech",
+    expertise: "Automatyzacja · procesy · dane",
     formatChip: "Online, na żywo",
     ctaLabel: "ZAPISZ SIĘ ZA DARMO",
     ctaNote: "Bez kodowania · wystarczy konto Google",

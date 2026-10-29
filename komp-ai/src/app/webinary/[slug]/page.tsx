@@ -3,6 +3,7 @@
  * Na razie bez linków w serwisie; `published: false` → noindex.
  */
 import type { Metadata } from "next";
+import { ogFor } from "../../../lib/seo";
 import { notFound } from "next/navigation";
 import StopkaSection from "../../../components/home/StopkaSection";
 import WebinarTemplate from "../../../components/webinar/WebinarTemplate";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: w.metaTitle,
     description: w.metaDescription,
     alternates: { canonical: `/webinary/${slug}` },
-    openGraph: { title: `${w.metaTitle} | Kompetencje.ai`, description: w.metaDescription, type: "website" },
+    openGraph: ogFor(`/webinary/${slug}`, `${w.metaTitle} | Kompetencje.ai`, w.metaDescription),
     robots: w.published ? undefined : { index: false, follow: false },
   };
 }

@@ -15,14 +15,18 @@ import ContactFormMobile from "../shared/ContactFormMobile";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
+/* redesign 2026-10: tło 1649 (strona y6926..8575), pasek CTA „POZNAJ NASZE KURSY"
+ * (Group 19, 2203:6663) na górze; cała dotychczasowa treść zjechała o D=143 */
+const D = 143;
 const G = {
-  h: 1506,
-  starL: { left: 0, top: 101, w: 391, h: 750 },
-  starR: { left: 1065, top: 791, w: 315, h: 520 },
+  h: 1649,
+  cta: { line: { top: 117, h: 6 }, pill: { left: 360, top: 59, w: 722, h: 117, borderPx: 6, fontPx: 35 } },
+  starL: { left: 0, top: 101 + D, w: 391, h: 750 },
+  starR: { left: 1065, top: 791 + D, w: 315, h: 520 },
   // nagłówek: pozycje ink per linia (design centruje z trailing spacją w L2 —
   // pewniej pozycjonować linie absolutnie)
-  heading: { fontPx: 25.2, trackPx: 0.1, lines: [{ left: 583, top: 185 }, { left: 490, top: 234 }, { left: 533, top: 283 }] },
-  form: { left: 390.9, top: 394.9, w: 674, h: 864, r: 42, borderPx: 2, padT: 48, padB: 63, padX: 93 },
+  heading: { fontPx: 25.2, trackPx: 0.1, lines: [{ left: 583, top: 185 + D }, { left: 490, top: 234 + D }, { left: 533, top: 283 + D }] },
+  form: { left: 390.9, top: 394.9 + D, w: 674, h: 864, r: 42, borderPx: 2, padT: 48, padB: 63, padX: 93 },
   // lh 20: pitch pól w designie = 100px (label row 32 = 6+20+6, input 50, gap 18)
   label: { fontPx: 14, padX: 24, padY: 6, lhPx: 20 },
   input: { h: 50, r: 20, borderPx: 1, padX: 24, fontPx: 14 },
@@ -45,7 +49,8 @@ const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
  * 97 (label 32 + input 50 + gap 15), gwiazdy = STAR_ARROW zrotowane → wypieczone.
  * Nagłówek: 3 linie lime f16.8 + scaleX(1.1) (cap 14, kwadraty jak wszędzie). */
 const GM = {
-  h: 1343,
+  // redesign 2026-10: stopka zaczyna się 47.5px wcześniej (prowadzący kończą się na y9503.5, stopka y10799)
+  h: 1295.5,
   heading: { fontPx: 15.9, trackPx: 0.3, lines: [{ left: 99, top: 80.8 }, { left: 40, top: 116.8 }, { left: 67, top: 152.8 }] },
   starL: { left: 0, top: 192, w: 72, h: 69 },
   starR: { left: 330, top: 192, w: 72, h: 69 },
@@ -94,6 +99,21 @@ export default function KontaktSection({ k }: { k: Kontakt }) {
     <section className="relative hidden w-full md:block">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative overflow-hidden bg-brand-blue" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="245:9696">
+          {/* pasek CTA: biała linia przez całą szerokość + limonkowa pigułka */}
+          {k.coursesCta && (
+            <>
+              <div className="absolute inset-x-0 bg-white" style={{ top: c(G.cta.line.top), height: c(G.cta.line.h) }} data-node-id="2203:6664" />
+              <a
+                href={k.coursesCta.href}
+                className="absolute flex items-center justify-center whitespace-nowrap border-solid border-white bg-brand-lime font-modular text-brand-blue transition-transform hover:scale-[1.02]"
+                style={{ left: c(G.cta.pill.left), top: c(G.cta.pill.top), width: c(G.cta.pill.w), height: c(G.cta.pill.h), borderWidth: c(G.cta.pill.borderPx), borderRadius: c(118), fontSize: c(G.cta.pill.fontPx), lineHeight: "normal" }}
+                data-reveal=""
+                data-node-id="2203:6665"
+              >
+                {k.coursesCta.label}
+              </a>
+            </>
+          )}
           {/* gwiazdy outline (biel ~18%) — za formularzem */}
           <img src="/assets/kontakt-star-l-f.png" alt="" aria-hidden className="absolute"
             style={{ left: c(G.starL.left), top: c(G.starL.top), width: c(G.starL.w), height: c(G.starL.h) }} data-node-id="245:9651" />

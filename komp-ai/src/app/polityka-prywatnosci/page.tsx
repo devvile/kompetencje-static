@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogFor } from "../../lib/seo";
 import StopkaSection from "../../components/home/StopkaSection";
 import LegalArticle from "../../components/legal/LegalArticle";
 import { getLegalPage, getSiteSettings } from "../../content";
@@ -10,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page.metaTitle,
     description: page.metaDescription,
     alternates: { canonical: "/polityka-prywatnosci" },
-    openGraph: { title: page.metaTitle, description: page.metaDescription },
+    openGraph: ogFor("/polityka-prywatnosci", `${page.metaTitle} | Kompetencje.ai`, page.metaDescription),
   };
 }
 

@@ -7,6 +7,7 @@
  * Poprzednia wersja (autorski layout + wideo power-on robota) — git b9c8de6.
  */
 import type { Metadata } from "next";
+import { ogFor } from "../../lib/seo";
 import StopkaSection from "../../components/home/StopkaSection";
 import OnasKontakt, { OnasKontaktMobile } from "../../components/onas/OnasKontakt";
 import ManifestDesktop, { MANIFEST_KONTAKT } from "../../components/manifest/ManifestDesktop";
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: m.metaTitle,
     description: m.metaDescription,
     alternates: { canonical: "/manifest" },
+    openGraph: ogFor("/manifest", `${m.metaTitle} | Kompetencje.ai`, m.metaDescription),
   };
 }
 

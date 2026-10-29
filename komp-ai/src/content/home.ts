@@ -25,7 +25,8 @@ export const siteSettings: SiteSettings = {
     navLinks: [
       { _type: "footerLink", label: "KURSY", href: "/" },
       { _type: "footerLink", label: "O NAS", href: "/o-nas" },
-      { _type: "footerLink", label: "SZKOLENIA", href: "/szkolenia" },
+      // "/szkolenia" nie istnieje (404) — tymczasowo kotwica na wyróżnione kursy
+      { _type: "footerLink", label: "SZKOLENIA", href: "/#kursy" },
     ],
     legalLinks: [
       { _type: "footerLink", label: "REGULAMIN", href: "/regulamin" },
@@ -55,11 +56,13 @@ export const homePage: HomePage = {
     lineB: "CZY AI ZMIENI TWOJĄ BRANŻĘ.",
     lineC: ["CHODZI O TO,", "CZY JESTEŚ NA TO GOTOWY."],
     paragraph: [
-      { text: "Nowe narzędzia pojawiają się każdego dnia,", strong: true, break: true },
-      { text: "", break: true },
-      { text: "a Ty zastanawiasz się, od czego zacząć i jak realnie je wykorzystać w pracy lub biznesie. " },
-      { text: "Bez odpowiedniego kierunku łatwo utknąć w chaosie", strong: true },
-      { text: " informacji i stracić czas na rzeczy, które nie przynoszą efektów." },
+      { text: "Nowe narzędzia pojawiają się każdego dnia,", strong: true },
+      { text: " a Ty zastanawiasz się, od czego zacząć i jak realnie je wykorzystać w pracy lub biznesie." },
+    ],
+    conclusion: [
+      { text: "Bez odpowiedniego kierunku łatwo " },
+      { text: "utknąć w chaosie informacji", strong: true },
+      { text: " i stracić czas na rzeczy, które nie przynoszą efektów." },
     ],
     pill: [
       { text: "Mamy dla Ciebie kurs, który odpowie na " },
@@ -87,18 +90,26 @@ export const homePage: HomePage = {
       price: "1500 PLN brutto",
       leadLabel: "PROWADZĄCY",
       leadName: "PIOTR MAŁYSZ",
-      titleLines: ["AGENT AI", "W TWOIM", "BIZNESIE"] as [string, string, string],
+      // redesign 2026-10 (Figma 2315:3152): nowy kurs zamiast „Agent AI w Twoim biznesie";
+      // podstrona kursu jeszcze nie istnieje → CTA tymczasowo do formularza kontaktu
+      titleLines: ["AI POD", "KONTROLĄ", "OD PODSTAW"] as [string, string, string],
+      pill: "Context Control",
       body: [
-        { text: "Dowiedz się, jak wykorzystać sztuczną inteligencję do automatyzacji procesów, zwiększania efektywności i " },
-        { text: "skalowania działań bez zwiększania zespołu. ", strong: true, break: true },
+        { text: "Większość profesjonalistów wkleja pytanie, dostaje odpowiedź i traci przy tym " },
+        { text: "80% możliwości", strong: true },
+        { text: " narzędzia. Zamień AI w " },
+        { text: "spersonalizowany warsztat", strong: true },
+        { text: ", który działa na Twoich danych i według Twoich reguł.", break: true },
         { text: "", break: true },
-        // literówki designera poprawione: "rozwók"→"rozwój", "aż do  operacje"→"aż po operacje"
-        { text: "Ten kurs pokaże Ci jak krok po kroku, wdrożyć AI do codziennej pracy - od obsługi klientów, przez marketing, aż po operacje - tak, aby realnie wspierało rozwój Twojego biznesu." },
+        { text: "Nauczysz się budować własną " },
+        { text: "warstwę kontekstową", strong: true },
+        { text: ", chronić wrażliwe dane i łączyć model z firmowymi systemami przez MCP – od podstaw, krok po kroku." },
       ],
-      ctaLabel: "ZOBACZ SZCZEGÓŁY", // w designie "SZCZEGOŁY" (literówka)
-      ctaHref: "/kursy/agent-ai-w-twoim-biznesie",
+      ctaLabel: "ZOBACZ SZCZEGÓŁY",
+      ctaHref: "/#kontakt",
+      art: { kind: "panel" as const, src: "/assets/card-ai-kontrola-panel.webp" },
       photo: "/assets/card-waga-src.png",
-      photoM: "/assets/m-card-photo-r.png",
+      photoM: "/assets/m-card-ai-kontrola.webp", // kadr robota z panelu desktop
     },
     {
       // Treść OSTATECZNA od Patryka (2026-09-17): kurs „Z rozmowy do oferty
@@ -110,13 +121,19 @@ export const homePage: HomePage = {
       leadLabel: "PROWADZĄCY",
       leadName: "PATRYK CZEMIEROWSKI",
       titleLines: ["Z ROZMOWY", "DO OFERTY", "W 60 MINUT"] as [string, string, string],
+      pill: "AI w pracy z klientem",
       body: [
-        { text: "Z notatek, cennika i rozmowy z klientem na Messengerze do gotowej oferty w PDF lub PPTX – w Claude Code, z grafikami pod Twoją markę z Higgsfield.", break: true },
+        { text: "Z notatek, cennika i rozmowy z klientem na Messengerze " },
+        { text: "do gotowej oferty w PDF lub PPTX", strong: true },
+        { text: " – w Claude Code, z grafikami pod Twoją markę z Higgsfield.", break: true },
         { text: "", break: true },
-        { text: "Nauczysz się budować brief, który robi 80% roboty, robić prezentację prosto z rozmowy i wyceniać na podstawie realnych stawek rynkowych, nie zgadywania." },
+        { text: "Nauczysz się budować brief, który robi 80% roboty, robić prezentację prosto z rozmowy i " },
+        { text: "wyceniać na podstawie realnych stawek rynkowych", strong: true },
+        { text: ", nie zgadywania." },
       ],
       ctaLabel: "ZOBACZ SZCZEGÓŁY",
       ctaHref: "/kursy/z-rozmowy-do-oferty",
+      art: { kind: "robot" as const, src: "/assets/card-oferta-robot.webp" },
       photo: "/assets/card-automatyzacja-src.png",
       photoM: "/assets/m-card-automatyzacja-r.png",
     },
@@ -199,6 +216,7 @@ export const homePage: HomePage = {
   kontakt: {
     _type: "kontakt",
     headingLines: ["NAPISZ DO NAS", "POMOŻEMY DOBRAĆ KURS", "DO TWOICH POTRZEB"],
+    coursesCta: { label: "POZNAJ NASZE KURSY", href: "/#kursy" },
     fields: [
       { _type: "formField", id: "imie", label: "IMIĘ", placeholder: "Wpisz imię", kind: "text" },
       { _type: "formField", id: "nazwisko", label: "NAZWISKO", placeholder: "Wpisz nazwisko", kind: "text" },

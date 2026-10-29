@@ -98,6 +98,20 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
+* **2026-10-29 (2) — redesign home („ostatni szlif" Victorii, Figma `5ufIXE17KqmkvVrfSVzUFE`):**
+  1. Home desktop + mobile wg nowego designu: manifest v2 (robot z hologramami, „wniosek" z lime kreską), pasek TY DECYDUJESZ przed kartą webinaru, nowa karta webinaru (desktop + mobile wg Figmy), karty kursów v2 (pigułka, grafiki robotów; karta 1 = nowy kurs „AI pod kontrolą od podstaw", CTA `/#kontakt`), pasek „POZNAJ NASZE KURSY" nad kontaktem, przesunięcia hero/prowadzących/kontaktu.
+  2. Content: `HomeManifest.conclusion`, `DnaCard.pill` + `DnaCard.art` (panel|robot), `Kontakt.coursesCta`, `promo.headingSmall` (webinar). Nowy helper `src/lib/typo.ts` (`nbspOrphans` — polskie sieroty).
+  3. Rendery referencyjne: `design-refs/home-v2-*` (CLAUDE.md wskazuje stary plik — do aktualizacji po ustaleniu limitu z Patrykiem).
+
+* **2026-10-29:**
+  1. **Szerokość obszaru roboczego:** `--workspace` w `globals.css` = `min(1760px, calc(720px + 50vw))` (było 2400px). 1440 = pełna szerokość, 1920 → 1680 (marginesy 120px), szerokie ekrany → 1760. Komponenty bez zmian (korzystają z `var(--workspace)`).
+
+* **2026-10-28:**
+  1. **Podstawy SEO:** `src/lib/seo.ts` (`SITE_URL`, `ogFor()` — pełny OG per podstrona, bo Next nadpisuje `openGraph` płytko; `isIndexable` = tylko `VERCEL_ENV=production`), `app/robots.ts` (preview → disallow all; prod: bez /api i ekranów po płatności), `app/sitemap.ts` (strony + kursy bez treści zastępczej + opublikowane webinary), `app/opengraph-image.tsx` (1200×630, HK Modular `modular.woff`), JSON-LD `EducationalOrganization` + `WebSite` w `layout.tsx`, kanonik home w `app/page.tsx`.
+  2. `isPlaceholderCourse()` (`content/courses`) — 3 slugi z treścią zastępczą: `noindex, follow` i poza sitemapą.
+  3. Stopka: link SZKOLENIA `/szkolenia` (404) → `/#kursy`.
+  4. **Audyt SEO + robots.txt:** `app/robots.ts` — osobna grupa crawlerów AI (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot…) jawnie wpuszczona z tymi samymi `DISALLOW`; usunięty niestandardowy `Host`. Tytuły stron prawnych bez podwójnej marki (`legal.ts` metaTitle = „Regulamin” / „Polityka prywatności”, OG dokleja „| Kompetencje.ai”).
+
 * **2026-10-15:**
   5. **Home:** sekcja 3 kart kursów (`KursySection`) ukryta flagą `SHOW_KURSY_TILES` w `app/page.tsx` — komponent zachowany.
   4. **Karta webinaru na home** `components/webinar/WebinarPromo.tsx` (dane `WebinarPage.promo`, lista `homePage.webinarSlugs`), wstawiona między `ManifestSection` a nowym `ManifestBar` (pasek TY DECYDUJESZ wydzielony).

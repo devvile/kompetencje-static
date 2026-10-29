@@ -26,18 +26,21 @@ const G = {
   robot: { left: -9, top: 26, w: 646, h: 807 },
   // PNG 2x eksporty — naturalny rozmiar 1x (w=png/2), pozycje dostrajane korelacją vs render
   starRobot: { left: 0, top: 129, w: 259, h: 251.5 }, // ZA robotem (pozycja z renderu)
-  limeStarTR: { left: 1020.3, top: 173.5, w: 340.5, h: 323 },
+  // redesign 2026-10: Victoria przesunęła elementy o kilka px (delty z metadanych Figmy)
+  limeStarTR: { left: 1020.3, top: 163.5, w: 340.5, h: 323 },
   starTRsmall: { left: 1235, top: 195.6, w: 110.5, h: 105 },
-  swoosh: { left: 584, top: 438, w: 303.5, h: 304.5 },
-  aiLogo: { left: 1003.93, top: 444.89, w: 436.5, h: 369.5 },
+  swoosh: { left: 574, top: 428, w: 303.5, h: 304.5 },
+  aiLogo: { left: 987.93, top: 442.89, w: 436.5, h: 369.5 },
   h1: {
     left: 621,
-    line1: { top: 224.6, fontPx: 55, scaleY: 1, leading: 0.923 },
-    line2: { top: 287.4, fontPx: 56, scaleY: 1, leading: 1.125 },
+    line1: { top: 214.6, fontPx: 55, scaleY: 1, leading: 0.923 },
+    line2: { top: 277.4, fontPx: 56, scaleY: 1, leading: 1.125 },
   },
-  kicker: { left: 621, top: 360, fontPx: 18 },
-  tagline: { right: 1440 - 1140, top: 522, fontPx: 25, lineHeightPx: 35, width: 401 },
-  button: { left: 126, top: 728, w: 439, h: 74, radiusPx: 75, borderPx: 4, fontPx: 18 },
+  kicker: { left: 621, top: 350, fontPx: 18 },
+  tagline: { right: 1440 - 1127, top: 510, fontPx: 25, lineHeightPx: 35, width: 401 },
+  // kursor przy przycisku (2232:7475) — ten sam co przy kartach kursów
+  cursor: { left: 550.96, top: 765.49, w: 31.97, h: 40.6 },
+  button: { left: 126, top: 720, w: 439, h: 74, radiusPx: 75, borderPx: 4, fontPx: 18 },
 };
 
 function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
@@ -163,6 +166,20 @@ function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
           >
             {hero.ctaLabel}
           </Link>
+          <img
+            src="/assets/kursor.svg"
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute max-w-none"
+            style={{
+              left: c(G.cursor.left + (G.cursor.w - 23.884) / 2),
+              top: c(G.cursor.top + (G.cursor.h - 35.826) / 2),
+              width: c(23.884),
+              height: c(35.826),
+              transform: "rotate(-14.69deg)",
+            }}
+            data-node-id="2232:7475"
+          />
           {/* duże .AI z pionowym KOMPETENCJE */}
           <img
             src="/assets/ai-logo-filtered.png"

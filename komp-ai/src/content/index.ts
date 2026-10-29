@@ -7,7 +7,7 @@ import { webinary } from "./webinary";
 import type { HomePage, KursV2Page, LegalPage, ManifestPage, ONasPage, SiteSettings, WebinarPage } from "./types";
 
 // kursy (stary szablon): jeden plik na kurs w ./courses (przyszły schemat CMS-a)
-export { getCourse, getCourseSlugs, courseStats } from "./courses";
+export { getCourse, getCourseSlugs, courseStats, isPlaceholderCourse } from "./courses";
 export type { CourseContent } from "./courses";
 
 export async function getManifestPage(): Promise<ManifestPage> {

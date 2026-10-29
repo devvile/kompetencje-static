@@ -28,6 +28,12 @@ export async function getCourse(slug: string): Promise<CourseContent | null> {
   return null;
 }
 
+/** slug z treścią zastępczą (kopia agent-ai) — noindex i poza sitemapą, żeby
+ *  Google nie widział 4 identycznych stron; znika, gdy kurs dostanie własny plik */
+export function isPlaceholderCourse(slug: string): boolean {
+  return !courses[slug] && FALLBACK_SLUGS.includes(slug);
+}
+
 export async function getCourseSlugs(): Promise<string[]> {
   return [...Object.keys(courses), ...FALLBACK_SLUGS];
 }

@@ -37,7 +37,10 @@ export interface HomeManifest {
   lineA: string; // "NIE CHODZI O TO,"
   lineB: string; // "czy AI zmieni Twoją branżę."
   lineC: [string, string]; // "CHODZI O TO," / "CZY JESTEŚ NA TO GOTOWY."
+  /** wstęp akapitu (strong = pogrubienie) */
   paragraph: RichSeg[];
+  /** wniosek z limonkową kreską (strong = pogrubienie w kolorze lime) — redesign 2026-10 */
+  conclusion: RichSeg[];
   pill: RichSeg[];
   bar: { left: string; center: string; right: string };
   marqueeText: string;
@@ -55,7 +58,13 @@ export interface DnaCard {
   body: RichSeg[];
   ctaLabel: string;
   ctaHref: string;
-  /** zdjęcie karty desktop (prawa kolumna 415×554) */
+  /** pigułka pod tytułem („✦ Context Control") — redesign 2026-10 */
+  pill?: string;
+  /** grafika karty desktop (redesign 2026-10):
+   *  panel = szary panel 451×542 po prawej (tekst po lewej),
+   *  robot = robot z alfą na niebieskim po lewej (tekst po prawej) */
+  art?: { kind: "panel"; src: string } | { kind: "robot"; src: string };
+  /** zdjęcie karty desktop (prawa kolumna 415×554) — stary układ, gdy brak `art` */
   photo: string;
   /** zdjęcie karty mobile (316×210, zaokrąglone) */
   photoM: string;
@@ -123,6 +132,8 @@ export interface Kontakt {
   fields: FormField[];
   consentLabel: string;
   submitLabel: string;
+  /** pasek CTA nad nagłówkiem (home desktop, redesign 2026-10: „POZNAJ NASZE KURSY") */
+  coursesCta?: { label: string; href: string };
 }
 
 export interface FooterLink {
@@ -421,6 +432,8 @@ export interface WebinarPage {
     chips: { icon: "star" | "arrow"; text: string; variant: "lime" | "outline" }[];
     /** linie nagłówka; OSTATNIA na limonkowo */
     headingLines: string[];
+    /** małe słowo doklejone do 1. linii nagłówka („KTÓRY") */
+    headingSmall?: string;
     description: RichSeg[];
     /** grafika panelu (zdjęcie prowadzącego z tłem), proporcja ~483×561 */
     image: string;

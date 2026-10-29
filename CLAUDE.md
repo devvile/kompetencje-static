@@ -14,10 +14,13 @@ Strona ma być zoptymalizowana pod sprzedaż kursów AI, słowo kluczowe: **komp
 „kompetencje AI". Metadane, semantyczny HTML (h1-h6, landmarki), OG tags, sensowne titles
 per podstrona.
 
-## Figma (stan 2026-07-12)
+## Figma (stan 2026-10-29)
 
-- Plik roboczy: **`XsorNfllBh0GzGUQraAmtS`** („komp.ai final (Copy)") — duplikat w teamie Pro
-  Patryka → 200 wywołań MCP/dzień, 10/min.
+- **Plik roboczy od 2026-10-29: `5ufIXE17KqmkvVrfSVzUFE`** („komp.ai-07.10.26-23-40") — tu Victoria
+  (UI/UX) wnosi poprawki; plan WYKUPIONY (standard seat, potwierdzenie Patryka 2026-10-29).
+  Te same node-idy home (245:3490 / 375:1738). Rendery i metadane: `design-refs/home-v2-*`.
+- Poprzedni plik roboczy: `XsorNfllBh0GzGUQraAmtS` („komp.ai final (Copy)") — duplikat w teamie Pro
+  Patryka → 200 wywołań MCP/dzień, 10/min. Dla home NIEAKTUALNY.
 - **NIGDY nie wołać** oryginału `E89cL9RG0oh3mXDZOMtiaF` (team Starter designera, 6 wywołań/mies).
 - Stare kopie (`iPLmSEowDDjnbWysJoLFXM`, `r5JldYverS71ArswR7Lj7a`) — nieaktualne, nie używać.
 - Node-idy są identyczne między oryginałem a duplikatem.

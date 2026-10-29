@@ -1,10 +1,16 @@
 # STATUS — strona kompetencje.ai
-Ostatnia aktualizacja: 2026-10-15
+Ostatnia aktualizacja: 2026-10-29
 
 ## Faza
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
+- Strona główna zaktualizowana według „ostatniego szlifu" designerki Victorii — na komputerze i telefonie: nowa grafika robota i nowy układ tekstów w sekcji „Nie chodzi o to", pasek „TY DECYDUJESZ" przeniesiony nad kartę webinaru, odświeżona karta webinaru (nowe teksty, nowe zdjęcie, osobny projekt na telefon), nowe grafiki i etykiety w kartach kursów, nowy przycisk „POZNAJ NASZE KURSY" nad formularzem kontaktowym, drobne przesunięcia w kilku sekcjach. Pierwsza karta kursu to teraz nowy kurs „AI pod kontrolą od podstaw" (przycisk tymczasowo prowadzi do formularza kontaktowego). Zgodność z projektem: 97–99% (różnice to głównie dane, których projekt jeszcze nie ma, np. termin webinaru).
+- Na dużych monitorach (Full HD, 2K, 4K) strona nie jest już przesadnie powiększona: treść ma najwyżej ok. 1760 pikseli szerokości, a na Full HD po bokach pojawiły się szare marginesy. Na laptopach i telefonach nic się nie zmieniło.
+- Audyt SEO całej strony: wszystkie podstrony mają poprawne tytuły, opisy, adresy kanoniczne i grafikę do udostępniania. Plik dla robotów wyszukiwarek uzupełniony — wprost wpuszczamy też wyszukiwarki AI (ChatGPT, Claude, Perplexity, Gemini), żeby asystenci AI mogli polecać nasze kursy. Poprawione tytuły regulaminu i polityki prywatności (nazwa marki była w nich dwa razy).
+- Podstawy SEO: Google dostaje teraz mapę strony i instrukcje, co indeksować; linki do strony wklejane na LinkedIn/Messenger pokazują firmową grafikę z tytułem; w wynikach wyszukiwania marka jest opisana jako organizacja edukacyjna. Trzy kursy, które na razie mają skopiowaną treść innego kursu, są ukryte przed Google, dopóki nie dostaną własnych opisów.
+- Naprawiony link „SZKOLENIA" w stopce (prowadził do nieistniejącej strony) — tymczasowo prowadzi do kursów na stronie głównej.
+- Przegląd całej strony: działa poprawnie na wszystkich podstronach, ale strony są za ciężkie (strona główna ~25 MB) — na telefonach z gorszym zasięgiem ładują się wolno. Zaplanowane odchudzenie.
 - Ze strony głównej tymczasowo zniknęła sekcja z trzema małymi kartami kursów (gotowa do przywrócenia jednym przełącznikiem).
 - Na stronie głównej, nad paskiem „TY DECYDUJESZ", pojawiła się karta reklamująca webinar (według projektu designera) — prowadzi do strony szczegółów webinaru. Data i godzina uzupełnią się same po wpisaniu terminu.
 - Strona szczegółów webinaru („Zbuduj swojego agenta AI w 60 minut") jako uniwersalny szablon — kolejne webinary dodajemy samymi danymi (termin, prowadzący, cena, program). Strona jest podlinkowana ze strony głównej, ale jeszcze niewidoczna w Google.
@@ -24,8 +30,12 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Strona pojedynczego kursu: wersja desktop częściowo zbudowana (hero, „co zyskasz", program); brakuje sekcji „dla kogo", paska z datą startu, kontaktu i całej wersji mobilnej.
 
 ## Czekam na / zablokowane
+- **Patryk**: przegląd zaktualizowanej strony głównej (komputer + telefon) po poprawkach Victorii.
+- **Patryk**: podstrona i treść kursu „AI pod kontrolą od podstaw" (dziś przycisk karty prowadzi do formularza kontaktowego) oraz decyzja: ceny w kartach „netto" (jak w projekcie) czy „brutto" (jak teraz na stronie).
+- **Patryk**: dokąd ma prowadzić „SZKOLENIA" w stopce (osobna strona szkoleń dla firm czy lista kursów)?
+- **Patryk**: linki do profili firmy (LinkedIn, Instagram itp.) — Google połączy je z marką.
 - **Patryk**: konto Resend (wysyłka maili) i dostęp do ustawień DNS domeny kompetencje.ai — bez tego formularz kontaktowy nie wysyła wiadomości.
-- **Patryk**: termin webinaru, potwierdzenie prowadzącego (w projekcie było puste pole; wpisaliśmy Piotra Małysza) i link, pod który mają prowadzić przyciski „Zapisz się".
+- **Patryk**: termin webinaru (dopóki go nie ma, strona webinaru jest ukryta przed Google, mimo że link do niej jest na stronie głównej), potwierdzenie prowadzącego (w projekcie było puste pole; wpisaliśmy Piotra Małysza) i link, pod który mają prowadzić przyciski „Zapisz się".
 - **Designer**: (opcjonalnie) widoki mobilne programu kursu, paska „Gotowy…" i karty zapisu — teraz zrobione przez nas w tym samym stylu.
 - **Patryk**: na telefonie projekt mówi „praktyk z 6 latami w fintechu", na komputerze „7 latami wdrożeń w firmach" — który tekst jest prawdziwy?
 - **Patryk**: przegląd strony kursu „Z rozmowy do oferty" oraz decyzje: czy stopka ma być jak w nowym projekcie (prostsza) czy jak na reszcie strony; skąd na stronie głównej linkujemy do tego kursu.
@@ -38,6 +48,8 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - **Zespół/designer**: projekty pozostałych podstron (ewentualne kolejne widoki) oraz wersje mobilne nowych widoków.
 
 ## Następne kroki
+- Odchudzenie strony (lżejsze formaty zdjęć, wideo tylko w wersji dla danego urządzenia, usunięcie zbędnych plików) — cel: strona główna 3–5 MB zamiast ~25 MB.
+- Po podpięciu domeny: zgłoszenie strony w Google Search Console.
 - Uruchomienie wysyłki formularza kontaktowego i maili z potwierdzeniem zapisu (usługa Resend).
 - Dokończenie konfiguracji płatności (Stripe: webhook, test płatności testowej, klucze na Vercel).
 - Formularz zapisu na kurs: najpierw sam wygląd (bez zapisywania danych), potem podpięcie bazy i płatności.
@@ -46,7 +58,6 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Kolejne animacje (sekcje DNA, kontakt, stopka) i grafiki hero generowane AI dla podstron.
 
 ## Ryzyka / uwagi
-- Nowe projekty designera są w nowym pliku Figmy — do ustalenia, czy cała dalsza praca przechodzi na ten plik.
 - Na tabletach strona główna i „O nas" pokazują formularz kontaktowy w bardzo małym rozmiarze — na Manifeście już poprawione, warto ujednolicić.
 - Płatności online (Stripe) są gotowe w trybie testowym — przed startem sprzedaży potrzebny test całego procesu i klucze produkcyjne.
 - Faktury: wymagany system zgodny z KSeF (np. Fakturownia/inFakt) — jeszcze niewykupiony; przed startem sprzedaży trzeba go wybrać.

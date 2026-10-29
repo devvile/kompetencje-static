@@ -126,7 +126,7 @@ export const politykaPrywatnosci: LegalPage = {
   outro: "masz pytania o swoje dane ?",
   ctaLabel: "NAPISZ DO NAS",
   ctaHref: "/#kontakt",
-  metaTitle: "Polityka prywatności — kompetencje.ai",
+  metaTitle: "Polityka prywatności",
   metaDescription:
     "Dowiedz się, jak kompetencje.ai chroni Twoje dane osobowe: jakie dane zbieramy, w jakich celach, jak długo je przechowujemy i jakie prawa Ci przysługują.",
 };
@@ -256,7 +256,7 @@ export const regulamin: LegalPage = {
   outro: "wolisz zapytać wprost ?",
   ctaLabel: "NAPISZ DO NAS",
   ctaHref: "/#kontakt",
-  metaTitle: "Regulamin — kompetencje.ai",
+  metaTitle: "Regulamin",
   metaDescription:
     "Regulamin serwisu kompetencje.ai: zasady zakupu kursów AI online, płatności, dostęp do materiałów, odstąpienie od umowy i reklamacje.",
 };

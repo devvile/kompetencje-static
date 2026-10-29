@@ -5,7 +5,8 @@ import KursZyskasz from "../../../components/kurs/KursZyskasz";
 import KursProgramModules, { KursProgramIntro } from "../../../components/kurs/KursProgram";
 import StopkaSection from "../../../components/home/StopkaSection";
 import KursV2Template from "../../../components/kurs-v2/KursV2Template";
-import { getCourse, getCourseSlugs, getKursV2Page, getKursV2Slugs, getSiteSettings } from "../../../content";
+import { getCourse, getCourseSlugs, getKursV2Page, getKursV2Slugs, getSiteSettings, isPlaceholderCourse } from "../../../content";
+import { ogFor } from "../../../lib/seo";
 
 /*
  * /kursy/[slug] — dwa szablony:
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       title: v2.metaTitle,
       description: v2.metaDescription,
       alternates: { canonical: `/kursy/${slug}` },
-      openGraph: { title: `${v2.metaTitle} | Kompetencje.ai`, description: v2.metaDescription },
+      openGraph: ogFor(`/kursy/${slug}`, `${v2.metaTitle} | Kompetencje.ai`, v2.metaDescription),
     };
   }
   const course = await getCourse(slug);
@@ -38,10 +39,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: { absolute: course.metaTitle },
     description: course.metaDescription,
     alternates: { canonical: `/kursy/${slug}` },
-    openGraph: {
-      title: course.metaTitle,
-      description: course.metaDescription,
-    },
+    openGraph: ogFor(`/kursy/${slug}`, course.metaTitle, course.metaDescription),
+    // treść zastępcza (kopia innego kursu) — poza indeksem do czasu własnej treści
+    robots: isPlaceholderCourse(slug) ? { index: false, follow: true } : undefined,
   };
 }
 

@@ -79,6 +79,31 @@ tekstury 2624×1630; maski logo).
 
 ## Otwarte zadania
 
+- [ ] **Redesign home „ostatni szlif" Victorii (Figma `5ufIXE17KqmkvVrfSVzUFE`, 2026-10-29)**
+  Rendery: `design-refs/home-v2-desktop-full.png` (1440×9284), `home-v2-mobile-full.png` (402×11657),
+  metadane `home-v2-*-metadata.xml`. Decyzje Patryka: karta 1 = NOWY kurs „AI pod kontrolą od podstaw"
+  (CTA tymczasowo `/#kontakt`, podstrona później); kafle „NIE CZEKAJ" ZOSTAJĄ ukryte; webinar = nowe
+  teksty z Figmy, daty dalej z danych.
+  - [x] DESKTOP (2026-10-29): hero (delty 2–16px + kursor) 1.20%; manifest „NIE CHODZI O TO" nowy
+        (robot z hologramami, linia z gwiazdkami, wniosek z lime kreską) 2.87%; pasek TY DECYDUJESZ
+        PRZED webinarem; karta webinaru (karta 612 wys., kolumna prowadzącego, KTÓRY, 3 pigułki)
+        ~4.9%; karty kursów v2 (pigułka, grafiki robotów, kursor przy CTA, nowe helisy) 2.83%;
+        prowadzący podniesieni (−89.6) 1.46%; pasek „POZNAJ NASZE KURSY" nad kontaktem 1.34%.
+        hscroll czysty 375–2560.
+  - [x] MOBILE (2026-10-29): manifest v2 + pasek haseł, karta webinaru wg 2245:1665, karty kursów
+        (pigułki, karta 2 z robotem), prowadzący (odstępy −98/−196 + duża gwiazda), kontakt −47.5.
+  - [ ] REVIEW Patryka całości (desktop + mobile).
+  - [x] Mobile karta 1: design ma jeszcze stary kurs „Agent AI w Twoim biznesie" — decyzja Patryka
+        (2026-10-29): pokazujemy TYLKO nowy kurs „AI pod kontrolą" (wdrożone, kadr robota z desktopu).
+  - [ ] Hero mobile: w designie doszedł kursor przy przycisku — nasz hero ma osobny układ
+        (ramka 2043:1621), kursora nie dodano.
+  - [ ] Do decyzji: desktop nagłówek „CZY JESTEŚ NA TO " (designer ma spację na końcu → linia
+        przesunięta w lewo; wdrożone równo do prawej), pill „efektywnie i ... na własnych zasadach"
+        (wielokropek tylko w desktopie designu — nie wdrożony), ceny „netto" w designie vs „brutto"
+        na stronie (zostaje brutto). 68 px przerwy przed HUMAN/MACHINE — decyzja Patryka: ZOSTAWIĆ jak jest.
+  - Figma: plik `5ufIXE17KqmkvVrfSVzUFE` w wykupionym planie (standard seat) — wpisane do CLAUDE.md.
+- [x] Mniejszy workspace na szerokich ekranach (2026-10-29): cap 1760, na 1920 marginesy 120px.
+
 - [x] Duplikat Figmy w teamie Pro (fileKey `XsorNfllBh0GzGUQraAmtS`)
 - [x] get_metadata home desktop + mobile; pełne rendery w `design-refs/`
 - [x] Scaffold Next.js 16 w `komp-ai/` + skrypty walidacyjne
@@ -258,7 +283,24 @@ tekstury 2624×1630; maski logo).
       dla Patryka; ewent. zapisy na webinar. Potrzebne: konto Resend + RESEND_API_KEY
       (.env.local + Vercel), rekordy DNS kompetencje.ai (SPF/DKIM), adres nadawcy.
 - [ ] Content layer (mock Sanity) od pierwszej sekcji
-- [ ] SEO: metadata API, OG, semantyka, keyword „kompetencje.ai"
+- [x] SEO podstawy (2026-10-28): robots, sitemap, OG image + pełne OG per podstrona,
+      JSON-LD Organization/WebSite, noindex kursów z treścią zastępczą, link /szkolenia.
+- [x] Audyt SEO + robots.txt (2026-10-28): grupa crawlerów AI, bez `Host`, tytuły prawnych bez podwójnej marki.
+- [ ] SEO z audytu: webinar `published:true` gdy termin znany (wtedy index + sitemap); skrócić
+      description ≤160 zn. (o-nas 189, z-rozmowy 184, webinar 177, manifest 174, home 160 ok);
+      `app/not-found.tsx` po polsku (teraz „404: This page could not be found.”); og:image home
+      sprawdzić na produkcji (w dev = localhost); przejrzeć `alt=""` (~75% obrazków) pod kątem
+      treściowych grafik (robot, prowadzący, karty).
+- [ ] SEO dalej: Google Search Console + zgłoszenie sitemapy po starcie domeny; sameAs
+      (LinkedIn/IG) w JSON-LD gdy Patryk poda profile; OG per kurs (grafika kursu);
+      wyrzucić `keywords` (Google ignoruje) — opcjonalnie.
+- [ ] WYDAJNOŚĆ (z analizy 2026-10-28): home 25 MB desktop / 20 MB mobile, każda podstrona
+      ≥10 MB. (1) `next/image` zamiast `<img>` (163×, WebP/AVIF + sizes), (2) wideo
+      hm-hands desktop (7 MB) pobierane na mobile — źródło tylko dla widocznego wariantu,
+      (3) prefetch linków nav ściąga obrazki home na każdej stronie (do potwierdzenia),
+      (4) ~60 MB nieużywanych plików w public/assets (*-src*, m-robot-fill 15 MB…).
+- [ ] Lint: 15 błędów (setState w efektach, `<a>` → `<Link>`, JSX w try/catch w dziekujemy).
+- [ ] Stopka SZKOLENIA tymczasowo → `/#kursy` — Patryk: docelowa strona szkoleń?
 - [ ] Pozostałe widoki (podstrony) — Patryk dostarczy linki po zakończeniu home
 - [x] **Faza 2 (częściowo, 2026-07-28, CSS/JS bez GSAP)**: animacje home —
       hero (wejścia napisów, pulsy gwiazd/CTA/bloba), manifest (scroll-reveal

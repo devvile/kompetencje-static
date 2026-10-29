@@ -15,18 +15,20 @@ import type { Prowadzacy } from "@/content/types";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
-/* px designu, origin = góra sekcji y5347 */
+/* px designu. Redesign 2026-10: origin = koniec human/machine (strona y6066.6),
+ * tło od y6130 (bgTop 63.4, było 103), treść podniesiona o 50 względem tła →
+ * wszystkie topy = stare - 89.6 (DY); h = do początku kontaktu (y6926). */
+const DY = 89.6;
 const G = {
-  h: 902,
-  bgTop: 103,
-  header: { left: 202, top: 272.7, fontPx: 18.5, trackPx: 0.55 },
-  line: { x: 487, top: 280.2, w: 158, h: 1.4 },
+  h: 859.4,
+  bgTop: 63.4,
+  header: { left: 202, top: 272.7 - DY, fontPx: 18.5, trackPx: 0.55 },
+  line: { x: 487, top: 280.2 - DY, w: 158, h: 1.4 },
   // KOMPLETNE gwiazdy z Figmy (SVG, bez wycięcia pod kartę — uwaga Patryka
-  // przy dryfie): pełne bboxy z transformów eksportu (node origin na stronie
-  // 9724=(1052,5555), 9714=(0,5928.35); origin sekcji y5347)
-  starR: { left: 1052, top: 208, w: 388, h: 393 },
-  starL: { left: 0, top: 581.35, w: 381, h: 377 },
-  cardY: 383,
+  // przy dryfie): pełne bboxy z transformów eksportu
+  starR: { left: 1052, top: 208 - DY, w: 388, h: 393 },
+  starL: { left: 0, top: 581.35 - DY, w: 381, h: 377 },
+  cardY: 383 - DY,
   cards: [
     { x: 200, r: 49, photoH: 406.5 },
     { x: 582, r: 40, photoH: 406.5 },

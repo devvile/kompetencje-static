@@ -15,7 +15,8 @@ const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 const fs = (px: number, minPx: number) => `max(${minPx}px, ${c(px)})`;
 
 /* współrzędne = px designu (frame 1440×720) */
-const CARD = { x: 159.33, y: 70, w: 1121.33, h: 560.67, r: 33 };
+// redesign 2026-10 (frame 2204:1684): karta wyższa 612, nowa kolumna prowadzącego
+const CARD = { x: 159.33, y: 56, w: 1121.33, h: 612, r: 33 };
 const BAR_W = 81.2;
 const BLUE_W = 556.8;
 
@@ -31,7 +32,7 @@ const Rich = ({ segs }: { segs: RichSeg[] }) => (
   <>
     {segs.map((s, i) =>
       s.strong ? (
-        <strong key={i} className="font-semibold">
+        <strong key={i} className="font-semibold" style={s.weight ? { fontWeight: s.weight } : undefined}>
           {s.text}
         </strong>
       ) : (
@@ -85,30 +86,38 @@ function Desktop({ w }: { w: WebinarPage }) {
           />
         </div>
         <img
-          src="/assets/webinar/w-ad-card-outline.svg"
+          src="/assets/webinar/w-ad-card-outline-v2.svg"
           alt=""
           aria-hidden
           className="pointer-events-none absolute max-w-none"
-          style={{ left: c(CARD.x - 3), top: c(CARD.y - 3), width: c(1127.33), height: c(566.67) }}
+          style={{ left: c(CARD.x - 3), top: c(CARD.y - 3), width: c(1128), height: c(618) }}
         />
 
-        {/* limonkowy pasek: prowadzący + cena (pionowo, od dołu do góry) */}
+        {/* limonkowy pasek (kolumna x187, w29): nazwisko | PROWADZĄCY | cena — pionowo, od dołu do góry */}
         <p
-          className="absolute whitespace-nowrap font-display font-semibold text-brand-blue"
-          style={{ left: c(196.7), top: c(169.6), width: c(22), height: c(233), writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          className="absolute whitespace-nowrap font-display font-black text-brand-blue"
+          style={{ left: c(187), top: c(96), width: c(29), height: c(226), fontSize: fs(24, 14), lineHeight: "normal", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          data-node-id="2204:1791"
         >
-          <span style={{ fontSize: fs(10.63, 8) }}>PROWADZĄCY</span>
-          <span style={{ fontSize: fs(18.37, 12) }}>{`  ${w.details.instructor.toUpperCase()}`}</span>
+          {w.details.instructor.toUpperCase()}
         </p>
         <p
           className="absolute whitespace-nowrap font-modular text-brand-blue"
-          style={{ left: c(193.9), top: c(457.5), width: c(13), height: c(134.9), fontSize: fs(16.2, 11), lineHeight: 1, writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          style={{ left: c(187), top: c(337), width: c(29), height: c(98), fontSize: fs(10.63, 8), lineHeight: "normal", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          data-node-id="2204:1792"
+        >
+          PROWADZĄCY
+        </p>
+        <p
+          className="absolute whitespace-nowrap font-modular text-brand-blue"
+          style={{ left: c(195.3), top: c(491), width: c(13), height: c(134.9), fontSize: fs(16.2, 11), lineHeight: 1, writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          data-node-id="2204:1793"
         >
           {formatWebinarPrice(w.details.price).toUpperCase()}
         </p>
 
         {/* pigułki nad nagłówkiem */}
-        <ul className="absolute flex items-center" style={{ left: c(288.87), top: c(102.67), columnGap: c(9.67) }}>
+        <ul className="absolute flex items-center" style={{ left: c(288.87), top: c(95.67), columnGap: c(10) }}>
           {p.chips.map((ch) => {
             const ic = ICON[ch.icon];
             const lime = ch.variant === "lime";
@@ -133,10 +142,11 @@ function Desktop({ w }: { w: WebinarPage }) {
         </ul>
 
         {/* nagłówek */}
-        <h2 className="absolute font-display font-extrabold" style={{ left: c(286.66), top: c(156.87), fontSize: c(49.58), lineHeight: c(51.42) }}>
+        <h2 className="absolute font-display font-extrabold" style={{ left: c(286.66), top: c(152.86), fontSize: c(49.58), lineHeight: c(51.42) }}>
           {p.headingLines.map((l, i) => (
             <span key={l} className={`block whitespace-nowrap ${i === p.headingLines.length - 1 ? "text-brand-lime" : "text-white"}`}>
               {l}{" "}
+              {i === 0 && p.headingSmall ? <span style={{ fontSize: c(20) }}>{p.headingSmall}</span> : null}
             </span>
           ))}
         </h2>
@@ -144,13 +154,13 @@ function Desktop({ w }: { w: WebinarPage }) {
         {/* opis */}
         <p
           className="absolute text-justify font-display font-light text-white"
-          style={{ left: c(289), top: c(333), width: c(432), fontSize: fs(14.5, 11.5), lineHeight: 1.4 }}
+          style={{ left: c(289), top: c(333), width: c(440), fontSize: fs(13.5, 11.5), lineHeight: 19 / 13.5 }}
         >
           <Rich segs={p.description} />
         </p>
 
         {/* data · godziny · forma */}
-        <ul className="absolute flex items-center" style={{ left: c(286.93), top: c(453.31), columnGap: c(7.75) }}>
+        <ul className="absolute flex items-center" style={{ left: c(286.93), top: c(470.31), columnGap: c(8) }}>
           {chips.map((ch) => (
             <li
               key={ch.text}
@@ -167,25 +177,26 @@ function Desktop({ w }: { w: WebinarPage }) {
         <a
           href={href}
           className="absolute flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue transition-transform hover:scale-[1.03]"
-          style={{ left: c(288.87), top: c(520.04), width: c(359.17), height: c(52.43), borderRadius: c(26.2), borderWidth: c(4), columnGap: c(11), fontSize: fs(18.4, 12) }}
+          style={{ left: c(288.87), top: c(547.06), width: c(359.17), height: c(52.43), borderRadius: c(26.2), borderWidth: c(4), columnGap: c(11), fontSize: fs(18.4, 12) }}
         >
           {p.ctaLabel}
           <CtaArrow style={{ width: c(17.6), height: c(12.6) }} />
         </a>
         {p.ctaNote && (
-          <p className="absolute whitespace-nowrap font-display font-medium text-[#cdd2ff]" style={{ left: c(308.2), top: c(586.11), fontSize: fs(10.63, 9) }}>
+          <p className="absolute whitespace-nowrap font-display font-medium text-[#cdd2ff]" style={{ left: c(308.2), top: c(614.1), fontSize: fs(10.63, 9) }}>
             {p.ctaNote}
           </p>
         )}
 
         {/* dekory */}
-        <img src="/assets/webinar/w-ad-star-main.svg" alt="" aria-hidden className="manifest-spark absolute max-w-none" style={{ left: c(753.76), top: c(200.6), width: c(77.24), height: c(94.78) }} />
-        <img src="/assets/webinar/w-ad-star-cta.svg" alt="" aria-hidden className="absolute max-w-none" style={{ left: c(683.6), top: c(520.9), width: c(65.86), height: c(56.88) }} />
-        <img src="/assets/webinar/w-ad-aigym.svg" alt="AI GYM" className="absolute max-w-none" style={{ left: c(821.97), top: c(97.73), width: c(145.09), height: c(55.89) }} />
+        {/* STAR_ARROW 2204:1870 (zrotowany) — wycięty z renderu, leży na granicy treści i panelu */}
+        <img src="/assets/webinar/w-ad-star-main-v2-f.png" alt="" aria-hidden className="manifest-spark absolute max-w-none" style={{ left: c(739), top: c(190), width: c(125), height: c(71) }} />
+        <img src="/assets/webinar/w-ad-star-cta.svg" alt="" aria-hidden className="absolute max-w-none" style={{ left: c(675.5), top: c(539.8), width: c(65.86), height: c(56.88) }} />
+        <img src="/assets/webinar/w-ad-aigym.svg" alt="AI GYM" className="absolute max-w-none" style={{ left: c(851.9), top: c(97.7), width: c(145.09), height: c(55.89) }} />
         {p.expertise && (
           <p
-            className="absolute flex items-center whitespace-nowrap border-solid border-[#969EFF] bg-[#06093A] font-display font-semibold text-white"
-            style={{ left: c(1037.61), top: c(552.37), height: c(30.93), borderRadius: c(15.47), borderWidth: c(1.2), padding: `0 ${c(15.5)}`, fontSize: fs(12.57, 10) }}
+            className="absolute flex items-center whitespace-nowrap border-solid border-[#969EFF] font-display font-semibold text-white"
+            style={{ left: c(1016.15), top: c(572.37), height: c(30.93), borderRadius: c(15.47), borderWidth: c(1.2), padding: `0 ${c(15.5)}`, fontSize: fs(12.57, 10) }}
           >
             {p.expertise}
           </p>
@@ -195,83 +206,130 @@ function Desktop({ w }: { w: WebinarPage }) {
   );
 }
 
-/* ======================= MOBILE / TABLET (<1024) ======================= */
+/* ======================= MOBILE / TABLET (<1024) =======================
+ * Redesign 2026-10 (Figma 2245:1665 „Reklama webinaru (mobile)", 402 szer.):
+ * lime tło z siatką, karta blue r30 = pionowy lime pasek 44 (nazwisko |
+ * PROWADZĄCY | cena) + treść: zdjęcie 290×340, pigułki, nagłówek z KTÓRY,
+ * opis, termin, CTA. Układ przepływowy; jednostki cqw względem 402. */
+
+const m = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
+const mfs = (px: number, minPx: number) => `max(${minPx}px, ${m(px)})`;
 
 function Mobile({ w }: { w: WebinarPage }) {
   const p = w.promo!;
   const href = `/webinary/${w.slug}`;
   const chips = infoChips(w);
   return (
-    <div className="relative overflow-hidden px-4 py-12 leading-[normal] lg:hidden">
-      <img src="/assets/webinar/w-ad-grid.svg" alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
-      <article className="relative mx-auto max-w-[560px] overflow-hidden rounded-[28px] border-[4px] border-solid border-brand-blue bg-brand-blue">
-        <div className="relative">
-          <img src={p.image} alt={p.imageAlt} className="aspect-[483/430] w-full object-cover object-top" />
-          <img src="/assets/webinar/w-ad-aigym.svg" alt="AI GYM" className="absolute left-4 top-4 w-[118px]" />
-          {p.expertise && (
-            <p className="absolute bottom-4 right-4 rounded-full border-[1.2px] border-solid border-[#969EFF] bg-[#06093A] px-3 py-[6px] font-display text-[12px] font-semibold text-white">
-              {p.expertise}
+    <div className="relative w-full overflow-hidden leading-[normal] lg:hidden" data-node-id="2245:1665">
+      <img src="/assets/webinar/w-ad-grid.svg" alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-55" />
+      {/* tablet: karta nie rośnie ponad 520px (cqw liczone od tego kontenera) */}
+      <div className="@container relative mx-auto w-full max-w-[520px]">
+      <div className="relative" style={{ padding: `${m(56)} ${m(16)} ${m(72)}` }}>
+        <div className="flex overflow-hidden border-solid border-brand-blue bg-brand-blue" style={{ borderWidth: m(3), borderRadius: m(30) }}>
+          {/* pasek boczny: nazwisko | PROWADZĄCY | cena — pionowo od dołu */}
+          <div className="flex shrink-0 flex-col items-center bg-brand-lime" style={{ width: m(44), paddingTop: m(35), paddingBottom: m(35) }}>
+            <div className="flex flex-col items-center" style={{ width: m(29), gap: m(85) }}>
+              <div className="flex flex-col" style={{ gap: m(15) }}>
+                <p className="whitespace-nowrap font-display font-black text-brand-blue" style={{ height: m(226), fontSize: m(24), writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                  {w.details.instructor.toUpperCase()}
+                </p>
+                <p className="whitespace-nowrap font-modular text-brand-blue" style={{ height: m(98), fontSize: mfs(10.63, 8), writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                  PROWADZĄCY
+                </p>
+              </div>
+              <p className="whitespace-nowrap font-modular text-brand-blue" style={{ height: m(134.9), fontSize: mfs(16.2, 11), lineHeight: 1, writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                {formatWebinarPrice(w.details.price).toUpperCase()}
+              </p>
+            </div>
+          </div>
+
+          {/* treść */}
+          <div className="flex min-w-0 flex-1 flex-col items-start" style={{ gap: m(17), padding: `${m(22)} ${m(18)} ${m(40)}` }}>
+            {/* zdjęcie z tłem HUMAN/MACHINE (ten sam panel co desktop, kadr od góry) */}
+            <div className="relative shrink-0 overflow-hidden bg-[#06093a]" style={{ width: m(290), height: m(340), borderRadius: m(20) }}>
+              <img src={p.image} alt={p.imageAlt} className="absolute inset-0 h-full w-full object-cover object-top" />
+              <img src="/assets/webinar/w-ad-aigym.svg" alt="AI GYM" className="absolute max-w-none" style={{ left: m(12), top: m(12), width: m(101.5), height: "auto" }} />
+              {p.expertise && (
+                <p
+                  className="absolute flex items-center justify-center whitespace-nowrap border-solid border-[#969EFF] font-display font-semibold text-white"
+                  style={{ left: m(46), top: m(295.07), width: m(232), height: m(30.93), borderRadius: m(15.47), borderWidth: m(1.2), fontSize: mfs(12.57, 10) }}
+                >
+                  {p.expertise}
+                </p>
+              )}
+            </div>
+
+            {/* pigułki */}
+            <ul className="flex flex-wrap items-center" style={{ width: m(290), columnGap: m(10), rowGap: m(8) }}>
+              {p.chips.map((ch) => {
+                const ic = ICON[ch.icon];
+                const lime = ch.variant === "lime";
+                return (
+                  <li
+                    key={ch.text}
+                    className={`flex items-center whitespace-nowrap font-display ${lime ? "bg-brand-lime font-bold text-brand-blue" : "border-solid border-[#C8CDFF] font-semibold text-white"}`}
+                    style={{ height: m(36.73), borderRadius: m(18.37), borderWidth: lime ? 0 : m(1.5), padding: `0 ${m(21)} 0 ${m(18)}`, columnGap: m(10), fontSize: mfs(12.57, 10) }}
+                  >
+                    <img src={ic.src} alt="" aria-hidden style={{ width: m(ic.w), height: m(ic.h) }} />
+                    {ch.text}
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* nagłówek */}
+            <h2 className="font-display font-extrabold text-white" style={{ fontSize: m(31.14), lineHeight: m(34.06) }}>
+              {p.headingLines.map((l, i) => (
+                <span key={l} className={`block whitespace-nowrap ${i === p.headingLines.length - 1 ? "text-brand-lime" : ""}`} style={i === 0 ? { fontSize: m(33.4) } : undefined}>
+                  {l}{" "}
+                  {i === 0 && p.headingSmall ? <span style={{ fontSize: m(13.47) }}>{p.headingSmall}</span> : null}
+                </span>
+              ))}
+            </h2>
+
+            {/* opis */}
+            <p className="text-justify font-display font-light text-white" style={{ width: m(276), fontSize: mfs(14, 12), lineHeight: 19 / 14 }}>
+              <Rich segs={p.description} />
             </p>
-          )}
-        </div>
-        <p className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 bg-brand-lime px-5 py-3 text-brand-blue">
-          <span className="font-display text-[15px] font-semibold">
-            <span className="text-[10px]">PROWADZĄCY</span> {w.details.instructor.toUpperCase()}
-          </span>
-          <span className="font-modular text-[14px]">{formatWebinarPrice(w.details.price).toUpperCase()}</span>
-        </p>
-        <div className="flex flex-col gap-5 px-5 pb-7 pt-6">
-          <ul className="flex flex-wrap gap-2">
-            {p.chips.map((ch) => {
-              const ic = ICON[ch.icon];
-              const lime = ch.variant === "lime";
-              return (
+
+            {/* data · godziny · forma */}
+            <ul className="flex flex-wrap items-center" style={{ width: m(290), gap: m(8) }}>
+              {chips.map((ch) => (
                 <li
                   key={ch.text}
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 font-display text-[12px] ${lime ? "bg-brand-lime font-bold text-brand-blue" : "border-[1.5px] border-solid border-[#C8CDFF] font-semibold text-white"}`}
+                  className="flex items-center whitespace-nowrap border-solid border-[#8C94FF] bg-[#000AE6] font-display font-semibold text-white"
+                  style={{ height: m(40.6), borderRadius: m(20.3), borderWidth: m(1.5), padding: `0 ${m(16.4)}`, columnGap: m(8), fontSize: mfs(12.57, 10) }}
                 >
-                  <img src={ic.src} alt="" aria-hidden className="h-[14px] w-auto" />
+                  <img src={ch.icon.src} alt="" aria-hidden style={{ width: m(ch.icon.w), height: m(ch.icon.h) }} />
                   {ch.text}
                 </li>
-              );
-            })}
-          </ul>
-          <h2 className="font-display text-[clamp(30px,8.6vw,44px)] font-extrabold leading-[1.04]">
-            {p.headingLines.map((l, i) => (
-              <span key={l} className={`block ${i === p.headingLines.length - 1 ? "text-brand-lime" : "text-white"}`}>
-                {l}{" "}
-              </span>
-            ))}
-          </h2>
-          <p className="font-display text-[15px] font-light leading-[1.5] text-white">
-            <Rich segs={p.description} />
-          </p>
-          <ul className="flex flex-wrap gap-2">
-            {chips.map((ch) => (
-              <li
-                key={ch.text}
-                className="flex items-center gap-2 rounded-full border-[1.5px] border-solid border-[#8C94FF] bg-[#000AE6] px-4 py-[9px] font-display text-[13px] font-semibold text-white"
+              ))}
+            </ul>
+
+            {/* CTA */}
+            <div className="flex w-full flex-col items-center" style={{ gap: m(12), paddingTop: m(6), paddingBottom: m(4) }}>
+              <a
+                href={href}
+                className="flex items-center justify-center whitespace-nowrap border-solid border-white bg-brand-lime font-modular text-brand-blue"
+                style={{ width: m(270), height: m(51.12), borderRadius: m(25.56), borderWidth: m(3), columnGap: m(9), fontSize: mfs(13.5, 11) }}
               >
-                <img src={ch.icon.src} alt="" aria-hidden className="h-4 w-4" />
-                {ch.text}
-              </li>
-            ))}
-          </ul>
-          <a
-            href={href}
-            className="flex h-14 w-full items-center justify-center gap-3 rounded-full border-[4px] border-solid border-white bg-brand-lime font-modular text-[17px] text-brand-blue"
-          >
-            {p.ctaLabel}
-            <CtaArrow className="h-[13px] w-[18px]" />
-          </a>
-          {p.ctaNote && <p className="text-center font-display text-[12px] font-medium text-[#cdd2ff]">{p.ctaNote}</p>}
+                {p.ctaLabel}
+                <CtaArrow style={{ width: m(15), height: m(11) }} />
+              </a>
+              {p.ctaNote && (
+                <p className="whitespace-nowrap font-display font-medium text-[#cdd2ff]" style={{ fontSize: mfs(10.63, 9) }}>
+                  {p.ctaNote}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
+      </div>
     </div>
   );
 }
 
-/** sekcja z kartami webinarów (na razie 1); pomija webinary bez `promo` */
 export default function WebinarPromo({ webinars }: { webinars: WebinarPage[] }) {
   const list = webinars.filter((w) => w.promo);
   if (!list.length) return null;

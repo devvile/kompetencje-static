@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogFor } from "../../lib/seo";
 import OnasHero from "../../components/onas/OnasHero";
 import OnasQa, { OnasQaMobile } from "../../components/onas/OnasQa";
 import OnasLime, { OnasLimeMobile } from "../../components/onas/OnasLime";
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
   description:
     "Poznaj zespół kompetencje.ai — nowoczesną firmę szkoleniową rozwijającą kompetencje AI wśród pracowników i organizacji w Polsce. Uczymy przez praktykę, na prawdziwych procesach biznesowych.",
   alternates: { canonical: "/o-nas" },
-  openGraph: {
-    title: "O nas | Kompetencje.ai",
-    description:
-      "Nowoczesna firma szkoleniowa specjalizująca się w rozwijaniu kompetencji AI. Prowadzimy szkolenia, które naprawdę działają.",
-  },
+  openGraph: ogFor(
+    "/o-nas",
+    "O nas | Kompetencje.ai",
+    "Nowoczesna firma szkoleniowa specjalizująca się w rozwijaniu kompetencji AI. Prowadzimy szkolenia, które naprawdę działają.",
+  ),
 };
 
 export default async function ONasPage() {

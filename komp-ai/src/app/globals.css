@@ -14,8 +14,10 @@
   --color-brand-blue: #131dff;
   --color-brand-lime: #d6ff3f;
   --color-page: #efefef;
-  /* globalny cap szerokości contentu — ultrawide dostaje "framed canvas" */
-  --workspace: 2400px;
+  /* globalny cap szerokości contentu — szersze ekrany dostają "framed canvas".
+     1440 → pełna szerokość; 1920 → 1680 (marginesy 120px); ≥2080 → stałe 1760.
+     (wcześniej 2400px: na 4K wszystko było ~1.7× za duże) */
+  --workspace: min(1760px, calc(720px + 50vw));
 }
 
 html {

@@ -1,0 +1,593 @@
+Currently selected nodes:
+- 375:1738: Strona_glowna_mobile
+
+
+<frame id="375:1738" name="Strona_glowna_mobile" x="-5190" y="-15200" width="402" height="11657">
+  <frame id="375:1739" name="Frame 65" x="0" y="44" width="402" height="70">
+    <frame id="375:1740" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+      <frame id="375:1741" name="Mask group" x="15" y="0" width="60.74492645263672" height="70">
+        <frame id="375:1742" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+          <frame id="375:1743" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+            <frame id="375:1744" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+              <rounded-rectangle id="375:1745" name="Rectangle" x="15" y="0" width="60.74492645263672" height="70" />
+            </frame>
+          </frame>
+        </frame>
+        <frame id="375:1746" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+          <frame id="375:1747" name="Group" x="15" y="0" width="60.74492645263672" height="70">
+            <rounded-rectangle id="375:1748" name="Rectangle" x="15" y="0" width="60.74492645263672" height="70" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="375:1749" name="Ikona / Menu (hamburger)" x="342" y="15" width="40" height="40" />
+  </frame>
+  <frame id="375:1754" name="Clip path group" x="301.365234375" y="-231.587890625" width="1358.050598183916" height="1375.0753511702424">
+    <frame id="375:1755" name="724992df3d" x="301.36526010474415" y="-231.58775021825042" width="1358.050598183916" height="1375.0753511702424">
+      <vector id="375:1756" name="Vector" x="301.36528525997295" y="-231.58760979342676" width="1358.050598183916" height="1375.0753511702424" />
+    </frame>
+    <frame id="375:1757" name="Group" x="301.36606074247953" y="-231.58780717937304" width="1357.515456869376" height="1374.7026049204687">
+      <frame id="375:1758" name="Clip path group" x="301.36610146278343" y="-231.587667244164" width="1357.515456869376" height="1374.7026049204687">
+        <frame id="375:1759" name="fd3864b0c8" x="301.366141608572" y="-231.58752729088087" width="1357.515456869376" height="1374.7026049204687">
+          <vector id="375:1760" name="Vector" x="301.36615125186614" y="-231.58738637813084" width="1357.515456869376" height="1374.7026049204687" />
+        </frame>
+        <frame id="375:1761" name="Group" x="301.366141608572" y="-231.58752729088087" width="1357.4629527574616" height="1374.6441944413855">
+          <vector id="375:1762" name="Vector" x="301.36615125186614" y="-231.58738637813084" width="1357.4629527574616" height="1374.6441944413855" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <text id="375:1764" name="KOMPETENCJE AI" x="0" y="181" width="402" height="32" />
+  <text id="397:1837" name="ZDOBĄDŹ Z NAMI" x="17" y="141" width="369" height="35" />
+  <text id="375:1765" name="WYKORZYSTAJ DZIŚ SWOJĄ SZANSE" x="160" y="234" width="181" height="34" />
+  <rounded-rectangle id="375:1793" name="TLO" x="0" y="875" width="403" height="2212" />
+  <frame id="375:1820" name="Frame 78" x="16" y="2665" width="377" height="195">
+    <text id="375:1821" name="Mamy dla Ciebie kurs, który odpowie na Twoje potrzeby i zapewni Ci kompetencje przyszłości – bez zbędnej teorii zacznij używać AI świadomie, efektywnie i na własnych zasadach." x="35" y="31.5" width="307" height="132" />
+  </frame>
+  <instance id="432:1664" name="STAR_OUTLINE" x="129.92279052734375" y="217.624755859375" width="142.97089356293782" height="140.24740553809352" />
+  <rounded-rectangle id="375:1763" name="robott3 1" x="-122" y="219" width="525" height="656" />
+  <instance id="401:1838" name="Big Button" x="51" y="776" width="300" height="55" />
+  <frame id="375:1767" name="Group 1" x="180" y="442" width="138.3533477783203" height="123">
+    <frame id="375:1768" name="Clip path group" x="180.0000633150339" y="442" width="138.3533477783203" height="123">
+      <frame id="375:1769" name="65d0d83368" x="180.00006331503346" y="442.00020957243396" width="138.3533477783203" height="123" />
+      <frame id="375:1771" name="Group" x="179.9214801415801" y="442.00110085483175" width="158.74635314941406" height="159.31253051757812">
+        <frame id="375:1772" name="Mask group" x="179.92165962679428" y="442.0012429029157" width="158.74635314941406" height="159.31253051757812">
+          <frame id="375:1773" name="Group" x="179.92183911200846" y="442.00138495099964" width="158.74635314941406" height="159.31253051757812">
+            <frame id="375:1774" name="Group" x="179.92201859722263" y="442.0015269990836" width="158.74635314941406" height="159.31253051757812">
+              <frame id="375:1775" name="Group" x="179.9221980824368" y="442.0016690471675" width="158.74635314941406" height="159.31253051757812">
+                <rounded-rectangle id="375:1776" name="Rectangle" x="179.92237756765098" y="442.00181109525147" width="158.74635314941406" height="159.31253051757812" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="375:1777" name="Group" x="179.92183911200846" y="442.00138495099964" width="158.74635314941406" height="159.31253051757812">
+            <frame id="375:1778" name="Group" x="179.92201859722263" y="442.0015269990836" width="158.74635314941406" height="159.31253051757812">
+              <rounded-rectangle id="375:1779" name="Rectangle" x="179.9221980824368" y="442.0016690471675" width="158.74635314941406" height="159.31253051757812" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <instance id="423:3574" name="STAR_ARROW" x="135.400390625" y="3219.6865234375" width="71.16116253231485" height="71.2989080712232" hidden="true" />
+  <text id="375:1794" name="NIE CHODZI O TO," x="24" y="1530" width="175" height="126" />
+  <text id="375:1807" name="CZY AI ZMIENI TWOJĄ BRANŻĘ." x="24" y="1684" width="256" height="24" />
+  <text id="375:1808" name="CHODZI O TO, CZY JESTEŚ NA TO GOTOWY." x="24" y="2210" width="354" height="123" />
+  <frame id="2251:8711" name="Group 22" x="0" y="2917" width="401.9999694824219" height="57">
+    <line id="2251:8710" name="Line 10" x="0" y="2947" width="401.9999573190471" height="1.0229006745230436" />
+    <instance id="375:1842" name="Big Button" x="44" y="2917" width="315" height="57" />
+  </frame>
+  <rounded-rectangle id="423:3059" name="dna_monochrome_kompetencje_ai 2" x="278.2099609375" y="5207.6025390625" width="287.0556715764924" height="268.30277536341964" />
+  <rounded-rectangle id="375:1854" name="Rectangle 2" x="0" y="3122" width="402" height="144" />
+  <text id="375:1861" name="AI TO NARZĘDZIE" x="35" y="3060" width="292" height="18" />
+  <text id="375:1864" name="JAK BARDZO ZMIENI TWOJĄ PRACĘ" x="158" y="3208" width="209" height="7" />
+  <frame id="375:1862" name="Frame 4" x="0" y="3087" width="402" height="100">
+    <text id="375:1863" name="TY DECYDUJESZ" x="34.5" y="28.5" width="333" height="43" />
+  </frame>
+  <instance id="423:3061" name="STAR_OUTLINE" x="249.173828125" y="5352.080078125" width="35.755885457819204" height="33.918428537013824" />
+  <instance id="381:1882" name="STAR_ARROW" x="303.54150390625" y="5368.9443359375" width="120.51924657032305" height="115.70865519090876" />
+  <rounded-rectangle id="423:3060" name="dna_monochrome_kompetencje_ai 3" x="-60" y="5274" width="252.0908072370121" height="236.87585835706705" />
+  <instance id="412:2925" name="Frame 108" x="20" y="4599.080078125" width="362" height="715" />
+  <frame id="2256:3821" name="Kafel kursu – Z rozmowy do oferty (mobile)" x="20" y="5454" width="362" height="841">
+    <frame id="2256:3822" name="Frame 106" x="0" y="0" width="362" height="841">
+      <frame id="2256:3823" name="Frame 103" x="-8.526512829121202e-14" y="841" width="46" height="841">
+        <text id="2256:3824" name="1500 PLN netto" x="198" y="16.5" width="13" height="138" />
+        <frame id="2256:3825" name="Frame 104" x="423" y="9.5" width="27" height="358">
+          <text id="2256:3826" name="PROWADZĄCY" x="0" y="4.5" width="18" height="106" />
+          <text id="2256:3827" name="PIOTR MAŁYSZ" x="119" y="0" width="27" height="239" />
+        </frame>
+      </frame>
+      <frame id="2256:3828" name="Frame 105" x="46" y="36.9599609375" width="316" height="767.080078125">
+        <frame id="2261:8713" name="Frame 126" x="0" y="0" width="316" height="471.080078125">
+          <frame id="2261:8712" name="Frame 125" x="0" y="0" width="316" height="133">
+            <text id="2256:3829" name="AGENT AI W TWOIM BIZNESIE" x="27" y="0" width="262" height="87" />
+            <frame id="2256:3830" name="Pigułka – wiersz" x="0" y="99" width="316" height="34">
+              <instance id="2256:3831" name="Pigułka – tag kursu" x="112" y="0" width="177" height="34" />
+            </frame>
+          </frame>
+          <frame id="2256:3832" name="Clip path group" x="0" y="128" width="316" height="343.080078125">
+            <frame id="2256:3833" name="bbe3652d61" x="0" y="128" width="316" height="343.080078125">
+              <vector id="2256:3834" name="Vector" x="-0.000030517578125" y="128.00000762939453" width="316" height="343.080078125" />
+            </frame>
+            <frame id="2256:3835" name="Group" x="-0.0000286102294921875" y="128" width="316" height="343.080078125">
+              <frame id="2256:3836" name="Group" x="-0.0000438690185546875" y="128" width="316" height="343.080078125">
+                <rounded-rectangle id="2256:3837" name="Rectangle" x="-0.0000438690185546875" y="128" width="316" height="343.080078125" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <text id="2256:3838" name="Dowiedz się, jak wykorzystać sztuczną inteligencję do automatyzacji procesów, zwiększania efektywności i skalowania działań bez zwiększania zespołu. Ten kurs pokaże Ci jak krok po kroku, wdrożyć AI do codziennej pracy - od obsługi klientów, przez marketing, aż do operacje - tak, aby realnie wspierało rozwók Twojego biznesu." x="27" y="498.080078125" width="262" height="187" />
+        <instance id="2256:3839" name="Big Button" x="27" y="712.080078125" width="262" height="55" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="423:3066" name="human and machine" x="-51.99951171875" y="6786.24462890625" width="673.7835693359375" height="590.9118041992188">
+    <frame id="423:3067" name="Clip path group" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229">
+      <frame id="423:3068" name="e677b44d44" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229">
+        <vector id="423:3069" name="Vector" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229" />
+      </frame>
+      <frame id="423:3070" name="Group" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229">
+        <vector id="423:3071" name="Vector" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229" />
+        <vector id="423:3072" name="Vector" x="-0.5077781677246094" y="7019.85888671875" width="401.99993896484375" height="229" />
+      </frame>
+      <frame id="423:3073" name="Clip path group" x="191.46991348266602" y="7189.562973022461" width="18.889640001176303" height="18.969738182951914" />
+    </frame>
+    <frame id="423:3094" name="Clip path group" x="0.8989486694335938" y="7073.52001953125" width="485.6567815278768" height="303.6364423216419">
+      <frame id="423:3095" name="bbe88d2f70" x="0.8987400671955257" y="7073.520035744146" width="485.6567815278768" height="303.6364423216419">
+        <vector id="423:3096" name="Vector" x="0.8985314649574505" y="7073.520051957042" width="485.6567815278768" height="303.6364423216419" />
+      </frame>
+      <frame id="423:3097" name="Group" x="36.16415822111466" y="6960.83379492413" width="551.5205792958186" height="449.2438076379631">
+        <frame id="423:3098" name="Mask group" x="36.16422998702657" y="6960.834096555528" width="551.5205792958186" height="449.2438076379631">
+          <frame id="423:3099" name="Group" x="36.1643017529385" y="6960.834398186925" width="551.5205792958186" height="449.2438076379631">
+            <frame id="423:3100" name="Group" x="36.164373518850425" y="6960.8346998183215" width="551.5205792958186" height="449.2438076379631">
+              <frame id="423:3101" name="Group" x="36.16444528476234" y="6960.835001449718" width="551.5205792958186" height="449.2438076379631">
+                <rounded-rectangle id="423:3102" name="Rectangle" x="36.16451705067425" y="6960.835303081115" width="551.5205792958186" height="449.2438076379631" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="423:3103" name="Group" x="36.1643017529385" y="6960.834398186925" width="551.5205792958186" height="449.2438076379631">
+            <frame id="423:3104" name="Group" x="36.164373518850425" y="6960.8346998183215" width="551.5205792958186" height="449.2438076379631">
+              <rounded-rectangle id="423:3105" name="Rectangle" x="36.16444528476234" y="6960.835001449718" width="551.5205792958186" height="449.2438076379631" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="423:3451" name="Clip path group" x="241.27996826171875" y="6786.24462890625" width="489.7865001341479" height="476.2759156999882">
+      <frame id="423:3452" name="724992df3d" x="241.27996514723912" y="6786.244326324879" width="489.7865001341479" height="476.2759156999882">
+        <vector id="423:3453" name="Vector" x="241.27996203275944" y="6786.2440237435085" width="489.7865001341479" height="476.2759156999882" />
+      </frame>
+      <frame id="423:3454" name="Group" x="241.27996514723912" y="6786.244326324879" width="489.69058593982936" height="476.05111839148776">
+        <frame id="423:3455" name="Clip path group" x="241.27996203275944" y="6786.2440237435085" width="489.69058593982936" height="476.05111839148776">
+          <frame id="423:3456" name="fd3864b0c8" x="241.27995891827982" y="6786.243721162137" width="489.69058593982936" height="476.05111839148776">
+            <vector id="423:3457" name="Vector" x="241.2799558038002" y="6786.243418580767" width="489.69058593982936" height="476.05111839148776" />
+          </frame>
+          <frame id="423:3458" name="Group" x="241.27995891827982" y="6786.243721162137" width="489.66848460563324" height="476.0337633455174">
+            <vector id="423:3459" name="Vector" x="241.2799558038002" y="6786.243418580767" width="489.66848460563324" height="476.0337633455174" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="423:3106" name="Group" x="-0.5081443786621094" y="7005.52001953125" width="264.5078125" height="76.25153350830078">
+      <frame id="423:3107" name="Clip path group" x="-0.5081443786621094" y="7005.52001953125" width="264.5078125" height="76.25153350830078">
+        <frame id="423:3108" name="9833d49ac8" x="-0.5081443786630189" y="7005.520253906245" width="264.5078125" height="76.25153350830078">
+          <vector id="423:3109" name="Vector" x="-0.5081443786639284" y="7005.5204882812395" width="264.5078125" height="76.25153350830078" />
+        </frame>
+        <frame id="423:3110" name="Group" x="-0.5081443786630189" y="7022.341175079346" width="256.9786682128906" height="44.20794677734375">
+          <frame id="423:3111" name="Clip path group" x="-0.5081443786639284" y="7022.341041715394" width="41.50226593017578" height="43.73249816894531" />
+          <frame id="423:3119" name="Group" x="50.196903228758856" y="7022.492459639907" width="41.4244499206543" height="44.056640625" />
+          <frame id="423:3123" name="Group" x="101.33693313598542" y="7022.492459639907" width="51.021854400634766" height="43.07545852661133" />
+          <frame id="423:3127" name="Group" x="157.8316535949698" y="7022.492459639907" width="51.26395034790039" height="43.07545852661133" />
+          <frame id="423:3131" name="Group" x="214.55350112914948" y="7022.492459639907" width="41.91728973388672" height="43.07545852661133" />
+        </frame>
+      </frame>
+    </frame>
+    <frame id="423:3135" name="Group" x="120.9739990234375" y="7073.15869140625" width="280.5173645019531" height="65.361328125">
+      <frame id="423:3136" name="Clip path group" x="120.97377524524927" y="7073.15869140625" width="280.5173645019531" height="65.361328125">
+        <frame id="423:3137" name="779623bc50" x="120.9735514678905" y="7073.15869140625" width="280.5173645019531" height="65.361328125">
+          <vector id="423:3138" name="Vector" x="120.97332769053173" y="7073.15869140625" width="280.5173645019531" height="65.361328125" />
+        </frame>
+        <frame id="423:3139" name="Group" x="124.28700647503138" y="7086.338117599487" width="277.20404052734375" height="39.761863708496094">
+          <frame id="423:3140" name="Group" x="124.28724947290902" y="7087.188789129257" width="44.92279052734375" height="38.05780792236328" />
+          <frame id="423:3144" name="Group" x="172.9797402396798" y="7087.188789129257" width="45.53176498413086" height="38.05780792236328" />
+          <frame id="423:3148" name="Group" x="220.2854958549142" y="7086.337856405182" width="37.905277252197266" height="39.761863708496094" />
+          <frame id="423:3152" name="Group" x="263.6061593070626" y="7087.188789129257" width="37.034767150878906" height="38.05780792236328" />
+          <frame id="423:3156" name="Group" x="308.6090584769845" y="7087.188789129257" width="13.164523124694824" height="38.05780792236328" />
+          <frame id="423:3160" name="Group" x="329.7436104789376" y="7087.188789129257" width="37.034767150878906" height="38.05780792236328" />
+          <frame id="423:3164" name="Clip path group" x="374.61233911663294" y="7087.024955332279" width="26.878841400146484" height="38.62260055541992" />
+        </frame>
+      </frame>
+    </frame>
+    <frame id="423:3172" name="Group 8" x="15.144157409667969" y="7316.52001953125" width="434.012939453125" height="14">
+      <frame id="423:3173" name="Group" x="15.144157409667969" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3177" name="Group" x="22.780583381652832" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3181" name="Group" x="30.414958000183105" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3185" name="Group" x="42.08116912841797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3189" name="Group" x="49.717594146728516" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3193" name="Group" x="57.35216522216797" y="7322.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3197" name="Group" x="64.98839569091797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3201" name="Group" x="72.62413787841797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3205" name="Group" x="80.25851440429688" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3209" name="Group" x="91.92540740966797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3213" name="Group" x="99.56114959716797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3217" name="Group" x="111.22804260253906" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3221" name="Group" x="118.86241912841797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3225" name="Group" x="126.49816131591797" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3229" name="Group" x="134.13459014892578" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3233" name="Group" x="141.76895904541016" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3237" name="Group" x="149.40470123291016" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3241" name="Group" x="157.04044342041016" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3245" name="Group" x="164.67549896240234" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3249" name="Group" x="172.3105697631836" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3253" name="Group" x="179.9463119506836" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3257" name="Group" x="187.5820541381836" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3261" name="Group" x="195.2177963256836" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3265" name="Group" x="202.85285186767578" y="7318.88525390625" width="6.5489115715026855" height="6.645833492279053" />
+      <frame id="423:3270" name="Clip path group" x="224.12970733642578" y="7316.52001953125" width="225.02757263183594" height="14" />
+    </frame>
+    <instance id="423:3583" name="STAR_OUTLINE" x="370.64404296875" y="6934.52001953125" width="100.66239131434577" height="95.4894622822394" />
+  </frame>
+  <frame id="423:3275" name="Group 16" x="0" y="10799.080078125" width="402" height="857.4404296875">
+    <rounded-rectangle id="423:3276" name="Rectangle 4020" x="0" y="10799.080078125" width="402" height="857.4404296875" />
+    <frame id="423:3277" name="Frame 48" x="52" y="10866.996154785156" width="298" height="172.9737548828125">
+      <frame id="423:3278" name="Frame 49" x="0" y="0" width="298" height="156.78106689453125">
+        <frame id="423:3279" name="Group 4" x="0" y="0" width="58" height="67.78106689453125" />
+        <frame id="423:3337" name="Frame 41" x="0" y="84.78106689453125" width="298" height="72">
+          <text id="423:3338" name="Edukacja AI na najwyższym poziomie. Łączymy ludzką kreatywność z możliwościami maszyn." x="0" y="0" width="298" height="72" />
+        </frame>
+      </frame>
+    </frame>
+    <text id="423:3339" name="2026 KOMPETENCJE.AI all rights reserved" x="0" y="11570.564208984375" width="402" height="22.284961700439453" />
+    <frame id="423:3340" name="Frame 47" x="52" y="11086.662200927734" width="298" height="403.2516784667969">
+      <frame id="423:3341" name="Frame 42" x="0" y="0" width="113" height="167.25167846679688">
+        <text id="423:3342" name="KURSY" x="0" y="0" width="113" height="19" />
+        <text id="423:3343" name="o nas" x="0" y="37" width="113" height="19" />
+        <text id="423:3344" name="szkolenia" x="0" y="74" width="113" height="19" />
+      </frame>
+      <frame id="423:3345" name="Frame 43" x="0" y="177.25167846679688" width="298" height="115">
+        <text id="423:3346" name="REGULAMIN" x="0" y="0" width="298" height="19" />
+        <text id="423:3347" name="POlityka prywatnośco" x="0" y="33" width="223" height="19" />
+      </frame>
+      <frame id="423:3348" name="Frame 51" x="0" y="302.2516784667969" width="180" height="101">
+        <text id="423:3349" name="kontakt" x="0" y="0" width="180" height="25" />
+        <frame id="423:3350" name="Frame 46" x="0" y="34" width="180" height="67">
+          <frame id="423:3351" name="Frame 45" x="0" y="0" width="180" height="23">
+            <instance id="423:3352" name="Ikona / Wiadomość" x="0" y="0" width="26" height="23" />
+            <text id="423:3353" name="kontakt@kompetencje.ai" x="30" y="0.5" width="180" height="22" />
+          </frame>
+          <frame id="423:3354" name="Frame 44" x="0" y="35" width="180" height="22">
+            <instance id="423:3355" name="Ikona / Telefon" x="0" y="20.125" width="23.5" height="18.25" />
+            <text id="423:3356" name="000 000 000" x="25.5" y="0" width="92" height="22" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <rounded-rectangle id="423:3362" name="Rectangle 4024" x="-1" y="7396.080078125" width="403" height="3403" />
+  <rounded-rectangle id="423:3531" name="Rectangle 13" x="67" y="9069.5205078125" width="264" height="368" />
+  <frame id="423:3532" name="Clip path group" x="63" y="9420.5205078125" width="37.71785354614258" height="35.79747009277344" />
+  <frame id="423:3541" name="Clip path group" x="300" y="9060.5205078125" width="37.71785354614258" height="35.79747009277344" />
+  <text id="423:3550" name="WIKTORIA SŁAWIŃSKA" x="67" y="8955.5205078125" width="258" height="82" />
+  <frame id="423:3551" name="Clip path group" x="-182" y="8794.78125" width="295.1066023245321" height="282.8154637249936">
+    <frame id="423:3552" name="039379cf42" x="-181.99999353075813" y="8794.781296562995" width="295.1066023245321" height="282.8154637249936">
+      <vector id="423:3553" name="Vector" x="-181.99998706151626" y="8794.78134312599" width="295.1066023245321" height="282.8154637249936" />
+    </frame>
+    <frame id="423:3554" name="Group" x="-197.36430335104973" y="8782.394414412347" width="325.85323740402964" height="311.34874239080364">
+      <frame id="423:3555" name="Clip path group" x="-197.36428723748654" y="8782.394298270117" width="325.85323740402964" height="311.34874239080364">
+        <frame id="423:3556" name="7bd166c4fe" x="-197.36427112392334" y="8782.394182127888" width="325.85323740402964" height="311.34874239080364">
+          <vector id="423:3557" name="Vector" x="-197.36425501036018" y="8782.394065985656" width="325.85323740402964" height="311.34874239080364" />
+        </frame>
+        <frame id="423:3558" name="Group" x="-190.88950608533744" y="8787.688296758162" width="312.8758896853433" height="298.9490421185801">
+          <frame id="423:3559" name="Clip path group" x="-190.88951802398878" y="8787.688349518116" width="312.8758896853433" height="298.9490421185801">
+            <frame id="423:3560" name="74aeebc355" x="-190.88952996264015" y="8787.688402278069" width="312.8758896853433" height="298.9490421185801">
+              <vector id="423:3561" name="Vector" x="-190.88954190129152" y="8787.688455038022" width="312.8758896853433" height="298.9490421185801" />
+            </frame>
+            <frame id="423:3562" name="Group" x="-197.36429475159494" y="8782.394287592979" width="325.85323740402964" height="311.34874239080364">
+              <frame id="423:3563" name="Clip path group" x="-197.36427863803175" y="8782.39417145075" width="325.85323740402964" height="311.34874239080364">
+                <frame id="423:3564" name="1c98185f3c" x="-197.3642625244686" y="8782.39405530852" width="325.85323740402964" height="311.34874239080364">
+                  <vector id="423:3565" name="Vector" x="-197.3642464109054" y="8782.39393916629" width="325.85323740402964" height="311.34874239080364" />
+                </frame>
+                <frame id="423:3566" name="Group" x="-197.3642625244686" y="8782.39405530852" width="325.85323740402964" height="311.34874239080364">
+                  <frame id="423:3567" name="Clip path group" x="-197.3642464109054" y="8782.39393916629" width="325.85323740402964" height="311.34874239080364">
+                    <frame id="423:3568" name="35ea3dd88f" x="-197.36423029734223" y="8782.393823024058" width="325.85323740402964" height="311.34874239080364">
+                      <vector id="423:3569" name="Vector" x="-197.36421418377904" y="8782.393706881829" width="325.85323740402964" height="311.34874239080364" />
+                    </frame>
+                    <frame id="423:3570" name="Group" x="-181.83402508758456" y="8795.093093337266" width="294.7640177019284" height="281.64667743833616">
+                      <vector id="423:3571" name="Vector" x="-181.8340541274237" y="8795.093084561806" width="294.7640177019284" height="281.64667743833616" />
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="423:3489" name="Clip path group" x="66" y="8827.5205078125" width="37.71785354614258" height="35.79747009277344" />
+  <frame id="423:3498" name="Clip path group" x="303" y="8464.5205078125" width="37.71785354614258" height="35.79747009277344" />
+  <text id="423:3507" name="PIOTR MAŁYSZ" x="67" y="8413.5205078125" width="268" height="36" />
+  <rounded-rectangle id="423:3508" name="Rectangle 10" x="67" y="8474.5205078125" width="268" height="368" />
+  <frame id="423:3509" name="Clip path group" x="-185" y="8243.779296875" width="295.1066023245321" height="282.8154637249936">
+    <frame id="423:3510" name="039379cf42" x="-184.99999353075813" y="8243.779343437995" width="295.1066023245321" height="282.8154637249936">
+      <vector id="423:3511" name="Vector" x="-184.99998706151626" y="8243.77939000099" width="295.1066023245321" height="282.8154637249936" />
+    </frame>
+    <frame id="423:3512" name="Group" x="-200.36430335104973" y="8231.392461287347" width="325.85323740402964" height="311.34874239080364">
+      <frame id="423:3513" name="Clip path group" x="-200.36428723748654" y="8231.392345145117" width="325.85323740402964" height="311.34874239080364">
+        <frame id="423:3514" name="7bd166c4fe" x="-200.36427112392334" y="8231.392229002888" width="325.85323740402964" height="311.34874239080364">
+          <vector id="423:3515" name="Vector" x="-200.36425501036018" y="8231.392112860656" width="325.85323740402964" height="311.34874239080364" />
+        </frame>
+        <frame id="423:3516" name="Group" x="-193.88950608533744" y="8236.686343633162" width="312.8758896853433" height="298.9490421185801">
+          <frame id="423:3517" name="Clip path group" x="-193.88951802398878" y="8236.686396393116" width="312.8758896853433" height="298.9490421185801">
+            <frame id="423:3518" name="74aeebc355" x="-193.88952996264015" y="8236.686449153069" width="312.8758896853433" height="298.9490421185801">
+              <vector id="423:3519" name="Vector" x="-193.88954190129152" y="8236.686501913022" width="312.8758896853433" height="298.9490421185801" />
+            </frame>
+            <frame id="423:3520" name="Group" x="-200.36429475159494" y="8231.392334467979" width="325.85323740402964" height="311.34874239080364">
+              <frame id="423:3521" name="Clip path group" x="-200.36427863803175" y="8231.39221832575" width="325.85323740402964" height="311.34874239080364">
+                <frame id="423:3522" name="1c98185f3c" x="-200.3642625244686" y="8231.39210218352" width="325.85323740402964" height="311.34874239080364">
+                  <vector id="423:3523" name="Vector" x="-200.3642464109054" y="8231.39198604129" width="325.85323740402964" height="311.34874239080364" />
+                </frame>
+                <frame id="423:3524" name="Group" x="-200.3642625244686" y="8231.39210218352" width="325.85323740402964" height="311.34874239080364">
+                  <frame id="423:3525" name="Clip path group" x="-200.3642464109054" y="8231.39198604129" width="325.85323740402964" height="311.34874239080364">
+                    <frame id="423:3526" name="35ea3dd88f" x="-200.36423029734223" y="8231.391869899058" width="325.85323740402964" height="311.34874239080364">
+                      <vector id="423:3527" name="Vector" x="-200.36421418377904" y="8231.391753756829" width="325.85323740402964" height="311.34874239080364" />
+                    </frame>
+                    <frame id="423:3528" name="Group" x="-184.83402464580516" y="8244.090651539269" width="294.7640177019284" height="281.64667743833616">
+                      <vector id="423:3529" name="Vector" x="-184.83405368564465" y="8244.091131045088" width="294.7640177019284" height="281.64667743833616" />
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <rounded-rectangle id="423:3461" name="Rectangle 11" x="65" y="7935.52001953125" width="268" height="368" />
+  <frame id="423:3462" name="Clip path group" x="61" y="8284.51953125" width="37.71785354614258" height="35.79747009277344" />
+  <frame id="423:3471" name="Clip path group" x="298" y="7924.52001953125" width="37.71785354614258" height="35.79747009277344" />
+  <text id="423:3480" name="PATRYK CZEMIEROWSKI" x="65" y="7839.52001953125" width="373" height="70" />
+  <frame id="423:3426" name="Group 12" x="0" y="7338.52001953125" width="196.97720336914062" height="117.94241333007812" />
+  <frame id="423:3437" name="Group 13" x="449.52587890625" y="7397.52001953125" width="248.5259552001953" height="143" />
+  <frame id="423:3448" name="Frame 12" x="31" y="7553.52001953125" width="342" height="74">
+    <text id="423:3449" name="poznajmy się !" x="41" y="20" width="260" height="34" />
+  </frame>
+  <frame id="423:3363" name="Group 17" x="-87" y="9527.5205078125" width="575.5720825195312" height="1138">
+    <frame id="423:3364" name="Frame 99" x="-7" y="9527.5205078125" width="414" height="128">
+      <text id="423:3365" name="Napisz do nas pomożemy dobrać kurs do TWOICH POTRZEB" x="52.5" y="10" width="309" height="108" />
+    </frame>
+    <instance id="423:3366" name="Contact form" x="25" y="9801.5205078125" width="353" height="864" />
+    <frame id="423:3367" name="Frame 98" x="-87" y="9646.5205078125" width="575.5720825195312" height="188.20550537109375">
+      <instance id="423:3368" name="STAR_ARROW" x="87.35063171386719" y="0" width="199.5720483593168" height="188.2055027095921" />
+      <instance id="423:3369" name="STAR_ARROW" x="488.2214660644531" y="0" width="199.5720483593168" height="188.2055027095921" />
+    </frame>
+  </frame>
+  <frame id="423:3420" name="Frame 59" x="-89" y="7693.52001953125" width="443" height="27">
+    <line id="423:3422" name="Line 9" x="0" y="13.75" width="175.00000786490637" height="0.5000000064055712" />
+    <text id="423:3421" name="nasi prowadzący" x="200.00001525878906" y="0" width="243" height="27" />
+  </frame>
+  <instance id="423:3482" name="STAR_OUTLINE" x="321.96337890625" y="7655.69189453125" width="290.6265124376323" height="293.0143409134116" />
+  <text id="432:1536" name="i wyrusz z nami ku przyszłości !" x="43" y="1072" width="271" height="56" />
+  <instance id="432:1537" name="Logo / Sygnet – limonka" x="72" y="1173" width="287" height="336" />
+  <instance id="432:1538" name="STAR_ARROW" x="237.8505859375" y="868" width="226.00539575216226" height="226.20177410218093" />
+  <instance id="432:1659" name="STAR_OUTLINE" x="216.3505859375" y="87.2607421875" width="32.26216669636415" height="30.48747750986513" />
+  <frame id="2244:1627" name="Sekcja 2 (mobile) – stara wersja (ukryta)" x="-350.6705322265625" y="1587.94140625" width="787.7213134765625" height="1348.729248046875" hidden="true">
+    <instance id="375:1845" name="STAR_ARROW" x="26.4931640625" y="2857.5595703125" width="112.58073517737284" height="113.86786609786577" />
+    <instance id="375:1809" name="gwiazdka" x="364.765625" y="2057.5420532226562" width="526.9933197371483" height="542.117449082989" />
+    <instance id="375:1833" name="gwiazdka" x="437.05078125" y="1864.1250610351562" width="787.7213241292375" height="771.315349734894" />
+    <frame id="375:1795" name="Clip path group" x="-52" y="1674.0000457763672" width="454.2496643066406" height="454.81744384765625">
+      <frame id="375:1796" name="068b65fe8f" x="-52" y="1674.0000221729279" width="454.2496643066406" height="454.81744384765625">
+        <vector id="375:1797" name="Vector" x="-51.999999999999545" y="1674.0000800350026" width="454.2496643066406" height="454.81744384765625" />
+      </frame>
+      <frame id="375:1798" name="Group" x="-52.391713827848434" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+        <frame id="375:1799" name="Mask group" x="-52.391826095001306" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+          <frame id="375:1800" name="Group" x="-52.39193836215418" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+            <frame id="375:1801" name="Group" x="-52.39205062930705" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+              <frame id="375:1802" name="Group" x="-52.39216289645992" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+                <rounded-rectangle id="375:1803" name="Rectangle" x="-52.392275163612794" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="375:1804" name="Group" x="-52.39193836215418" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+            <frame id="375:1805" name="Group" x="-52.39205062930705" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125">
+              <rounded-rectangle id="375:1806" name="Rectangle" x="-52.39216289645992" y="1674.0000457763672" width="454.81768798828125" height="454.81768798828125" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <text id="375:1818" name="Nowe narzędzia pojawiają się każdego dnia, a Ty zastanawiasz się, od czego zacząć i jak realnie wykorzystać je w pracy lub biznesie. Bez odpowiedniego kierunku łatwo utknąć w chaosie informacji i stracić czas na rzeczy, które nie przynoszą efektów." x="29" y="2383.0000610351562" width="344" height="225" />
+  </frame>
+  <rounded-rectangle id="2244:1628" name="Linia łącząca (mobile)" x="36" y="1724" width="330" height="1.5" />
+  <instance id="2244:1629" name="Gwiazdka" x="24" y="1718" width="14" height="14" />
+  <instance id="2244:1631" name="Gwiazdka" x="366" y="1713" width="24" height="24" />
+  <frame id="2244:1633" name="Tekst – nowe narzędzia (mobile)" x="24" y="2395" width="354" height="230">
+    <text id="2244:1634" name="Nowe narzędzia pojawiają się każdego dnia, a Ty zastanawiasz się, od czego zacząć i jak realnie je wykorzystać w pracy lub biznesie." x="0" y="0" width="354" height="104" />
+    <frame id="2244:1635" name="Wniosek" x="0" y="126" width="354" height="104">
+      <rounded-rectangle id="2244:1636" name="Limonkowa kreska" x="0" y="0" width="4" height="104" />
+      <text id="2244:1637" name="Bez odpowiedniego kierunku łatwo utknąć w chaosie informacji i stracić czas na rzeczy, które nie przynoszą efektów." x="20" y="0" width="334" height="104" />
+    </frame>
+  </frame>
+  <rounded-rectangle id="2244:2666" name="rob (Canva, bez tła) – mobile" x="11" y="1765" width="380" height="423" />
+  <rounded-rectangle id="2244:2688" name="Przejście robota w tło (mobile)" x="0" y="2020" width="402" height="170" />
+  <instance id="2244:2667" name="Gwiazdka w gwiazdce" x="99" y="1756" width="70.95000457763672" height="70.4000015258789" />
+  <instance id="375:1823" name="STAR_ARROW" x="28.818029403686523" y="2172.91259765625" width="105.38351360158231" height="108.2359042957687" />
+  <frame id="2245:1665" name="Reklama webinaru (mobile)" x="0" y="3306" width="402" height="1224.000244140625">
+    <frame id="2255:2791" name="Tło – linie (mobile)" x="-1773" y="-20.193359375" width="3948.921630859375" height="1264.386474609375">
+      <frame id="2255:2792" name="clippath" x="-1773" y="-20.193359375" width="3948.921630859375" height="1264.386474609375">
+        <vector id="2255:2793" name="Vector" x="-1773" y="-20.193359375" width="3948.921630859375" height="1264.386474609375" />
+      </frame>
+      <frame id="2255:2794" name="Group" x="-2321.46142578125" y="-90.4383544921875" width="5045.8447265625" height="1404.873291015625">
+        <frame id="2255:2795" name="Group" x="-2321.46142578125" y="-90.4383544921875" width="5045.8447265625" height="1404.873291015625">
+          <vector id="2255:2796" name="Vector" x="-2321.46142578125" y="559.3153686523438" width="1439.7110595703125" height="755.1196899414062" />
+          <vector id="2255:2797" name="Vector" x="-2321.46142578125" y="-90.4383544921875" width="1439.7110595703125" height="649.754150390625" />
+          <vector id="2255:2798" name="Vector" x="-2111.21728515625" y="559.3153686523438" width="1229.4666748046875" height="755.1196899414062" />
+          <vector id="2255:2799" name="Vector" x="-2111.2171173095703" y="-90.43832275147724" width="1229.4666748046875" height="649.754150390625" />
+          <vector id="2255:2800" name="Vector" x="-1900.97509765625" y="559.3153686523438" width="1019.2249145507812" height="755.1196899414062" />
+          <vector id="2255:2801" name="Vector" x="-1900.9752502441406" y="-90.43832275147724" width="1019.2249145507812" height="649.754150390625" />
+          <vector id="2255:2802" name="Vector" x="-1690.73095703125" y="559.3153686523438" width="808.9805297851562" height="755.1196899414062" />
+          <vector id="2255:2803" name="Vector" x="-1690.7310180664062" y="-90.43832275147724" width="808.9805297851562" height="649.754150390625" />
+          <vector id="2255:2804" name="Vector" x="-1480.48583984375" y="559.3153686523438" width="598.736083984375" height="755.1196899414062" />
+          <vector id="2255:2805" name="Vector" x="-1480.4860229492188" y="-90.43832275147724" width="598.736083984375" height="649.754150390625" />
+          <vector id="2255:2806" name="Vector" x="-1270.2451171875" y="559.3153686523438" width="388.4944152832031" height="755.1196899414062" />
+          <vector id="2255:2807" name="Vector" x="-1270.2449951171875" y="-90.43832275147724" width="388.4944152832031" height="649.754150390625" />
+          <vector id="2255:2808" name="Vector" x="-1060" y="559.3153686523438" width="178.24993896484375" height="755.1196899414062" />
+          <vector id="2255:2809" name="Vector" x="-1060" y="-90.43832275147724" width="178.24993896484375" height="649.754150390625" />
+          <vector id="2255:2810" name="Vector" x="-881.75" y="559.3153686523438" width="31.994474411010742" height="755.1196899414062" />
+          <vector id="2255:2811" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="31.994474411010742" height="649.754150390625" />
+          <vector id="2255:2812" name="Vector" x="-881.75" y="559.3153686523438" width="242.23622131347656" height="755.1196899414062" />
+          <vector id="2255:2813" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="242.23622131347656" height="649.754150390625" />
+          <vector id="2255:2814" name="Vector" x="-881.75" y="559.3153686523438" width="452.4806213378906" height="755.1196899414062" />
+          <vector id="2255:2815" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="452.4806213378906" height="649.754150390625" />
+          <vector id="2255:2816" name="Vector" x="-881.75" y="559.3153686523438" width="662.7250366210938" height="755.1196899414062" />
+          <vector id="2255:2817" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="662.7250366210938" height="649.754150390625" />
+          <vector id="2255:2818" name="Vector" x="-881.75" y="559.3153686523438" width="872.966796875" height="755.1196899414062" />
+          <vector id="2255:2819" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="872.966796875" height="649.754150390625" />
+          <vector id="2255:2820" name="Vector" x="-881.75" y="559.3153686523438" width="1083.211181640625" height="755.1196899414062" />
+          <vector id="2255:2821" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="1083.211181640625" height="649.754150390625" />
+          <vector id="2255:2822" name="Vector" x="-881.75" y="559.3153686523438" width="1293.45556640625" height="755.1196899414062" />
+          <vector id="2255:2823" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="1293.45556640625" height="649.754150390625" />
+          <vector id="2255:2824" name="Vector" x="-881.75" y="559.3153686523438" width="1503.6973876953125" height="755.1196899414062" />
+          <vector id="2255:2825" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="1503.6973876953125" height="649.754150390625" />
+          <vector id="2255:2826" name="Vector" x="-881.75" y="559.3153686523438" width="1713.94189453125" height="755.1196899414062" />
+          <vector id="2255:2827" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="1713.94189453125" height="649.754150390625" />
+          <vector id="2255:2828" name="Vector" x="-881.75" y="559.3153686523438" width="1924.194580078125" height="755.1196899414062" />
+          <vector id="2255:2829" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="1924.194580078125" height="649.754150390625" />
+          <vector id="2255:2830" name="Vector" x="-881.75" y="559.3153686523438" width="2134.41943359375" height="755.1196899414062" />
+          <vector id="2255:2831" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="2134.41943359375" height="649.754150390625" />
+          <vector id="2255:2832" name="Vector" x="-881.75" y="559.3153686523438" width="2344.67236328125" height="755.1196899414062" />
+          <vector id="2255:2833" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="2344.67236328125" height="649.754150390625" />
+          <vector id="2255:2834" name="Vector" x="-881.75" y="559.3153686523438" width="2554.92529296875" height="755.1196899414062" />
+          <vector id="2255:2835" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="2554.92529296875" height="649.754150390625" />
+          <vector id="2255:2836" name="Vector" x="-881.75" y="559.3153686523438" width="2765.150146484375" height="755.1196899414062" />
+          <vector id="2255:2837" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="2765.150146484375" height="649.754150390625" />
+          <vector id="2255:2838" name="Vector" x="-881.75" y="559.3153686523438" width="2975.40283203125" height="755.1196899414062" />
+          <vector id="2255:2839" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="2975.40283203125" height="649.754150390625" />
+          <vector id="2255:2840" name="Vector" x="-881.75" y="559.3153686523438" width="3185.65576171875" height="755.1196899414062" />
+          <vector id="2255:2841" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="3185.65576171875" height="649.754150390625" />
+          <vector id="2255:2842" name="Vector" x="-881.75" y="559.3153686523438" width="3395.880859375" height="755.1196899414062" />
+          <vector id="2255:2843" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="3395.880859375" height="649.754150390625" />
+          <vector id="2255:2844" name="Vector" x="-881.75" y="559.3153686523438" width="3606.133544921875" height="755.1196899414062" />
+          <vector id="2255:2845" name="Vector" x="-881.7501220703125" y="-90.43832275147724" width="3606.133544921875" height="649.754150390625" />
+          <vector id="2255:2846" name="Vector" x="-1773" y="1051.0224609375" width="3948.921630859375" height="0" />
+          <vector id="2255:2847" name="Vector" x="-1773" y="1121.2655029296875" width="3948.921630859375" height="0" />
+          <vector id="2255:2848" name="Vector" x="-1773" y="1209.072021484375" width="3948.921630859375" height="0" />
+          <vector id="2255:2849" name="Vector" x="-1773" y="85.16981506347656" width="3948.921630859375" height="0" />
+          <vector id="2255:2850" name="Vector" x="-1773" y="23.709022521972656" width="3948.921630859375" height="0" />
+        </frame>
+      </frame>
+    </frame>
+    <frame id="2245:1666" name="Karta webinaru (mobile)" x="16" y="56" width="370" height="1096.000244140625">
+      <frame id="2245:1667" name="Pasek boczny" x="3" y="3" width="44" height="1090.000244140625">
+        <frame id="2245:1668" name="Frame 116" x="7.5" y="35" width="29" height="558.8681640625">
+          <frame id="2245:1669" name="Frame 117" x="0" y="0" width="29" height="339">
+            <text id="2245:1670" name="Pasek – prowadzący" x="-7.105427357601002e-15" y="226" width="29" height="226" />
+            <text id="2245:1671" name="Pasek – prowadzący" x="0" y="339" width="29" height="98" />
+          </frame>
+          <frame id="2245:1672" name="Pasek – forma: BEZPŁATNIE (HK Modular – krzywe)" x="8.3125" y="424" width="12.375" height="134.8681640625" />
+        </frame>
+      </frame>
+      <frame id="2245:1683" name="Treść" x="47" y="3" width="320" height="1090.000244140625">
+        <frame id="2245:1684" name="Zdjęcie – Piotr Małysz" x="18" y="22" width="290" height="340">
+          <frame id="2255:2753" name="Panel zdjęcia" x="0" y="0" width="290" height="390.7868347167969">
+            <vector id="2255:2754" name="Vector" x="0" y="0" width="290" height="390.14947509765625" />
+            <frame id="2255:2755" name="Tło zdjęcia – C HUMAN MACHINE" x="0" y="0" width="290" height="390.14947509765625">
+              <frame id="2255:2756" name="Clip path group" x="0" y="0" width="290" height="390.14947509765625">
+                <frame id="2255:2757" name="clippath-2" x="0" y="0" width="290" height="390.14947509765625">
+                  <vector id="2255:2758" name="Vector" x="0" y="0" width="290" height="390.14947509765625" />
+                </frame>
+                <frame id="2255:2759" name="Group" x="-10.25975227355957" y="-67.26799011230469" width="328.22064208984375" height="457.41705322265625">
+                  <vector id="2255:2760" name="Vector" x="0.0000133514404296875" y="-0.00011444091796875" width="290" height="390.14947509765625" />
+                  <frame id="2255:2761" name="HUMAN" x="29.580442428588867" y="103.61466979980469" width="238.12643432617188" height="51.14445495605469" />
+                  <frame id="2255:2767" name="MACHINE" x="-10.259738453851242" y="192.11436462402344" width="328.2208251953125" height="164.31199645996094">
+                    <vector id="2255:2768" name="Vector" x="-10.259724634142913" y="295.3152847290039" width="52.69093704223633" height="61.11082077026367" />
+                    <vector id="2255:2769" name="Vector" x="35.66189240552376" y="278.5410919189453" width="52.69093704223633" height="61.11013412475586" />
+                    <vector id="2255:2770" name="Vector" x="81.5840954694886" y="259.2106704711914" width="52.69093704223633" height="61.110538482666016" />
+                    <vector id="2255:2771" name="Vector" x="125.30083893872688" y="242.4370994567871" width="54.895713806152344" height="63.66693878173828" />
+                    <vector id="2255:2772" name="Vector" x="171.22185944653938" y="225.66228103637695" width="54.895751953125" height="63.66691970825195" />
+                    <vector id="2255:2773" name="Vector" x="218.24563263989876" y="208.8880844116211" width="52.691627502441406" height="63.667640686035156" />
+                    <vector id="2255:2774" name="Vector" x="265.26940583325813" y="192.11392575947684" width="52.69153594970703" height="61.110538482666016" />
+                  </frame>
+                  <vector id="2255:2775" name="Vector" x="5.800201416015625" y="-67.26751420841902" width="278.3996276855469" height="322.88214111328125" />
+                  <vector id="2255:2776" name="Vector" x="205.32043266296387" y="96.19190979003906" width="11.599716186523438" height="13.453886032104492" />
+                </frame>
+              </frame>
+            </frame>
+            <rounded-rectangle id="2255:2777" name="Piotr Małysz" x="30.40015411376953" y="53.5499267578125" width="229.79969787597656" height="337.2370300292969" />
+          </frame>
+          <frame id="2245:1686" name="Pigułka – AI GYM" x="12" y="12" width="101.56122589111328" height="41.57027053833008" />
+          <frame id="2255:3867" name="Pigułka – kompetencje Piotra" x="46" y="295.0670166015625" width="232" height="30.9329833984375">
+            <rounded-rectangle id="2255:3868" name="Pigułka – obrys" x="45.9998779296875" y="295.0670166015625" width="232" height="30.9329833984375" />
+            <text id="2255:3869" name="Automatyzacja · procesy · dane" x="60.9998779296875" y="302.609619140625" width="202" height="15" />
+          </frame>
+        </frame>
+        <frame id="2245:1698" name="Frame 115" x="18" y="379" width="290" height="81.46598815917969">
+          <frame id="2245:1699" name="Pigułka – Agent gotowy w 20 min" x="0" y="0" width="220.15701293945312" height="36.732994079589844">
+            <rounded-rectangle id="2245:1700" name="Pigułka – tło" x="0" y="0" width="220.15701293945312" height="36.732994079589844" />
+            <text id="2245:1701" name="Agent gotowy w 20 min" x="44.157012939453125" y="10.43499755859375" width="158" height="15" />
+            <vector id="2245:1702" name="Vector" x="18" y="10.288002014160156" width="16.157012939453125" height="16.156997680664062" />
+          </frame>
+          <frame id="2245:1703" name="Pigułka – Dla specjalistów i managerów" x="0" y="44.732994079589844" width="256.1573486328125" height="36.732994079589844">
+            <rounded-rectangle id="2245:1704" name="Pigułka – obrys" x="-1.8189894035458565e-12" y="44.73299407959166" width="256.1573486328125" height="36.732994079589844" />
+            <text id="2245:1705" name="Dla specjalistów i managerów" x="44.1572265625" y="55.207603454589844" width="194" height="15" />
+            <frame id="2245:1706" name="Group" x="18.000244140625" y="57.282997131347656" width="16.156982421875" height="11.63299560546875" />
+          </frame>
+        </frame>
+        <frame id="2245:1709" name="Nagłówek" x="18" y="477.46600341796875" width="290" height="107.6142578125">
+          <text id="2245:1710" name="AGENT AI, KTÓRY" x="18" y="477.46600341796875" width="250.10067749023438" height="41" />
+          <text id="2245:1711" name="ZNA SPECYFIKĘ" x="18" y="513.019401550293" width="282.2147521972656" height="38" />
+          <text id="2245:1712" name="TWOJEJ PRACY" x="18" y="547.0798034667969" width="290" height="38" />
+        </frame>
+        <text id="2245:1713" name="Opis" x="18" y="602.0802612304688" width="276" height="190" />
+        <frame id="2245:1714" name="Frame 114" x="18" y="809.0802612304688" width="290" height="137.7999267578125">
+          <frame id="2245:1715" name="Pigułka – [DD.MM.RRRR]" x="0" y="0" width="154.1829833984375" height="40.5999755859375">
+            <vector id="2245:1716" name="Vector" x="0" y="0" width="154.1829833984375" height="40.5999755859375" />
+            <text id="2245:1717" name="[DD.MM.RRRR]" x="40.5999755859375" y="12.3759765625" width="97" height="15" />
+            <frame id="2245:1718" name="Group" x="16.4329833984375" y="12.566986083984375" width="15.467010498046875" height="15.467010498046875" />
+          </frame>
+          <frame id="2245:1723" name="Pigułka – [GG:MM–GG:MM]" x="0" y="48.5999755859375" width="166.02096557617188" height="40.5999755859375">
+            <vector id="2245:1724" name="Vector" x="0" y="48.5999755859375" width="166.02096557617188" height="40.5999755859375" />
+            <text id="2245:1725" name="[GG:MM–GG:MM]" x="40.600006103515625" y="60.9759521484375" width="109" height="15" />
+            <frame id="2245:1726" name="Group" x="16.4329833984375" y="61.166961669921875" width="15.46600341796875" height="15.46600341796875" />
+          </frame>
+          <frame id="2245:1729" name="Pigułka – Online, na żywo" x="0" y="97.199951171875" width="160.34197998046875" height="40.5999755859375">
+            <vector id="2245:1730" name="Vector" x="0" y="97.199951171875" width="160.34197998046875" height="40.5999755859375" />
+            <text id="2245:1731" name="Online, na żywo" x="40.60101318359375" y="109.575927734375" width="103" height="15" />
+            <frame id="2245:1732" name="Group" x="16.43402099609375" y="110.075927734375" width="15.46697998046875" height="14.8480224609375" />
+          </frame>
+        </frame>
+        <frame id="2256:2828" name="CTA – wiersz" x="18" y="963.8801879882812" width="284" height="86.1201171875">
+          <frame id="2245:1736" name="CTA" x="7" y="6" width="270" height="51.1201171875">
+            <vector id="2245:1737" name="Vector" x="7" y="6" width="270" height="51.1201171875" />
+            <frame id="2245:1738" name="ZAPISZ SIĘ ZA DARMO (HK Modular – krzywe)" x="37.283203125" y="26.1201171875" width="192.6253662109375" height="13.00020694732666" />
+            <frame id="2245:1755" name="Group" x="238.6171875" y="25.425439834594727" width="13.23501968383789" height="12.269123077392578" />
+          </frame>
+          <text id="2245:1758" name="Dopisek pod CTA" x="32" y="69.1201171875" width="220" height="13" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="2246:2674" name="Nie czekaj – wybierz kurs (mobile)" x="0" y="6310.080078125" width="402" height="684.4400024414062">
+    <text id="2246:2675" name="NIE CZEKAJ WYBIERZ KURS I WYPRZEDŹ INNYCH." x="24" y="56" width="351" height="99" />
+    <instance id="2246:2676" name="Karta kursu – mała" x="24" y="187" width="293.760009765625" height="397.44000244140625" />
+    <instance id="2246:3035" name="Karta kursu – mała" x="333.760009765625" y="187" width="293.760009765625" height="397.44000244140625" />
+    <instance id="2246:3394" name="Karta kursu – mała" x="643.52001953125" y="187" width="293.760009765625" height="397.44000244140625" />
+    <ellipse id="2246:3753" name="Kropka 1" x="24" y="612.4400024414062" width="22" height="8" />
+    <ellipse id="2246:3754" name="Kropka 2" x="54" y="612.4400024414062" width="8" height="8" />
+    <ellipse id="2246:3755" name="Kropka 3" x="70" y="612.4400024414062" width="8" height="8" />
+  </frame>
+  <instance id="2247:2749" name="Kursor – hero (mobile)" x="321" y="821" width="23.88387680053711" height="35.8258171081543" />
+  <frame id="2256:2820" name="Pasek – hasła (mobile, biały)" x="0" y="3266" width="402" height="40">
+    <frame id="2256:2821" name="Frame 58" x="-30" y="4" width="1600" height="33">
+      <instance id="2256:2823" name="gwiazdka" x="0" y="0" width="31" height="33" />
+      <text id="2256:2822" name="sprawdź liste obecnych hot kursów dzisiaj" x="61" y="8.5" width="407" height="16" />
+      <text id="2256:2824" name="sprawdź liste obecnych hot kursów dzisiaj" x="498" y="7.5" width="475" height="18" />
+      <instance id="2256:2825" name="gwiazdka" x="1003" y="0" width="31" height="33" />
+      <text id="2256:2826" name="sprawdź liste obecnych hot kursów dzisiaj" x="1064" y="7.5" width="475" height="18" />
+      <instance id="2256:2827" name="gwiazdka" x="1569" y="0" width="31" height="33" />
+    </frame>
+  </frame>
+  <frame id="2263:2750" name="Gwiazdka – grafika kursu (mobile)" x="128.25018310546875" y="5660.8310546875" width="94.21303784201882" height="94.21303784201882" />
+  <frame id="2263:2752" name="Gwiazdka mała – grafika kursu (mobile)" x="135.92938232421875" y="5655" width="24.27745886189132" height="24.27745886189041" />
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

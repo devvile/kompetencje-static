@@ -23,25 +23,29 @@ const m = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
 /* Teksty HK w tej sekcji designer rozciągnął w poziomie ~1.1× (glify 20×20 i 24×24
  * to kwadraty; naturalne HK ma ink/cap 0.91) → fontPx z cap-height + scaleX(1.1). */
 const SCALE_X = 1.1;
+/* redesign 2026-10 (origin = strona y7415.5): odstępy między osobami zmniejszone —
+ * Piotr −98, Wiktoria −196 (małe gwiazdki wg metadanych −101/−199), sekcja −198;
+ * nowa duża konturowa gwiazda przy nagłówku (423:3482, wycięta z renderu). */
 const GMOB = {
-  h: 2286,
+  h: 2088,
   pill: { left: 31, top: 138, w: 342, h: 74, borderPx: 4 },
   pillText: { left: 72, top: 164.4, fontPx: 22.8, trackPx: -0.8, wordPx: 0 }, // ink cel x73..329 y5540..5563, advance 21
   line: { x: 0, top: 290.2, w: 86, h: 1.2 },
   heading: { left: 111, top: 282.7, fontPx: 18.5, trackPx: 0.45 }, // ink x112..351 y5658..5675 (jak desktop)
   starOut: { left: 226, top: 15, w: 66, h: 72 },
-  starHalf1: { left: 0, top: 975, w: 70, h: 47 },
-  starHalf2: { left: 0, top: 1622, w: 73, h: 51 },
-  starSm: { w: 30, h: 30, at: [[302, 512], [65, 872], [307, 1150], [70, 1513], [304, 1844], [67, 2204]] },
+  starBig: { left: 285, top: 340.5, w: 117, h: 158 },
+  starHalf1: { left: 0, top: 975 - 98, w: 70, h: 47 },
+  starHalf2: { left: 0, top: 1622 - 196, w: 73, h: 51 },
+  starSm: { w: 30, h: 30, at: [[302, 512], [65, 872], [307, 1150 - 101], [70, 1513 - 101], [304, 1844 - 199], [67, 2204 - 199]] },
   names: [
     { left: 65, top: 426.2, fontPx: 24, trackPx: -1.2, lhPx: 35 }, // ink 66..327 y5806, advance 22
-    { left: 67, top: 1098.2, fontPx: 24, trackPx: -0.3, lhPx: 36 }, // ink 68..328 y6478, advance 23
-    { left: 68, top: 1735.2, fontPx: 28.8, trackPx: 0.1, lhPx: 41 }, // ink 69..318 y7118, advance 28.2
+    { left: 67, top: 1098.2 - 98, fontPx: 24, trackPx: -0.3, lhPx: 36 }, // ink 68..328 y6478, advance 23
+    { left: 68, top: 1735.2 - 196, fontPx: 28.8, trackPx: 0.1, lhPx: 41 }, // ink 69..318 y7118, advance 28.2
   ],
   photos: [
     { left: 65, top: 520, w: 268, h: 368, borderAlpha: 1 }, // y5894
-    { left: 67, top: 1157, w: 268, h: 368, borderAlpha: 0.7 }, // y6531
-    { left: 67, top: 1850, w: 264, h: 368, borderAlpha: 1 }, // y7224
+    { left: 67, top: 1157 - 98, w: 268, h: 368, borderAlpha: 0.7 }, // y6531
+    { left: 67, top: 1850 - 196, w: 264, h: 368, borderAlpha: 1 }, // y7224
   ],
   photoR: 100, // rogi bl + tr
   photoBorderPx: 2,
@@ -90,6 +94,8 @@ function ProwadzacyMobile({ p }: { p: Prowadzacy }) {
           {/* gwiazdy tła */}
           <img src="/assets/prow-star-out-m-f.png" alt="" aria-hidden className="absolute"
             style={{ left: m(GMOB.starOut.left), top: m(GMOB.starOut.top), width: m(GMOB.starOut.w), height: m(GMOB.starOut.h) }} />
+          <img src="/assets/prow-star-big-m-f.png" alt="" aria-hidden className="absolute"
+            style={{ left: m(GMOB.starBig.left), top: m(GMOB.starBig.top), width: m(GMOB.starBig.w), height: m(GMOB.starBig.h) }} data-node-id="423:3482" />
           <img src="/assets/prow-star-half1-m-f.png" alt="" aria-hidden className="absolute"
             style={{ left: m(GMOB.starHalf1.left), top: m(GMOB.starHalf1.top), width: m(GMOB.starHalf1.w), height: m(GMOB.starHalf1.h) }} />
           <img src="/assets/prow-star-half2-m-f.png" alt="" aria-hidden className="absolute"

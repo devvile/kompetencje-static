@@ -1,5 +1,95 @@
 # CHANGELOG
 
+## 2026-10-29 (2) — home: „ostatni szlif" Victorii (Figma `5ufIXE17KqmkvVrfSVzUFE`), desktop + mobile
+
+- Źródło: nowy plik `5ufIXE17KqmkvVrfSVzUFE` (home 245:3490 desktop 1440×9284, 375:1738 mobile
+  402×11657). Rendery + metadane: `design-refs/home-v2-*`. Zmiany wyznaczone porównaniem STARY design
+  ↔ NOWY design (nie strona ↔ design — hero mobile jest świadomie wg ramki 2043:1621).
+  Narzędzia: `design-refs/tools/rowalign2.js`, `tmpl-find.js` (NOBG), `unmix-blue.js`,
+  `unmix-gray.js`, `unmix-2bg.js` (flood-fill, TH).
+- Decyzje Patryka (w sesji): karta 1 = nowy kurs „AI pod kontrolą od podstaw" (CTA `/#kontakt`,
+  podstrona później); kafle „NIE CZEKAJ" zostają ukryte; webinar = nowe teksty, daty z danych.
+- DESKTOP:
+  - Hero: delty z metadanych (nagłówek/kicker −10, tagline −13/−12, przycisk −8, .AI −16/−2,
+    gwiazdy −10) + kursor przy przycisku (`kursor.svg`). Diff 1.20%.
+  - Manifest (2240:1628) przepisany: robot z hologramami (`manifest-robot-v2.webp`, ten sam
+    PNG na mobile), lineB pod lineA + linia z gwiazdkami (`gwiazdka4-*.svg`), lineC 3 linie,
+    akapit + „wniosek" z lime kreską (`HomeManifest.conclusion`), gwiazdki wycięte z renderu.
+    Typografia PL: `lib/typo.ts` `nbspOrphans` (a/i/w/z… sklejone nbsp — tak łamie Figma). 2.87%.
+  - Kolejność: pasek TY DECYDUJESZ + marquee PRZED kartą webinaru (`app/page.tsx`).
+  - Karta webinaru (2204:1684): karta 612 wys., kolumna prowadzącego (nazwisko Black 24 |
+    PROWADZĄCY | cena), nagłówek z małym „KTÓRY" (`promo.headingSmall`), nowe teksty
+    (`content/webinary.ts`), nowy panel zdjęcia (`w-ad-panel-piotr-v2.webp`), gwiazda wycięta
+    z dwóch teł. ~4.9% (różnica = „Termin wkrótce" zamiast dwóch pól daty).
+  - Karty kursów v2 (`DnaCard.pill`, `DnaCard.art` panel|robot): sidebar 15px, pigułka ✦,
+    kursor przy CTA, karta 1 = szary panel z robotem (eksport 2317:3152), karta 2 = robot
+    z alfą + 2 obrócone gwiazdki SVG; nowe eksporty helis 1/3 (`dna1-v2`, `dna3-v2`),
+    gwiazda-strzałka z renderu. 2.83%.
+  - Prowadzący: tło od 63.4 (było 103), treść −89.6 → 1.46%. Kontakt: pasek „POZNAJ NASZE
+    KURSY" (`Kontakt.coursesCta`), canvas 1649, treść +143 → 1.34%.
+- MOBILE:
+  - Hero: bez zmian w designie (tylko kursor — nie dodany, nasz hero ma własny układ).
+  - Manifest od y1520: nowy układ jak desktop (robot + gradient w tło, pill obrys 2px blue,
+    17px), CTA na białej linii; ManifestBarMobile = AI TO NARZĘDZIE + pasek + szary pas
+    JAK BARDZO + NOWY biały pasek haseł (marquee). 2.35% (górna połowa).
+  - Karta webinaru mobile wg 2245:1665 (układ przepływowy, pionowy pasek 44, zdjęcie 290×340,
+    max 520px na tabletach) — zastępuje autorską wersję.
+  - Karty kursów: canvas 1780 od końca webinaru; karta 1 w układzie 715 + pigułka (kadr robota
+    `m-card-ai-kontrola.webp`), karta 2 = nowy układ 841 z robotem i gwiazdkami; helisa
+    `m-dna3-v2.webp`. Karta 2 ~9.5% (łamanie tekstu).
+  - Prowadzący: Piotr −98, Wiktoria −196, sekcja 2088, duża konturowa gwiazda przy nagłówku
+    (`prow-star-big-m-f.png`) → 3.53%. Kontakt: canvas 1295.5 (−47.5).
+- Walidacja: tsc czyste, eslint bez nowych błędów (2 stare w StopkaSection), hscroll ok
+  375–2560, tablet 768 sprawdzony.
+- Figma: ~30 wywołań MCP na pliku `5ufIX…` (limit planu nieznany).
+- Decyzje Patryka po review (BotFarm): na mobile pokazujemy tylko nowy kurs (bez starego
+  „Agent AI w Twoim biznesie"); przerwa przed HUMAN/MACHINE zostaje bez zmian.
+
+## 2026-10-29 — mniejszy obszar roboczy na szerokich ekranach
+
+- `globals.css`: `--workspace: 2400px` → `min(1760px, calc(720px + 50vw))`. 1440 bez zmian;
+  1920 → 1680 (margines 120px); 2560/3840 → 1760 (wcześniej 2400 = ~1.7× skali designu na 4K).
+  Wszystkie użycia idą przez `var(--workspace)` (max-w, hero, kurs-v2, webinar) — bez zmian w komponentach.
+- Walidacja: shot.js 1440/1920/2560/3840 + pomiar lewej krawędzi (1/120/400/1040px), hscroll ok 375–2560.
+  Uwaga: dev server nie złapał zmiany w globals.css przez HMR — pomógł restart + usunięcie `.next`.
+- Zablokowane: redesign home z nowego pliku Figma `5ufIXE17KqmkvVrfSVzUFE` — w tej sesji brak
+  połączenia z Figma MCP (→ TODO).
+
+## 2026-10-28 (2) — audyt SEO + robots.txt
+
+- Audyt wyrenderowanego HTML 13 adresów (dev): title/description/canonical/OG/robots/h1/
+  nagłówki/alt/landmarki/JSON-LD/301/404 + robots.txt i sitemap.xml.
+- `robots.ts`: grupa crawlerów AI (wyszukiwarki ChatGPT/Claude/Perplexity/Gemini/Apple/Bing)
+  jawnie dopuszczona z tymi samymi Disallow (bot z własną grupą ignoruje „*”); usunięty `Host`
+  (dyrektywa tylko Yandexa).
+- Regulamin/Polityka: title „Regulamin — kompetencje.ai | Kompetencje.ai” → „Regulamin | Kompetencje.ai”.
+- Walidacja: curl robots.txt i tytułów, `tsc --noEmit` czyste.
+- Otwarte (→ TODO): webinar `published:false` (noindex, poza sitemapą, a promowany na home);
+  description >160 zn. na 5 stronach; 404 po angielsku (brak `not-found.tsx`); og:image home
+  w dev = localhost (sprawdzić na produkcji); ~75% obrazków z `alt=""` — zweryfikować,
+  które nie są dekoracyjne.
+
+## 2026-10-28 — analiza strony + podstawy SEO
+
+- Analiza stanu: build/tsc czyste, lint 15 błędów (nieblokujące), waga stron 10–25 MB
+  (PNG przez `<img>`, desktopowe wideo pobierane na mobile, prefetch ciągnie obrazki home),
+  ~60 MB nieużywanych plików w `public/assets`. Wnioski → TODO.
+- `src/lib/seo.ts`: `ogFor(path, title, desc)` — type/locale/siteName/url/obrazek; Next łączy
+  metadane płytko, więc OG z podstrony gubił `og:image` i siteName (sprawdzone na buildzie).
+- `app/robots.ts` (+ sitemap URL; poza produkcją Vercela `Disallow: /`), `app/sitemap.ts`
+  (7 URL-i: home, o-nas, manifest, 2 prawne, 2 kursy; webinar `published:false` pominięty),
+  `app/opengraph-image.tsx` (brand blue, HK Modular, logo na jasnym kaflu).
+- JSON-LD EducationalOrganization + WebSite w layout; `twitter:card` summary_large_image;
+  kanonik `/` tylko na home (w layoucie dziedziczyłby go np. 404).
+- Kursy z treścią zastępczą (`bezpieczenstwo-aplikacji`, `prompt-engineering`,
+  `tworzenie-tresci-z-ai`) → `noindex, follow` + poza sitemapą (`isPlaceholderCourse`).
+- Stopka SZKOLENIA `/szkolenia` (404 na każdej stronie) → `/#kursy`.
+- Walidacja: next build, curl robots/sitemap/OG/meta na 10 adresach, render OG obejrzany.
+- Świadomie NIE zmienione: podwójny h1 (wariant desktop + mobile w DOM, jeden ukryty
+  `display:none`, ten sam tekst) — usunięcie h1 z wariantu mobile szkodziłoby mobile-first
+  indexingowi.
+- Otwarte: wydajność (next/image, wideo per breakpoint, prefetch, sprzątanie public/).
+
 ## 2026-10-15 (7) — ukryta sekcja 3 kart kursów na home
 
 - `app/page.tsx`: flaga `SHOW_KURSY_TILES = false` — `KursySection` (3 karty kursów, desktop)
