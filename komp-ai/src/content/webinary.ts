@@ -15,23 +15,37 @@ export const webinarAgentAi: WebinarPage = {
   badge: "AI GYM  ·  WEBINAR NA ŻYWO",
   title: { before: ["ZBUDUJ SWOJEGO"], accent: "AGENTA AI", after: ["W 60 MINUT"] },
   tagline: "TE SAME DANE. INNY MÓZG.",
+  // v2 (Figma 479:1789, 2026-10-29)
+  taglinePills: ["TE SAME DANE", "INNY MÓZG"],
   description: [
     [
+      { text: "Zadajesz pytanie AI i dostajesz " },
+      { text: "odpowiedź, która jest poprawna… ", strong: true, break: true },
+      { text: "i zupełnie bezużyteczna!", strong: true },
       {
-        text: "Pytasz AI i dostajesz odpowiedź, która jest poprawna… i zupełnie bezużyteczna. Ogólnikowa, bez kontekstu Twojej pracy, zespołu i priorytetów.",
-      },
-    ],
-    [
-      { text: "Na tym warsztacie to zmienisz. " },
-      { text: "W godzinę zbudujesz własnego agenta AI", strong: true },
-      {
-        text: ", który zna Twoją rolę, Twoje standardy i sposób komunikacji, i od pierwszego pytania odpowiada jak ktoś z Twojego zespołu.",
+        text: " Jak to możliwe? Ogólna odpowiedź, bez kontekstu Twojej pracy, zespołu i Waszych priorytetów, nie popchnie zadań daleko naprzód.",
       },
     ],
   ],
-  boldNote: "Bez slajdów. Bez teorii na start. Najpierw budujesz, potem rozumiesz, dlaczego to działa.",
+  intro: [
+    { text: "Na tym warsztacie to zmienisz! " },
+    { text: "W zaledwie godzinę stworzysz ", strong: true, break: true },
+    { text: "własnego agenta AI", strong: true },
+    { text: ", który:" },
+  ],
+  features: [
+    { icon: "praca", label: "Zna Twoją pracę" },
+    { icon: "zespol", label: "Zna Twój zespół" },
+    { icon: "wie", label: "Mówi, gdy czegoś nie wie" },
+  ],
+  stats: [
+    { value: "60 MIN", label: "warsztatu" },
+    { value: "20 MIN", label: "budujesz agenta" },
+    { value: "BEZ", label: "kodowania" },
+  ],
+  boldNote: "Od pierwszych minut pracujesz na swoim agencie. W praktyce nauczysz się, jak i dlaczego to działa!",
   // TODO: docelowy link zapisu (formularz / platforma webinarowa) — na razie kontakt
-  register: { href: "/#kontakt", label: "ZAPISZ SIĘ", note: ["Online, na żywo.", "Wystarczy laptop i konto Google."] },
+  register: { href: "#kontakt", label: "ZAPISZ SIĘ ZA DARMO", note: ["Online, na żywo.", "Wystarczy laptop i konto Google."] },
   details: {
     // design 2002:1803 ma placeholder [IMIĘ I NAZWISKO]; nowsza wersja (479:1789): Piotr Małysz
     instructor: "Piotr Małysz",
@@ -41,12 +55,12 @@ export const webinarAgentAi: WebinarPage = {
     durationMin: 60,
     tool: "Google Gemini (Gemy)",
     price: { value: 0, currency: "PLN" },
-    priceLabel: "INWESTYCJA",
     note: "Metoda działa tak samo w ChatGPT i Claude, więc przeniesiesz ją do narzędzi, których używasz na co dzień.",
   },
   comparison: {
     heading: ["TO SAMO PYTANIE.", "DWIE RÓŻNE ODPOWIEDZI."],
-    text: "Warsztat zaczynamy od demo na żywo: zwykły czat AI i spersonalizowany agent podsumowują ten sam miesiąc maili. AI nie staje się mądrzejsze. Dostaje kontekst, rolę i strukturę, i to wystarczy.",
+    text: "Warsztat zaczynamy od demo na żywo: zwykły czat AI i spersonalizowany agent podsumowują ten sam miesiąc maili. Model jest ten sam. Agent dostaje kontekst, rolę i strukturę, i to wystarcza.",
+    prompt: "Podsumuj szczegółowo mój ostatni miesiąc maili",
     plain: {
       label: "ZWYKŁY CZAT AI",
       items: [
@@ -63,7 +77,7 @@ export const webinarAgentAi: WebinarPage = {
         "Mówi, co jest zagrożone i co z tym zrobić",
         "Ustawia priorytety: krytyczne, wysokie, średnie",
         "Oznacza, co wie, co wnioskuje, a co zgaduje",
-        "Zadaje pytania, o których jeszcze nie pomyślałeś",
+        "Zadaje pytania, które łatwo przeoczyć",
       ],
       effect: "Efekt: gotowy materiał do podjęcia decyzji.",
     },
@@ -84,8 +98,9 @@ export const webinarAgentAi: WebinarPage = {
       },
       {
         time: "30–40 MIN",
-        title: "Test w prawdziwej pracy",
-        text: "Dajesz agentowi zadanie z codziennej pracy i porównujemy, co zbudowali inni uczestnicy.",
+        title: "Test na prawdziwym zadaniu*",
+        text: "Zlecasz agentowi zadanie biznesowe i porównujesz wynik z tym, co zbudowali inni uczestnicy.",
+        note: "*Możesz użyć zadania z własnej pracy, ale tylko wtedy, gdy masz pewność, że wolno Ci przetwarzać te dane.",
       },
       {
         time: "40–60 MIN",
@@ -114,14 +129,16 @@ export const webinarAgentAi: WebinarPage = {
       "OBSŁUGA KLIENTA",
       "SPECJALIŚCI I MANAGEROWIE",
     ],
-    text: "Dla każdego, kto używa AI w pracy i chce dostawać odpowiedzi, które da się od razu wykorzystać. Nie musisz programować. Wystarczy, że znasz swoją pracę.",
+    text: "Dla każdego, kto używa AI w pracy i chce dostawać odpowiedzi, które da się od razu wykorzystać.",
+    textBold: "Nie musisz programować. Wystarczy, że znasz swoją pracę.",
     safety: {
       label: "BEZPIECZEŃSTWO DANYCH",
-      text: "Ćwiczymy na danych niepoufnych. Pokażemy też, jak bezpiecznie przenieść metodę do firmowych wersji narzędzi AI.",
+      text: "Ćwiczymy na danych niepoufnych. Pokazujemy też, jak bezpiecznie przenieść metodę do firmowych wersji narzędzi AI.",
     },
   },
   closing: {
     lines: ["PRZYJDŹ Z PRAWDZIWYM PROBLEMEM.", "WYJDŹ Z NARZĘDZIEM, KTÓRE GO ROZWIĄZUJE."],
+    ctaLabel: "ZAPISZ SIĘ",
   },
   // karta reklamy na stronie głównej (design 2085:1762 „REKLAMA WEBINARU – V5")
   promo: {

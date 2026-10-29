@@ -1,0 +1,15 @@
+<svg width="1440" height="596" viewBox="0 0 1440 596" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="WEBINAR &#226;&#128;&#147; podstrona">
+<g id="Webinar &#226;&#128;&#147; przebieg">
+<g id="FX &#226;&#128;&#147; po&#197;&#155;wiata pasa">
+<path id="Vector" d="M720 466C996.142 466 1220 376.457 1220 266C1220 155.543 996.142 66 720 66C443.858 66 220 155.543 220 266C220 376.457 443.858 466 720 466Z" fill="url(#paint0_radial_0_1)"/>
+</g>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 266) scale(500 200)">
+<stop stop-color="#D6FF3F" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#D6FF3F" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

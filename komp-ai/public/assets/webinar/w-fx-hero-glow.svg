@@ -1,0 +1,16 @@
+<svg width="1440" height="1000" viewBox="0 0 1440 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="WEBINAR &#226;&#128;&#147; podstrona">
+<g id="FX &#226;&#128;&#147; po&#197;&#155;wiata hero" clip-path="url(#clip0_0_1)">
+<path id="Vector" d="M1110 940C1419.28 940 1670 716.142 1670 440C1670 163.858 1419.28 -60 1110 -60C800.721 -60 550 163.858 550 440C550 716.142 800.721 940 1110 940Z" fill="url(#paint0_radial_0_1)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1110 440) scale(560 500)">
+<stop stop-color="#131DFF" stop-opacity="0.16"/>
+<stop offset="1" stop-color="#131DFF" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="1000" fill="white"/>
+</clipPath>
+</defs>
+</svg>

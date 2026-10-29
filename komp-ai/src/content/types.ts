@@ -439,6 +439,14 @@ export interface WebinarPage {
   description: RichSeg[][];
   /** pogrubiona linia pod opisem */
   boldNote?: string;
+  /** v2 (Figma 479:1789): akapit przed kafelkami („Na tym warsztacie… który:") */
+  intro?: RichSeg[];
+  /** v2: kafelki „co potrafi agent" (ikona + podpis) */
+  features?: { icon: "praca" | "zespol" | "wie"; label: string }[];
+  /** v2: niebieski pasek liczb („60 MIN warsztatu") */
+  stats?: { value: string; label: string }[];
+  /** v2: pigułki pod kartą („TE SAME DANE" → „INNY MÓZG"); gdy podane — tagline nie jest renderowany */
+  taglinePills?: [string, string];
   /** zapis: link (formularz / platforma webinarowa), tekst przycisku, linie obok przycisku */
   register: { href: string; label: string; note: string[] };
   /** karta „SZCZEGÓŁY" */
@@ -462,12 +470,15 @@ export interface WebinarPage {
   comparison?: {
     heading: string[];
     text: string;
+    /** v2: pasek „promptu" nad kartami (to samo pytanie zadane obu) */
+    prompt?: string;
     plain: { label: string; items: string[]; effect: string };
     agent: { label: string; items: string[]; effect: string };
   };
-  agenda: { heading: string; subheading?: string; steps: { time: string; title: string; text: string }[] };
+  agenda: { heading: string; subheading?: string; steps: { time: string; title: string; text: string; note?: string }[] };
   outcomes: { heading: string[]; items: string[] };
-  audience: { heading: string; tags: string[]; text: string; safety?: { label: string; text: string } };
+  /** textBold — pogrubione zdanie doklejone na końcu tekstu (v2) */
+  audience: { heading: string; tags: string[]; text: string; textBold?: string; safety?: { label: string; text: string } };
   closing: { lines: string[]; ctaLabel?: string };
   /** karta reklamy webinaru na stronie głównej (design 2085:1762) — opcjonalna;
    * prowadzący, cena, data i godziny biorą się z `details` */

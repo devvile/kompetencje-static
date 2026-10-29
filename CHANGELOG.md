@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-10-29 (9) — webinar desktop v2 (Figma 479:1789)
+
+- Hero: nowy opis + akapit „Na tym warsztacie… który:", 3 kafelki z ikonami (`features`), niebieski
+  pasek liczb (`stats`), przycisk „ZAPISZ SIĘ ZA DARMO" 334×66 z kursorem, karta przesunięta o 106
+  (wiersz CENA zamiast INWESTYCJA, nazwisko Montserrat Black 20), pigułki „TE SAME DANE → INNY MÓZG"
+  pod kartą (`taglinePills`, zastępują tagline), pieczątka AI GYM (SVG), poświata + siatka w tle.
+- Porównanie: pasek „promptu" nad kartami (`comparison.prompt`), nowe teksty, listy 440 szer.
+- Przebieg: poświata + siatka w pasie, krok 3 z przypisem (`steps[].note`).
+- Korzyści: sekcja 1258 szer., kolumny wyśrodkowane, pogrubione zdanie (`audience.textBold`).
+- Zamknięcie: siatka pod przyciskiem, nowa gwiazda-strzałka, kursor; kontakt + POZNAJ NASZE KURSY
+  (OnasKontakt w route, `#kontakt` = cel przycisków zapisu).
+- FX/pieczątka: eksporty SVG z Figmy z wyciętym tłem strony (przezroczyste, ostre na retinie).
+- Walidacja 1440×1028: sekcje = design ±7px, diff 7.4–11% (AA tekstu), hscroll ok 375–2560,
+  `next build` OK. Mobile webinaru bez zmian układu (brak widoku mobile v2 w Figmie) — nowe teksty
+  opisu i odbiorców widoczne też na telefonie.
+
 ## 2026-10-29 (8) — /o-nas mobile: usunięte glitche na niebieskim tle (przegląd całej strony)
 
 - Figma `326:1050` bez zmian względem lipcowego renderu (diff 0.01%) — błędy były po naszej stronie.
