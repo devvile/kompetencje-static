@@ -5,6 +5,7 @@ Ostatnia aktualizacja: 2026-10-29
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
+- Naprawione: na telefonie na stronie głównej nie pokazywały się zdjęcia prowadzących (animacja odsłaniania nigdy się nie uruchamiała).
 - Strona webinaru na telefonie ma teraz te same elementy co na komputerze (kafelki, pasek liczb, pieczątka, przykładowe pytanie, przypis, formularz) — ułożone pod wąski ekran. Projektu mobilnego w Figmie nie było, więc wzorem była wersja komputerowa.
 - Strona webinaru „Zbuduj swojego agenta AI w 60 minut" (komputer) zaktualizowana według nowego projektu Victorii: nowy początek strony (kafelki „co potrafi agent", pasek z liczbami, okrągła pieczątka AI GYM), pasek z przykładowym pytaniem między porównaniem odpowiedzi, przypis w programie, subtelne siatki w tle i formularz kontaktowy na dole strony — przyciski „Zapisz się" przewijają do niego.
 - Strona „O nas" na telefonie: usunięte usterki na niebieskim tle — opisy prowadzących mają teraz półprzezroczyste ramki z efektem szkła jak w projekcie, tekst mieści się w ramkach, ozdobne linie nie przecinają już tekstu; poprawione też logo „.AI" na górze strony (biała obwódka przy kropce).

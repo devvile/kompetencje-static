@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-10-29 (11) — fix: niewidoczne zdjęcia prowadzących na home (mobile)
+
+- Zdjęcia mają animację `.reveal-wipe` (start: `clip-path: inset(101%)`). Chrome liczy przecięcie
+  IntersectionObserver po przycięciu → pusty prostokąt → `.is-in` nigdy nie dochodziło, zdjęcia
+  zostawały ukryte na zawsze (testy szły z reduced-motion, więc tego nie łapały).
+- `RevealObserver`: dla `.reveal-wipe` obserwowany jest niewidoczny „sentinel" o tym samym
+  położeniu i rozmiarze, a `.is-in` trafia do właściwego elementu. Sprawdzone z animacjami
+  włączonymi (390px): wszystkie 20 elementów [data-reveal] odsłonięte; hscroll ok; build OK.
+
 ## 2026-10-29 (10) — webinar mobile dopasowany do desktopu v2
 
 - Brak widoku mobile w Figmie (decyzja Patryka) — źródło prawdy = desktop 479:1789, układ w jednej
