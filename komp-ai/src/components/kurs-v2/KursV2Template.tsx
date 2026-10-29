@@ -11,6 +11,7 @@
  * Formularz zapisu: K2EnrollModal (modal ≥768 / panel od dołu na mobile).
  * Stopka = wspólny komponent strony (podaje route).
  */
+import { SITE_URL } from "@/lib/seo";
 import type { KursV2Page, NavLink } from "@/content/types";
 import K2Hero from "./K2Hero";
 import K2Benefits, { K2CtaBand } from "./K2Benefits";
@@ -25,7 +26,7 @@ import K2Mobile from "./K2Mobile";
 import K2EnrollModal, { type EnrollSummary } from "./K2EnrollModal";
 import { formatPrice, kursCounts } from "./k2";
 
-const SITE = "https://kompetencje.ai";
+const SITE = SITE_URL;
 
 function courseJsonLd(k: KursV2Page) {
   const counts = kursCounts(k);

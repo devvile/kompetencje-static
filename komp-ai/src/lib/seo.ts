@@ -3,7 +3,10 @@
 // żeby nie gubić siteName/locale/obrazka.
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://kompetencje.ai";
+/** domena KANONICZNA = ta, którą serwuje Vercel (apex kompetencje.ai przekierowuje na www).
+ *  Canonical/sitemap/OG muszą wskazywać adres bez przekierowania, inaczej Google dostaje
+ *  sprzeczne sygnały i nie indeksuje stron. Zmiana domeny głównej w Vercelu = zmiana tutaj. */
+export const SITE_URL = "https://www.kompetencje.ai";
 export const SITE_NAME = "Kompetencje.ai";
 
 /** obrazek udostępniania z app/opengraph-image.tsx — Next dokleja go sam tylko

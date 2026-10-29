@@ -10,6 +10,7 @@
  * Termin z ISO formatuje się sam (pl-PL, Europe/Warsaw); cena 0 = „Bezpłatnie".
  * JSON-LD schema.org/EducationEvent (gdy podany termin) — SEO.
  */
+import { SITE_URL } from "@/lib/seo";
 import type { NavLink, RichSeg, WebinarPage } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
 import MobileTopBar from "../shared/MobileTopBar";
@@ -19,7 +20,7 @@ const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 const fs = (px: number, minPx: number) => `max(${minPx}px, ${c(px)})`;
 /** v2: nav (100) + intro (30 + 898) ≈ 1028 px płótna 1440 mieści się w oknie */
 const W_MAX = "min(var(--workspace), calc(100svh * 1440 / 1028))";
-const SITE = "https://kompetencje.ai";
+const SITE = SITE_URL;
 
 /* ---------------- dane pochodne ---------------- */
 

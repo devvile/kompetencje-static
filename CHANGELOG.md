@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-10-29 (15) — SEO: kanoniczna domena www (powód braku indeksacji) + logi 30 dni
+
+- Diagnoza na produkcji: robots.txt i sitemap.xml OK (Allow, sitemap podany), ALE apex
+  `kompetencje.ai` robi 307 → `www.kompetencje.ai`, a canonical/og:url/sitemap/JSON-LD wskazywały
+  apex → Google: kanoniczny adres przekierowuje (sprzeczne sygnały, strony poza indeksem).
+- `lib/seo.ts`: `SITE_URL = "https://www.kompetencje.ai"`; KursV2Template/WebinarTemplate biorą
+  SITE_URL (zamiast własnej stałej). Sprawdzone lokalnie: canonical, og:url, sitemap, robots, JSON-LD = www.
+- Polityka: logi serwera max 30 dni. Zostały: [SYSTEM DO FAKTUR] ×2, [BIURO RACHUNKOWE].
+- Do zrobienia przez Patryka: Google Search Console (właściwość domeny), zgłoszenie sitemap,
+  „Sprawdź URL” → „Poproś o zindeksowanie” dla home i kursów. Opcjonalnie w Vercelu przekierowanie
+  apex → www jako stałe (308) zamiast 307.
+
 ## 2026-10-29 (14) — regulamin/polityka: czas dostępu, retencja webinaru, LiveWebinar, wzór odstąpienia
 
 - Nagrania dostępne 360 dni; dane z zapisu na webinar 2 lata po webinarze; platforma zajęć: LiveWebinar

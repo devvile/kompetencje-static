@@ -156,7 +156,7 @@ export const politykaPrywatnosci: LegalPage = {
             "dane z zapisu na bezpłatny webinar – do zakończenia webinaru i przez 2 lata po nim,",
             "wiadomości z formularza kontaktowego – do zakończenia sprawy, nie dłużej niż 12 miesięcy od ostatniego kontaktu,",
             "dane do newslettera – do cofnięcia zgody, a informację o udzieleniu i cofnięciu zgody – do upływu terminu przedawnienia roszczeń,",
-            "logi serwera – przez okres wynikający z ustawień dostawcy hostingu, nie dłużej niż [OKRES PRZECHOWYWANIA LOGÓW].",
+            "logi serwera – przez okres wynikający z ustawień dostawcy hostingu, nie dłużej niż 30 dni.",
           ],
         },
         {
