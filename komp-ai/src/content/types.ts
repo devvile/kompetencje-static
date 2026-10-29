@@ -271,6 +271,8 @@ export interface KursV2HeroImage {
   offsetX?: number;
   /** limonkowa gwiazda za grafiką (domyślnie true) */
   decorStar?: boolean;
+  /** v3: odległość dołu grafiki od dołu hero (domyślnie 1.5) */
+  bottom?: number;
 }
 
 export interface KursV2Instructor {
@@ -296,9 +298,27 @@ export interface KursV2Instructor {
   ctaLabel: string;
 }
 
+/** ilustracja kafla bento „Co zyskasz" (kurs v3) — rejestr w K3Benefits */
+export type KursV3BentoArt = (
+  | { kind: "oferta-mock" }
+  | { kind: "grafiki-trio"; images: [string, string, string]; pill: string }
+  | { kind: "slajdy"; src: string; pills: string[] }
+  | { kind: "wycena-chart"; bars: number[]; highlight: number; label: string; pills: string[] }
+  | { kind: "image"; src: string; x: number; y: number; w: number; h: number }
+) & {
+  /** wąskie kafle: top numeru (domyślnie 236) */
+  contentTop?: number;
+  /** szerokie kafle: rozmiar tytułu (domyślnie 30) */
+  titlePx?: number;
+  /** mobile: wycinek grafiki z kafla desktop (px kafla), skalowany do szerokości kafla mobile */
+  mobileCrop?: { x: number; y: number; w: number; h: number };
+};
+
 export interface KursV2Page {
   _type: "kursV2Page";
   slug: string;
+  /** „v3" = układ z widoków 2026-10-29 (bento, karty programu, dla kogo, FAQ, kontakt) */
+  layout?: "v3";
   /** nazwa kursu zdaniem („Z rozmowy do oferty w 60 minut") — podsumowanie
    * w formularzu zapisu, przyklejony pasek, JSON-LD */
   name: string;
@@ -332,13 +352,36 @@ export interface KursV2Page {
     toolsLabel?: string; // „Pracujesz w:"
     tools?: string[];
     assurances: { icon: "check" | "star"; text: string }[];
+    /** data startu kursu (ISO „2026-11-20"); brak = „Start: wkrótce" (wiersz pod statystykami, v3) */
+    startDate?: string;
+    /** v3: drobna notka pod pigułkami narzędzi w karcie ceny */
+    toolsNote?: string;
+    /** v3: tło hero — „circles" = koła, ukośne paski, kropki i niebieska gwiazdka (kurs AI pod kontrolą) */
+    backdrop?: "circles";
+    /** v3: padding treści hero [góra, dół] w px designu (domyślnie [9.5, 1.5]) */
+    pad?: [number, number];
   };
   benefits: {
     heading: string;
     /** titleMobile/textMobile — opcjonalne krótsze wersje na telefon */
     items: { title: string; text: string; titleMobile?: string; textMobile?: string }[];
+    /** układ bento v3 (brak = stary układ zygzak) */
+    bento?: {
+      badge: string; // „EFEKTY KURSU" (liczba z items)
+      headingLines: [string, string]; // druga linia na limonkowym tle
+      decor?: string; // grafika w prawym górnym rogu sekcji
+      /** położenie dekoru (px sekcji); brak = geometria kursu „Z rozmowy…" (obrót 13.54°) */
+      decorBox?: { x: number; y: number; w: number; h: number };
+      tiles: KursV3BentoArt[]; // 4, w kolejności items
+      marquee: string[]; // hasła ukośnego paska
+    };
   };
-  ctaBand: { text: string; ctaLabel: string };
+  /** variant „modular" (v3, 2279:3066): tekst HK Modular wersalikami 24, pasek 247 */
+  ctaBand: { text: string; ctaLabel: string; variant?: "modular" };
+  /** v3: „DLA KOGO JEST KURS" (lime karta) */
+  audience?: { heading: string; items: string[] };
+  /** v3: FAQ (akordeon, pierwsze pytanie otwarte; też JSON-LD FAQPage) */
+  faq?: { heading: [string, string]; lead: string; items: { q: string; a: string }[] };
   program: { heading: string; modules: KursV2Module[] };
   instructor: KursV2Instructor;
   /** opcjonalne teksty TYLKO na telefon (brak pola = tekst z desktopu) */

@@ -7,8 +7,8 @@
  * form (384,6277), 2 STAR_OUTLINE (biel 18%) wypieczone z renderu o-nas.
  */
 import type { Kontakt } from "@/content/types";
-import ContactFormDesktop from "../shared/ContactFormDesktop";
-import ContactFormMobile from "../shared/ContactFormMobile";
+import ContactFormDesktop, { FORM_SHRINK } from "../shared/ContactFormDesktop";
+import ContactFormMobile, { FORM_M_SHRINK } from "../shared/ContactFormMobile";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 const SCALE_X = 1.1;
@@ -42,7 +42,7 @@ const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
  * blue. Nagłówek = 3 linie lime jak home-kontakt-mobile (inne topy); gwiazdy
  * STAR_ARROW = REUSE assetów home (kontakt-star-l/r-m-f); forma shared. */
 const GMOB = {
-  h: 1356,
+  h: 1356 - FORM_M_SHRINK, // formularz zwarty → sekcja krótsza
   band: { h: 71, lineHPx: 6, fontPx: 22.7 }, // biały pasek 0..6, lime 6..64, biały 64..70; ink tekstu 38..365
   heading: { fontPx: 15.9, trackPx: 0.3, lines: [{ left: 105, top: 138 }, { left: 46, top: 174 }, { left: 74, top: 210 }] },
   starL: { left: 0, top: 251, w: 72, h: 69 },
@@ -127,7 +127,9 @@ export default function OnasKontakt({
   /** od kiedy widoczny wariant desktop (o-nas: md; /manifest: lg) */
   visibilityClass?: string;
 }) {
-  const L = layout;
+  // formularz zwarty → sekcja i prawa gwiazda krótsze/wyżej o FORM_SHRINK (× skala formularza)
+  const shrink = FORM_SHRINK * layout.form.scale;
+  const L = { ...layout, h: layout.h - shrink, starR: { ...layout.starR, y: layout.starR.y - shrink } };
   return (
     // z-20: pill CTA bleeduje nad sekcję prowadzących (która ma z-10)
     <section id="kontakt" className={`relative z-20 w-full overflow-x-clip ${visibilityClass}`}>

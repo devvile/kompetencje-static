@@ -91,7 +91,6 @@ export const homePage: HomePage = {
       leadLabel: "PROWADZĄCY",
       leadName: "PIOTR MAŁYSZ",
       // redesign 2026-10 (Figma 2315:3152): nowy kurs zamiast „Agent AI w Twoim biznesie";
-      // podstrona kursu jeszcze nie istnieje → CTA tymczasowo do formularza kontaktu
       titleLines: ["AI POD", "KONTROLĄ", "OD PODSTAW"] as [string, string, string],
       pill: "Context Control",
       body: [
@@ -106,7 +105,7 @@ export const homePage: HomePage = {
         { text: ", chronić wrażliwe dane i łączyć model z firmowymi systemami przez MCP – od podstaw, krok po kroku." },
       ],
       ctaLabel: "ZOBACZ SZCZEGÓŁY",
-      ctaHref: "/#kontakt",
+      ctaHref: "/kursy/ai-pod-kontrola-od-podstaw",
       art: { kind: "panel" as const, src: "/assets/card-ai-kontrola-panel.webp" },
       photo: "/assets/card-waga-src.png",
       photoM: "/assets/m-card-ai-kontrola.webp", // kadr robota z panelu desktop

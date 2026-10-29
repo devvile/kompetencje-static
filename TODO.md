@@ -79,6 +79,25 @@ tekstury 2624×1630; maski logo).
 
 ## Otwarte zadania
 
+- [ ] **KURS v3 — dwie strony kursów wg nowych widoków Victorii (zlecenie 2026-10-29)**
+  Figma `5ufIXE17KqmkvVrfSVzUFE`: „Z rozmowy do oferty" desktop `2136:2432` (1440×10645) /
+  mobile `2139:1991` (402×14958); „AI pod kontrolą od podstaw" desktop `2279:2811` (1440×12531) /
+  mobile `2310:3040` (402×17676). Rendery: `design-refs/kurs-v3/*.png` (gitignore).
+  Sekcje (desktop): hero (+ „Start [data]") → CO ZYSKASZ (bento 4 kafle z grafikami) → ukośny
+  marquee korzyści → „Gotowy…" + ZAPISZ SIĘ → PROGRAM (moduły: białe karty lekcji 2 kol.,
+  pigułka „N lekcje", pasek EFEKT MODUŁU) → DLA KOGO JEST KURS (lime karta) → prowadzący
+  (blue karta na lime) → „Nie czekaj" karta ceny → FAQ (akordeon) → pasek POZNAJ NASZE KURSY
+  + formularz (ContactFormDesktop/Mobile) → stopka. Wymagania: retina (assety 2x, webp),
+  ultra wide (--workspace), dane z content (oba kursy z jednego szablonu).
+  - [x] „Z rozmowy do oferty" desktop + mobile (2026-10-29) — szczegóły w CHANGELOG (6).
+  - [x] „AI pod kontrolą od podstaw" desktop + mobile (2026-10-29) — CHANGELOG (7); link z home podpięty.
+  - [ ] Weryfikacja Patryka: odpowiedzi FAQ (design ma 1 placeholder), termin startu
+        (`hero.startDate`), cena drugiego kursu ([CENA] w designie).
+  - [ ] Hero desktop: robot ~10px przesunięty vs design (diff 11%) — do dostrojenia.
+
+- [ ] Ultra wide: tła sekcji do krawędzi ekranu na `/o-nas` (Q&A, lime, prowadzący, kontakt) i dole
+      `/manifest` (y 4100-5700 przy 2560×950) — jak na home (gradient z proporcji canvasu na section).
+
 - [ ] **Redesign home „ostatni szlif" Victorii (Figma `5ufIXE17KqmkvVrfSVzUFE`, 2026-10-29)**
   Rendery: `design-refs/home-v2-desktop-full.png` (1440×9284), `home-v2-mobile-full.png` (402×11657),
   metadane `home-v2-*-metadata.xml`. Decyzje Patryka: karta 1 = NOWY kurs „AI pod kontrolą od podstaw"

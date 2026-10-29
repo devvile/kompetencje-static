@@ -14,10 +14,25 @@
   --color-brand-blue: #131dff;
   --color-brand-lime: #d6ff3f;
   --color-page: #efefef;
-  /* globalny cap szerokości contentu — szersze ekrany dostają "framed canvas".
-     1440 → pełna szerokość; 1920 → 1680 (marginesy 120px); ≥2080 → stałe 1760.
-     (wcześniej 2400px: na 4K wszystko było ~1.7× za duże) */
-  --workspace: min(1760px, calc(720px + 50vw));
+  /* globalny cap szerokości contentu — szersze ekrany dostają "framed canvas"
+     (tła sekcji i tak idą do krawędzi ekranu — patrz komponenty).
+     1) ≤1440 → pełna szerokość; 2) 720px + 50vw → łagodne marginesy;
+     3) najwyżej 1600px (skala 1.11× designu — ultra wide/4K nie robi „plakatu");
+     4) proporcja wysokości okna jak w hero (1440/833), ale nie mniej niż 1440 —
+        na niskich, szerokich oknach (2560×1080, 3440×1440 z paskami przeglądarki)
+        cała strona ma tę samą skalę co hero, zamiast rosnąć wszerz.
+     Historia: 2400px (4K ~1.7×) → 1760px (2026-10-29) → ten wzór (2026-10-29 ultra wide). */
+  --workspace: min(1600px, calc(720px + 50vw), max(1440px, calc(100svh * 1440 / 833)));
+}
+
+/* ≥3000px (4K / ultra wide bez skalowania systemu): strona w skali 1:1 z designem
+   (1440 szer., hero 833 wys.) — na tak dużych ekranach nawet 1.11× wyglądało „plakatowo"
+   (życzenie Patryka 2026-10-29). Nadpisuje --workspace z @theme. */
+@media (min-width: 3000px) {
+  :root {
+    --workspace: 1440px;
+    --hero-slack: 0px; /* hero = dokładnie wysokość posteru (833) */
+  }
 }
 
 html {

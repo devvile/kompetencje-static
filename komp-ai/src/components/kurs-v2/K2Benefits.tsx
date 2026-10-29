@@ -136,6 +136,15 @@ export default function K2Benefits({
         </div>
       </section>
 
+      <K2CtaBand ctaBand={ctaBand} />
+    </>
+  );
+}
+
+/** pasek „Gotowy…" + ZAPISZ SIĘ (2010:1999 / v3 2136:2561 — ten sam układ) */
+export function K2CtaBand({ ctaBand, cursor = false }: { ctaBand: KursV2Page["ctaBand"]; cursor?: boolean }) {
+  return (
+    <>
       <section className="w-full bg-page leading-[normal]">
         <div
           className="@container mx-auto w-full"
@@ -143,19 +152,19 @@ export default function K2Benefits({
         >
           <div
             className="flex items-center justify-between"
-            style={{ padding: `${c(88)} ${c(120)}` }}
+            style={{ padding: ctaBand.variant === "modular" ? `${c(73)} ${c(178)} ${c(88)} ${c(178)}` : `${c(88)} ${c(120)}` }}
             data-node-id="2010:1999"
           >
             <p
-              className="font-audio leading-[1.3] text-brand-blue"
-              style={{ width: c(640), fontSize: c(30) }}
+              className={`leading-[1.3] text-brand-blue ${ctaBand.variant === "modular" ? "font-modular uppercase" : "font-audio"}`}
+              style={ctaBand.variant === "modular" ? { width: c(537), fontSize: c(24) } : { width: c(640), fontSize: c(30) }}
               data-reveal=""
             >
               {ctaBand.text}
             </p>
             <a
               {...ENROLL_OPEN}
-              className="flex shrink-0 items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue transition-transform hover:scale-[1.04]"
+              className="relative flex shrink-0 items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue transition-transform hover:scale-[1.04]"
               style={{
                 width: c(399),
                 height: c(86),
@@ -166,6 +175,16 @@ export default function K2Benefits({
               }}
             >
               {ctaBand.ctaLabel}
+              {/* kursor przy CTA (v3, 2150:2004: bbox 40.2×50.9 → svg ×1.25, obrót −14.69°) */}
+              {cursor && (
+                <img
+                  src="/assets/kursor.svg"
+                  alt=""
+                  aria-hidden
+                  className="pointer-events-none absolute max-w-none"
+                  style={{ left: c(385 + (40.235 - 29.855) / 2), top: c(36.12 + (50.889 - 44.782) / 2), width: c(29.855), height: c(44.782), transform: "rotate(-14.69deg)" }}
+                />
+              )}
             </a>
           </div>
         </div>

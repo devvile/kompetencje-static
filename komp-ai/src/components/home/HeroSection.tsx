@@ -45,7 +45,13 @@ const G = {
 
 function HeroDesktop({ hero, nav }: { hero: HomeHero; nav: NavLink[] }) {
   return (
-    <section className="relative flex h-svh items-center justify-center">
+    // hero = 100svh (wytyczna Patryka), ALE nie wyższy niż poster + 120px (≥3000px: +0, globals.css): na ultra wide
+    // i tabletach pionowo poster jest ograniczony szerokością i dawniej zostawiał
+    // ogromne szare pasy nad/pod sobą
+    <section
+      className="relative flex items-center justify-center"
+      style={{ minHeight: "min(100svh, calc(min(100vw, var(--workspace)) * 833 / 1440 + var(--hero-slack, 120px)))" }}
+    >
       <div
         className="@container mx-auto w-full"
         style={{

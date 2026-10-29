@@ -63,10 +63,38 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
 
         <div
           className="relative flex items-center"
-          style={{ gap: c(24), padding: `${c(8)} ${c(40)} ${c(24)} ${c(120)}` }}
+          // v3 (2136:2435): treść 9.5 od góry, hero 754 → dół 1.5
+          style={{ gap: c(24), padding: k.layout === "v3" ? `${c(hero.pad?.[0] ?? 9.5)} ${c(40)} ${c(hero.pad?.[1] ?? 1.5)} ${c(120)}` : `${c(8)} ${c(40)} ${c(24)} ${c(120)}` }}
           data-node-id="2009:1983"
         >
           {/* dekor: limonkowa gwiazda za grafiką (695,75 względem hero) */}
+          {/* v3 „circles" (2301:4008): koła 700/520/340 + poświata, ukośne paski, kropki, niebieska gwiazdka */}
+          {hero.backdrop === "circles" && (
+            <div className="pointer-events-none absolute inset-0" aria-hidden>
+              <img src="/assets/kurs3/k3-hero-glow.svg" alt="" className="absolute" style={{ left: c(910), top: c(152), width: c(340), height: c(340) }} />
+              <img src="/assets/kurs3/k3-hero-ring170.svg" alt="" className="absolute" style={{ left: c(910), top: c(152), width: c(340), height: c(340) }} />
+              <img src="/assets/kurs3/k3-hero-ring260.svg" alt="" className="absolute" style={{ left: c(820), top: c(62), width: c(520), height: c(520) }} />
+              <img src="/assets/kurs3/k3-hero-ring350.svg" alt="" className="absolute max-w-none" style={{ left: c(730), top: c(-28), width: c(700), height: c(700) }} />
+              {[
+                { x: 1180, y: 2, w: 260, h: 300 },
+                { x: 780, y: 502, w: 240, h: 220 },
+              ].map((b) => (
+                <span
+                  key={b.x}
+                  className="absolute block"
+                  style={{
+                    left: c(b.x), top: c(b.y), width: c(b.w), height: c(b.h),
+                    // linie 2px co 60px (poziomo) pod kątem 35°, blue 16%
+                    backgroundImage: `repeating-linear-gradient(125deg, transparent 0 ${c(48.1)}, rgba(19,29,255,0.16) ${c(48.1)} ${c(49.15)})`,
+                  }}
+                />
+              ))}
+              <img src="/assets/kurs3/k3-dot8.svg" alt="" className="absolute" style={{ left: c(1330), top: c(142), width: c(8), height: c(8) }} />
+              <img src="/assets/kurs3/k3-dot6.svg" alt="" className="absolute" style={{ left: c(750), top: c(442), width: c(6), height: c(6) }} />
+              <img src="/assets/kurs3/k3-dot5.svg" alt="" className="absolute" style={{ left: c(1410), top: c(382), width: c(5), height: c(5) }} />
+              <img src="/assets/kurs3/k3-hero-star-blue-f.png" alt="" className="absolute" style={{ left: c(929), top: c(24), width: c(69), height: c(65) }} />
+            </div>
+          )}
           {img.decorStar !== false && (
             <img
               src="/assets/kurs2/k2-hero-star.webp"
@@ -85,7 +113,7 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
           {/* treść */}
           <div
             className="relative flex shrink-0 flex-col items-start"
-            style={{ width: c(660), rowGap: c(27) }}
+            style={{ width: c(660), rowGap: c(22) }}
           >
             <div
               className="flex w-full flex-col items-start"
@@ -172,7 +200,7 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
               </p>
               <p
                 className="font-display leading-[1.5] text-brand-blue opacity-85"
-                style={{ width: c(640), fontSize: fs(16, 13) }}
+                style={{ width: c(560), fontSize: fs(16, 13) }}
               >
                 {hero.description.map((s, i) =>
                   s.strong ? (
@@ -237,6 +265,16 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
                 </li>
               ))}
             </ul>
+
+            {/* start kursu (v3, 2159:2133) */}
+            <p className="flex items-center" style={{ columnGap: c(10) }} data-node-id="2159:2133">
+              <span className="flex items-center justify-center bg-brand-lime" style={{ width: c(32), height: c(32), borderRadius: c(16) }}>
+                <img src="/assets/kurs2/k2-ic-start.svg" alt="" aria-hidden style={{ width: c(18), height: c(18) }} />
+              </span>
+              <span className="whitespace-nowrap font-display font-bold text-brand-blue" style={{ fontSize: fs(15, 12) }}>
+                Start: {hero.startDate ? new Date(hero.startDate).toLocaleDateString("pl-PL", { day: "2-digit", month: "2-digit", year: "numeric" }) : "wkrótce"}
+              </span>
+            </p>
 
             {/* karta ceny i zapisu */}
             <div
@@ -324,6 +362,11 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
                   ))}
                 </div>
               )}
+              {hero.toolsNote && (
+                <p className="relative font-display font-medium text-white/70" style={{ fontSize: fs(12, 10), marginTop: c(-6) }}>
+                  {hero.toolsNote}
+                </p>
+              )}
               <span
                 className="relative block h-px w-full bg-white/25"
                 aria-hidden
@@ -373,7 +416,8 @@ export default function K2Hero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
             className="absolute max-w-none object-contain object-bottom"
             style={{
               left: c(art.left),
-              bottom: c(ART.bottom),
+              // v3 (2136:2525): robot top −74.5 w kolumnie y52 → dół 1.5 nad dołem hero
+              bottom: c(k.layout === "v3" ? (img.bottom ?? 1.5) : ART.bottom),
               width: c(art.w),
               height: c(art.h),
             }}

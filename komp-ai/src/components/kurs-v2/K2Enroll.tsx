@@ -38,8 +38,8 @@ export default function K2Enroll({ k }: { k: KursV2Page }) {
           data-node-id="2012:1984"
         >
           <h2
-            className="whitespace-nowrap text-center font-audio text-white"
-            style={{ fontSize: c(AW.heading) }}
+            className={`whitespace-nowrap text-center text-white ${k.layout === "v3" ? "font-modular" : "font-audio"}`}
+            style={{ fontSize: c(k.layout === "v3" ? 24 : AW.heading) }}
             data-reveal=""
           >
             {e.heading}
@@ -104,6 +104,12 @@ export default function K2Enroll({ k }: { k: KursV2Page }) {
               >
                 {k.price.note}
               </p>
+              {/* v3 (2159:2142): termin startu pod ceną */}
+              {k.layout === "v3" && (
+                <p className="whitespace-nowrap font-display font-semibold text-brand-blue" style={{ fontSize: fs(14, 12) }}>
+                  Start kursu: {k.hero.startDate ? new Date(k.hero.startDate).toLocaleDateString("pl-PL", { day: "2-digit", month: "2-digit", year: "numeric" }) : "wkrótce"}
+                </p>
+              )}
               <a
                 {...ENROLL_OPEN}
                 className="flex items-center justify-center border-solid border-white bg-brand-lime font-modular text-brand-blue transition-transform hover:scale-[1.04]"

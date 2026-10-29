@@ -5,6 +5,11 @@ Ostatnia aktualizacja: 2026-10-29
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
+- Nowa strona kursu „AI pod kontrolą od podstaw" (komputer + telefon) według projektu Victorii — 6 modułów, 13 lekcji, sekcja „Dla kogo", najczęstsze pytania, formularz. Karta tego kursu na stronie głównej prowadzi teraz do nowej strony.
+- Strona kursu „Z rozmowy do oferty w 60 minut" przebudowana według nowych widoków Victorii — na komputerze i telefonie: kafle „Co zyskasz" z ilustracjami, program w czytelnych kartach lekcji, nowe sekcje „Dla kogo jest kurs" i „Najczęstsze pytania", formularz kontaktowy na dole strony, termin startu w kilku miejscach (do wpisania).
+- Na monitorach szerszych niż 3000 pikseli (4K, ultra wide) strona ma dokładnie rozmiar z projektu — górny ekran ma 833 piksele wysokości, nic się już nie powiększa.
+- Formularz kontaktowy jest teraz zwarty i mieści się w całości na jednym ekranie — na laptopie, dużych monitorach i telefonie, na stronie głównej, „O nas" i Manifeście (niższe pola i krótsze pole wiadomości; wygląd poza tym bez zmian).
+- Strona główna na bardzo szerokich monitorach (ultra wide, 4K): elementy nie rosną już ponad ok. 1,1× rozmiaru z projektu, a ich skala dopasowuje się do wysokości okna — strona nie wygląda jak wielki plakat. Kolorowe pasy sekcji (niebieskie, limonkowe, stopka) sięgają do krawędzi ekranu zamiast kończyć się „pudełkiem". Na laptopach i telefonach bez zmian.
 - Strona główna zaktualizowana według „ostatniego szlifu" designerki Victorii — na komputerze i telefonie: nowa grafika robota i nowy układ tekstów w sekcji „Nie chodzi o to", pasek „TY DECYDUJESZ" przeniesiony nad kartę webinaru, odświeżona karta webinaru (nowe teksty, nowe zdjęcie, osobny projekt na telefon), nowe grafiki i etykiety w kartach kursów, nowy przycisk „POZNAJ NASZE KURSY" nad formularzem kontaktowym, drobne przesunięcia w kilku sekcjach. Pierwsza karta kursu to teraz nowy kurs „AI pod kontrolą od podstaw" (przycisk tymczasowo prowadzi do formularza kontaktowego). Zgodność z projektem: 97–99% (różnice to głównie dane, których projekt jeszcze nie ma, np. termin webinaru).
 - Na dużych monitorach (Full HD, 2K, 4K) strona nie jest już przesadnie powiększona: treść ma najwyżej ok. 1760 pikseli szerokości, a na Full HD po bokach pojawiły się szare marginesy. Na laptopach i telefonach nic się nie zmieniło.
 - Audyt SEO całej strony: wszystkie podstrony mają poprawne tytuły, opisy, adresy kanoniczne i grafikę do udostępniania. Plik dla robotów wyszukiwarek uzupełniony — wprost wpuszczamy też wyszukiwarki AI (ChatGPT, Claude, Perplexity, Gemini), żeby asystenci AI mogli polecać nasze kursy. Poprawione tytuły regulaminu i polityki prywatności (nazwa marki była w nich dwa razy).
@@ -27,9 +32,11 @@ Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" 
 - Menu mobilne (burger) działa na wszystkich podstronach; poprawione linki nawigacji.
 
 ## W toku
+- Dopasowanie podstron „O nas" i „Manifest" do monitorów ultra wide (tła sekcji do krawędzi ekranu).
 - Strona pojedynczego kursu: wersja desktop częściowo zbudowana (hero, „co zyskasz", program); brakuje sekcji „dla kogo", paska z datą startu, kontaktu i całej wersji mobilnej.
 
 ## Czekam na / zablokowane
+- **Patryk**: odpowiedzi do „Najczęstszych pytań" na stronach kursów (w projekcie jest tylko jedna, zastępcza) — szczególnie nagrania spotkań i zasady zwrotów; termin startu kursów; cena kursu „AI pod kontrolą od podstaw".
 - **Patryk**: przegląd zaktualizowanej strony głównej (komputer + telefon) po poprawkach Victorii.
 - **Patryk**: podstrona i treść kursu „AI pod kontrolą od podstaw" (dziś przycisk karty prowadzi do formularza kontaktowego) oraz decyzja: ceny w kartach „netto" (jak w projekcie) czy „brutto" (jak teraz na stronie).
 - **Patryk**: dokąd ma prowadzić „SZKOLENIA" w stopce (osobna strona szkoleń dla firm czy lista kursów)?

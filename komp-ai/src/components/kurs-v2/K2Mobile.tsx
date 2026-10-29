@@ -7,6 +7,7 @@
  * telefonach. Teksty mobilne z `kurs.mobile` / `titleMobile`/`textMobile`
  * (brak → tekst desktopowy).
  */
+import { MAudience3, MBento3, MFaq3, MProgram3 } from "./K3Mobile";
 import type { KursV2Page, NavLink, RichSeg } from "@/content/types";
 import MobileTopBar from "../shared/MobileTopBar";
 import K2StickyBar from "./K2StickyBar";
@@ -127,6 +128,16 @@ function MHero({ k, nav }: { k: KursV2Page; nav: NavLink[] }) {
             </li>
           ))}
         </ul>
+        {k.layout === "v3" && (
+          <p className="flex items-center gap-2.5">
+            <span className="flex size-8 items-center justify-center rounded-2xl bg-brand-lime">
+              <img src="/assets/kurs2/k2-ic-start.svg" alt="" aria-hidden className="size-[18px]" />
+            </span>
+            <span className="font-display text-[15px] font-bold text-brand-blue">
+              Start: {hero.startDate ? new Date(hero.startDate).toLocaleDateString("pl-PL", { day: "2-digit", month: "2-digit", year: "numeric" }) : "wkrótce"}
+            </span>
+          </p>
+        )}
         <div
           id={PRICE_CARD_ID}
           className="flex w-full flex-col items-start gap-[14px] rounded-[24px] p-5"
@@ -484,7 +495,7 @@ function MEnroll({ k }: { k: KursV2Page }) {
       className="w-full bg-brand-blue px-4 py-14 leading-[normal]"
     >
       <div className="mx-auto flex max-w-[520px] flex-col items-center gap-7">
-        <h2 className="text-center font-audio text-[22px] leading-[1.3] text-white">
+        <h2 className={`text-center leading-[1.3] text-white ${k.layout === "v3" ? "font-modular text-[24px] uppercase" : "font-audio text-[22px]"}`}>
           {e.heading}
         </h2>
         <div className="flex w-full flex-col gap-5 rounded-[28px] bg-white p-6">
@@ -517,6 +528,11 @@ function MEnroll({ k }: { k: KursV2Page }) {
             <p className="font-display text-[13px] font-medium text-brand-blue">
               {k.price.note}
             </p>
+            {k.layout === "v3" && (
+              <p className="text-center font-display text-[13px] font-semibold text-brand-blue">
+                Start kursu: {k.hero.startDate ? new Date(k.hero.startDate).toLocaleDateString("pl-PL", { day: "2-digit", month: "2-digit", year: "numeric" }) : "wkrótce"}
+              </p>
+            )}
           </div>
           <a
             {...ENROLL_OPEN}
@@ -540,11 +556,13 @@ export default function K2Mobile({
   return (
     <div className="md:hidden">
       <MHero k={k} nav={nav} />
-      <MBenefits b={k.benefits} />
+      {k.benefits.bento ? <MBento3 benefits={k.benefits} /> : <MBenefits b={k.benefits} />}
       <MCtaBand cta={k.ctaBand} />
-      <MProgram p={k.program} />
+      {k.layout === "v3" ? <MProgram3 p={k.program} /> : <MProgram p={k.program} />}
+      {k.audience && <MAudience3 a={k.audience} />}
       <MInstructor k={k} />
       <MEnroll k={k} />
+      {k.faq && <MFaq3 faq={k.faq} />}
       <K2StickyBar
         price={formatPrice(k.price)}
         name={k.mobile?.stickyName ?? k.name}

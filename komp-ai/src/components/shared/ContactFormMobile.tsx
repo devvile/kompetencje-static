@@ -10,18 +10,23 @@ import type { Kontakt } from "@/content/types";
 
 const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
 
+/* Wersja ZWARTA (życzenie Patryka 2026-10-29: cały formularz na jednym ekranie).
+ * Design: h864 (padT47/padB63, input 50, label padY 6, textarea 186, gapy 15/15/30,
+ * button 55) → h618. Sekcje skracają się o FORM_M_SHRINK. */
+export const FORM_M_H_DESIGN = 864;
 const F = {
-  w: 353, h: 864, r: 42, borderPx: 2, padT: 47, padB: 63, padX: 28,
-  label: { fontPx: 11, trackPx: 0.5, padX: 24, padY: 6, lhPx: 20 },
-  input: { h: 50, r: 20, borderPx: 1, padX: 24, fontPx: 11.5 },
-  textarea: { h: 186, r: 30, padY: 16 },
-  gapFields: 15,
-  gapGroups: 15,
+  w: 353, h: 618, r: 42, borderPx: 2, padT: 28, padB: 30, padX: 28,
+  label: { fontPx: 11, trackPx: 0.5, padX: 24, padY: 3, lhPx: 20 },
+  input: { h: 42, r: 20, borderPx: 1, padX: 24, fontPx: 11.5 },
+  textarea: { h: 96, r: 24, padY: 12 },
+  gapFields: 8,
+  gapGroups: 10,
   gapMsg: 12,
-  gapButton: 30,
+  gapButton: 18,
   checkbox: { size: 21, r: 6, gap: 9, fontPx: 10.5 },
-  button: { w: 268, h: 55, r: 30, borderPx: 3, fontPx: 14.4, trackPx: 0.68 },
+  button: { w: 268, h: 50, r: 30, borderPx: 3, fontPx: 14.4, trackPx: 0.68 },
 };
+export const FORM_M_SHRINK = FORM_M_H_DESIGN - F.h;
 
 export default function ContactFormMobile({ k, left, top, idPrefix = "kontakt-m" }: { k: Kontakt; left: number; top: number; idPrefix?: string }) {
   const fields = k.fields.filter((f) => f.kind !== "textarea");

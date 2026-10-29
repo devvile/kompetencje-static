@@ -1,5 +1,76 @@
 # CHANGELOG
 
+## 2026-10-29 (7) — kurs v3: „AI pod kontrolą od podstaw" (desktop + mobile)
+
+- Figma `2279:2811` (desktop 1440×12531) / `2310:3040` (mobile). Treść i grafiki wyciągnięte
+  przez subagenta: `src/content/kurs-ai-kontrola.ts` (slug `ai-pod-kontrola-od-podstaw`,
+  zarejestrowany w `kursyV2`), assety `public/assets/kurs3/kontrola/` (webp 2×). 6 modułów, 13 lekcji.
+- Szablon rozszerzony o parametry per kurs: `hero.backdrop: "circles"` (koła SVG, ukośne paski
+  gradientem, kropki, niebieska gwiazdka), `hero.toolsNote`, `hero.pad`, `hero.image.bottom`,
+  `ctaBand.variant: "modular"` (HK wersaliki, pasek 247), `benefits.bento.decorBox`.
+  Kafle bento: 1 i 4 = `image` (wycinek eksportu 2× na tle kafla), 2 = grafiki-trio, 3 = slajdy.
+- Karta „AI pod kontrolą" na home → `/kursy/ai-pod-kontrola-od-podstaw` (było `/#kontakt`).
+- Fix: pigułka prowadzącego na mobile (375px) rozpychała stronę → `mobile.instructorPill`.
+- Walidacja 1440×900: hero 8.2%, bento 5.4%, CTA 3.1%, program 7.8%, dla kogo 6.8%, FAQ 5.7%;
+  wysokości sekcji = design ±10px; mobile 402 — układ zgodny (strona ~330px krótsza niż design);
+  hscroll ok 375–2560; `next build` OK.
+- DO WERYFIKACJI (Patryk): cena ([CENA] w designie, w danych 1500), wszystkie odpowiedzi FAQ,
+  efekt modułu 04 (druga połowa wygląda na treść modułu 05), termin startu.
+
+## 2026-10-29 (6) — kurs v3: „Z rozmowy do oferty" wg nowych widoków (desktop + mobile)
+
+- Figma `2136:2432` (desktop 1440×10645) / `2139:1991` (mobile 402×14958); rendery
+  `design-refs/kurs-v3/` (gitignore). Szablon KursV2Template z flagą `layout: "v3"`.
+- Nowe komponenty: `K3Benefits` (bento 4 kafle; ilustracje w HTML/CSS z rejestru `BentoArt`:
+  oferta-mock, grafiki-trio, slajdy, wycena-chart, image; ukośny marquee), `K3Program` (moduły:
+  białe karty lekcji 3/2 kolumny, pigułka „N LEKCJE", pasek EFEKT MODUŁU), `K3Audience`
+  („DLA KOGO JEST KURS"), `K3Faq` (akordeon `<details>` bez JS + JSON-LD FAQPage), `K3Mobile`
+  (MBento3 — te same ilustracje przez `ArtCrop`, MProgram3, MAudience3, MFaq3).
+- Zmiany w istniejących: K2Hero (wiersz „Start:" z `hero.startDate`, opis 560, padding v3),
+  K2CtaBand wydzielony z K2Benefits (+ kursor), K2Enroll (nagłówek HK, „Start kursu:"),
+  K2Mobile (teksty hero jak desktop, Start, sekcje v3). Kontakt + pasek POZNAJ NASZE KURSY =
+  OnasKontakt z layoutem `KURS_KONTAKT` (route), nagłówek „MASZ PYTANIE O KURS? / NAPISZ DO NAS".
+- Typy: `KursV2Page.layout`, `hero.startDate`, `benefits.bento`, `audience`, `faq`,
+  `KursV3BentoArt` (+ `mobileCrop`).
+- Walidacja 1440×900 (różnice = AA tekstu): bento 8.4%, CTA 8.6%, program ~6.5–10%,
+  dla kogo 8.6%, FAQ 6.7%; wysokości sekcji = design ±5px (hero 854, bento 1560, CTA 262,
+  program 3042/3047, dla kogo 568, cena 596/594, FAQ 778/780). Prowadzący: wysokość dopasowana
+  do okna (PAD_Y, jak dotąd). hscroll ok 375–2560. Retina: zdjęcia kafli webp 2×.
+- FAQ: w designie tylko jedna odpowiedź (placeholder) — pozostałe napisane ostrożnie, bez nowych
+  faktów → DO WERYFIKACJI (Patryk).
+
+## 2026-10-29 (5) — próg 3000px: skala 1:1 z designem
+
+- `globals.css`: `@media (min-width: 3000px)` → `--workspace: 1440px`, `--hero-slack: 0px`
+  (hero home: `min-height` używa `var(--hero-slack, 120px)`). Na 4K / ultra wide bez skalowania
+  systemu strona ma rozmiar 1:1 z Figmą: hero 833, formularz 670 (było 953 / 744).
+- Zmierzone: 3840×1900 i 3440×1300 → workspace 1440, hero 833; 2999×1300 bez zmian (wzór
+  z wpisu (3)); 1440×833 piksel w piksel jak przed (0.00%); hscroll ok 375–2560.
+
+## 2026-10-29 (4) — formularz kontaktowy mieści się na jednym ekranie
+
+- Życzenie Patryka: cały formularz w wysokości ekranu. Wspólne komponenty
+  `shared/ContactFormDesktop` (864 → 670) i `shared/ContactFormMobile` (864 → 618):
+  niższe pola (50→44 / 42), mniejsze odstępy, pole wiadomości 186→110 / 96, mniejsze paddingi.
+  Szerokość, fonty i kolory bez zmian. Eksport `FORM_SHRINK` / `FORM_M_SHRINK` — sekcje
+  kontaktu na home, /o-nas i /manifest skracają się o tyle samo (prawa gwiazda desktop w górę).
+- Walidacja (scroll do formularza): 1440×833 form 670, 1920/2560×950 form 744, 402×700 form 618,
+  375×667 form 576, /o-nas 670, /manifest 639 — wszystkie mieszczą się w oknie. hscroll ok.
+- Odstępstwo od designu (świadome, decyzja Patryka) — formularz w Figmie nadal 864.
+
+## 2026-10-29 (3) — ultra wide: skala zależna od wysokości okna + tła do krawędzi
+
+- `--workspace` = `min(1600px, calc(720px + 50vw), max(1440px, calc(100svh * 1440 / 833)))`
+  (było `min(1760px, 720px + 50vw)`): max skala 1.11× designu, a na niskich szerokich oknach cała
+  strona ma skalę hero zamiast rosnąć wszerz. ≤1440 bez zmian.
+- Home desktop: tła sekcji do krawędzi ekranu (manifest blue, pasek lime/biały, prowadzący
+  szary/blue, kontakt blue + biała linia CTA, stopka #000ae6 + linia) — gradienty z proporcji canvasu.
+- Hero home: `h-svh` → `min-height: min(100svh, poster + 120px)` — 100svh jak dotąd, ale na
+  ultra wide/tablecie pionowo bez ogromnych szarych pasów nad/pod hero.
+- Walidacja: 1440×833 i 402×875 piksel w piksel jak przed zmianą (0.00%), 1440×900 ta sama
+  wysokość strony, hscroll ok 375–2560, zrzuty 2560×950 / 3440×1300 / 5120×1300.
+- Otwarte: /o-nas i dół /manifest nadal mają tła „w pudełku" na ultra wide (→ TODO).
+
 ## 2026-10-29 (2) — home: „ostatni szlif" Victorii (Figma `5ufIXE17KqmkvVrfSVzUFE`), desktop + mobile
 
 - Źródło: nowy plik `5ufIXE17KqmkvVrfSVzUFE` (home 245:3490 desktop 1440×9284, 375:1738 mobile

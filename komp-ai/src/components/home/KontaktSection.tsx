@@ -10,8 +10,8 @@
  * consent; telefon „000 000 000" zostaje do podmiany przez Patryka.
  */
 import type { Kontakt } from "@/content/types";
-import ContactFormDesktop from "../shared/ContactFormDesktop";
-import ContactFormMobile from "../shared/ContactFormMobile";
+import ContactFormDesktop, { FORM_SHRINK } from "../shared/ContactFormDesktop";
+import ContactFormMobile, { FORM_M_SHRINK } from "../shared/ContactFormMobile";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 
@@ -19,10 +19,10 @@ const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
  * (Group 19, 2203:6663) na górze; cała dotychczasowa treść zjechała o D=143 */
 const D = 143;
 const G = {
-  h: 1649,
+  h: 1649 - FORM_SHRINK, // formularz zwarty (mieści się na ekranie) → sekcja krótsza
   cta: { line: { top: 117, h: 6 }, pill: { left: 360, top: 59, w: 722, h: 117, borderPx: 6, fontPx: 35 } },
   starL: { left: 0, top: 101 + D, w: 391, h: 750 },
-  starR: { left: 1065, top: 791 + D, w: 315, h: 520 },
+  starR: { left: 1065, top: 791 + D - FORM_SHRINK, w: 315, h: 520 },
   // nagłówek: pozycje ink per linia (design centruje z trailing spacją w L2 —
   // pewniej pozycjonować linie absolutnie)
   heading: { fontPx: 25.2, trackPx: 0.1, lines: [{ left: 583, top: 185 + D }, { left: 490, top: 234 + D }, { left: 533, top: 283 + D }] },
@@ -50,7 +50,7 @@ const cm = (px: number) => `${(px / 4.02).toFixed(4)}cqw`;
  * Nagłówek: 3 linie lime f16.8 + scaleX(1.1) (cap 14, kwadraty jak wszędzie). */
 const GM = {
   // redesign 2026-10: stopka zaczyna się 47.5px wcześniej (prowadzący kończą się na y9503.5, stopka y10799)
-  h: 1295.5,
+  h: 1295.5 - FORM_M_SHRINK, // formularz zwarty → sekcja krótsza
   heading: { fontPx: 15.9, trackPx: 0.3, lines: [{ left: 99, top: 80.8 }, { left: 40, top: 116.8 }, { left: 67, top: 152.8 }] },
   starL: { left: 0, top: 192, w: 72, h: 69 },
   starR: { left: 330, top: 192, w: 72, h: 69 },
@@ -96,7 +96,11 @@ export default function KontaktSection({ k }: { k: Kontakt }) {
     // kotwica nav "KONTAKT" (/#kontakt) — wspólna dla wariantu mobile i desktop
     <div id="kontakt">
     <KontaktMobile k={k} />
-    <section className="relative hidden w-full md:block">
+    {/* tło do krawędzi ekranu: blue + biała linia paska CTA */}
+    <section
+      className="relative hidden w-full bg-brand-blue md:block"
+      style={k.coursesCta ? { background: `linear-gradient(to bottom, var(--color-brand-blue) 0 ${(G.cta.line.top / G.h) * 100}%, #fff ${(G.cta.line.top / G.h) * 100}% ${((G.cta.line.top + G.cta.line.h) / G.h) * 100}%, var(--color-brand-blue) ${((G.cta.line.top + G.cta.line.h) / G.h) * 100}% 100%)` } : undefined}
+    >
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative overflow-hidden bg-brand-blue" style={{ aspectRatio: `1440/${G.h}` }} data-node-id="245:9696">
           {/* pasek CTA: biała linia przez całą szerokość + limonkowa pigułka */}

@@ -6,18 +6,26 @@
 import type { Kontakt } from "@/content/types";
 
 
+/* Wersja ZWARTA (życzenie Patryka 2026-10-29: cały formularz ma się mieścić
+ * na jednym ekranie). Design: h864, padT48/padB63, input 50, label padY 6,
+ * textarea 186, gapy 18/17/30 → teraz h670 (szerokość, fonty i kolory bez zmian).
+ * Sekcje używające formularza skracają się o FORM_SHRINK (× scale). */
+export const FORM_H_DESIGN = 864;
 const G = {
-  form: { w: 674, h: 864, r: 42, borderPx: 2, padT: 48, padB: 63, padX: 93 },
-  label: { fontPx: 14, padX: 24, padY: 6, lhPx: 20 },
-  input: { h: 50, r: 20, borderPx: 1, padX: 24, fontPx: 14 },
-  textarea: { h: 186, r: 30, padY: 16 },
-  gapFields: 18,
-  gapGroups: 17,
+  form: { w: 674, h: 670, r: 42, borderPx: 2, padT: 34, padB: 40, padX: 93 },
+  label: { fontPx: 14, padX: 24, padY: 4, lhPx: 20 },
+  input: { h: 44, r: 20, borderPx: 1, padX: 24, fontPx: 14 },
+  textarea: { h: 110, r: 26, padY: 12 },
+  gapFields: 10,
+  gapGroups: 12,
   gapMsg: 12,
-  gapButton: 30,
+  gapButton: 22,
   checkbox: { size: 21, r: 6, gap: 9, rowW: 497, fontPx: 14 },
   button: { w: 268, h: 55, r: 30, borderPx: 3, fontPx: 17, trackPx: 0.68 },
 };
+
+/** o ile formularz jest niższy niż w designie (px canvasu 1440) */
+export const FORM_SHRINK = FORM_H_DESIGN - G.form.h;
 
 /** scale: mnożnik geometrii względem canvasu 1440 (np. /manifest v2: 1440/1510) */
 export default function ContactFormDesktop({

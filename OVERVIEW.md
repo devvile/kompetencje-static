@@ -98,6 +98,8 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
+* **2026-10-29 (3) — strony kursów v3:** szablon `KursV2Template` z `layout: "v3"` — nowe komponenty `K3Benefits` (bento, rejestr ilustracji `BentoArt`), `K3Program`, `K3Audience`, `K3Faq` (+JSON-LD FAQPage), `K3Mobile`; kursy „Z rozmowy do oferty" (`content/kurs-v2.ts`) i „AI pod kontrolą od podstaw" (`content/kurs-ai-kontrola.ts`). Kontakt na stronie kursu = `OnasKontakt` z layoutem w route. Także: `--workspace` z progiem 3000px i limitem wysokości (ultra wide), zwarty formularz kontaktowy (`FORM_SHRINK`).
+
 * **2026-10-29 (2) — redesign home („ostatni szlif" Victorii, Figma `5ufIXE17KqmkvVrfSVzUFE`):**
   1. Home desktop + mobile wg nowego designu: manifest v2 (robot z hologramami, „wniosek" z lime kreską), pasek TY DECYDUJESZ przed kartą webinaru, nowa karta webinaru (desktop + mobile wg Figmy), karty kursów v2 (pigułka, grafiki robotów; karta 1 = nowy kurs „AI pod kontrolą od podstaw", CTA `/#kontakt`), pasek „POZNAJ NASZE KURSY" nad kontaktem, przesunięcia hero/prowadzących/kontaktu.
   2. Content: `HomeManifest.conclusion`, `DnaCard.pill` + `DnaCard.art` (panel|robot), `Kontakt.coursesCta`, `promo.headingSmall` (webinar). Nowy helper `src/lib/typo.ts` (`nbspOrphans` — polskie sieroty).

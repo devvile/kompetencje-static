@@ -223,7 +223,8 @@ export default function StopkaSection({ f }: { f: Footer }) {
   return (
     <>
     <StopkaMobile f={f} />
-    <footer className="relative hidden w-full md:block">
+    {/* tło do krawędzi ekranu: 1px biała linia (border-t) + #000ae6 */}
+    <footer className="relative hidden w-full md:block" style={{ background: "linear-gradient(to bottom, #fff 0 1px, #000ae6 1px 100%)" }}>
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div
           className="relative border-t border-solid border-white"

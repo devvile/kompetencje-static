@@ -13,7 +13,11 @@
  */
 import type { KursV2Page, NavLink } from "@/content/types";
 import K2Hero from "./K2Hero";
-import K2Benefits from "./K2Benefits";
+import K2Benefits, { K2CtaBand } from "./K2Benefits";
+import K3Benefits from "./K3Benefits";
+import K3Program from "./K3Program";
+import K3Audience from "./K3Audience";
+import K3Faq from "./K3Faq";
 import K2Program from "./K2Program";
 import K2Instructor from "./K2Instructor";
 import K2Enroll from "./K2Enroll";
@@ -96,10 +100,19 @@ export default function KursV2Template({
       />
       <div className="hidden md:block">
         <K2Hero k={kurs} nav={nav} />
-        <K2Benefits benefits={kurs.benefits} ctaBand={kurs.ctaBand} />
-        <K2Program program={kurs.program} />
+        {kurs.benefits.bento ? (
+          <>
+            <K3Benefits benefits={kurs.benefits} />
+            <K2CtaBand ctaBand={kurs.ctaBand} cursor />
+          </>
+        ) : (
+          <K2Benefits benefits={kurs.benefits} ctaBand={kurs.ctaBand} />
+        )}
+        {kurs.layout === "v3" ? <K3Program program={kurs.program} /> : <K2Program program={kurs.program} />}
+        {kurs.audience && <K3Audience a={kurs.audience} />}
         <K2Instructor p={kurs.instructor} />
         <K2Enroll k={kurs} />
+        {kurs.faq && <K3Faq faq={kurs.faq} />}
       </div>
       <K2Mobile k={kurs} nav={nav} />
       {/* formularz zapisu: otwierany przyciskami [data-enroll-open] i #zapisz-sie */}

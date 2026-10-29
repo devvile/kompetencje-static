@@ -95,7 +95,11 @@ export default function ProwadzacyDesktop({ p }: { p: Prowadzacy }) {
   }, []);
 
   return (
-    <section className="relative z-10 hidden w-full md:block">
+    // tło do krawędzi ekranu: szary pas (bgTop) + blue
+    <section
+      className="relative z-10 hidden w-full md:block"
+      style={{ background: `linear-gradient(to bottom, var(--color-page) 0 ${(G.bgTop / G.h) * 100}%, var(--color-brand-blue) ${(G.bgTop / G.h) * 100}% 100%)` }}
+    >
       <div className="@container mx-auto w-full max-w-(--workspace)">
         {/* overflow-x-clip: prawa gwiazda dochodzi do x1440, dryf wypychał ją
             poza kadr (h-scroll); pionowo visible — lewa bleeduje pod sekcję */}

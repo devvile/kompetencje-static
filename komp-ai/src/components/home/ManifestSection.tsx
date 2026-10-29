@@ -92,7 +92,8 @@ function MarqueeRow({ text, scale, fontPx, gapPx, starW, starH }: {
 
 function ManifestDesktop({ m }: { m: HomeManifest }) {
   return (
-    <section className="relative w-full">
+    // tło do krawędzi ekranu (ultra wide: treść ma cap --workspace)
+    <section className="relative w-full bg-brand-blue">
       <div className="@container mx-auto w-full max-w-(--workspace)">
         {/* górna część posteru (0..1130); pasek TY DECYDUJESZ + marquee = ManifestBarDesktop */}
         <div className="relative aspect-[1440/1130] overflow-hidden bg-brand-blue" data-node-id="2240:1628">
@@ -188,7 +189,8 @@ function ManifestDesktop({ m }: { m: HomeManifest }) {
    (reklama webinaru na home). Wygląd 1:1 jak w jednym posterze. */
 function ManifestBarDesktop({ m }: { m: HomeManifest }) {
   return (
-    <section className="relative w-full">
+    // pasy lime (144) + biały (54) przedłużone do krawędzi ekranu
+    <section className="relative w-full" style={{ background: `linear-gradient(to bottom, var(--color-brand-lime) 0 ${(G.limeBar.h / 198) * 100}%, #fff ${(G.limeBar.h / 198) * 100}% 100%)` }}>
       <div className="@container mx-auto w-full max-w-(--workspace)">
         <div className="relative aspect-[1440/198] overflow-hidden bg-brand-blue">
           {/* pasek lime ZAWSZE widoczny (uwaga Patryka) — reveal tylko napisy;

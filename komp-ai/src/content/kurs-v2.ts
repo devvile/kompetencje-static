@@ -6,10 +6,12 @@
 // szer. webp z przezroczystością, zdjęcie prowadzącego ~800×1292 jpg).
 // Liczby modułów/lekcji, numeracja i JSON-LD liczą się same z danych.
 import type { KursV2Page } from "./types";
+import { kursAiPodKontrola } from "./kurs-ai-kontrola";
 
 export const kursZRozmowyDoOferty: KursV2Page = {
   _type: "kursV2Page",
   slug: "z-rozmowy-do-oferty",
+  layout: "v3",
   name: "Z rozmowy do oferty w 60 minut",
   metaTitle: "Z rozmowy do oferty w 60 minut — kurs AI online na żywo",
   metaDescription:
@@ -68,6 +70,38 @@ export const kursZRozmowyDoOferty: KursV2Page = {
         titleMobile: "Wycena oparta o rynek",
         textMobile: "Agent w kilka minut zbiera stawki rynkowe i oferty konkurencji.",
       },
+    ],
+    // układ bento v3 (Figma 2148:2028)
+    bento: {
+      badge: "EFEKTY KURSU",
+      headingLines: ["CO ZYSKASZ", "NA KURSIE?"],
+      decor: "/assets/kurs3/k3-oferta-bubble.webp",
+      tiles: [
+        { kind: "oferta-mock" },
+        { kind: "grafiki-trio", images: ["/assets/kurs3/k3-oferta-g1.webp", "/assets/kurs3/k3-oferta-g2.webp", "/assets/kurs3/k3-oferta-g3.webp"], pill: "Higgsfield · jeden styl" },
+        { kind: "slajdy", src: "/assets/kurs3/k3-oferta-slajdy.webp", pills: ["Messenger", "Transkrypt", "Notatka głosowa"], contentTop: 222.5 },
+        { kind: "wycena-chart", bars: [110, 170, 140, 205, 125], highlight: 3, label: "Twoja cena", pills: ["Stawki rynkowe", "Konkurencja"], titlePx: 28 },
+      ],
+      marquee: ["OFERTA W GODZINĘ", "GRAFIKI POD TWOJĄ MARKĘ", "PREZENTACJA Z ROZMOWY", "WYCENA OPARTA O RYNEK"],
+    },
+  },
+  // v3 (Figma 2172:2164)
+  audience: {
+    heading: "DLA KOGO JEST KURS",
+    items: ["managerowie", "przedsiębiorcy", "freelancerzy", "dyrektorzy firm"],
+  },
+  // v3 (Figma 2159:2143). Design ma jedną odpowiedź (placeholder) — pozostałe
+  // napisane ostrożnie (bez nowych faktów); DO WERYFIKACJI przez Patryka.
+  faq: {
+    heading: ["NAJCZĘSTSZE", "PYTANIA"],
+    lead: "Nie ma tu Twojego pytania? Napisz do nas – formularz jest poniżej.",
+    items: [
+      { q: "Kiedy startuje kurs i jak wyglądają spotkania?", a: "Kurs prowadzimy na żywo online. Termin startu podamy wkrótce – zostaw kontakt w formularzu poniżej, a damy znać jako pierwszym." },
+      { q: "Czy będą nagrania, jeśli nie mogę być na żywo?", a: "Napisz do nas przez formularz poniżej – podpowiemy, jak nadrobić spotkanie, w którym nie możesz uczestniczyć." },
+      { q: "Jakie konta i narzędzia są potrzebne?", a: "Pracujemy w Claude Code i Higgsfield. Nie musisz umieć programować – wszystko konfigurujemy razem, krok po kroku." },
+      { q: "Ile kosztuje kurs i jak płacę?", a: "Kurs kosztuje 1500 PLN brutto, płatność jednorazowa. Płacisz online przez bezpieczną bramkę Stripe zaraz po zapisie." },
+      { q: "Czy dostanę fakturę?", a: "Tak. Dane do faktury (w tym NIP firmy) podajesz w formularzu zapisu." },
+      { q: "Czy mogę zrezygnować i odzyskać pieniądze?", a: "Zasady rezygnacji i zwrotów opisuje regulamin. W razie pytań napisz do nas przez formularz poniżej." },
     ],
   },
   ctaBand: {
@@ -219,14 +253,8 @@ export const kursZRozmowyDoOferty: KursV2Page = {
     ],
     ctaLabel: "ZAPISZ SIĘ NA KURS",
   },
+  // v3 mobile (2139:1991) używa tych samych tekstów hero co desktop
   mobile: {
-    kicker: "KURS ONLINE",
-    lead: "Sprzedajesz usługi i wysyłasz oferty?",
-    description: [
-      {
-        text: "Na kursie nauczysz się z notatek, cennika i rozmowy z klientem przygotować w 60 minut gotową ofertę w PDF lub PPTX, z grafikami pod Twoją markę. Pokażemy cały proces: od briefu, przez wycenę opartą o realne stawki, po plik, który klient podpisuje.",
-      },
-    ],
     instructorPill: "KTO PROWADZI KURS?",
     stickyName: "Z rozmowy do oferty",
     stickyCtaLabel: "ZAPISUJĘ SIĘ",
@@ -248,4 +276,5 @@ export const kursZRozmowyDoOferty: KursV2Page = {
 
 export const kursyV2: Record<string, KursV2Page> = {
   [kursZRozmowyDoOferty.slug]: kursZRozmowyDoOferty,
+  [kursAiPodKontrola.slug]: kursAiPodKontrola,
 };
