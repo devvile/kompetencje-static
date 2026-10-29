@@ -5,7 +5,7 @@ Ostatnia aktualizacja: 2026-10-29
 Faza 1 (wierne odwzorowanie designu) jest w ~85% — strona główna, „O nas" i strony prawne gotowe; trwa strona kursu. Równolegle ruszyły animacje (Faza 2) i grafiki/wideo generowane AI (Faza 3).
 
 ## Ostatnio ukończone
-- Zapis na bezpłatny webinar: przycisk „Zapisz się za darmo” otwiera krótki formularz (imię, e-mail, zgody). Zapis trafia do bazy, a po podłączeniu poczty (Resend) klient od razu dostanie mail z potwierdzeniem. Karta webinaru na stronie głównej otwiera ten formularz. Gotowe lokalnie — zacznie działać po aktualizacji bazy.
+- Zapis na bezpłatny webinar: przycisk „Zapisz się za darmo” otwiera krótki formularz (imię, e-mail, zgody). Zapis trafia do bazy, a po podłączeniu poczty (Resend) klient od razu dostanie mail z potwierdzeniem. Karta webinaru na stronie głównej otwiera ten formularz. Wgrane na stronę 29.10 — zacznie działać po aktualizacji bazy.
 - Znaleziona przyczyna, dla której Google nie indeksował strony: strona podawała jako „właściwy” adres bez „www”, a ten przekierowuje na wersję z „www”. Wszystkie adresy (mapa strony, znaczniki dla Google, linki udostępniania) wskazują teraz na www.kompetencje.ai.
 - Formularz zapisu na kurs: gdy kurs zaczyna się za mniej niż 15 dni (albo nie ma jeszcze daty), pojawia się obowiązkowa zgoda klienta na rozpoczęcie kursu przed upływem 14 dni na odstąpienie od umowy. Zgoda jest zapisywana w bazie z datą i widoczna przy płatności w Stripe. Przy checkboxie jest krótkie zdanie, a pełna treść zgody rozwija się po kliknięciu „Pełna treść zgody”.
 - Naprawione: na telefonie na stronie głównej nie pokazywały się zdjęcia prowadzących (animacja odsłaniania nigdy się nie uruchamiała).
