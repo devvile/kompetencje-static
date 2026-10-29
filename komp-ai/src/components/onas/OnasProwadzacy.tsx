@@ -93,7 +93,8 @@ const GM = {
   h: 4994,
   pill: { x: 31, y: -39, w: 341, h: 73, borderPx: 5, fontPx: 23 },
   wave: { x: 336, y: 0, w: 66, h: 48 },
-  bioFontPx: 12.5, bio3FontPx: 12.5, bioLhPx: 15, bioR: 35, tagFontPx: 12, tagBorderPx: 1.5,
+  // bio: Montserrat Medium 12, lh normal (Figma 341:1721/1723/1725) — wcześniej 12.5/15 wypychało tekst z ramek
+  bioFontPx: 12, bioR: 33, tagFontPx: 12, tagBorderPx: 1.5,
   starW: 32, starH: 23,
   people: [
     {
@@ -103,14 +104,16 @@ const GM = {
       stars: [{ x: 302, y: 181 }, { x: 65, y: 541 }],
       tagRow1: { x: 67, y: 592, w: 265, h: 35, idx: 2 },
       tagRow2: [{ x: 67, y: 644, w: 157, h: 34, idx: 0 }, { x: 237, y: 644, w: 94, h: 34, idx: 1 }],
-      bio1: { box: { x: 0, y: 715, w: 343, h: 175 }, text: { x: 29, y: 744, w: 284 } },
-      bio2: { box: { x: 78, y: 938, w: 324, h: 359 }, text: { x: 108, y: 968, w: 266 } },
-      bio3: { box: { x: 27, y: 1359, w: 297, h: 207 }, text: { x: 37, y: 1388, w: 235 } },
-      decos: [
-        { src: "/assets/onas-m-pr-l1-f.png", x: 0, y: 933, w: 25, h: 655 },
-        { src: "/assets/onas-m-pr-r1-f.png", x: 330, y: 1353, w: 72, h: 220 },
-        { src: "/assets/onas-m-pr-blob1-f.png", x: 0, y: 1623, w: 105, h: 65 },
+      // ramki 1:1 z Figmy (Frame 20/21/22, origin sekcji y5167)
+      bio1: { x: -1, y: 714, w: 345, h: 178 },
+      bio2: { x: 77, y: 937, w: 325, h: 362 },
+      bio3: { x: -16, y: 1358, w: 342, h: 210 },
+      // gwiazdy STAR_OUTLINE (339:1716, 341:1727) — wektory POD szklanymi ramkami
+      stars2: [
+        { src: "/assets/onas-m-star-o1.svg", x: 0, y: 904, w: 296, h: 397 },
+        { src: "/assets/onas-m-star-o2.svg", x: 137, y: 1286, w: 265, h: 343 },
       ],
+      decos: [{ src: "/assets/onas-m-pr-blob1-f.png", x: 0, y: 1623, w: 105, h: 65 }],
     },
     {
       name: { x: 68, y: 1744, fontPx: 26, lhPx: 35, trackPx: -0.9 }, // 1 linia
@@ -119,15 +122,11 @@ const GM = {
       stars: [{ x: 305, y: 1800 }, { x: 68, y: 2163 }],
       tagRow1: { x: 66, y: 2210, w: 268, h: 35, idx: 2 },
       tagRow2: [{ x: 66, y: 2262, w: 149, h: 34, idx: 1 }, { x: 234, y: 2262, w: 100, h: 34, idx: 0 }],
-      bio1: { box: { x: 0, y: 2333, w: 337, h: 175 }, text: { x: 23, y: 2362, w: 284 } },
-      bio2: { box: { x: 90, y: 2556, w: 312, h: 357 }, text: { x: 119, y: 2585, w: 255 } },
-      bio3: { box: { x: 28, y: 2986, w: 274, h: 207 }, text: { x: 33, y: 3015, w: 216 } },
-      decos: [
-        { src: "/assets/onas-m-pr-l2a-f.png", x: 0, y: 2918, w: 96, h: 67 },
-        { src: "/assets/onas-m-pr-l2b-f.png", x: 0, y: 2985, w: 25, h: 214 },
-        { src: "/assets/onas-m-pr-r2-f.png", x: 306, y: 2983, w: 96, h: 200 },
-        { src: "/assets/onas-m-pr-blob2-f.png", x: 0, y: 3269, w: 105, h: 66 },
-      ],
+      bio1: { x: -7, y: 2332, w: 345, h: 178 },
+      bio2: { x: 89, y: 2555, w: 313, h: 360 },
+      bio3: { x: -20, y: 2985, w: 323, h: 210 },
+      stars2: [{ src: "/assets/onas-m-star-o3.svg", x: 134, y: 2919, w: 268, h: 313 }],
+      decos: [{ src: "/assets/onas-m-pr-blob2-f.png", x: 0, y: 3269, w: 105, h: 66 }],
     },
     {
       name: { x: 69, y: 3386, fontPx: 33, lhPx: 41, trackPx: -0.9 }, // cap 24, 2 linie
@@ -136,19 +135,19 @@ const GM = {
       stars: [{ x: 302, y: 3495 }, { x: 65, y: 3857 }],
       tagRow1: { x: 67, y: 3908, w: 265, h: 34, idx: 2 },
       tagRow2: [{ x: 67, y: 3960, w: 149, h: 34, idx: 1 }, { x: 233, y: 3960, w: 98, h: 34, idx: 0 }],
-      bio1: { box: { x: 0, y: 4026, w: 343, h: 175 }, text: { x: 29, y: 4055, w: 284 } },
-      bio2: { box: { x: 78, y: 4254, w: 324, h: 359 }, text: { x: 108, y: 4284, w: 266 } },
-      bio3: { box: { x: 28, y: 4675, w: 292, h: 207 }, text: { x: 32, y: 4704, w: 235 } },
-      decos: [
-        { src: "/assets/onas-m-pr-l3-f.png", x: 0, y: 4678, w: 25, h: 210 },
-        { src: "/assets/onas-m-pr-r3-f.png", x: 323, y: 4678, w: 79, h: 215 },
+      bio1: { x: -1, y: 4025, w: 345, h: 178 },
+      bio2: { x: 77, y: 4253, w: 325, h: 362 },
+      bio3: { x: -21, y: 4674, w: 342, h: 210 },
+      stars2: [
+        { src: "/assets/onas-m-star-o1.svg", x: 0, y: 4220, w: 296, h: 397 },
+        { src: "/assets/onas-m-star-o2.svg", x: 131, y: 4602, w: 265, h: 343 },
       ],
+      decos: [],
     },
   ],
 };
 
 export function OnasProwadzacyMobile({ p, people }: { p: ONasProwadzacy; people: Lecturer[] }) {
-  const bioLh = `${(GM.bioLhPx / 4.02).toFixed(4)}cqw`;
   return (
     <section className="relative z-10 w-full overflow-x-clip md:hidden">
       <div className="@container mx-auto w-full max-w-(--workspace)">
@@ -206,35 +205,37 @@ export function OnasProwadzacyMobile({ p, people }: { p: ONasProwadzacy; people:
                     {p.tags[i][tg.idx]}
                   </span>
                 ))}
-                {/* bio1: szary box flush left (TL ostry, reszta zaokrąglona), tekst blue */}
-                <div className="absolute bg-page"
+                {/* gwiazdy konturowe POD ramkami (szkło je rozmywa jak w Figmie) */}
+                {gp.stars2.map((st) => (
+                  <img key={st.src + st.y} src={st.src} alt="" aria-hidden className="absolute max-w-none"
+                    style={{ left: cm(st.x), top: cm(st.y), width: cm(st.w), height: cm(st.h) }} />
+                ))}
+                {/* bio1: szara ramka z lewej krawędzi, obrys blue, zaokrąglona z prawej */}
+                <p className="absolute flex items-center border border-solid border-brand-blue bg-page text-justify font-display font-medium text-brand-blue"
                   style={{
-                    left: cm(gp.bio1.box.x), top: cm(gp.bio1.box.y), width: cm(gp.bio1.box.w), height: cm(gp.bio1.box.h),
-                    borderRadius: `0 ${cm(GM.bioR)} ${cm(GM.bioR)} ${cm(GM.bioR)}`,
-                  }} />
-                <p className="absolute text-justify font-display font-medium text-brand-blue"
-                  style={{ left: cm(gp.bio1.text.x), top: cm(gp.bio1.text.y), width: cm(gp.bio1.text.w), fontSize: cm(GM.bioFontPx), lineHeight: bioLh }}>
+                    left: cm(gp.bio1.x), top: cm(gp.bio1.y), width: cm(gp.bio1.w), height: cm(gp.bio1.h),
+                    padding: `${cm(16)} ${cm(30)}`, borderRadius: `0 ${cm(GM.bioR)} ${cm(GM.bioR)} 0`,
+                    fontSize: cm(GM.bioFontPx), lineHeight: "normal",
+                  }}>
                   {p.bio.intro}
                 </p>
-                {/* bio2: białe 20%, flush right (bleed do krawędzi), r35 */}
-                <div className="absolute border border-solid border-white"
+                {/* bio2: szkło (biel 20% + blur 25) do prawej krawędzi, zaokrąglone z lewej, obrys bez prawej */}
+                <div className="absolute flex flex-col justify-center border-y border-l border-solid border-white text-justify font-display font-medium text-white backdrop-blur-[25px]"
                   style={{
-                    left: cm(gp.bio2.box.x), top: cm(gp.bio2.box.y), width: cm(gp.bio2.box.w), height: cm(gp.bio2.box.h),
-                    borderRadius: cm(GM.bioR), backgroundColor: "rgba(255,255,255,0.2)",
-                  }} />
-                <div className="absolute text-justify font-display font-medium text-white"
-                  style={{ left: cm(gp.bio2.text.x), top: cm(gp.bio2.text.y), width: cm(gp.bio2.text.w), fontSize: cm(GM.bioFontPx), lineHeight: bioLh }}>
+                    left: cm(gp.bio2.x), top: cm(gp.bio2.y), width: cm(gp.bio2.w), height: cm(gp.bio2.h),
+                    padding: `${cm(30)} ${cm(30)}`, borderRadius: `${cm(GM.bioR)} 0 0 ${cm(GM.bioR)}`,
+                    backgroundColor: "rgba(255,255,255,0.2)", fontSize: cm(GM.bioFontPx), lineHeight: "normal",
+                  }}>
                   <p>{p.bio.mainP1}</p>
-                  <p style={{ marginTop: cm(13.5) }}>{p.bio.mainP2}</p>
+                  <p style={{ marginTop: "1.219em" }}>{p.bio.mainP2}</p>
                 </div>
-                {/* bio3: białe 20%, r35 */}
-                <div className="absolute border border-solid border-white"
+                {/* bio3: szkło zaokrąglone ze wszystkich stron, px52 */}
+                <p className="absolute flex items-center border border-solid border-white text-justify font-display font-medium text-white backdrop-blur-[25px]"
                   style={{
-                    left: cm(gp.bio3.box.x), top: cm(gp.bio3.box.y), width: cm(gp.bio3.box.w), height: cm(gp.bio3.box.h),
-                    borderRadius: cm(GM.bioR), backgroundColor: "rgba(255,255,255,0.2)",
-                  }} />
-                <p className="absolute text-justify font-display font-medium text-white"
-                  style={{ left: cm(gp.bio3.text.x), top: cm(gp.bio3.text.y), width: cm(gp.bio3.text.w), fontSize: cm(GM.bio3FontPx), lineHeight: bioLh }}>
+                    left: cm(gp.bio3.x), top: cm(gp.bio3.y), width: cm(gp.bio3.w), height: cm(gp.bio3.h),
+                    padding: `${cm(30)} ${cm(52)}`, borderRadius: cm(GM.bioR),
+                    backgroundColor: "rgba(245,245,245,0.2)", fontSize: cm(GM.bioFontPx), lineHeight: "normal",
+                  }}>
                   {p.bio.extra}
                 </p>
                 {gp.decos.map((d) => (

@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026-10-29 (8) — /o-nas mobile: usunięte glitche na niebieskim tle (przegląd całej strony)
+
+- Figma `326:1050` bez zmian względem lipcowego renderu (diff 0.01%) — błędy były po naszej stronie.
+- Opisy prowadzących (3 osoby): ramki przebudowane 1:1 z Figmy (Frame 20/21/22, 66/14/67, 71/72/73):
+  szkło `rgba(255,255,255,.2)` + `backdrop-blur 25`, bio2 zaokrąglone tylko z lewej (bleed do prawej),
+  bio1 szara z obrysem blue zaokrąglona z prawej, bio3 zaokrąglona, padding 30/52. Tekst Montserrat
+  Medium 12, lh normal (było 12.5/15 → u Wiktorii wychodził poza ramkę). Ramka = flex z paddingiem
+  (tekst nie może już wyjść poza nią).
+- Konturowe gwiazdy STAR_OUTLINE jako czyste wektory z Figmy (`onas-m-star-o1/2/3.svg`, tła
+  wycięte z eksportu) POD ramkami — wcześniej wycięte z renderu PNG (`onas-m-pr-l1/r1/l2a/l2b/r2/l3/r3`,
+  usunięte) leżały NAD ramkami: linie przecinały tekst, przy lewej krawędzi ostre paski.
+- Hero: logo `.AI` (`onas-m-logo-f.png`) oczyszczone z resztek robota (891 px niebieskich
+  przebarwień), robot (`onas-robot-m-f.png`) bez białego koła po kropce logo (przesunięte względem
+  kropki → biała obwódka); dziura domalowana z sąsiednich pikseli.
+- Walidacja: sekcje opisów vs Figma 8.5–8.8% (AA tekstu), retina 2× przejrzana w całości,
+  hscroll ok 375–2560, tsc czysty.
+
 ## 2026-10-29 (7) — kurs v3: „AI pod kontrolą od podstaw" (desktop + mobile)
 
 - Figma `2279:2811` (desktop 1440×12531) / `2310:3040` (mobile). Treść i grafiki wyciągnięte
