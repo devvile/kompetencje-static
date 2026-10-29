@@ -65,7 +65,7 @@ function CtaArrow({ className, style }: { className?: string; style?: React.CSSP
 
 function Desktop({ w }: { w: WebinarPage }) {
   const p = w.promo!;
-  const href = `/webinary/${w.slug}`;
+  const href = `/webinary/${w.slug}#zapisz-sie`; // otwiera formularz zapisu
   const chips = infoChips(w);
   return (
     <div className="@container relative mx-auto hidden w-full max-w-(--workspace) leading-[normal] lg:block">
@@ -217,7 +217,7 @@ const mfs = (px: number, minPx: number) => `max(${minPx}px, ${m(px)})`;
 
 function Mobile({ w }: { w: WebinarPage }) {
   const p = w.promo!;
-  const href = `/webinary/${w.slug}`;
+  const href = `/webinary/${w.slug}#zapisz-sie`; // otwiera formularz zapisu
   const chips = infoChips(w);
   return (
     <div className="relative w-full overflow-hidden leading-[normal] lg:hidden" data-node-id="2245:1665">

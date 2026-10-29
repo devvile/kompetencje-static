@@ -462,6 +462,8 @@ export interface WebinarPage {
     tool?: string;
     /** 0 = „Bezpłatnie" */
     price: { value: number; currency: string };
+    /** link do pokoju LiveWebinar (w mailu potwierdzającym); brak = „wyślemy przed startem" */
+    joinUrl?: string;
     /** etykieta wiersza ceny (design: „INWESTYCJA"; domyślnie „CENA") */
     priceLabel?: string;
     note?: string;

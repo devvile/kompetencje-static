@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-10-29 (16) — zapis na webinar (formularz + baza + mail przez Resend)
+
+- Decyzje Patryka: bez kont użytkowników; system do faktur — jeszcze nie wybrany; Resend dziś wieczorem.
+- `WebinarZapisModal` (okno; mobile: panel od dołu): imię, e-mail, regulamin*, newsletter. Otwiera go każdy
+  link `#zapisz-sie` na stronie webinaru i adres `/webinary/<slug>#zapisz-sie` (karta webinaru na home).
+  Pola/checkboxy = komponenty `Field`/`Check` z K2EnrollModal (eksportowane).
+- `lib/zapisWebinar.ts` (walidacja wspólna), `app/webinary/[slug]/actions.ts` (`zapiszNaWebinar`:
+  insert do `webinar_zapisy`, duplikat e-maila → komunikat „już jesteś na liście”, mail z potwierdzeniem).
+- `lib/mail.ts`: Resend przez REST (bez paczki); bez `RESEND_API_KEY`/`MAIL_FROM` maile pomijane, zapis działa.
+  `.env.example` uzupełniony. `WebinarPage.details.joinUrl` — link do pokoju LiveWebinar w mailu (opcjonalny).
+- `supabase/migrations/0003_webinar_zapisy.sql` (+README). Test lokalny: walidacja, otwarcie z przycisku
+  i z adresu, desktop i 390 px OK; zapis kończy się błędem do czasu uruchomienia migracji 0003 (oczekiwane).
+- Dalej: przypomnienia 24 h / 1 h (Vercel Cron), mail po opłaceniu kursu (webhook Stripe), faktury.
+
 ## 2026-10-29 (15) — SEO: kanoniczna domena www (powód braku indeksacji) + logi 30 dni
 
 - Diagnoza na produkcji: robots.txt i sitemap.xml OK (Allow, sitemap podany), ALE apex

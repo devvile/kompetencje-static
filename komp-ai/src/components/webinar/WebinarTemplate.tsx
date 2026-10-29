@@ -15,6 +15,7 @@ import type { NavLink, RichSeg, WebinarPage } from "@/content/types";
 import SiteNav from "../shared/SiteNav";
 import MobileTopBar from "../shared/MobileTopBar";
 import { formatStart, formatWebinarPrice } from "@/lib/webinar";
+import WebinarZapisModal from "./WebinarZapisModal";
 
 const c = (px: number) => `${(px / 14.4).toFixed(4)}cqw`;
 const fs = (px: number, minPx: number) => `max(${minPx}px, ${c(px)})`;
@@ -753,6 +754,8 @@ export default function WebinarTemplate({ webinar, nav }: { webinar: WebinarPage
       )}
       <Desktop w={webinar} nav={nav} />
       <Mobile w={webinar} nav={nav} />
+      {/* formularz zapisu: otwierają go przyciski z href="#zapisz-sie" */}
+      <WebinarZapisModal slug={webinar.slug} name={webinar.name} termin={formatStart(webinar.details.start)} />
     </>
   );
 }

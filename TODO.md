@@ -79,6 +79,18 @@ tekstury 2624×1630; maski logo).
 
 ## Otwarte zadania
 
+- [ ] **Zapisy i płatności (plan uzgodniony 2026-10-29, bez kont użytkowników)**
+  - [x] Zapis na webinar: formularz, tabela `webinar_zapisy`, mail potwierdzający (Resend, gdy klucz).
+  - [ ] Patryk: Resend (konto, domena, DNS) → `RESEND_API_KEY`, `MAIL_FROM` w Vercel; migracje 0002 i 0003 na dev i prod.
+  - [ ] Link do pokoju LiveWebinar: `details.joinUrl` webinaru (+ analogiczne pole dla kursów).
+  - [ ] Przypomnienia webinaru 24 h i 1 h przed (Vercel Cron, kolumny `przypomnienie_*_at`).
+  - [ ] Mail po opłaceniu kursu (webhook Stripe → status „opłacone”): podsumowanie, treść zgody na start,
+        regulamin, informacja o fakturze — wymóg prawny, blokuje start sprzedaży.
+  - [ ] Przypomnienia przed zajęciami kursu + reguła „bez materiałów przed 14 dniami”, gdy nie było zgody.
+  - [ ] Faktury automatyczne (po wyborze systemu KSeF) — do tego czasu ręcznie z listy w Supabase.
+  - [ ] Stripe: włączyć BLIK i Przelewy24.
+  - [ ] Lista zapisów dla Patryka (na start panel Supabase).
+
 - [ ] **Zgoda na start przed upływem 14 dni — dalsze kroki** (checkbox w formularzu gotowy 2026-10-29):
   - [ ] Uruchomić `supabase/migrations/0002_zgoda_start_przed_terminem.sql` na dev i prod PRZED wdrożeniem
         (inaczej zapis na kurs zwróci błąd).

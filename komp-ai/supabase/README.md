@@ -25,3 +25,4 @@ plików już uruchomionych na prod.
 
 **Uwaga:** kod zapisu wysyła już `zgoda_start_przed_terminem_at` — bez migracji 0002 insert do
 `zgloszenia` się nie uda. Uruchomić 0002 na dev i prod PRZED wdrożeniem tej wersji.
+| `0003_webinar_zapisy.sql` | tabela `webinar_zapisy` — zapisy na bezpłatne webinary (imię, e-mail, zgody, znaczniki maili: potwierdzenie i przypomnienia); unikalny e-mail na webinar. Bez niej formularz zapisu na webinar zwraca błąd. |

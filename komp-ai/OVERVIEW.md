@@ -98,6 +98,8 @@ kompetencje-ostateczna/
 
 ## 5. Ostatnie Zmiany w Projekcie
 
+* **2026-10-29 (4) — zapis na bezpłatny webinar:** `components/webinar/WebinarZapisModal.tsx` (otwierany linkiem/hashem `#zapisz-sie`, reużywa `Field`/`Check` z `K2EnrollModal`), Server Action `app/webinary/[slug]/actions.ts` (`zapiszNaWebinar`), walidacja `lib/zapisWebinar.ts`, mail przez Resend REST `lib/mail.ts` (bez klucza — pomijany), tabela `webinar_zapisy` (`supabase/migrations/0003_webinar_zapisy.sql`), pole `WebinarPage.details.joinUrl`. Bez kont użytkowników.
+
 * **2026-10-29 (3) — strony kursów v3:** szablon `KursV2Template` z `layout: "v3"` — nowe komponenty `K3Benefits` (bento, rejestr ilustracji `BentoArt`), `K3Program`, `K3Audience`, `K3Faq` (+JSON-LD FAQPage), `K3Mobile`; kursy „Z rozmowy do oferty" (`content/kurs-v2.ts`) i „AI pod kontrolą od podstaw" (`content/kurs-ai-kontrola.ts`). Kontakt na stronie kursu = `OnasKontakt` z layoutem w route. Także: `--workspace` z progiem 3000px i limitem wysokości (ultra wide), zwarty formularz kontaktowy (`FORM_SHRINK`).
 
 * **2026-10-29 (2) — redesign home („ostatni szlif" Victorii, Figma `5ufIXE17KqmkvVrfSVzUFE`):**

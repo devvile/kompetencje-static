@@ -44,8 +44,8 @@ export const webinarAgentAi: WebinarPage = {
     { value: "BEZ", label: "kodowania" },
   ],
   boldNote: "Od pierwszych minut pracujesz na swoim agencie. W praktyce nauczysz się, jak i dlaczego to działa!",
-  // TODO: docelowy link zapisu (formularz / platforma webinarowa) — na razie kontakt
-  register: { href: "#kontakt", label: "ZAPISZ SIĘ ZA DARMO", note: ["Online, na żywo.", "Wystarczy laptop i konto Google."] },
+  // #zapisz-sie otwiera formularz zapisu (WebinarZapisModal → tabela webinar_zapisy)
+  register: { href: "#zapisz-sie", label: "ZAPISZ SIĘ ZA DARMO", note: ["Online, na żywo.", "Wystarczy laptop i konto Google."] },
   details: {
     // design 2002:1803 ma placeholder [IMIĘ I NAZWISKO]; nowsza wersja (479:1789): Piotr Małysz
     instructor: "Piotr Małysz",

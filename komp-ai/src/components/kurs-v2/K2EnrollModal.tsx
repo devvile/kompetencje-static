@@ -43,7 +43,7 @@ export const ENROLL_HASH = "zapisz-sie";
 
 type View = "form" | ZapisResult["status"];
 
-function Field({
+export function Field({
   id,
   name,
   label,
@@ -101,7 +101,7 @@ function Field({
   );
 }
 
-function Check({
+export function Check({
   id,
   name,
   children,
