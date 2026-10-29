@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-10-29 (10) — webinar mobile dopasowany do desktopu v2
+
+- Brak widoku mobile w Figmie (decyzja Patryka) — źródło prawdy = desktop 479:1789, układ w jednej
+  kolumnie (max 640): pieczątka AI GYM, nowy opis + akapit, kafelki „co potrafi agent" (3 kolumny),
+  pasek liczb (wartość nad podpisem), przycisk „ZAPISZ SIĘ ZA DARMO" z kursorem, karta (PROWADZĄCY
+  + nazwisko Black), pigułki TE SAME DANE → INNY MÓZG, pasek promptu (tekst zawija się), przypis
+  w kroku 3, pogrubione zdanie w „Dla kogo", siatki/poświaty w tle, gwiazda przy zamknięciu.
+  Montserrat (font-display) jak na desktopie. Kontakt mobile już był (route).
+- Walidacja: 375/390 px retina przejrzane, hscroll ok 375–2560, desktop bez zmian (0.00%), build OK.
+
 ## 2026-10-29 (9) — webinar desktop v2 (Figma 479:1789)
 
 - Hero: nowy opis + akapit „Na tym warsztacie… który:", 3 kafelki z ikonami (`features`), niebieski

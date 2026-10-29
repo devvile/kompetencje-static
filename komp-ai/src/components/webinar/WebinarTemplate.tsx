@@ -5,7 +5,8 @@
  *  ≥1024: 1:1 z designem, wymiary w cqw płótna 1440 (proporcjonalnie), szerokość
  *         płótna ograniczona też wysokością okna (intro + CTA w 1. ekranie),
  *         drobne fonty z podłogą px.
- *  <1024: układ mobilny/tablet (brak widoku w Figmie — autorski, ta sama estetyka).
+ *  <1024: układ mobilny/tablet — brak widoku w Figmie; źródło prawdy = desktop v2
+ *         (te same sekcje i elementy w jednej kolumnie).
  * Termin z ISO formatuje się sam (pl-PL, Europe/Warsaw); cena 0 = „Bezpłatnie".
  * JSON-LD schema.org/EducationEvent (gdy podany termin) — SEO.
  */
@@ -62,20 +63,6 @@ function eventJsonLd(w: WebinarPage) {
     },
   };
 }
-
-const Rich = ({ segs }: { segs: RichSeg[] }) => (
-  <>
-    {segs.map((s, i) =>
-      s.strong ? (
-        <strong key={i} className="font-extrabold">
-          {s.text}
-        </strong>
-      ) : (
-        <span key={i}>{s.text}</span>
-      ),
-    )}
-  </>
-);
 
 /* ======================= DESKTOP (≥1024) =======================
  * v2 (Figma 479:1789, 1440×5424): hero z kafelkami/paskiem liczb i pieczątką,
@@ -477,132 +464,194 @@ function Desktop({ w, nav }: { w: WebinarPage; nav: NavLink[] }) {
 
 /* ======================= MOBILE / TABLET (<1024) ======================= */
 
-function MButton({ href, label }: { href: string; label: string }) {
+function MButton({ href, label, cursor = false }: { href: string; label: string; cursor?: boolean }) {
   return (
     <a
       href={href}
-      className="flex h-16 w-full items-center justify-center rounded-[40px] border-[3px] border-solid border-white bg-brand-lime font-modular text-[20px] tracking-[0.04em] text-brand-blue"
+      className="relative flex h-16 w-full items-center justify-center rounded-[40px] border-[3px] border-solid border-brand-blue bg-brand-lime font-modular text-[18px] tracking-[0.04em] text-brand-blue"
     >
       {label}
+      {cursor && (
+        <img src="/assets/kursor.svg" alt="" aria-hidden className="pointer-events-none absolute -bottom-4 right-6 h-[34px] w-[23px] max-w-none -rotate-[14deg]" />
+      )}
     </a>
   );
 }
 
+/* MOBILE / TABLET (<1024) — v2: brak widoku w Figmie, źródło prawdy = desktop 479:1789
+ * (te same sekcje, treści i elementy), ułożone w jedną kolumnę (max 640). */
 function Mobile({ w, nav }: { w: WebinarPage; nav: NavLink[] }) {
   const rows = detailRows(w);
   return (
-    <div className="w-full bg-page leading-[normal] lg:hidden">
-      <div className="relative h-[92px] md:h-[110px]">
-        <MobileTopBar nav={nav} />
-        <div className="@container relative mx-auto hidden h-full w-full md:block">
-          <SiteNav nav={nav} />
+    <div className="w-full overflow-x-clip bg-page leading-[normal] lg:hidden">
+      <div className="relative">
+        {/* FX hero: poświata + siatka (jak desktop) */}
+        <img src="/assets/webinar/w-fx-hero-glow.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[720px] w-full object-cover object-right-top" />
+        <img src="/assets/webinar/w-fx-hero-grid.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[720px] w-full object-cover object-center" />
+        <div className="relative h-[92px] md:h-[110px]">
+          <MobileTopBar nav={nav} />
+          <div className="@container relative mx-auto hidden h-full w-full md:block">
+            <SiteNav nav={nav} />
+          </div>
         </div>
-      </div>
-      <div className="relative mx-auto flex max-w-[640px] flex-col gap-12 px-5 pb-14 pt-3">
-        <img src="/assets/webinar/w-star-outline.svg" alt="" aria-hidden className="manifest-spark absolute right-3 top-[118px] h-14 w-14" />
-        {/* intro */}
-        <section className="flex flex-col items-start gap-5">
-          <p className="flex items-center gap-[10px] whitespace-pre rounded-[30px] border-2 border-solid border-brand-blue bg-brand-lime px-4 py-[9px] font-audio text-[12px] tracking-[0.04em] text-brand-blue">
-            <img src="/assets/webinar/w-star-14.svg" alt="" aria-hidden className="h-3 w-3" />
-            {w.badge}
-          </p>
-          <h1 className="flex flex-col items-start gap-[6px] font-display text-[clamp(34px,10.5vw,56px)] font-black leading-[1.05] text-brand-blue">
-            {w.title.before.map((l) => (
-              <span key={l}>{l} </span>
-            ))}
-            <span className="bg-brand-lime px-[10px] py-[2px]">{w.title.accent} </span>
-            {w.title.after.map((l) => (
-              <span key={l}>{l}</span>
-            ))}
-          </h1>
-          <p className="font-audio text-[19px] tracking-[0.03em] text-brand-blue">{w.tagline}</p>
-          <div className="flex flex-col gap-4 font-body text-[16px] leading-[1.55] text-brand-blue">
+        <div className="relative mx-auto flex max-w-[640px] flex-col gap-12 px-5 pb-14 pt-3">
+          {/* pieczątka AI GYM */}
+          <img src="/assets/webinar/w-stamp.svg" alt="" aria-hidden className="manifest-spark absolute right-3 top-[52px] h-[84px] w-[88px]" />
+          {/* intro */}
+          <section className="flex flex-col items-start gap-5">
+            <p className="flex items-center gap-[10px] whitespace-pre rounded-[30px] border-2 border-solid border-brand-blue bg-brand-lime px-4 py-[9px] font-audio text-[12px] tracking-[0.04em] text-brand-blue">
+              <img src="/assets/webinar/w-star-14.svg" alt="" aria-hidden className="h-3 w-3" />
+              {w.badge}
+            </p>
+            <h1 className="flex flex-col items-start gap-[6px] font-display text-[clamp(34px,10.5vw,56px)] font-black leading-[1.05] text-brand-blue">
+              {w.title.before.map((l) => (
+                <span key={l}>{l} </span>
+              ))}
+              <span className="bg-brand-lime px-[10px] py-[2px]">{w.title.accent} </span>
+              {w.title.after.map((l) => (
+                <span key={l}>{l}</span>
+              ))}
+            </h1>
+            {!w.taglinePills && <p className="font-audio text-[19px] tracking-[0.03em] text-brand-blue">{w.tagline}</p>}
             {w.description.map((p, i) => (
-              <p key={i}>
-                <Rich segs={p} />
+              <p key={i} className="font-display text-[16px] leading-[1.5] text-brand-blue">
+                <MInline segs={p} />
               </p>
             ))}
-          </div>
-          {w.boldNote && <p className="font-body text-[15px] font-bold leading-[1.5] text-brand-blue">{w.boldNote}</p>}
-        </section>
-
-        {/* karta szczegółów: pasek prowadzącego na górze (poziomo) */}
-        <aside className="overflow-hidden rounded-[26px] bg-brand-blue shadow-[0_10px_30px_rgba(0,0,0,0.22)]" aria-label="Szczegóły webinaru">
-          <p className="bg-brand-lime px-6 py-3 font-audio text-[12px] tracking-[0.03em] text-brand-blue">
-            PROWADZĄCY&nbsp;&nbsp;&nbsp;{w.details.instructor.toUpperCase()}
-          </p>
-          <div className="flex flex-col gap-4 px-6 py-7">
-            <p className="font-audio text-[13px] tracking-[0.06em] text-brand-lime">SZCZEGÓŁY</p>
-            <dl className="flex flex-col gap-4">
-              {rows.map((r) => (
-                <div key={r.label} className="flex flex-col gap-[6px] border-b border-solid border-white/25 pb-4">
-                  <dt className="font-audio text-[11px] tracking-[0.04em] text-brand-lime">{r.label}</dt>
-                  <dd className="font-body text-[17px] font-semibold leading-[1.4] text-white">{r.value}</dd>
-                </div>
-              ))}
-            </dl>
-            {w.details.note && <p className="font-body text-[14px] leading-[1.55] text-white/85">{w.details.note}</p>}
-          </div>
-        </aside>
-
-        <div className="flex flex-col items-center gap-3">
-          <MButton href={w.register.href} label={w.register.label} />
-          <p className="text-center font-body text-[13px] font-semibold leading-[1.5] text-brand-blue">{w.register.note.join(" ")}</p>
-        </div>
-
-        {/* porównanie */}
-        {w.comparison && (
-          <section className="flex flex-col gap-6">
-            <h2 className="font-audio text-[26px] leading-[1.25] text-brand-blue">
-              {w.comparison.heading.map((l) => (
-                <span key={l} className="block">
-                  {l}
-                </span>
-              ))}
-            </h2>
-            <p className="font-body text-[15px] leading-[1.55] text-brand-blue">{w.comparison.text}</p>
-            <div className="flex flex-col gap-[14px] rounded-[24px] border-2 border-solid border-[rgba(19,29,255,0.25)] bg-white px-6 py-7">
-              <p className="self-start rounded-[30px] border-[1.5px] border-solid border-brand-blue px-4 py-2 font-audio text-[12px] text-brand-blue">
-                {w.comparison.plain.label}
+            {w.intro && (
+              <p className="font-display text-[16px] leading-[1.5] text-brand-blue">
+                <MInline segs={w.intro} strongClass="font-extrabold" />
               </p>
-              <ul className="flex flex-col gap-3">
-                {w.comparison.plain.items.map((it) => (
-                  <li key={it} className="flex items-start gap-3">
-                    <span className="font-body text-[17px] font-bold text-[rgba(19,29,255,0.35)]" aria-hidden>
-                      —
+            )}
+            {w.features && (
+              <ul className="grid w-full grid-cols-3 gap-[10px]">
+                {w.features.map((f) => (
+                  <li key={f.label} className="flex flex-col items-start gap-[10px] rounded-[18px] border-[1.5px] border-solid border-white bg-white/60 p-3 shadow-[0_8px_24px_rgba(18,28,255,0.1)]">
+                    <span className="flex size-9 items-center justify-center rounded-full bg-brand-blue">
+                      <img src={FEATURE_ICON[f.icon]} alt="" aria-hidden className="size-[18px]" />
                     </span>
-                    <span className="font-body text-[16px] font-semibold leading-[1.4] text-[rgba(19,29,255,0.6)]">{it}</span>
+                    <span className="font-display text-[13px] font-bold leading-[1.25] text-brand-blue">{f.label}</span>
                   </li>
                 ))}
               </ul>
-              <p className="border-t border-solid border-[rgba(19,29,255,0.25)] pt-4 font-body text-[15px] font-extrabold text-brand-blue">
-                {w.comparison.plain.effect}
-              </p>
-            </div>
-            <div className="flex flex-col gap-[14px] rounded-[24px] bg-brand-blue px-6 py-7">
-              <p className="self-start rounded-[30px] bg-brand-lime px-4 py-2 font-audio text-[12px] text-brand-blue">{w.comparison.agent.label}</p>
-              <ul className="flex flex-col gap-3">
-                {w.comparison.agent.items.map((it) => (
-                  <li key={it} className="flex items-start gap-3">
-                    <img src="/assets/webinar/w-star-lime.svg" alt="" aria-hidden className="mt-[3px] h-[18px] w-[18px] shrink-0" />
-                    <span className="font-body text-[16px] font-semibold leading-[1.4] text-white">{it}</span>
+            )}
+            {w.stats && (
+              <ul className="flex w-full items-stretch justify-between rounded-[18px] bg-brand-blue px-4 py-3">
+                {w.stats.map((st, i) => (
+                  <li key={st.value + st.label} className="flex items-stretch">
+                    {i > 0 && <span className="mr-4 block w-px self-stretch bg-white/35" aria-hidden />}
+                    <span className="flex flex-col items-start gap-[2px] whitespace-nowrap">
+                      <span className="font-audio text-[17px] text-brand-lime">{st.value}</span>
+                      <span className="font-display text-[11px] font-semibold text-white">{st.label}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
-              <p className="border-t border-solid border-white/25 pt-4 font-body text-[15px] font-extrabold text-brand-lime">
-                {w.comparison.agent.effect}
-              </p>
+            )}
+            {w.boldNote && <p className="font-display text-[15px] font-bold leading-[1.5] text-brand-blue">{w.boldNote}</p>}
+            <div className="flex w-full flex-col items-center gap-3 pt-1">
+              <MButton href={w.register.href} label={w.register.label} cursor />
+              <p className="pt-2 text-center font-display text-[13px] font-semibold leading-[1.5] text-brand-blue">{w.register.note.join(" ")}</p>
             </div>
           </section>
-        )}
+
+          {/* karta szczegółów: pasek prowadzącego na górze (poziomo) */}
+          <div className="flex flex-col items-center gap-6">
+            <aside className="w-full overflow-hidden rounded-[26px] bg-brand-blue shadow-[0_10px_30px_rgba(0,0,0,0.22)]" aria-label="Szczegóły webinaru">
+              <p className="flex items-baseline gap-3 bg-brand-lime px-6 py-3 text-brand-blue">
+                <span className="font-modular text-[12px] tracking-[0.03em]">PROWADZĄCY</span>
+                <span className="font-display text-[18px] font-black">{w.details.instructor.toUpperCase()}</span>
+              </p>
+              <div className="flex flex-col gap-4 px-6 py-7">
+                <p className="font-audio text-[13px] tracking-[0.06em] text-brand-lime">SZCZEGÓŁY</p>
+                <dl className="flex flex-col gap-4">
+                  {rows.map((r) => (
+                    <div key={r.label} className="flex flex-col gap-[6px] border-b border-solid border-white/25 pb-4">
+                      <dt className="font-audio text-[11px] tracking-[0.04em] text-brand-lime">{r.label}</dt>
+                      <dd className="font-display text-[17px] font-semibold leading-[1.4] text-white">{r.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {w.details.note && <p className="font-display text-[14px] leading-[1.55] text-white/85">{w.details.note}</p>}
+              </div>
+            </aside>
+            {w.taglinePills && (
+              <p className="flex items-center gap-3" aria-label={w.tagline}>
+                <span className="whitespace-nowrap rounded-[30px] border-2 border-solid border-white px-4 py-2 font-modular text-[13px] text-brand-blue">{w.taglinePills[0]}</span>
+                <img src="/assets/webinar/w-arrow-haslo.svg" alt="" aria-hidden className="size-7" />
+                <span className="whitespace-nowrap rounded-[30px] border-2 border-solid border-white bg-brand-lime px-4 py-2 font-modular text-[13px] text-brand-blue">{w.taglinePills[1]}</span>
+              </p>
+            )}
+          </div>
+
+          {/* porównanie */}
+          {w.comparison && (
+            <section className="flex flex-col gap-6">
+              <h2 className="font-audio text-[26px] leading-[1.25] text-brand-blue">
+                {w.comparison.heading.map((l) => (
+                  <span key={l} className="block">
+                    {l}
+                  </span>
+                ))}
+              </h2>
+              <p className="font-display text-[15px] leading-[1.55] text-brand-blue">{w.comparison.text}</p>
+              {/* pasek promptu — to samo pytanie do obu */}
+              {w.comparison.prompt && (
+                <div className="relative mr-[5px] mb-[5px]" aria-hidden>
+                  <span className="absolute inset-0 translate-x-[5px] translate-y-[5px] rounded-[24px] bg-brand-lime" />
+                  <span className="relative flex min-h-12 items-center gap-2 rounded-[24px] border-2 border-solid border-brand-blue bg-white py-[6px] pl-2 pr-[6px]">
+                    <img src="/assets/webinar/w-prompt-star.svg" alt="" className="size-7 shrink-0" />
+                    <span className="min-w-0 flex-1 font-display text-[14px] font-medium leading-[1.3] text-brand-blue">{w.comparison.prompt}</span>
+                    <img src="/assets/webinar/w-prompt-send.svg" alt="" className="size-8 shrink-0" />
+                  </span>
+                  <img src="/assets/webinar/w-prompt-cursor.svg" alt="" className="absolute -bottom-5 right-0 h-[28px] w-[19px] max-w-none" />
+                </div>
+              )}
+              <div className="flex flex-col gap-[14px] rounded-[24px] border-2 border-solid border-[rgba(19,29,255,0.25)] bg-white px-6 py-7">
+                <p className="self-start rounded-[30px] border-[1.5px] border-solid border-brand-blue px-4 py-2 font-audio text-[12px] text-brand-blue">
+                  {w.comparison.plain.label}
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {w.comparison.plain.items.map((it) => (
+                    <li key={it} className="flex items-start gap-3">
+                      <span className="font-display text-[17px] font-bold text-[rgba(19,29,255,0.35)]" aria-hidden>
+                        —
+                      </span>
+                      <span className="font-display text-[16px] font-semibold leading-[1.4] text-[rgba(19,29,255,0.6)]">{it}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="border-t border-solid border-[rgba(19,29,255,0.25)] pt-4 font-display text-[15px] font-extrabold text-brand-blue">
+                  {w.comparison.plain.effect}
+                </p>
+              </div>
+              <div className="flex flex-col gap-[14px] rounded-[24px] bg-brand-blue px-6 py-7">
+                <p className="self-start rounded-[30px] bg-brand-lime px-4 py-2 font-audio text-[12px] text-brand-blue">{w.comparison.agent.label}</p>
+                <ul className="flex flex-col gap-3">
+                  {w.comparison.agent.items.map((it) => (
+                    <li key={it} className="flex items-start gap-3">
+                      <img src="/assets/webinar/w-star-lime.svg" alt="" aria-hidden className="mt-[3px] h-[18px] w-[18px] shrink-0" />
+                      <span className="font-display text-[16px] font-semibold leading-[1.4] text-white">{it}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="border-t border-solid border-white/25 pt-4 font-display text-[15px] font-extrabold text-brand-lime">
+                  {w.comparison.agent.effect}
+                </p>
+              </div>
+            </section>
+          )}
+        </div>
       </div>
 
-      {/* przebieg */}
-      <section className="w-full bg-brand-blue">
-        <div className="mx-auto flex max-w-[640px] flex-col gap-8 px-5 py-14">
+      {/* przebieg — pas z poświatą i siatką jak desktop */}
+      <section className="relative w-full overflow-hidden bg-brand-blue">
+        <img src="/assets/webinar/w-fx-band-glow.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[480px] w-full object-cover" />
+        <img src="/assets/webinar/w-fx-band-grid.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[260px] w-full object-cover" />
+        <div className="relative mx-auto flex max-w-[640px] flex-col gap-8 px-5 py-14">
           <div className="flex flex-col gap-2">
             <h2 className="font-audio text-[26px] leading-[1.25] text-brand-lime">{w.agenda.heading}</h2>
-            {w.agenda.subheading && <p className="font-body text-[16px] font-semibold text-white">{w.agenda.subheading}</p>}
+            {w.agenda.subheading && <p className="font-display text-[16px] font-semibold text-white">{w.agenda.subheading}</p>}
           </div>
           <ol className="grid gap-8 sm:grid-cols-2">
             {w.agenda.steps.map((s, i) => (
@@ -611,65 +660,85 @@ function Mobile({ w, nav }: { w: WebinarPage; nav: NavLink[] }) {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="font-audio text-[11px] tracking-[0.04em] text-brand-lime">{s.time}</span>
-                <h3 className="font-body text-[19px] font-extrabold leading-[1.3] text-white">{s.title}</h3>
-                <p className="font-body text-[14px] leading-[1.55] text-white/85">{s.text}</p>
+                <h3 className="font-display text-[19px] font-extrabold leading-[1.3] text-white">{s.title}</h3>
+                <p className="font-display text-[14px] leading-[1.55] text-white/85">{s.text}</p>
+                {s.note && <p className="font-display text-[12px] leading-[1.4] text-white/75">{s.note}</p>}
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <div className="mx-auto flex max-w-[640px] flex-col gap-12 px-4 pb-16 pt-12">
-        <section className="flex flex-col gap-10 rounded-[32px] bg-brand-lime px-6 py-9">
-          <div className="flex flex-col gap-5">
-            <h2 className="font-display text-[34px] font-black leading-none text-brand-blue">
-              {w.outcomes.heading.map((l) => (
+      <div className="relative">
+        <img src="/assets/webinar/w-fx-bottom-grid.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[90px] w-full object-cover" />
+        <div className="relative mx-auto flex max-w-[640px] flex-col gap-12 px-4 pb-16 pt-12">
+          <section className="flex flex-col gap-10 rounded-[32px] bg-brand-lime px-6 py-9">
+            <div className="flex flex-col gap-5">
+              <h2 className="font-display text-[34px] font-black leading-none text-brand-blue">
+                {w.outcomes.heading.map((l) => (
+                  <span key={l} className="block">
+                    {l}
+                  </span>
+                ))}
+              </h2>
+              <ul className="flex flex-col gap-4">
+                {w.outcomes.items.map((it) => (
+                  <li key={it} className="flex items-start gap-3">
+                    <img src="/assets/webinar/w-star-blue.svg" alt="" aria-hidden className="mt-[2px] h-5 w-5 shrink-0" />
+                    <span className="font-display text-[16px] font-bold leading-[1.4] text-brand-blue">{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-5">
+              <h2 className="font-display text-[34px] font-black leading-none text-brand-blue">{w.audience.heading}</h2>
+              <ul className="flex flex-wrap gap-2">
+                {w.audience.tags.map((t) => (
+                  <li key={t} className="rounded-[30px] border-[1.5px] border-solid border-brand-blue px-[14px] py-2 font-audio text-[11px] text-brand-blue">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="font-display text-[16px] leading-[1.55] text-brand-blue">
+                {w.audience.text}
+                {w.audience.textBold && <strong className="font-bold"> {w.audience.textBold}</strong>}
+              </p>
+              {w.audience.safety && (
+                <div className="flex flex-col gap-2 rounded-[20px] bg-brand-blue px-5 py-5">
+                  <p className="font-audio text-[11px] tracking-[0.04em] text-brand-lime">{w.audience.safety.label}</p>
+                  <p className="font-display text-[14px] font-semibold leading-[1.55] text-white">{w.audience.safety.text}</p>
+                </div>
+              )}
+            </div>
+          </section>
+          <section className="relative flex flex-col items-center gap-7 px-1 pt-14">
+            <img src="/assets/webinar/w-star-arrow-v2.svg" alt="" aria-hidden className="absolute left-2 top-0 h-[60px] w-[45px] max-w-none" />
+            <p className="text-center font-audio text-[19px] leading-[1.45] text-brand-blue">
+              {w.closing.lines.map((l) => (
                 <span key={l} className="block">
                   {l}
                 </span>
               ))}
-            </h2>
-            <ul className="flex flex-col gap-4">
-              {w.outcomes.items.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <img src="/assets/webinar/w-star-blue.svg" alt="" aria-hidden className="mt-[2px] h-5 w-5 shrink-0" />
-                  <span className="font-body text-[16px] font-bold leading-[1.4] text-brand-blue">{it}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex flex-col gap-5">
-            <h2 className="font-display text-[34px] font-black leading-none text-brand-blue">{w.audience.heading}</h2>
-            <ul className="flex flex-wrap gap-2">
-              {w.audience.tags.map((t) => (
-                <li key={t} className="rounded-[30px] border-[1.5px] border-solid border-brand-blue px-[14px] py-2 font-audio text-[11px] text-brand-blue">
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <p className="font-body text-[16px] leading-[1.55] text-brand-blue">{w.audience.text}{w.audience.textBold && <strong className="font-bold"> {w.audience.textBold}</strong>}</p>
-            {w.audience.safety && (
-              <div className="flex flex-col gap-2 rounded-[20px] bg-brand-blue px-5 py-5">
-                <p className="font-audio text-[11px] tracking-[0.04em] text-brand-lime">{w.audience.safety.label}</p>
-                <p className="font-body text-[14px] font-semibold leading-[1.55] text-white">{w.audience.safety.text}</p>
-              </div>
-            )}
-          </div>
-        </section>
-        <section className="relative flex flex-col items-center gap-7 px-1">
-          <p className="text-center font-audio text-[19px] leading-[1.45] text-brand-blue">
-            {w.closing.lines.map((l) => (
-              <span key={l} className="block">
-                {l}
-              </span>
-            ))}
-          </p>
-          <MButton href={w.register.href} label={w.closing.ctaLabel ?? w.register.label} />
-        </section>
+            </p>
+            <MButton href={w.register.href} label={w.closing.ctaLabel ?? w.register.label} cursor />
+          </section>
+        </div>
       </div>
     </div>
   );
 }
+
+const MInline = ({ segs, strongClass = "font-bold" }: { segs: RichSeg[]; strongClass?: string }) => (
+  <>
+    {segs.map((s, i) => (
+      <span key={i} className={s.strong ? strongClass : undefined}>
+        {s.text}
+        {/* twarde łamanie z desktopu pomijamy — na wąskim ekranie tekst płynie */}
+        {s.break ? " " : null}
+      </span>
+    ))}
+  </>
+);
 
 export default function WebinarTemplate({ webinar, nav }: { webinar: WebinarPage; nav: NavLink[] }) {
   const ld = eventJsonLd(webinar);
